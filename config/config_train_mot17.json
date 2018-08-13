@@ -1,0 +1,23 @@
+{
+    "root": "/home/ssm/ssj/dataset/MOT17",
+    "basenet_name": "VGG", // VGG16, res101
+    "basenet_weights": "/home/ssm/ssj/weights/MOT17/vgg16_reducedfc.pth",
+    "log_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-log",
+    "weights_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-weights",
+    "result_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-weights",
+    "type": "train",
+    "resume": null,
+    "start_iter": 0,
+    "end_iter": 120,
+    "learning_rate": 1e-2,
+    "learning_rate_decay": [50, 80, 100, 110],
+    "save_weight_every_epoch_num": 5,
+    "min_gap": 0,
+    "max_gap": 30,
+    "false_constant": 10,
+    "num_workers": 16,
+    "gpu": true,
+    "max_object": 80,
+    "min_visibility": 0.3,
+    "version": "v1"
+}
