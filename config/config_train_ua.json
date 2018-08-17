@@ -2,5 +2,5 @@
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/jianliu/Data/ssj/dataset/ua-detrac",
   "frame_max_input_num": 5,
-  "frame_max_interval": 5,
+  "frame_max_interval": 3 // The interval is [1, frame_max_interval)
 }

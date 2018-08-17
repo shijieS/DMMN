@@ -1,6 +1,8 @@
 # An End-To-End Detector Matcher
 This is an end-to-end network which combines detector and matcher into one single network.
 
+## Protocol
+- bbox: the format is *(left, top, right, bottom)*
 
 ## Network
 
