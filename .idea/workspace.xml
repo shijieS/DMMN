@@ -4,15 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/layers/region_proposal_network.py" line="91" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="start programming ua_detrac">
-      <change afterPath="$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/utils/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/utils/motion_model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" afterDir="false" />
+    <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="add motion model">
+      <change afterPath="$PROJECT_DIR$/dataset/tools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_train_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_train_ua.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/tracker.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,57 +34,43 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="MD" value="29" />
-          <entry key="Python Console" value="296" />
-          <entry key="dummy" value="6" />
-          <entry key="json" value="272" />
+          <entry key="Python Console" value="388" />
+          <entry key="dummy" value="61" />
+          <entry key="json" value="274" />
           <entry key="md" value="1325" />
-          <entry key="py" value="13813" />
-          <entry key="txt" value="38" />
+          <entry key="py" value="17793" />
+          <entry key="txt" value="54" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="272" />
+          <entry key="JSON" value="274" />
           <entry key="Markdown" value="1354" />
-          <entry key="PLAIN_TEXT" value="44" />
-          <entry key="Python" value="14109" />
+          <entry key="PLAIN_TEXT" value="115" />
+          <entry key="Python" value="18181" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="MD" value="1" />
-          <entry key="json" value="2" />
+          <entry key="json" value="4" />
           <entry key="md" value="3" />
-          <entry key="py" value="23" />
+          <entry key="py" value="27" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JSON" value="2" />
+          <entry key="JSON" value="4" />
           <entry key="Markdown" value="4" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="23" />
+          <entry key="Python" value="27" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/ua.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-                <marker date="1534473205579" expanded="true" signature="156:157" ph="..." />
-                <marker date="1534473205579" expanded="true" signature="156:161" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -127,46 +110,63 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/utils/tracker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="182">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
               <folding>
-                <marker date="1534434024235" expanded="true" signature="13:18" ph="..." />
-                <marker date="1534434024235" expanded="true" signature="65:70" ph="..." />
-                <marker date="1534434024235" expanded="true" signature="118:161" ph="..." />
+                <marker date="1534509527576" expanded="true" signature="31:36" ph="..." />
+                <marker date="1534509527576" expanded="true" signature="1265:1273" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="-26">
-                <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/region_proposal_network.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="312">
+              <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1534465192402" expanded="false" signature="897:1793" ph="..." />
-                <marker date="1534465192402" expanded="true" signature="1815:3986" ph="..." />
+                <element signature="e#0#47#0" expanded="true" />
+                <marker date="1534517692007" expanded="true" signature="148:877" ph="..." />
+                <marker date="1534517692007" expanded="true" signature="234:243" ph="..." />
+                <marker date="1534517692007" expanded="true" signature="911:916" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="1" column="17" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -174,8 +174,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
+            <state relative-caret-position="78">
+              <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -236,15 +236,19 @@
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/layers/region_proposal_network.py" />
-        <option value="$PROJECT_DIR$/config/config_train_ua.json" />
         <option value="$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py" />
         <option value="$PROJECT_DIR$/dataset/ua.py" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/dataset/utils/__init__.py" />
         <option value="$PROJECT_DIR$/dataset/utils/common.py" />
         <option value="$PROJECT_DIR$/dataset/utils/motion_model.py" />
         <option value="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/__init__.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/generate_dataset.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/generate_train_dataset.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/rebuild_train_dataset.py" />
         <option value="$PROJECT_DIR$/dataset/utils/tracker.py" />
+        <option value="$PROJECT_DIR$/config/config_train_ua.json" />
+        <option value="$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py" />
       </list>
     </option>
   </component>
@@ -319,6 +323,8 @@
       <recent name="$PROJECT_DIR$/layers/utils/nms" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset/tools" />
+      <recent name="$PROJECT_DIR$/dataset" />
       <recent name="$PROJECT_DIR$/layers/utils" />
       <recent name="$PROJECT_DIR$/layers" />
     </key>
@@ -428,7 +434,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534465196255</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add motion model">
+      <created>1534478888089</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1534478888089</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -444,7 +457,7 @@
     <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20650096" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20650096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -459,7 +472,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.31857452" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.31857452" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -477,7 +490,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="start programming ua_detrac" />
-    <option name="LAST_COMMIT_MESSAGE" value="start programming ua_detrac" />
+    <MESSAGE value="add motion model" />
+    <option name="LAST_COMMIT_MESSAGE" value="add motion model" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
@@ -605,40 +619,6 @@
     <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="68" selection-start-line="4" selection-start-column="68" selection-end-line="4" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers/region_proposal_network.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -686,9 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/utils/common.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -722,13 +699,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/tracker.py">
+    <entry file="file://$PROJECT_DIR$/dataset/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
           <folding>
-            <marker date="1534434024235" expanded="true" signature="13:18" ph="..." />
-            <marker date="1534434024235" expanded="true" signature="65:70" ph="..." />
-            <marker date="1534434024235" expanded="true" signature="118:161" ph="..." />
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/tracker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <marker date="1534509527576" expanded="true" signature="31:36" ph="..." />
+            <marker date="1534509527576" expanded="true" signature="1265:1273" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="19" lean-forward="true" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="45" column="30" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+            <marker date="1534517692007" expanded="true" signature="148:877" ph="..." />
+            <marker date="1534517692007" expanded="true" signature="234:243" ph="..." />
+            <marker date="1534517692007" expanded="true" signature="911:916" ph="..." />
           </folding>
         </state>
       </provider>
