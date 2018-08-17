@@ -1,7 +1,8 @@
 {
     "root": "/home/ssm/ssj/dataset/MOT17",
-    "basenet_name": "VGG", // VGG16, res101
-    "basenet_weights": "/home/ssm/ssj/weights/MOT17/vgg16_reducedfc.pth",
+    "basenet_name": "VGG16", // VGG16, res101
+    "basenet_weights": null,
+    "basenet_use_dropout": true,
     "log_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-log",
     "weights_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-weights",
     "result_folder": "/home/ssm/ssj/weights/MOT17/0601-E120-M80-G30-weights",
