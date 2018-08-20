@@ -12,21 +12,46 @@ class MotionModelQuadraticPoly(MotionModel):
     * :math:`h_c(t) = d_0 t^2 + d_1 t + d_3`
     """
 
-    def __init__(self):
+    def __init__(self, parameters=None):
         super(MotionModelQuadraticPoly, self).__init__(12)
+        self.parameters = parameters
 
-    def fit(self, times, bboxes):
+    def fit(self, bboxes, times=None):
+        if times is None:
+            times = range(len(bboxes))
+
         res = get_cx_cy_w_h(bboxes)
-        x = [times[0]*times[0], times[1], times[2]]
+        x = times
         deg = 2
-        return np.array(
-            [list(np.polyfit(x, y, deg)) for y in res]
-        )
+        self.parameters = np.array(
+            [list(np.polyfit(x, y, deg)) for y in res])
+        return self.parameters
 
     def get_bbox_by_frame(self, time):
-        return [p[0]*time*time + p[1]*time + p[2]
-                for p in self.parameters]
+        cx_cy_w_h = np.array([p[0] * time * time + p[1] * time + p[2]] for p in self.parameters)
+        cx = cx_cy_w_h[0, :]
+        cy = cx_cy_w_h[1, :]
+        w = cx_cy_w_h[2, :]
+        h = cx_cy_w_h[3, :]
+        bbox = np.stack((cx - w/2.0, cy - h/2.0, cx + w/2.0, cy + h/2.0), axis=0).transpose(1, 0)
+        return bbox
 
     def get_bbox_by_frames(self, times):
-        return [self.get_bbox_by_frame(t) for t in times]
+        cx_cy_w_h = np.array([p[0] * times * times + p[1] * times + p[2] for p in self.parameters])
+        cx = cx_cy_w_h[0, :]
+        cy = cx_cy_w_h[1, :]
+        w = cx_cy_w_h[2, :]
+        h = cx_cy_w_h[3, :]
+        bbox = np.stack((cx - w / 2.0, cy - h / 2.0, cx + w / 2.0, cy + h / 2.0), axis=1)
+
+        return bbox
+
+    @staticmethod
+    def get_invalid_params():
+        return np.zeros((4, 3))
+
+    @staticmethod
+    def get_str(parameters):
+        p = parameters[0, :]
+        return "x = {:0.2f}t^2+{:0.2f}t+{:0.2f}".format(p[0], p[1], p[2])
 

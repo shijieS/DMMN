@@ -1,7 +1,7 @@
 from pprint import pprint
 from.config import get_config
 
-configure_name = 'config_mot17.txt'
+configure_name = 'config_train_ua.json'
 
 
 config = get_config(configure_name)

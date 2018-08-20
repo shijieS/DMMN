@@ -16,7 +16,7 @@ class MotionModel:
     def __init__(self, parameter_num):
         self.parameters = np.zeros(parameter_num).reshape(4, -1)
 
-    def fit(self, times, bboxes):
+    def fit(self, bboxes, times):
         """
         fit parameters by the frame_indexes and bboxes
         :param times: the frame index, start from 0
@@ -41,3 +41,7 @@ class MotionModel:
         :param times: multiple times
         :return: a list of bbox
         """
+
+    @staticmethod
+    def get_invalid_params():
+        pass
