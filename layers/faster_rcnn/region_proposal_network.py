@@ -1,8 +1,6 @@
 import numpy as np
-import torch
 from torch import nn
 from torch.nn import functional as F
-from layers.utils.nms import non_maximum_suppression
 
 
 def generate_anchor_base(base_size = 16,

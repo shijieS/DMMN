@@ -51,6 +51,10 @@ class MotionModelQuadraticPoly(MotionModel):
         return np.zeros((4, 3))
 
     @staticmethod
+    def get_num_parameter():
+        return 12
+
+    @staticmethod
     def get_str(parameters):
         p = parameters[0, :]
         return "x = {:0.2f}t^2+{:0.2f}t+{:0.2f}".format(p[0], p[1], p[2])

@@ -1,7 +1,42 @@
 {
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/jianliu/Data/ssj/dataset/ua-detrac",
-  "frame_max_input_num": 20,
-  "frame_max_interval": 3,
-  "min_valid_node_rate": 0.5
+  "frame_max_input_num": 30,
+  "frame_sample_scale": 3,
+  "random_select_frame": false,
+  "min_valid_node_rate": 0.5,
+  "num_classes": 2,
+  "cuda": true,
+  "frame_size": 336,
+  "num_motion_model_param": 0,
+  "base_net_weights": null,
+  "log_save_folder": null,
+  "image_save_folder": null,
+  "resume": null,
+  "batch_size": 2,
+  "learning_rate": 1e-3,
+  "lr_decay_per_epoch": [5, 7, 8, 9],
+  "save_weight_per_epoch": 1,
+  "epoch_size": 10430,
+  "start_iter": 0,
+  "epoch_num": 10,
+  "end_iter": 0,
+  "frame_work":{
+    "num_boxes": [4, 6, 6, 4],
+    "temporal_dims": [8, 4, 2, 1],
+    "channel_dims": [256, 512, 1024, 2048],
+    "feature_maps": [38, 19, 10, 5, 3, 1],
+    "steps": [8, 16, 32, 64, 100, 300],
+    "min_sizes": [30, 60, 111, 162, 213, 264],
+    "max_sizes": [60, 111, 162, 213, 264, 315],
+    "aspect_ratios": [[2], [2, 3], [2, 3], [2, 3], [2], [2]],
+    "variance": [0.1, 0.2],
+    "clip": true
+  },
+  "base_net":{
+    "mode": "feature",
+    "model_name": "resnext",
+    "model_depth": 101,
+    "resnet_shortcut": "B"
+  }
 }

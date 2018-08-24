@@ -3,9 +3,10 @@ import numpy as np
 from config import config
 import cv2
 from torch.utils.data import Dataset
-from .utils.motion_model_quadratic import MotionModelQuadraticPoly as MotionModel
+from .utils import MotionModel
 from tqdm import tqdm
 from tqdm import trange
+import random
 
 class SingleVideoParser:
     """
@@ -21,20 +22,41 @@ class SingleVideoParser:
             self.ua_data[row[0].astype(int), row[1].astype(int), :] = row[2:6]
 
     def __len__(self):
-        return self.max_frame - config['frame_max_input_num']
+        return self.max_frame - config['frame_max_input_num']*config['frame_sample_scale']
 
     def __getitem__(self, item):
-        r = range(item,item+config['frame_max_input_num'])
-        return r, self.ua_data[r, :]
+        r = np.arange(item, item + config['frame_max_input_num']*config['frame_sample_scale'])
+
+        # selected frames
+        frame_mask = np.zeros(len(r), dtype=bool)
+        if config['random_select_frame']:
+            selected_indexes = sorted(random.sample(range(len(r)), config['frame_max_input_num']))
+        else:
+            selected_indexes = np.arange(0, config['frame_max_input_num']) * config['frame_sample_scale']
+        frame_mask[selected_indexes] = True
+        frame_indexes = r[frame_mask]
+        ua_data = self.ua_data[r, :][frame_mask, :]
+
+        return frame_indexes, ua_data
 
 class UATrainDataset(Dataset):
+    """ UA Training Dataset Loader
+
+    This is a class for ua training dataset loading.
+    The :meth:`__init__` parameters is the ua dataset folder.
+    Besides, the return of :meth:`__getitem__` contains 11 items, as following:
+    1. **frames_1** / **frames_2** is the opencv format adjacent frames. Each contains :var:`config['frame_max_input_num']//2` frames.
+    2. **bboxes_1** / **bboxes_2** is the bboxes at the first frame.
+    3. **motion_parameters_1** / **motion_parameters_1** is the parameters for each bboxes at the first frame.
+    4. **motion_possibility_1** / **motion_possibility_1** is the possibility of having corresponding bboxes at the following frames.
+    5. **times_1 / times_2 are the 0 based frame indexes.
+    5. **similarity_matrix** is the similarity matrix for tracklet in the first frames batch and second frames batch.
     """
-    A parser for all videos
-    """
-    def __init__(self, root=config['dataset_path']):
+    def __init__(self, root=config['dataset_path'], spatial_transform=None):
         self.save_folder = os.path.join(root, 'DETRAC-Train-Annotations-Training')
         self.mot_folder = os.path.join(root, 'DETRAC-Train-Annotations-MOT')
         self.frames_folder = os.path.join(root, 'Insight-MVT_Annotation_Train')
+        self.spatial_transform = spatial_transform
         if not os.path.exists(self.save_folder):
             os.mkdir(self.save_folder)
 
@@ -55,7 +77,7 @@ class UATrainDataset(Dataset):
     def __len__(self):
         return len(self.data)
 
-    def _get_parameters(self, bboxes):
+    def _get_parameters(self, bboxes, times):
         """
         Get the parameter of boxes.
         :param bboxes: (FrameId, TrackId, 4)
@@ -74,14 +96,15 @@ class UATrainDataset(Dataset):
                 parameters += [MotionModel.get_invalid_params()]
                 motion_posibility += [0.0]
             else:
-                times = np.arange(frame_num)
                 param = mm.fit(bbs[mask, :], times[mask])
                 parameters += [param]
                 motion_posibility += [1.0]
         return np.stack(parameters, axis=0), motion_posibility
 
     def __getitem__(self, item):
+        # read one input item
         (video_name, frame_indexes, ua_data) = self.data[item]
+
         sequence_frames_folder = os.path.join(self.frames_folder, video_name)
         frame_files = [os.path.join(sequence_frames_folder, "img{0:05}.jpg".format(i+1)) for i in frame_indexes]
 
@@ -89,25 +112,32 @@ class UATrainDataset(Dataset):
         range_1 = range(total_frame_num//2)
         range_2 = range(total_frame_num//2, total_frame_num)
 
-        temp_data = np.sum(ua_data, axis=2)
-        mask_1 = temp_data[range_1[0], :] > 0
-        mask_2 = temp_data[range_2[0], :] > 0
+        times_1 = frame_indexes[range_1] - frame_indexes[range_1[0]]
+        times_2 = frame_indexes[range_2] - frame_indexes[range_2[0]]
 
+        temp_data = np.sum(ua_data, axis=2)
+        mask_1 = np.sum(temp_data, axis=0) > 0
+        mask_2 = np.sum(temp_data, axis=0) > 0
 
         # reading the first part of item
         frames_1 = [cv2.imread(frame_files[i]) for i in range_1]
         bboxes_1 = ua_data[range_1, :, :][:, mask_1, :]
-        motion_parameters_1, motion_possiblity_1 = self._get_parameters(bboxes_1)
+        motion_parameters_1, motion_possiblity_1 = self._get_parameters(bboxes_1, times_1)
 
 
         # reading the second part of the item
         frames_2 = [cv2.imread(frame_files[i]) for i in range_2]
         bboxes_2 = ua_data[range_2, :, :][:, mask_2, :]
-        motion_parameters_2, motion_possiblity_2 = self._get_parameters(bboxes_2)
+        motion_parameters_2, motion_possiblity_2 = self._get_parameters(bboxes_2, times_2)
 
         # reading the similarity matrix
         similarity_matrix = np.identity(len(mask_1), dtype=float)[mask_1, :][:, mask_2]
 
-        return  frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1,\
-                frames_2, bboxes_2, motion_parameters_2, motion_parameters_2,\
-                similarity_matrix
+        out = (frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1,
+               frames_2, bboxes_2, motion_parameters_2, motion_possiblity_2, times_2,
+               similarity_matrix)
+
+        if self.spatial_transform is not None:
+            self.spatial_transform(out)
+
+        return out

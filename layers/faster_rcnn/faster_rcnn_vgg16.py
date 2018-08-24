@@ -1,9 +1,9 @@
 import torch
 from torch import nn
 from torchvision.models import vgg16
-from layers.faster_rcnn import FasterRCNN
+from layers.faster_rcnn.faster_rcnn import FasterRCNN
 from config.config import config
-from layers.region_proposal_network import RegionProposalNetwork
+from layers.faster_rcnn.region_proposal_network import RegionProposalNetwork
 from .utils.array_tools import totensor
 from .utils.torch_tools import normal_init
 

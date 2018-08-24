@@ -45,3 +45,7 @@ class MotionModel:
     @staticmethod
     def get_invalid_params():
         pass
+
+    @staticmethod
+    def get_num_parameter():
+        pass
