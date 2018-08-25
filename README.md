@@ -23,6 +23,10 @@ cd <project path>
 pip install -r requiement.txt
 ```
 
+## Preparation
+- Download this code
+- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
+
 ## Train
 
 ## Test

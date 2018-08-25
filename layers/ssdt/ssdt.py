@@ -17,9 +17,8 @@ class SSDT(nn.Module):
         super(SSDT, self).__init__()
         self.phase = phase
         self.num_classes = config["num_classes"]
-        self.cfg = config["frame_work"]
         self.num_params = config["num_motion_model_param"]
-        self.priorbox = PriorBox(self.cfg)
+        self.priorbox = PriorBox(config)
         self.priors = Variable(self.priorbox.forward(), volatile=True)
 
         # base network
@@ -103,7 +102,9 @@ class SSDT(nn.Module):
     def load_base_weights(self, base_file):
         if os.path.splitext(base_file)[1] in ['.pkl', '.pth']:
             print('Loading base net weights into state dict...')
-            self.base.load_state_dict(torch.load(base_file, map_location=lambda storage, loc:storage))
+            model_data = torch.load(base_file)
+            assert config["base_net"]["arch"] == model_data['arch']
+            self.base.load_state_dict(model_data['state_dict'], strict=False)
             print('Finish')
         else:
             print('Sorry only .pth and .pkl files supported.')

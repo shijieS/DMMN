@@ -1,5 +1,5 @@
 import numpy as np
-from dataset.utils.motion_model import MotionModel
+from dataset.MotionModel.motion_model import MotionModel
 from dataset.utils.common import get_cx_cy_w_h
 
 
@@ -27,6 +27,7 @@ class MotionModelQuadraticPoly(MotionModel):
             [list(np.polyfit(x, y, deg)) for y in res])
         return self.parameters
 
+
     def get_bbox_by_frame(self, time):
         cx_cy_w_h = np.array([p[0] * time * time + p[1] * time + p[2]] for p in self.parameters)
         cx = cx_cy_w_h[0, :]
@@ -53,6 +54,33 @@ class MotionModelQuadraticPoly(MotionModel):
     @staticmethod
     def get_num_parameter():
         return 12
+
+    @staticmethod
+    def get_parameters(bboxes, times, invalid_node_rate):
+        """
+        Get the parameter of boxes.
+        :param bboxes: (FrameId, TrackId, 4)
+        :param times: Times indexes
+        :param invalid_node_rate: the threshold for cacluate the parameters
+        :returns: parameters: (TrackId, ParameterData)
+                  motion_possibility: (trackId, possibility)
+
+        """
+        parameters = list()
+        motion_posibility = list()
+        frame_num, track_num, _ = bboxes.shape
+        mm = MotionModelQuadraticPoly()
+        for i in range(track_num):
+            bbs = bboxes[:, i, :]
+            mask = np.sum(bbs, axis=1) > 0
+            if sum(mask) / len(mask) < invalid_node_rate:
+                parameters += [MotionModelQuadraticPoly.get_invalid_params()]
+                motion_posibility += [0.0]
+            else:
+                param = mm.fit(bbs[mask, :], times[mask])
+                parameters += [param]
+                motion_posibility += [1.0]
+        return np.stack(parameters, axis=0), motion_posibility
 
     @staticmethod
     def get_str(parameters):

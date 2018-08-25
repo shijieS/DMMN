@@ -49,3 +49,7 @@ class MotionModel:
     @staticmethod
     def get_num_parameter():
         pass
+
+    @staticmethod
+    def get_parameters(bboxes, times, invalid_node_rate):
+        pass

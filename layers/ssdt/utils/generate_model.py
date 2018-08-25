@@ -129,6 +129,6 @@ def generate_resnext101(num_classes, frame_size, num_frames, cuda):
 
     if cuda:
         model = model.cuda()
-        model = nn.DataParallel(model, device_ids=None)
+        # model = nn.DataParallel(model, device_ids=None)
 
     return model

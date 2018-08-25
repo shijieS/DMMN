@@ -1,62 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="finish ua dataset loader">
-      <change afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/box_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/coco.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/coco_labels.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/example.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/scripts/COCO2014.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/scripts/VOC2007.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/scripts/VOC2012.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/data/voc0712.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/functions/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/functions/detection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/functions/prior_box.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/modules/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/modules/l2norm.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/modules/multibox_loss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssd/ssd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/densenet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/detection.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/pre_act_resnet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/resnet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/resnext.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/wide_resnet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/transform/spatial_transforms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" afterDir="false" />
+    <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="finish the network">
+      <change afterPath="$PROJECT_DIR$/dataset/MotionModel/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/utils/collate_fn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layers/ssdt/loss.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_train_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_train_ua.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/loss.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataset/utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/bbox_show.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/bbox_show.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/motion_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/motion_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/faster_rcnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/faster_rcnn_vgg16.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/faster_rcnn_vgg16.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/region_proposal_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/region_proposal_network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/roi_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/roi_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/doc/visdom.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/array_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/array_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/nms/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/nms/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/nms/_nms_gpu_post.pyx" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/nms/_nms_gpu_post.pyx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/nms/_nms_gpu_post_py.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/nms/_nms_gpu_post_py.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/nms/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/nms/build.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/nms/non_maximum_suppression.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/nms/non_maximum_suppression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/utils/torch_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/faster_rcnn/utils/torch_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/motion_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/MotionModel/motion_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/models/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/models/detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plan/README.MD" beforeDir="false" afterPath="$PROJECT_DIR$/plan/README.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_ua_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ua_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
     </list>
@@ -72,6 +37,8 @@
     <SUITE FILE_PATH="coverage/SSDT$ssd.coverage" NAME="ssd Coverage Results" MODIFIED="1535011420518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssd" />
     <SUITE FILE_PATH="coverage/SSDT$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1534698493869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/SSDT$ua.coverage" NAME="ua Coverage Results" MODIFIED="1534700268873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
+    <SUITE FILE_PATH="coverage/SSDT$Doctests_in_Compose.coverage" NAME="Doctests in Compose Coverage Results" MODIFIED="1535193952527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/utils" />
+    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1535194097838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1686462603">
@@ -88,40 +55,42 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="MD" value="29" />
-          <entry key="Python Console" value="2723" />
+          <entry key="MD" value="171" />
+          <entry key="Python Console" value="3738" />
           <entry key="dummy" value="74" />
-          <entry key="json" value="1102" />
-          <entry key="md" value="1476" />
-          <entry key="py" value="33140" />
-          <entry key="txt" value="97" />
+          <entry key="json" value="1405" />
+          <entry key="md" value="1567" />
+          <entry key="py" value="40670" />
+          <entry key="txt" value="115" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JSON" value="1102" />
-          <entry key="Markdown" value="1505" />
-          <entry key="PLAIN_TEXT" value="171" />
-          <entry key="Python" value="35863" />
+          <entry key="JSON" value="1405" />
+          <entry key="Markdown" value="1738" />
+          <entry key="PLAIN_TEXT" value="189" />
+          <entry key="Python" value="44408" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="MD" value="1" />
-          <entry key="json" value="6" />
-          <entry key="md" value="5" />
+          <entry key="MD" value="2" />
+          <entry key="json" value="7" />
+          <entry key="md" value="7" />
           <entry key="png" value="1" />
-          <entry key="py" value="81" />
+          <entry key="pstat" value="1" />
+          <entry key="py" value="102" />
           <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="JSON" value="6" />
-          <entry key="Markdown" value="6" />
+          <entry key="JSON" value="7" />
+          <entry key="Markdown" value="9" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="81" />
+          <entry key="Profiler Session" value="1" />
+          <entry key="Python" value="102" />
         </counts>
       </usages-collector>
     </session>
@@ -129,88 +98,13 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="155" selection-start-line="155" selection-end-line="155" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
-                <element signature="e#344#6073#0" />
-                <element signature="e#347#1319#0" />
-                <element signature="e#1538#3210#0" />
-                <element signature="e#2804#3191#0" />
-                <element signature="e#3245#3572#0" />
-                <marker date="1535096588319" expanded="true" signature="336:4071" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="-37">
+              <caret line="120" column="45" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="45" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_ua_dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="5" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/models/prior_box.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="927">
-              <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/1142695294/itertools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="508" column="74" selection-start-line="508" selection-start-column="4" selection-end-line="508" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-              <folding>
-                <element signature="n#!!block;n#frame_work#0;n#!!top" />
-                <element signature="n#!!block;n#base_net#0;n#!!top" />
+                <element signature="e#0#9#0" expanded="true" />
+                <marker date="1535185075339" expanded="true" signature="4371:7160" ph="..." />
               </folding>
             </state>
           </provider>
@@ -219,8 +113,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+            <state relative-caret-position="156">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
               </folding>
@@ -229,32 +123,101 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/utils/motion_model.py">
+        <entry file="file://$PROJECT_DIR$/dataset/ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="539">
-              <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
+            <state relative-caret-position="227">
+              <caret line="143" column="33" lean-forward="true" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
               <folding>
-                <element signature="e#612#849#0" />
-                <element signature="e#898#1045#0" />
-                <element signature="e#1096#1288#0" />
-                <element signature="e#1346#1350#0" />
-                <marker date="1535090800926" expanded="true" signature="464:469" ph="..." />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py">
+        <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="55" selection-start-line="55" selection-end-line="55" />
+            <state relative-caret-position="409">
+              <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#610#860#0" />
-                <marker date="1535090835726" expanded="true" signature="163:168" ph="..." />
-                <marker date="1535090835726" expanded="true" signature="861:866" ph="..." />
-                <marker date="1535090835726" expanded="true" signature="1744:1749" ph="..." />
+                <element signature="e#1280#1596#0" />
+                <marker date="1535185453624" expanded="true" signature="169:174" ph="..." />
+                <marker date="1535185453624" expanded="true" signature="868:873" ph="..." />
+                <marker date="1535185453624" expanded="true" signature="2823:2828" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+              <folding>
+                <element signature="e#612#849#0" />
+                <element signature="e#898#1045#0" />
+                <element signature="e#1096#1288#0" />
+                <element signature="e#1346#1350#0" />
+                <marker date="1535185257790" expanded="true" signature="464:469" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/utils/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="26">
+              <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="327" column="49" lean-forward="true" selection-start-line="327" selection-start-column="49" selection-end-line="327" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#2693#3235#0" />
+                <marker date="1535194094935" expanded="true" signature="1645:1648" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="1675:2400" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="3597:5284" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="5317:6080" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="8344:8368" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="9321:10067" ph="..." />
+                <marker date="1535194094935" expanded="true" signature="10092:10097" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="416">
+              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+              <folding>
+                <element signature="n#!!block;n#frame_work#0;n#!!top" />
+                <element signature="n#!!block;n#base_net#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -271,24 +234,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>division</find>
-      <find>VGG</find>
-      <find>loc2bbox</find>
-      <find>_enumerate_shifted_anchor</find>
-      <find>args</find>
-      <find>shape</find>
-      <find>motion_model_quadratic</find>
-      <find>tqdm</find>
-      <find>trange</find>
-      <find>process</find>
-      <find>get_bbox_by_frame</find>
-      <find>_get_parameters</find>
       <find>COCO_ROOT</find>
       <find>priorbox</find>
       <find>priors</find>
       <find>'</find>
       <find>self</find>
       <find>random</find>
+      <find>start</find>
+      <find>lr_decay_per_epoch</find>
+      <find>save_folder</find>
+      <find>cfg</find>
+      <find>version</find>
+      <find>collate_fn</find>
+      <find>learning</find>
+      <find>args.lr</find>
+      <find>start_iter</find>
+      <find>ConvertFromInt</find>
+      <find>Para</find>
+      <find>dataset</find>
+      <find>parameter_num</find>
+      <find>RandomSaturation</find>
+      <find>ConvertColor</find>
+      <find>Compose2</find>
+      <find>PhotometricDistort</find>
+      <find>Expand</find>
+      <find>RandomLightingNoise</find>
+      <find>ToAbso</find>
+      <find>SubtractMeans</find>
+      <find>ConvertFromInts</find>
+      <find>ToPercentCoords</find>
+      <find>Resize</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -301,11 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dataset/dataset.py" />
-        <option value="$PROJECT_DIR$/plan/README.MD" />
-        <option value="$PROJECT_DIR$/layers/faster_rcnn.py" />
-        <option value="$PROJECT_DIR$/config/config_train_mot17.json" />
-        <option value="$PROJECT_DIR$/layers/utils/nms/_nms_gpu_post_py.py" />
         <option value="$PROJECT_DIR$/layers/utils/nms/non_maximum_suppression.py" />
         <option value="$PROJECT_DIR$/utils/array_tools.py" />
         <option value="$PROJECT_DIR$/layers/utils/torch_tools.py" />
@@ -317,14 +287,12 @@
         <option value="$PROJECT_DIR$/config/config.json" />
         <option value="$PROJECT_DIR$/layers/region_proposal_network.py" />
         <option value="$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/dataset/utils/common.py" />
         <option value="$PROJECT_DIR$/dataset/utils/generate_dataset.py" />
         <option value="$PROJECT_DIR$/dataset/utils/generate_train_dataset.py" />
         <option value="$PROJECT_DIR$/dataset/utils/rebuild_train_dataset.py" />
         <option value="$PROJECT_DIR$/dataset/utils/tracker.py" />
         <option value="$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py" />
-        <option value="$PROJECT_DIR$/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/config/config.py" />
         <option value="$PROJECT_DIR$/dataset/tools/ua_convert_mat_2_mot.py" />
         <option value="$PROJECT_DIR$/test/test_ua_dataset.py" />
@@ -337,16 +305,28 @@
         <option value="$PROJECT_DIR$/layers/ssdt/transform/spatial_transforms.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/model.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/README.md" />
-        <option value="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/resnext.py" />
-        <option value="$PROJECT_DIR$/dataset/utils/__init__.py" />
-        <option value="$PROJECT_DIR$/dataset/ua.py" />
         <option value="$PROJECT_DIR$/dataset/utils/motion_model.py" />
-        <option value="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" />
+        <option value="$PROJECT_DIR$/plan/README.MD" />
+        <option value="$PROJECT_DIR$/layers/ssdt/loss.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/__init__.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/models/detection.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/collate_fn.py" />
+        <option value="$PROJECT_DIR$/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
-        <option value="$PROJECT_DIR$/train_ua.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" />
+        <option value="$PROJECT_DIR$/dataset/MotionModel/__init__.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/__init__.py" />
         <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/config/config_train_ua.json" />
+        <option value="$PROJECT_DIR$/train_ua.py" />
+        <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model.py" />
+        <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" />
+        <option value="$PROJECT_DIR$/dataset/ua.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
       </list>
     </option>
   </component>
@@ -388,12 +368,13 @@
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="dataset" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="MotionModel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="doc" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
@@ -405,6 +386,11 @@
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="layers" type="462c0819:PsiDirectoryNode" />
               <item name="ssdt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="plan" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
@@ -435,11 +421,11 @@
       <recent name="$PROJECT_DIR$/layers/utils/nms" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset/MotionModel" />
+      <recent name="$PROJECT_DIR$/layers/ssdt/utils" />
       <recent name="$PROJECT_DIR$/test" />
       <recent name="$PROJECT_DIR$/dataset" />
-      <recent name="$PROJECT_DIR$/layers/ssdt/utils" />
       <recent name="$PROJECT_DIR$/layers/ssdt" />
-      <recent name="$PROJECT_DIR$/layers/ssd" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -454,29 +440,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_ua_dataset">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/config" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/config/__init__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.train_ua">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -491,28 +455,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="motion_model_quadratic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -565,6 +507,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="train_ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_ua.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -587,20 +551,39 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Doctests in Compose" type="tests" factoryName="Doctests" temporary="true" nameIsGenerated="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/utils/transforms.py" />
+      <option name="CLASS_NAME" value="Compose" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.motion_model_quadratic" />
       <item itemvalue="Python.ua" />
-      <item itemvalue="Python.__init__" />
       <item itemvalue="Python.test_ua_dataset" />
       <item itemvalue="Python.ssd" />
+      <item itemvalue="Python.train_ua" />
+      <item itemvalue="Python tests.Doctests in Compose" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.train_ua" />
+        <item itemvalue="Python tests.Doctests in Compose" />
         <item itemvalue="Python.test_ua_dataset" />
         <item itemvalue="Python.ssd" />
         <item itemvalue="Python.ua" />
-        <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.motion_model_quadratic" />
       </list>
     </recent_temporary>
   </component>
@@ -643,10 +626,31 @@
       <option name="project" value="LOCAL" />
       <updated>1534775240617</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finish the network">
+      <created>1535097734658</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1535097734658</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
-  <component name="TodoView" selected-index="4">
+  <component name="TestHistory">
+    <history-entry file="Doctests_in_Compose - 2018.08.25 at 18h 41m 29s.xml">
+      <configuration name="Doctests in Compose" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_Compose - 2018.08.25 at 18h 43m 45s.xml">
+      <configuration name="Doctests in Compose" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_Compose - 2018.08.25 at 18h 45m 10s.xml">
+      <configuration name="Doctests in Compose" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Doctests_in_Compose - 2018.08.25 at 18h 45m 53s.xml">
+      <configuration name="Doctests in Compose" configurationId="tests" />
+    </history-entry>
+  </component>
+  <component name="TodoView" selected-index="5">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -659,24 +663,25 @@
     <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22052263" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26641172" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.30561554" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.30561554" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32937366" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.21058315" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.30777538" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.30777538" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
+      <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -696,7 +701,8 @@
     <MESSAGE value="start programming ua_detrac" />
     <MESSAGE value="add motion model" />
     <MESSAGE value="finish ua dataset loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish ua dataset loader" />
+    <MESSAGE value="finish the network" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish the network" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -705,6 +711,26 @@
           <url>file://$PROJECT_DIR$/layers/ssd/ssd.py</url>
           <line>174</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset/utils/transforms.py</url>
+          <line>64</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset/utils/transforms.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset/utils/transforms.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataset/utils/transforms.py</url>
+          <line>356</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -736,118 +762,13 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/config_train_mot17.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" selection-start-line="9" selection-end-line="31" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#341#630#0" />
-            <element signature="e#651#1372#0" />
-            <element signature="e#1401#7947#0" />
-            <element signature="e#7970#10000#0" />
-            <element signature="e#10043#12424#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirement.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/faster_rcnn/region_proposal_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1534918109090" expanded="false" signature="831:1727" ph="..." />
-            <marker date="1534918109090" expanded="true" signature="1749:3920" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-26">
-            <caret line="2" column="2" lean-forward="true" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="130">
-            <caret line="5" selection-start-line="5" selection-end-line="5" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/py36/lib/python3.6/json/decoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="356" selection-start-line="356" selection-end-line="356" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/dataset_result1.png" />
-    <entry file="file://$PROJECT_DIR$/dataset/tools/ua_training_dataset_rebuilder.py" />
-    <entry file="file://$PROJECT_DIR$/dataset/tools/ua_generate_iteration_data.py" />
-    <entry file="file://$PROJECT_DIR$/dataset/utils/common.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="16" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="16" />
-          <folding>
-            <marker date="1534476783333" expanded="true" signature="47:48" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/tools/ua_convert_mat_2_mot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="728">
           <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/py36/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8008">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
+          <folding>
+            <element signature="e#55#70#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -931,6 +852,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
           <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding>
+            <element signature="e#177#201#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -938,6 +862,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
           <caret line="171" selection-start-line="171" selection-end-line="171" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -955,13 +882,6 @@
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1007,49 +927,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/resnext.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1925">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/utils/tracker.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="75" selection-start-column="75" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="89" column="46" lean-forward="true" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/generate_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="133" column="16" lean-forward="true" selection-start-line="133" selection-start-column="16" selection-end-line="133" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-            <marker date="1535026392342" expanded="true" signature="111:112" ph="..." />
-            <marker date="1535026392342" expanded="true" signature="7366:7367" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1063,34 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="55" selection-start-line="55" selection-end-line="55" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#610#860#0" />
-            <marker date="1535090835726" expanded="true" signature="163:168" ph="..." />
-            <marker date="1535090835726" expanded="true" signature="861:866" ph="..." />
-            <marker date="1535090835726" expanded="true" signature="1744:1749" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/motion_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="50" column="12" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="12" />
-          <folding>
-            <element signature="e#612#849#0" />
-            <element signature="e#898#1045#0" />
-            <element signature="e#1096#1288#0" />
-            <element signature="e#1346#1350#0" />
-            <marker date="1535090800926" expanded="true" signature="464:469" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.2/system/python_stubs/1142695294/itertools.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
@@ -1098,69 +951,278 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/prior_box.py">
+    <entry file="file://$PROJECT_DIR$/plan/README.MD">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="26">
+            <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssd/box_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="927">
-          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="458">
+          <caret line="103" column="57" lean-forward="true" selection-start-line="103" selection-start-column="57" selection-end-line="103" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="155" selection-start-line="155" selection-end-line="155" />
+        <state relative-caret-position="130">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
-            <element signature="e#344#6073#0" />
-            <element signature="e#347#1319#0" />
-            <element signature="e#1538#3210#0" />
-            <element signature="e#2804#3191#0" />
-            <element signature="e#3245#3572#0" />
-            <marker date="1535096588319" expanded="true" signature="336:4071" ph="..." />
+            <marker date="1535099022924" expanded="true" signature="152:287" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/test_ua_dataset.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="10" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/py36/lib/python3.6/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="227">
+            <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/py36/lib/python3.6/site-packages/torch/autograd/variable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/prior_box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/generate_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="122" column="29" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+            <marker date="1535130910373" expanded="true" signature="111:112" ph="..." />
+            <marker date="1535130910373" expanded="true" signature="7366:7367" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/resnext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="131" column="27" lean-forward="true" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret selection-end-line="5" selection-end-column="9" />
+          <caret column="40" selection-start-column="40" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/MotionModel/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" lean-forward="true" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1144">
+          <caret line="91" column="20" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="20" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#1538#3210#0" />
+            <element signature="e#2804#3191#0" />
+            <marker date="1535138203210" expanded="true" signature="336:4119" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_ua.py">
+    <entry file="file://$PROJECT_DIR$/dataset/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="26">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        <state relative-caret-position="197">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config_train_ua.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+        <state relative-caret-position="416">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="n#!!block;n#frame_work#0;n#!!top" />
             <element signature="n#!!block;n#base_net#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-37">
+          <caret line="120" column="45" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <marker date="1535185075339" expanded="true" signature="4371:7160" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="54" column="12" selection-start-line="54" selection-start-column="12" selection-end-line="54" selection-end-column="12" />
+          <folding>
+            <element signature="e#612#849#0" />
+            <element signature="e#898#1045#0" />
+            <element signature="e#1096#1288#0" />
+            <element signature="e#1346#1350#0" />
+            <marker date="1535185257790" expanded="true" signature="464:469" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#1280#1596#0" />
+            <marker date="1535185453624" expanded="true" signature="169:174" ph="..." />
+            <marker date="1535185453624" expanded="true" signature="868:873" ph="..." />
+            <marker date="1535185453624" expanded="true" signature="2823:2828" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="143" column="33" lean-forward="true" selection-start-line="143" selection-start-column="33" selection-end-line="143" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="327" column="49" lean-forward="true" selection-start-line="327" selection-start-column="49" selection-end-line="327" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#2693#3235#0" />
+            <marker date="1535194094935" expanded="true" signature="1645:1648" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="1675:2400" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="3597:5284" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="5317:6080" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="8344:8368" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="9321:10067" ph="..." />
+            <marker date="1535194094935" expanded="true" signature="10092:10097" ph="..." />
           </folding>
         </state>
       </provider>

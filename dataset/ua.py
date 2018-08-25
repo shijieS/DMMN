@@ -3,7 +3,7 @@ import numpy as np
 from config import config
 import cv2
 from torch.utils.data import Dataset
-from .utils import MotionModel
+from .MotionModel import MotionModel
 from tqdm import tqdm
 from tqdm import trange
 import random
@@ -52,11 +52,12 @@ class UATrainDataset(Dataset):
     5. **times_1 / times_2 are the 0 based frame indexes.
     5. **similarity_matrix** is the similarity matrix for tracklet in the first frames batch and second frames batch.
     """
-    def __init__(self, root=config['dataset_path'], spatial_transform=None):
+    def __init__(self, root=config['dataset_path'], spatial_transform=None, temporal_transform=None):
         self.save_folder = os.path.join(root, 'DETRAC-Train-Annotations-Training')
         self.mot_folder = os.path.join(root, 'DETRAC-Train-Annotations-MOT')
         self.frames_folder = os.path.join(root, 'Insight-MVT_Annotation_Train')
         self.spatial_transform = spatial_transform
+        self.temporal_transform = temporal_transform
         if not os.path.exists(self.save_folder):
             os.mkdir(self.save_folder)
 
@@ -77,7 +78,8 @@ class UATrainDataset(Dataset):
     def __len__(self):
         return len(self.data)
 
-    def _get_parameters(self, bboxes, times):
+    @staticmethod
+    def get_parameters(bboxes, times):
         """
         Get the parameter of boxes.
         :param bboxes: (FrameId, TrackId, 4)
@@ -122,21 +124,27 @@ class UATrainDataset(Dataset):
         # reading the first part of item
         frames_1 = [cv2.imread(frame_files[i]) for i in range_1]
         bboxes_1 = ua_data[range_1, :, :][:, mask_1, :]
-        motion_parameters_1, motion_possiblity_1 = self._get_parameters(bboxes_1, times_1)
+        motion_parameters_1, motion_possiblity_1 = MotionModel.get_parameters(
+            bboxes_1, times_1,
+            config['min_valid_node_rate'])
 
 
         # reading the second part of the item
         frames_2 = [cv2.imread(frame_files[i]) for i in range_2]
         bboxes_2 = ua_data[range_2, :, :][:, mask_2, :]
-        motion_parameters_2, motion_possiblity_2 = self._get_parameters(bboxes_2, times_2)
+        motion_parameters_2, motion_possiblity_2 = MotionModel.get_parameters(
+            bboxes_2, times_2,
+            config['min_valid_node_rate'])
 
         # reading the similarity matrix
         similarity_matrix = np.identity(len(mask_1), dtype=float)[mask_1, :][:, mask_2]
 
-        out = (frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1,
+        out = [frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1,
                frames_2, bboxes_2, motion_parameters_2, motion_possiblity_2, times_2,
-               similarity_matrix)
+               similarity_matrix]
 
+        if self.temporal_transform is not None:
+            self.temporal_transform(out)
         if self.spatial_transform is not None:
             self.spatial_transform(out)
 

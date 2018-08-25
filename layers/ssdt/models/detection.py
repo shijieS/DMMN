@@ -1,7 +1,9 @@
 import torch
 from torch.autograd import Function
-from ..box_utils import decode, nms
-from data import voc as cfg
+from ..utils.box_utils import decode, nms
+from config import config
+
+cfg = config["train"]
 
 
 class Detect(Function):
