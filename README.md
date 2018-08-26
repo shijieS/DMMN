@@ -3,7 +3,13 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 ## Protocol
 - bbox: the format is *(left, top, right, bottom)*
-
+- $N_{tr}$: the track number.
+- $N_{ba}$: the batch number.
+- $W, H$: the input network image size (W, H).
+- $W_{re}, H_{re}$: the real input image size.
+- $F_t$: the $t^{th}$ frame
+- $N_{fn}$: the input frame number
+ 
 ## Network
 
 

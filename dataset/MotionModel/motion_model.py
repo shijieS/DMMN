@@ -53,3 +53,7 @@ class MotionModel:
     @staticmethod
     def get_parameters(bboxes, times, invalid_node_rate):
         pass
+
+    @staticmethod
+    def get_bbox_by_frames_pytorch(self, parameters, times):
+        pass

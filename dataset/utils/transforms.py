@@ -43,7 +43,7 @@ class ConvertFromInts(object):
     def __call__(self, items):
         for i in range(len(items[0])):
             items[0][i] = items[0][i].astype(np.float32)
-            items[5][i] = items[5][i].astype(np.float32)
+            items[6][i] = items[6][i].astype(np.float32)
 
         return items
 
@@ -66,8 +66,8 @@ class ToPercentCoords(object):
         items[1][[0, 2], :] /= w
         items[1][[1, 3], :] /= h
 
-        items[6][[0, 2], :] /= w
-        items[6][[1, 3], :] /= h
+        items[7][[0, 2], :] /= w
+        items[7][[1, 3], :] /= h
 
         return items
 
@@ -195,14 +195,14 @@ class PhotometricDistort(object):
         self.rand_light_noise = RandomLightingNoise()
 
     def __call__(self, items):
-        items[0], items[5] = self.rand_brightness(items[0], items[5])
+        items[0], items[6] = self.rand_brightness(items[0], items[6])
         if random.randint(2):
             distort = Compose2(self.pd[:-1])
         else:
             distort = Compose2(self.pd[1:])
 
-        items[0], items[5] = distort(items[0], items[5])
-        items[0], items[5] = self.rand_light_noise(items[0], items[5])
+        items[0], items[6] = distort(items[0], items[6])
+        items[0], items[6] = self.rand_light_noise(items[0], items[6])
         return items
 
 
@@ -212,8 +212,8 @@ class RecalculateParameters(object):
         items[2], items[3] = MotionModel.get_parameters(
             bboxes=items[1], times=items[4],
             invalid_node_rate=config['min_valid_node_rate'])
-        items[7], items[8] = MotionModel.get_parameters(
-            bboxes=items[6], times=items[9],
+        items[8], items[9] = MotionModel.get_parameters(
+            bboxes=items[7], times=items[10],
             invalid_node_rate=config['min_valid_node_rate'])
         return items
 
@@ -232,26 +232,25 @@ class Expand(object):
         top = random.uniform(0, height * ratio - height)
 
         for i in range(len(items[0])):
-            (i1, i2, b1, b2) = (items[0][i], items[5][i], items[1][i, :], items[6][i, :])
             expand_image1 = np.zeros(
                 (int(height*ratio), int(width*ratio), depth),
-                dtype=i1.dtype)
+                dtype=items[0][i].dtype)
             expand_image1[:, :, :] = self.mean
             expand_image1[int(top):int(top + height),
-            int(left):int(left + width)] = i1
-            i1 = expand_image1
-            b1[:, :2] += (int(left), int(top))
-            b1[:, 2:] += (int(left), int(top))
+            int(left):int(left + width)] = items[0][i]
+            items[0][i] = expand_image1
+            items[1][i, :][:, :2] += (int(left), int(top))
+            items[1][i, :][:, 2:] += (int(left), int(top))
 
             expand_image2 = np.zeros(
                 (int(height * ratio), int(width * ratio), depth),
-                dtype=i2.dtype)
+                dtype=items[6][i].dtype)
             expand_image2[:, :, :] = self.mean
             expand_image2[int(top):int(top + height),
-            int(left):int(left + width)] = i2
-            i2 = expand_image2
-            b2[:, :2] += (int(left), int(top))
-            b2[:, 2:] += (int(left), int(top))
+            int(left):int(left + width)] = items[6][i]
+            items[6][i] = expand_image2
+            items[7][i, :][:, :2] += (int(left), int(top))
+            items[7][i, :][:, 2:] += (int(left), int(top))
 
         return items
 
@@ -281,13 +280,14 @@ class RandomMirror(object):
         _, width, _ = items[0][0].shape
         if random.randint(2):
             for i in range(len(items[0])):
-                (i1, i2, b1, b2) = (items[0][i], items[5][i], items[1][i, :], items[6][i, :])
+                items[0][i] = items[0][i][:, ::-1]
+                items[1][i, :][:, 0::2] = width - items[1][i, :][:, 2::-2]
 
-                i1 = i1[:, ::-1]
-                b1[:, 0::2] = width - b1[:, 2::-2]
-
-                i2 = i2[:, ::-1]
-                b2[:, 0::2] = width - b2[:, 2::-2]
+                items[6][i] = items[6][i][:, ::-1]
+                items[7][i, :][:, 0::2] = width - items[7][i, :][:, 2::-2]
+        # reset the mask region
+        items[1] *= items[3][:, :, None]
+        items[7] *= items[9][:, :, None]
         return items
 
 class ToPercentCoords(object):
@@ -313,9 +313,8 @@ class Resize(object):
 
     def __call__(self, items):
         for i in range(len(items[0])):
-            (i1, i2) = (items[0][i], items[5][i])
-            i1 = cv2.resize(i1, (self.size, self.size))
-            i2 = cv2.resize(i2, (self.size, self.size))
+            items[0][i] = cv2.resize(items[0][i], (self.size, self.size))
+            items[6][i] = cv2.resize(items[6][i], (self.size, self.size))
         return items
 
 
@@ -325,15 +324,37 @@ class SubtractMeans(object):
 
     def __call__(self, items):
         for i in range(len(items[0])):
-            (i1, i2) = (items[0][i], items[5][i])
-            i1 = i1.astype(np.float32)
-            i1 -= self.mean
+            items[0][i] = items[0][i].astype(np.float32)
+            items[0][i] -= self.mean
 
-            i2 = i2.astype(np.float32)
-            i2 -= self.mean
+            items[6][i] = items[6][i].astype(np.float32)
+            items[6][i] -= self.mean
 
         return items
 
+class ToTensor(object):
+    def __call__(self, items):
+        i1 = [torch.from_numpy(i).permute(2, 0, 1) for i in items[0]]
+        i1 = torch.stack(i1, 0).transpose(1, 0)
+        b1 = torch.from_numpy(items[1])
+        m1 = torch.from_numpy(items[2])
+        p_m1 = torch.from_numpy(items[3])
+        t1 = torch.from_numpy(items[4])
+        p_c1 = torch.from_numpy(items[5])
+
+        i2 = [torch.from_numpy(i).permute(2, 0, 1) for i in items[6]]
+        i2 = torch.stack(i2, 0).transpose(1, 0)
+        b2 = torch.from_numpy(items[7])
+        m2 = torch.from_numpy(items[8])
+        p_m2 = torch.from_numpy(items[9])
+        t2 = torch.from_numpy(items[10])
+        p_c2 = torch.from_numpy(items[11])
+
+        s = torch.from_numpy(items[12])
+
+        return i1, b1, m1, p_m1, t1, p_c1, \
+               i2, b2, m2, p_m2, t2, p_c2, \
+               s
 
 class Transforms(object):
     def __init__(self, size=config["frame_size"], mean=(104, 117, 123)):
@@ -350,7 +371,8 @@ class Transforms(object):
             ToPercentCoords(),
             Resize(self.size),
             SubtractMeans(self.mean),
-            RecalculateParameters()     # re-calculate the parameters of rectangles
+            RecalculateParameters(),     # re-calculate the parameters of rectangles
+            ToTensor()
         ])
 
     def __call__(self, items):

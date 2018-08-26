@@ -15,6 +15,7 @@ import time
 import torchvision.utils as vutils
 from dataset import collate_fn
 from dataset.utils import Transforms
+# torch.multiprocessing.set_start_method('spawn', force=True)
 
 
 str2bool = lambda v: v.lower() in ("yes", "true", "t", "1")
@@ -42,7 +43,7 @@ parser.add_argument('--port', default=cfg['port'], type=int, help='set vidom por
 parser.add_argument('--send_images', default=cfg['send_images'], type=str2bool, help='send the generated images to tensorboard')
 parser.add_argument('--log_save_folder', default=cfg['log_save_folder'], help='Location to save checkpoint models')
 parser.add_argument('--weights_save_folder', default=cfg['weights_save_folder'], help='Location to save network weights')
-
+parser.add_argument('--save_weight_per_epoch', default=cfg['save_weight_per_epoch'], help='Every n epoch to save weights')
 parser.add_argument('--dataset_path', default=config['dataset_path'], help='ua dataset root folder')
 
 args = parser.parse_args()
@@ -53,6 +54,8 @@ dataset = UATrainDataset(spatial_transform=Transforms())
 epoch_size = len(dataset) // args.batch_size
 start_iter = args.start_epoch * epoch_size
 end_iter = args.end_epoch * epoch_size + 10
+
+save_weights_iteration = int(epoch_size * args.save_weight_per_epoch)
 
 # re-calculate the learning rate
 step_values = [i*epoch_size for i in args.lr_decay_per_epoch]
@@ -75,13 +78,19 @@ if torch.cuda.is_available():
 else:
     torch.set_default_tensor_type('torch.FloatTensor')
 
+# check saving directory
+if not os.path.exists(args.weights_save_folder):
+    os.mkdir(args.weights_save_folder)
+
+
 # creat the network
 ssdt_net = SSDT.build("train")
 net = ssdt_net
 
 if args.cuda:
-    net = torch.nn.DataParallel(ssdt_net, device_ids=[0])
-    cudnn.benchmark = True
+    net = net.cuda()
+    net = torch.nn.DataParallel(ssdt_net)
+    # cudnn.benchmark = True
 
 if args.resume:
     print("Resuming training, loading {}...".format(args.resume))
@@ -90,8 +99,6 @@ else:
     print("Loading base network...")
     ssdt_net.load_base_weights(args.basenet)
 
-if args.cuda:
-    net = net.cuda()
 
 # create optimizer
 optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum,
@@ -134,22 +141,33 @@ def train():
             current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
 
         # reading item
-        frames_1, bboxes_1, motion_parameters_1, motion_possibility_1, times_1,\
-    frames_2, bboxes_2, motion_parameters_2, motion_possibility_2, times_2,\
-    similarity_matrix = next(batch_iterator)
+        frames_1, target_1, times_1, \
+        frames_2, target_2, times_2, \
+        similarity_matrix = \
+            next(batch_iterator)
 
         if args.cuda:
-            pass
+            frames_1 = Variable(frames_1.cuda())
+            with torch.no_grad():
+                target_1 = [Variable(i.cuda()) for i in target_1]
+                times_1 = Variable(times_1.cuda())
+
         else:
             pass
 
         # forward
         t0 = time.time()
-        out = net(frames_1, bboxes_1, motion_parameters_1, motion_possibility_1, times_1)
+        out = net(frames_1)
 
         # loss
         optimizer.zero_grad()
-        loss = criterion(out)
+        loss_l, loss_c = criterion(out,
+                                   target_1,
+                                   times_1)
+        loss_l_mean = sum(loss_l) / len(loss_l)
+        loss_c_mean = sum(loss_c) / len(loss_c)
+
+        loss = loss_l_mean + loss_c_mean
 
         # backward
         loss.backward()
@@ -165,14 +183,19 @@ def train():
 
         # tensorboard logs
         if args.tensorboard:
-            pass
+            writer.add_scalar('data/learning_rate', current_lr, iteration)
+            writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
+            for i in range(len(loss_l)):
+                writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
+                writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
 
         # weights save
-        if iteration % args.save_weights_iteration == 0:
+        if iteration % save_weights_iteration == 0:
             print('Saving weights, iter: {}', iteration)
             torch.save(ssdt_net.state_dict(),
                        os.path.join(args.weights_save_folder,
                                     'ssdt' + repr(iteration) + '.pth'))
+    torch.save(ssdt_net.state_dict(), args.weights_save_folder + '' + args.version + '.pth')
 
 
 

@@ -2,7 +2,7 @@
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/jianliu/Data/ssj/dataset/ua-detrac",
   "phase": "train",
-  "frame_max_input_num": 30,
+  "frame_max_input_num": 32,
   "frame_sample_scale": 3,
   "random_select_frame": false,
   "min_valid_node_rate": 0.5,

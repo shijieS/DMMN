@@ -20,6 +20,7 @@ class SSDT(nn.Module):
         self.num_params = config["num_motion_model_param"]
         self.priorbox = PriorBox(config)
         self.priors = Variable(self.priorbox.forward(), volatile=True)
+        self.input_frame_num = config["frame_max_input_num"]//2
 
         # base network
         self.base = base
@@ -28,6 +29,7 @@ class SSDT(nn.Module):
         self.param_layers = nn.ModuleList(head[0])
         self.p_m_layers = nn.ModuleList(head[1])
         self.p_c_layers = nn.ModuleList(head[2])
+
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
@@ -72,6 +74,7 @@ class SSDT(nn.Module):
 
         param = torch.cat([o.view(o.size(0), -1) for o in param], 1)
         p_m = torch.cat([o.view(o.size(0), -1) for o in p_m], 1)
+        p_c = torch.cat([o.view(o.size(0), -1) for o in p_c], 1)
 
         if self.phase == "test":
             output = self.detect(
@@ -82,9 +85,9 @@ class SSDT(nn.Module):
             )
         else:
             output = (
-                param.view(param.size(0), -1, 4),
-                p_m.view(p_m.size(0), -1, 2),
-                p_c.view(p_c.size(0), -1, self.num_classes),
+                param.view(param.size(0), -1, 4, config["num_motion_model_param"]//4),
+                p_m.view(p_m.size(0), -1, self.input_frame_num, 2).permute(0, 2, 1, 3).contiguous(),
+                p_c.view(p_c.size(0), -1, self.input_frame_num, self.num_classes).permute(0, 2, 1, 3).contiguous(),
                 self.priors
             )
         return output
@@ -137,13 +140,13 @@ class SSDT(nn.Module):
                                        stride=(1, 1, 1),
                                        bias=True)]
             p_m_layers += [nn.Conv3d(in_channels=c,
-                                     out_channels=k*2,
+                                     out_channels=k*(config["frame_max_input_num"]//2)*2,
                                      kernel_size=(t, 3, 3),
                                      padding=(0, 1, 1),
                                      stride=(1, 1, 1),
                                      bias=True)]
             p_c_layers += [nn.Conv3d(in_channels=c,
-                                     out_channels=k * config["num_classes"],
+                                     out_channels=k * (config["frame_max_input_num"]//2) * config["num_classes"],
                                      kernel_size=(t, 3, 3),
                                      padding=(0, 1, 1),
                                      stride=(1, 1, 1),

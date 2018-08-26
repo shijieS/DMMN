@@ -73,6 +73,9 @@ class UATrainDataset(Dataset):
             t.set_description('reading: {}'.format(name))
             parser = SingleVideoParser(path)
             for r, i in parser:
+                # filter no boxes cases
+                if np.sum(i[:len(i)//2, :]) == 0 or np.sum(i[len(i)//2:, :]) == 0:
+                    continue
                 self.data += [(name, r, i)]
 
     def __len__(self):
@@ -139,13 +142,18 @@ class UATrainDataset(Dataset):
         # reading the similarity matrix
         similarity_matrix = np.identity(len(mask_1), dtype=float)[mask_1, :][:, mask_2]
 
-        out = [frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1,
-               frames_2, bboxes_2, motion_parameters_2, motion_possiblity_2, times_2,
+        # generating the classification
+        classification_possibility_1 = np.zeros(motion_possiblity_1.shape)
+
+        classification_possibility_2 = np.zeros(motion_possiblity_2.shape)
+
+        out = [frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1, classification_possibility_1,
+               frames_2, bboxes_2, motion_parameters_2, motion_possiblity_2, times_2, classification_possibility_2,
                similarity_matrix]
 
         if self.temporal_transform is not None:
-            self.temporal_transform(out)
+            out = self.temporal_transform(out)
         if self.spatial_transform is not None:
-            self.spatial_transform(out)
+            out = self.spatial_transform(out)
 
         return out
