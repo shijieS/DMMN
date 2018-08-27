@@ -40,7 +40,7 @@ class Loss(nn.Module):
         parameters, p_m_datas, p_c_datas, priors = predictions
 
         # convert parameters to bboxes
-        loc_datas = self.convert_to_bboxes(parameters, times)
+        loc_datas = F.tanh(self.convert_to_bboxes(parameters, times))+0.5
 
         # split all the data by frames
         all_loss_l = []

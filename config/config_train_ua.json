@@ -13,8 +13,8 @@
   "num_motion_model_param": 0,
   "train": {
     "resume": null,
-    "batch_size": 2,
-    "num_workers": 1,
+    "batch_size": 3,
+    "num_workers": 5,
     "learning_rate": 1e-3,
     "lr_decay_per_epoch": [5, 7, 8, 9],
     "base_net_weights": "/media/jianliu/Data/ssj/logs/ssdt/resnext-101-64f-kinetics.pth",
