@@ -45,6 +45,7 @@ parser.add_argument('--log_save_folder', default=cfg['log_save_folder'], help='L
 parser.add_argument('--weights_save_folder', default=cfg['weights_save_folder'], help='Location to save network weights')
 parser.add_argument('--save_weight_per_epoch', default=cfg['save_weight_per_epoch'], help='Every n epoch to save weights')
 parser.add_argument('--dataset_path', default=config['dataset_path'], help='ua dataset root folder')
+parser.add_argument('--run_mode', default=config["train"]["run_mode"], help="ua run mode, 'debug' mode will save print more message, otherwise, you should select 'run' model")
 
 args = parser.parse_args()
 
@@ -110,6 +111,21 @@ criterion = SSDTLoss()
 
 # train function
 def train():
+    # do some init operation
+    if args.mode == "debug":
+        print__iteration = 10
+        save_image_iteration = 10
+        add_scalar_iteration = 1
+        add_histogram_iteration = 10
+
+    else:
+        print__iteration = 100
+        add_scalar_iteration = 10
+        save_image_iteration = 1000
+        add_histogram_iteration = 1000
+
+
+    # change the network mode
     net.train()
     batch_iterator = None
 
@@ -179,22 +195,26 @@ def train():
         t1 = time.time()
 
         # console logs
-        if iteration % 10 == 0:
+        if iteration % print__iteration == 0:
             print('Timer: %.4f sec.' % (t1 - t0))
             print('iter ' + str(iteration) + ', ' + str(epoch_size) + ' || epoch: %.4f ' % (iteration / (float)(epoch_size)) + ' || Loss: %.4f ||' % all_epoch_loss[-1], end=' ')
 
-            # tensorboard logs
-            if args.tensorboard:
-                writer.add_scalar('data/learning_rate', current_lr, iteration)
-                writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
-                for i in range(len(loss_l)):
-                    writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
-                    writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
-        if iteration % 10 == 0:
-            if args.tensorboard:
+        # tensorboard logs
+        if args.tensorboard and iteration % add_scalar_iteration == 0:
+            writer.add_scalar('data/learning_rate', current_lr, iteration)
+            writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
+            for i in range(len(loss_l)):
+                writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
+                writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
+
+        if args.tensorboard and iteration % add_histogram_iteration == 0:
                 # add weights
                 for name, param in net.named_parameters():
                     writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='fd')
+
+        # save the result image
+
+
 
         # weights save
         if iteration % save_weights_iteration == 0:

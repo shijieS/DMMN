@@ -30,7 +30,8 @@
     "weight_decay": 5e-4,
     "gamma": 0.1,
     "send_images": true,
-    "log_iters": true
+    "log_iters": true,
+    "run_model": "debug"
   },
   "frame_work":{
     "num_boxes": [4, 6, 6, 4],
