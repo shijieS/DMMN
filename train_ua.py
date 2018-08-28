@@ -194,7 +194,7 @@ def train():
             if args.tensorboard:
                 # add weights
                 for name, param in net.named_parameters():
-                    writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='auto')
+                    writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='fd')
 
         # weights save
         if iteration % save_weights_iteration == 0:
