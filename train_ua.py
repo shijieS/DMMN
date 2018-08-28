@@ -164,42 +164,45 @@ def train():
         loss_l, loss_c = criterion(out,
                                    target_1,
                                    times_1)
-        loss_l_mean = sum(loss_l) / len(loss_l)
-        loss_c_mean = sum(loss_c) / len(loss_c)
 
-        loss = loss_l_mean + loss_c_mean
+        #loss_l_mean = sum(loss_l) / len(loss_l)
+        #loss_c_mean = sum(loss_c) / len(loss_c)
+        loss_all = loss_l + loss_c
 
-        # backward
-        loss.backward()
-        optimizer.step()
+        if len(loss_all) != 0:
+            loss = sum(loss_all) / len(loss_all)
+            # backward
+            loss.backward()
+            optimizer.step()
+            all_epoch_loss += [loss.data.cpu()]
+
         t1 = time.time()
-
-        all_epoch_loss += [loss.data.cpu()]
 
         # console logs
         if iteration % 10 == 0:
             print('Timer: %.4f sec.' % (t1 - t0))
-            print('iter ' + repr(iteration) + ', ' + repr(epoch_size) + ' || epoch: %.4f ' % (iteration / (float)(epoch_size)) + ' || Loss: %.4f ||' % (loss.data[0]), end=' ')
+            print('iter ' + str(iteration) + ', ' + str(epoch_size) + ' || epoch: %.4f ' % (iteration / (float)(epoch_size)) + ' || Loss: %.4f ||' % all_epoch_loss[-1], end=' ')
 
-        # tensorboard logs
-        if args.tensorboard:
-            writer.add_scalar('data/learning_rate', current_lr, iteration)
-            writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
-            for i in range(len(loss_l)):
-                writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
-                writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
+            # tensorboard logs
+            if args.tensorboard:
+                writer.add_scalar('data/learning_rate', current_lr, iteration)
+                writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
+                for i in range(len(loss_l)):
+                    writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
+                    writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
+        if iteration % 10 == 0:
+            if args.tensorboard:
+                # add weights
+                for name, param in net.named_parameters():
+                    writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='auto')
 
         # weights save
         if iteration % save_weights_iteration == 0:
-            print('Saving weights, iter: {}', iteration)
+            print('Saving weights, iter: {}'.format(iteration))
             torch.save(ssdt_net.state_dict(),
                        os.path.join(args.weights_save_folder,
                                     'ssdt' + repr(iteration) + '.pth'))
     torch.save(ssdt_net.state_dict(), args.weights_save_folder + '' + args.version + '.pth')
-
-
-
-
 
 
 def adjust_learning_rate(optimizer, gamma, step):

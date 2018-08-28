@@ -2,7 +2,7 @@ from pprint import pprint
 from.config import get_config
 from dataset.MotionModel import MotionModel
 
-configure_name = 'config_train_ua.json'
+configure_name = 'config_train_ua_ssm.json'
 
 config = get_config(configure_name)
 

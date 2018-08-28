@@ -14,7 +14,7 @@ Usage: ua_convert_mat_2_mot --ua_root="UA-DETRAC root"
 ''')
 
 parser = argparse.ArgumentParser(description='convert all the DETRAC-Train-Annotations-MAT format to mot17 format')
-parser.add_argument('--ua_root', default="/media/jianliu/ssm/dataset/dataset/UA-DETRAC", help='UA-DETRAC data set root directory, such as ua, we will create one directory called gt')
+parser.add_argument('--ua_root', default="/media/ssm/seagate/dataset/UA-DETRAC", help='UA-DETRAC data set root directory, such as ua, we will create one directory called gt')
 
 args = parser.parse_args()
 
@@ -63,6 +63,8 @@ if __name__ == '__main__':
 
     mat_folder = os.path.join(args.ua_root, 'DETRAC-Train-Annotations-MAT')
     save_folder = os.path.join(args.ua_root, 'DETRAC-Train-Annotations-MOT')
+    if not os.path.exists(save_folder):
+        os.mkdir(save_folder)
     ConvertMat2UA.run(mat_folder, save_folder)
 
 
