@@ -13,8 +13,8 @@
   "num_motion_model_param": 0,
   "train": {
     "resume": null,
-    "batch_size": 8,
-    "num_workers": 8,
+    "batch_size": 1,
+    "num_workers": 1,
     "learning_rate": 1e-2,
     "lr_decay_per_epoch": [1, 2, 3, 4],
     "base_net_weights": "/media/ssm/seagate/UA-DETRAC/resnext-101-64f-kinetics.pth",
@@ -31,7 +31,7 @@
     "gamma": 0.1,
     "send_images": true,
     "log_iters": true,
-    "run_model": "run"
+    "run_mode": "debug"
   },
   "frame_work":{
     "num_boxes": [4, 6, 6, 4],

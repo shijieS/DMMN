@@ -15,6 +15,9 @@ import time
 import torchvision.utils as vutils
 from dataset import collate_fn
 from dataset.utils import Transforms
+from utils import show_bboxes
+
+
 # torch.multiprocessing.set_start_method('spawn', force=True)
 
 
@@ -112,7 +115,7 @@ criterion = SSDTLoss()
 # train function
 def train():
     # do some init operation
-    if args.mode == "debug":
+    if args.run_mode == "debug":
         print__iteration = 10
         save_image_iteration = 10
         add_scalar_iteration = 1
@@ -167,7 +170,10 @@ def train():
             with torch.no_grad():
                 target_1 = [Variable(i.cuda()) for i in target_1]
                 times_1 = Variable(times_1.cuda())
-
+            frames_2 = Variable(frames_2.cuda())
+            with torch.no_grad():
+                target_2 = [Variable(i.cuda()) for i in target_2]
+                times_2 = Variable(times_2.cuda())
         else:
             pass
 
@@ -181,8 +187,6 @@ def train():
                                    target_1,
                                    times_1)
 
-        #loss_l_mean = sum(loss_l) / len(loss_l)
-        #loss_c_mean = sum(loss_c) / len(loss_c)
         loss_all = loss_l + loss_c
 
         if len(loss_all) != 0:
@@ -213,7 +217,7 @@ def train():
                     writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='fd')
 
         # save the result image
-
+        show_bboxes(frames_1, target_1, is_save=True, iteration=iteration)
 
 
         # weights save
