@@ -79,20 +79,20 @@ class ConvertColor(object):
 
     def __call__(self, images_1, images_2):
         for i in range(len(images_1)):
-            (i_1, i_2) = (images_1[i], images_2[2])
             if self.current == 'BGR' and self.transform == 'HSV':
-                i_1 = cv2.cvtColor(i_1, cv2.COLOR_BGR2HSV)
-                i_2 = cv2.cvtColor(i_2, cv2.COLOR_BGR2HSV)
+                images_1[i] = cv2.cvtColor(images_1[i], cv2.COLOR_BGR2HSV)
+                images_2[i] = cv2.cvtColor(images_2[i], cv2.COLOR_BGR2HSV)
             elif self.current == 'HSV' and self.transform == 'BGR':
-                i_1 = cv2.cvtColor(i_1, cv2.COLOR_HSV2BGR)
-                i_2 = cv2.cvtColor(i_2, cv2.COLOR_HSV2BGR)
+                images_1[i] = cv2.cvtColor(images_1[i], cv2.COLOR_HSV2BGR)
+                images_2[i] = cv2.cvtColor(images_2[i], cv2.COLOR_HSV2BGR)
             else:
                 raise NotImplementedError
 
         return images_1, images_2
 
+
 class RandomContrast():
-    def __init__(self, lower=0.5, upper=1.5):
+    def __init__(self, lower=config["train"]["contrast_lower"], upper=config["train"]["contrast_upper"]):
         self.lower = lower
         self.upper = upper
         assert self.upper >= self.lower, "contrast upper must be >= lower."
@@ -110,7 +110,7 @@ class RandomContrast():
 
 
 class RandomSaturation(object):
-    def __init__(self, lower=0.5, upper=1.5):
+    def __init__(self, lower=config["train"]["saturation_lower"], upper=config["train"]["saturation_upper"]):
         self.lower = lower
         self.upper = upper
         assert self.upper >= self.lower, "contrast upper must be >= lower."
@@ -127,7 +127,7 @@ class RandomSaturation(object):
 
 
 class RandomHue(object):
-    def __init__(self, delta=18.0):
+    def __init__(self, delta=config["train"]["hue_delta"]):
         assert delta >= 0.0 and delta <= 360.0
         self.delta = delta
 
@@ -135,15 +135,14 @@ class RandomHue(object):
         if random.randint(2):
             bias = random.uniform(-self.delta, self.delta)
             for i in range(len(images_1)):
-                (i1, i2) = (images_1[i], images_2[i])
 
-                i1[:, :, 0] += bias
-                i1[:, :, 0][i1[:, :, 0] > 360.0] -= 360.0
-                i1[:, :, 0][i1[:, :, 0] < 0.0] += 360.0
+                images_1[i][:, :, 0] += bias
+                images_1[i][:, :, 0][images_1[i][:, :, 0] > 360.0] -= 360.0
+                images_1[i][:, :, 0][images_1[i][:, :, 0] < 0.0] += 360.0
 
-                i2[:, :, 0] += bias
-                i2[:, :, 0][i2[:, :, 0] > 360.0] -= 360.0
-                i2[:, :, 0][i2[:, :, 0] < 0.0] += 360.0
+                images_2[i][:, :, 0] += bias
+                images_2[i][:, :, 0][images_2[i][:, :, 0] > 360.0] -= 360.0
+                images_2[i][:, :, 0][images_2[i][:, :, 0] < 0.0] += 360.0
 
         return images_1, images_2
 
@@ -158,15 +157,14 @@ class RandomLightingNoise(object):
         if random.randint(2):
             swap = self.perms[random.randint(len(self.perms))]
             for i in range(len(images_1)):
-                i1, i2 = images_1[i], images_2[i]
-                i1 = i1[:, :, swap]
-                i2 = i2[:, :, swap]
+                images_1[i] = images_1[i][:, :, swap]
+                images_2[i] = images_2[i][:, :, swap]
 
         return images_1, images_2
 
 
 class RandomBrightness(object):
-    def __init__(self, delta=32):
+    def __init__(self, delta=config["train"]["brightness_delta"]):
         assert delta >= 0.0
         assert delta <= 255.0
         self.delta = delta
@@ -175,9 +173,8 @@ class RandomBrightness(object):
         if random.randint(2):
             delta = random.uniform(-self.delta, self.delta)
             for i in range(len(images_1)):
-                (i1, i2) = (images_1[i], images_2[i])
-                i1 += delta
-                i2 += delta
+                images_1[i] += delta
+                images_2[i] += delta
         return images_1, images_2
 
 
@@ -222,12 +219,12 @@ class Expand(object):
     def __init__(self, mean):
         self.mean = mean
 
-    def __call__(self, items):
+    def __call__(self, items, max_expand_ratio=config["train"]["max_expand_ratio"]):
         if random.randint(2):
             return items
 
         height, width, depth = items[0][0].shape
-        ratio = random.uniform(1, 4)
+        ratio = random.uniform(1, config["train"]["max_expand_ratio"])
         left = random.uniform(0, width * ratio - width)
         top = random.uniform(0, height * ratio - height)
 

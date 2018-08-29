@@ -116,13 +116,13 @@ criterion = SSDTLoss()
 def train():
     # do some init operation
     if args.run_mode == "debug":
-        print__iteration = 10
+        print_iteration = 10
         save_image_iteration = 10
         add_scalar_iteration = 1
         add_histogram_iteration = 10
 
     else:
-        print__iteration = 100
+        print_iteration = 100
         add_scalar_iteration = 10
         save_image_iteration = 1000
         add_histogram_iteration = 1000
@@ -164,6 +164,8 @@ def train():
         frames_2, target_2, times_2, \
         similarity_matrix = \
             next(batch_iterator)
+        # print(iteration)
+        # continue
 
         if args.cuda:
             frames_1 = Variable(frames_1.cuda())
@@ -199,7 +201,7 @@ def train():
         t1 = time.time()
 
         # console logs
-        if iteration % print__iteration == 0:
+        if iteration % print_iteration == 0:
             print('Timer: %.4f sec.' % (t1 - t0))
             print('iter ' + str(iteration) + ', ' + str(epoch_size) + ' || epoch: %.4f ' % (iteration / (float)(epoch_size)) + ' || Loss: %.4f ||' % all_epoch_loss[-1], end=' ')
 

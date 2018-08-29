@@ -4,6 +4,12 @@ import torch
 import numpy as np
 import datetime
 import os
+import random
+import math
+
+def get_color_by_id(id):
+    random.seed(int(id))
+    return [random.randint(0, 255) for _ in range(3)]
 
 
 def show_bboxes(frames, targets, is_save=True, iteration=None):
@@ -14,6 +20,8 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
     :param times_1: shape: [N_{ba}, N_{ti}, (4+1+1)], where '4': bbox, '1': class_possibility, '1': motion_possibility
     :return: a list for each batch which contains all the frames
     """
+    if not config['train']['debug_save_image']:
+        return
     N_batch, _, N_time, W, H = frames.shape
     result = []
     for n in range(N_batch):
@@ -25,10 +33,11 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
 
             target = targets[n][t, :].cpu().numpy()
 
-            for bbox in target:
+            for id, bbox in enumerate(target):
                 if bbox[-1] != 0:
                     bbox[:4] *= config["frame_size"]
-                    frame = cv2.rectangle(frame, tuple(bbox[:2].astype(int)), tuple(bbox[2:4].astype(int)), (255, 0, 0))
+                    color = get_color_by_id(id)
+                    frame = cv2.rectangle(frame, tuple(bbox[:2].astype(int)), tuple(bbox[2:4].astype(int)), color)
             result_frames += [frame]
     result += [result_frames]
 
@@ -39,11 +48,60 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
             for j in range(len(result[i])):
                 image_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'-{}-{}.jpg'.format(i, j)
                 if iteration is not None:
-                    image_name = str(iteration) + image_name
+                    image_name = str(iteration) + '-' + image_name
 
                 cv2.imwrite(os.path.join(config["train"]["image_save_folder"], image_name), result[i][j])
 
     return result
+
+def convert2cv2(x):
+    frame = x.cpu().data.numpy()
+    min_pixel = np.min(frame)
+    max_pixel = np.max(frame)
+    frame = ((frame + min_pixel) / (max_pixel - min_pixel) * 255).astype(np.uint8)
+    return frame
+
+def show_feature_map(x, prefix="cnn"):
+    if not config['train']['debug_save_image']:
+        return
+
+    batch_num, feature_num, time_num, w, h = x.shape
+
+    all_frames = [[[convert2cv2(x[n, f, t, :]) for f in range(feature_num)] for t in range(time_num)] for n in range(batch_num)]
+
+    time_stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    for n in range(batch_num):
+        for t in range(time_num):
+            prefix_ = prefix + "-b{}-t{}".format(n, t)
+            cv2.imwrite(
+                os.path.join(config["train"]["image_save_folder"],
+                             time_stamp + '-' + prefix_ + ".jpg"),
+                get_frame_batch(all_frames[n][t])
+            )
+
+
+def get_frame_batch(all_frames, gap=3):
+    frame_num = len(all_frames)
+    rows = math.ceil(math.sqrt(frame_num))
+
+    frame_shape = np.array([f.shape for f in all_frames])
+    max_H, max_W = np.max(frame_shape, axis=0)
+
+    H = rows*max_H + (rows-1) * gap
+    W = rows*max_W + (rows-1) * gap
+
+    result_frame = np.zeros((H, W), dtype=np.uint8)
+    start_h, start_w = 0, 0
+    for i, f in enumerate(all_frames):
+        h, w = f.shape
+        result_frame[start_h:start_h+h, start_w:start_w+w] = f
+        start_w += (gap + max_W)
+        if (i+1) % rows == 0:
+            start_h += (gap + max_H)
+            start_w = 0
+    return result_frame
+
+
 
 
 

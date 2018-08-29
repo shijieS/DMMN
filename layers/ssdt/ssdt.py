@@ -9,6 +9,7 @@ from .models.prior_box import PriorBox
 from .models.detection import Detect
 import os
 from .utils.generate_model import generate_resnext101
+from utils import show_feature_map
 
 
 class SSDT(nn.Module):
@@ -57,17 +58,27 @@ class SSDT(nn.Module):
         x = self.base.relu(x)
         x = self.base.maxpool(x)
 
+        show_feature_map(x, 'conv_1')
+
         x = self.base.layer1(x)
+        show_feature_map(x, 'conv_2')
         sources += [x]
         x = self.base.layer2(x)
+        show_feature_map(x, 'conv_3')
         sources += [x]
         x = self.base.layer3(x)
+        show_feature_map(x, 'conv_4')
         sources += [x]
         x = self.base.layer4(x)
+        show_feature_map(x, 'conv_5')
         sources += [x]
 
         # apply multibox head to source layers
+        i = 0
         for (x, p, m, c) in zip(sources, self.param_layers, self.p_m_layers, self.p_c_layers):
+            show_feature_map(p(x), 'param{}'.format(i))
+            show_feature_map(m(x), 'p_m{}'.format(i))
+            show_feature_map(c(x), 'p_c{}'.format(i))
             param.append(p(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
             p_m.append(m(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
             p_c.append(c(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())

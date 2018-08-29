@@ -31,7 +31,15 @@
     "gamma": 0.1,
     "send_images": true,
     "log_iters": true,
-    "run_mode": "debug"
+    "run_mode": "debug",
+    "debug_save_image": true,
+    "contrast_lower": 0.5,
+    "contrast_upper": 1.5,
+    "saturation_lower": 0.5,
+    "saturation_upper": 1.5,
+    "hue_delta": 18.0,
+    "brightness_delta": 32,
+    "max_expand_ratio": 1.5
   },
   "frame_work":{
     "num_boxes": [4, 6, 6, 4],
