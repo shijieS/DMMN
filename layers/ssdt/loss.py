@@ -12,7 +12,7 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.5, True, 0,
+            config["num_classes"], 0.2, True, 0,
             True, 3, 0.5, False, config["cuda"])
 
     def generate_targets_by_time(self, motion_parameters,
@@ -40,7 +40,7 @@ class Loss(nn.Module):
         parameters, p_m_datas, p_c_datas, priors = predictions
 
         # convert parameters to bboxes
-        loc_datas = torch.tanh(self.convert_to_bboxes(parameters, times))+0.5
+        loc_datas = self.convert_to_bboxes(parameters, times)
 
         # split all the data by frames
         all_loss_l = []
@@ -52,7 +52,7 @@ class Loss(nn.Module):
             prediction = (loc_data, p_c_data, p_m_data, priors.clone())
             target = [
                 i[t, :][
-                    i[t, :][:, -1] == 1
+                    i[t, :, -1] == 1
                 ].reshape(-1, 6)
                 for i in targets]
             loss_l, loss_c = self.multibox_loss(prediction, target)

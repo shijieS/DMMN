@@ -52,7 +52,7 @@ class UATrainDataset(Dataset):
     5. **times_1 / times_2 are the 0 based frame indexes.
     5. **similarity_matrix** is the similarity matrix for tracklet in the first frames batch and second frames batch.
     """
-    def __init__(self, root=config['dataset_path'], spatial_transform=None, temporal_transform=None):
+    def __init__(self, root=config['dataset_path'], spatial_transform=None, temporal_transform=None, sequence_list=config["train"]["sequence_list"]):
         self.save_folder = os.path.join(root, 'DETRAC-Train-Annotations-Training')
         self.mot_folder = os.path.join(root, 'DETRAC-Train-Annotations-MOT')
         self.frames_folder = os.path.join(root, 'Insight-MVT_Annotation_Train')
@@ -62,8 +62,14 @@ class UATrainDataset(Dataset):
             os.mkdir(self.save_folder)
 
         # analysis files in DETRAC-Train-Annotations-MOT
+
         files_path = [os.path.join(self.mot_folder, f) for f in os.listdir(self.mot_folder)]
-        files_path = list(filter(lambda f: os.path.isfile(f), files_path))
+        if sequence_list is None:
+            files_path = list(filter(lambda f: os.path.isfile(f), files_path))
+        else:
+            sequence_file_list = np.loadtxt(sequence_list, dtype=np.str)
+
+            files_path = list(filter(lambda f: os.path.isfile(f) and os.path.splitext(os.path.basename(f))[0] in sequence_file_list, files_path))
         files_name = [os.path.basename(f)[:9] for f in files_path]
 
         # load all the mot files

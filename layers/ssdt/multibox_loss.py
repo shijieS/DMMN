@@ -118,4 +118,5 @@ class MultiBoxLoss(nn.Module):
         loss_c = loss_c.double()
         loss_l /= N
         loss_c /= N
+        # print('N:{}'.format(N))
         return loss_l, loss_c

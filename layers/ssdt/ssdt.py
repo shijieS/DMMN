@@ -72,6 +72,8 @@ class SSDT(nn.Module):
         x = self.base.layer4(x)
         show_feature_map(x, 'conv_5')
         sources += [x]
+        x = self.base.avgpool(x)
+        sources += [x]
 
         # apply multibox head to source layers
         i = 0
