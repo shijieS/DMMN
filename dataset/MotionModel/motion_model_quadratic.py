@@ -89,5 +89,7 @@ class MotionModelQuadraticPoly(MotionModel):
 
     @staticmethod
     def get_bbox_by_frames_pytorch(parameters, times):
-        times = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=1)
-        return torch.tanh(torch.sum(parameters*times[:, None, None, :].float(), dim=3))*5
+        times = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=2)
+        times = times.permute([1, 0, 2])[:, :, None, None, :]
+        parameters = torch.sum((parameters * times.float()).permute([1, 0, 2, 3, 4]), dim=4)
+        return parameters

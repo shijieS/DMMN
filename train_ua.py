@@ -1,9 +1,6 @@
 import os
 import torch
-import torch.nn as nn
 import torch.optim as optim
-import torch.backends.cudnn as cudnn
-import torch.nn.init as init
 import argparse
 from torch.autograd import Variable
 import torch.utils.data as data
@@ -12,7 +9,6 @@ from dataset.ua import UATrainDataset
 from config import config
 from layers.ssdt import SSDT, SSDTLoss
 import time
-import torchvision.utils as vutils
 from dataset import collate_fn
 from dataset.utils import Transforms
 from utils import show_bboxes

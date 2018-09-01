@@ -26,15 +26,9 @@ class Loss(nn.Module):
         """
         current bbox's format is (cx, cy, w, h)
         """
-        n = parameters.shape[0]
-        bboxes = []
-        for i in range(n):
-            bboxes += [
-                MotionModel.get_bbox_by_frames_pytorch(
-                    parameters[i, :], times[i, :])
-            ]
+        # N_{ba} x N_{fn} x N_{tr} x 4
+        return MotionModel.get_bbox_by_frames_pytorch(parameters, times)
 
-        return torch.stack(bboxes, 0)   # N_{ba} x N_{fn} x N_{tr} x 4
 
     def forward(self, predictions, targets, times):
         parameters, p_m_datas, p_c_datas, priors = predictions

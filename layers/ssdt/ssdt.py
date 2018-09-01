@@ -125,6 +125,10 @@ class SSDT(nn.Module):
         else:
             print('Sorry only .pth and .pkl files supported.')
 
+    def load_weights(self, resume):
+        model_data = torch.load(resume)
+        self.load_state_dict(model_data)
+
     @staticmethod
     def build(phase):
         if phase not in ['train', 'test']:

@@ -8,7 +8,6 @@ config = get_config(configure_name)
 
 # init motion parameter number
 config['num_motion_model_param'] = MotionModel.get_num_parameter()
-config['train']['debug_save_image'] = False
 
 print('loading configure: ' + configure_name + "========")
 pprint(config)
