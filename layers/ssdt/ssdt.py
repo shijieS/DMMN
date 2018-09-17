@@ -34,7 +34,6 @@ class SSDT(nn.Module):
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
-            self.detect = Detect()
             self.detect = Detect(config["num_classes"], 0, 200, 0.01, 0.45)
 
         # init the weights and bias
@@ -46,7 +45,7 @@ class SSDT(nn.Module):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
 
-    def forward(self, x):
+    def forward(self, x, times=None):
         sources = list()
         param = list()
         p_m = list()
@@ -89,18 +88,21 @@ class SSDT(nn.Module):
         p_m = torch.cat([o.view(o.size(0), -1) for o in p_m], 1)
         p_c = torch.cat([o.view(o.size(0), -1) for o in p_c], 1)
 
+        param = param.view(param.size(0), -1, 4, config["num_motion_model_param"] // 4)
+        p_m = p_m.view(p_m.size(0), -1, self.input_frame_num, 2).permute(0, 2, 1, 3).contiguous()
+        p_c = p_c.view(p_c.size(0), -1, self.input_frame_num, self.num_classes).permute(0, 2, 1, 3).contiguous()
         if self.phase == "test":
             output = self.detect(
-                param.view(param.size(0), -1, config["num_motion_model_param"]),  # parameter predicts
-                self.softmax(p_m.view(p_m.size(0), -1, 2)),  # motion possibility
-                self.softmax(p_c.view(p_c.size(0), -1, self.num_classes)),  # classification possiblity
-                self.priors.type(type(x.data))                  # default boxes
+                param,
+                self.softmax(p_c),
+                self.priors,
+                times
             )
         else:
             output = (
-                param.view(param.size(0), -1, 4, config["num_motion_model_param"]//4),
-                p_m.view(p_m.size(0), -1, self.input_frame_num, 2).permute(0, 2, 1, 3).contiguous(),
-                p_c.view(p_c.size(0), -1, self.input_frame_num, self.num_classes).permute(0, 2, 1, 3).contiguous(),
+                param,
+                p_m,
+                p_c,
                 self.priors
             )
         return output

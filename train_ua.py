@@ -4,14 +4,14 @@ import torch.optim as optim
 import argparse
 from torch.autograd import Variable
 import torch.utils.data as data
-import numpy as np
-from dataset.ua import UATrainDataset
+from dataset.backup.ua import UATrainDataset
 from config import config
 from layers.ssdt import SSDT, SSDTLoss
 import time
 from dataset import collate_fn
 from dataset.utils import Transforms
 from utils import show_bboxes
+import torch.backends.cudnn as cudnn
 
 
 # torch.multiprocessing.set_start_method('spawn', force=True)
@@ -88,9 +88,9 @@ ssdt_net = SSDT.build("train")
 net = ssdt_net
 
 if args.cuda:
+    cudnn.benchmark = True
     net = net.cuda()
     net = torch.nn.DataParallel(ssdt_net)
-    # cudnn.benchmark = True
 
 if args.resume:
     print("Resuming training, loading {}...".format(args.resume))
@@ -101,8 +101,8 @@ else:
 
 
 # create optimizer
-optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum,
-                          weight_decay=args.weight_decay)
+optimizer = optim.Adam(net.parameters(), args.lr, weight_decay=args.weight_decay)
+# optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
 # create loss criterion
 criterion = SSDTLoss()
@@ -140,7 +140,7 @@ def train():
     for iteration in range(start_iter):
         if iteration in step_values:
             step_index += 1
-            current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
+            # current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
 
     # start training
     batch_iterator = None
@@ -153,7 +153,7 @@ def train():
         # adjust learning rate
         if iteration in step_values:
             step_index += 1
-            current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
+            # current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
 
         # reading item
         frames_1, target_1, times_1, \

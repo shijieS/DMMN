@@ -2,8 +2,8 @@ import torch
 from torch.autograd import Function
 from ..utils.box_utils import decode, nms
 from config import config
+from dataset.MotionModel import MotionModel
 
-cfg = config["train"]
 
 
 class Detect(Function):
@@ -21,9 +21,9 @@ class Detect(Function):
         if nms_thresh <= 0:
             raise ValueError('nms_threshold must be non negative.')
         self.conf_thresh = conf_thresh
-        self.variance = cfg['variance']
+        self.variance = config["frame_work"]['variance']
 
-    def forward(self, loc_data, conf_data, prior_data):
+    def forward_one(self, loc_data, conf_data, prior_data):
         """
         Args:
             loc_data: (tensor) Loc preds from loc layers
@@ -62,3 +62,20 @@ class Detect(Function):
         _, rank = idx.sort(1)
         flt[(rank < self.top_k).unsqueeze(-1).expand_as(flt)].fill_(0)
         return output
+
+    def forward(self, param, p_c, priors, times):
+        # param.view(param.size(0), -1, config["num_motion_model_param"]),  # parameter predicts
+        # # self.softmax(p_m.view(p_m.size(0), -1, 2)),  # motion possibility
+        # self.softmax(p_c.view(p_c.size(0), -1, self.num_classes)),  # classification possiblity
+        # self.priors  # default boxes
+
+        loc_datas = MotionModel.get_bbox_by_frames_pytorch(param, times)
+
+        out = []
+        for i in range(times.shape[1]):
+            loc_data = loc_datas[:, i, :]
+            conf_data = p_c[:, i, :]
+            out += [self.forward_one(loc_data, conf_data, priors)]
+
+        return torch.stack(out, dim=1)
+        # return output

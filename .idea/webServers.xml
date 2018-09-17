@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="0d6316e3-6263-4cb3-a0f3-1c3f5da89428" name="sy-ssdt" url="http://140.207.114.234">
+        <fileTransfer host="140.207.114.234" port="8086" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="8086" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

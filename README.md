@@ -1,5 +1,5 @@
 # An End-To-End Detector Matcher
-This is an end-to-end network which combines detector and matcher into one single network.
+This is an end-to-end network which combines detector and matcher into one single network. Our target is to design an **End-to-End network** for detection and tracking.
 
 ## Protocol
 - bbox: the format is *(left, top, right, bottom)*
@@ -10,8 +10,24 @@ This is an end-to-end network which combines detector and matcher into one singl
 - $W_{re}, H_{re}$: the real input image size.
 - $F_t$: the $t^{th}$ frame
 - $N_{fn}$: the input frame number
- 
+
 ## Network
+
+The framework of our net is as following:
+
+![framework](./images/framework.png)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Framework

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="lab-py36">
+  <component name="PublishConfigData" autoUpload="Always" serverName="sy-ssdt">
     <serverData>
       <paths name="Copy of project-level server 'lab-py36'">
         <serverdata>
           <mappings>
             <mapping deploy="/media/jianliu/Data/ssj/github/SSDT" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="lab-py35">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -16,7 +23,7 @@
           </mappings>
         </serverdata>
       </paths>
-      <paths name="ssm-py36-ngrok">
+      <paths name="ssm-py35-ngrok">
         <serverdata>
           <mappings>
             <mapping deploy="/home/ssm/ssj/github/pytorch/SSDT" local="$PROJECT_DIR$" web="/" />
@@ -27,6 +34,13 @@
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sy-ssdt">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/shiyuan/ssj/github/SSDT" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

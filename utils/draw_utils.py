@@ -1,4 +1,4 @@
-from config import config
+from config import config, cfg
 import cv2
 import torch
 import numpy as np
@@ -20,7 +20,7 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
     :param times_1: shape: [N_{ba}, N_{ti}, (4+1+1)], where '4': bbox, '1': class_possibility, '1': motion_possibility
     :return: a list for each batch which contains all the frames
     """
-    if not config['train']['debug_save_image']:
+    if not cfg['debug_save_image']:
         return
     N_batch, _, N_time, W, H = frames.shape
     result = []
@@ -31,9 +31,11 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
             frame = frame.transpose([1, 2, 0]) + config['pixel_mean']
             frame = np.clip(frame, 0, 255).astype(np.uint8).copy()
 
-            target = targets[n][t, :].cpu().numpy()
+            target = targets[n][t].cpu().numpy()
 
             for id, bbox in enumerate(target):
+                if np.any(np.isinf(bbox)):
+                    continue
                 if bbox[-1] != 0:
                     bbox[:4] *= config["frame_size"]
                     color = get_color_by_id(id)
@@ -42,15 +44,15 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
     result += [result_frames]
 
     if is_save:
-        if not os.path.exists(config["train"]["image_save_folder"]):
-            os.mkdir(config["train"]["image_save_folder"])
+        if not os.path.exists(cfg["image_save_folder"]):
+            os.mkdir(cfg["image_save_folder"])
         for i in range(len(result)):
             for j in range(len(result[i])):
                 image_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'-{}-{}.jpg'.format(i, j)
                 if iteration is not None:
                     image_name = str(iteration) + '-' + image_name
 
-                cv2.imwrite(os.path.join(config["train"]["image_save_folder"], image_name), result[i][j])
+                cv2.imwrite(os.path.join(cfg["image_save_folder"], image_name), result[i][j])
 
     return result
 
@@ -62,7 +64,7 @@ def convert2cv2(x):
     return frame
 
 def show_feature_map(x, prefix="cnn"):
-    if not config['train']['debug_save_image']:
+    if not cfg['debug_save_image']:
         return
 
     batch_num, feature_num, time_num, w, h = x.shape
@@ -74,7 +76,7 @@ def show_feature_map(x, prefix="cnn"):
         for t in range(time_num):
             prefix_ = prefix + "-b{}-t{}".format(n, t)
             cv2.imwrite(
-                os.path.join(config["train"]["image_save_folder"],
+                os.path.join(cfg["image_save_folder"],
                              time_stamp + '-' + prefix_ + ".jpg"),
                 get_frame_batch(all_frames[n][t])
             )
