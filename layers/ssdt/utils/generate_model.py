@@ -2,6 +2,7 @@ import torch
 from torch import nn
 
 from ..models import resnet, pre_act_resnet, wide_resnet, resnext, densenet
+from ..models import extra_net
 
 def generate_base_model(opt):
     assert opt.mode in ['score', 'feature']
@@ -122,13 +123,25 @@ def generate_base_model(opt):
 def generate_resnext101(num_classes, frame_size, num_frames, cuda):
     model = resnext.resnet101(num_classes=num_classes,
                               shortcut_type="B",
-                              cardinality=32,
+                              # cardinality=32,
+                              cardinality=8,
                               frame_size=frame_size,
                               frame_duration=num_frames,
                               last_fc=None)
+
+
 
     if cuda:
         model = model.cuda()
         # model = nn.DataParallel(model, device_ids=None)
 
     return model
+
+def generate_extra_model(cuda, inplanes = 1024):
+    extra_model = extra_net.ExtraNet(resnext.ResNeXtBottleneck, [3, 3], shortcut_type="B", cardinality=1, inplanes=inplanes)
+
+    if cuda:
+        extra_model = extra_model.cuda()
+        # extra_model = nn.DataParallel(extra_model, device_ids=None)
+
+    return extra_model

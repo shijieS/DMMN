@@ -40,8 +40,11 @@
       <paths name="sy-ssdt">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/shiyuan/ssj/github/SSDT" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/shiyuan/ssj/github/SSDT" local="$PROJECT_DIR$" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/weights" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

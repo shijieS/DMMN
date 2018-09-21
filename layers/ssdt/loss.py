@@ -12,7 +12,7 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.2, True, 0,
+            config["num_classes"], 0.45, True, 0,
             True, 3, 0.5, False, config["cuda"])
 
     def generate_targets_by_time(self, motion_parameters,

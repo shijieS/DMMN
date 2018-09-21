@@ -8,22 +8,23 @@ from config import config
 from .models.prior_box import PriorBox
 from .models.detection import Detect
 import os
-from .utils.generate_model import generate_resnext101
+from .utils.generate_model import generate_resnext101, generate_extra_model
 from utils import show_feature_map
+from .utils import param_init
 
 
 class SSDT(nn.Module):
 
-    def __init__(self, phase, base, head):
+    def __init__(self, phase, base, head, extra):
         super(SSDT, self).__init__()
         self.phase = phase
         self.num_classes = config["num_classes"]
         self.num_params = config["num_motion_model_param"]
         self.priorbox = PriorBox(config)
-        self.priors = Variable(self.priorbox.forward(), volatile=True)
+        with torch.no_grad():
+            self.priors = Variable(self.priorbox.forward())
         self.input_frame_num = config["frame_max_input_num"]//2
 
-        # base network
         self.base = base
 
         # localization and confidence network
@@ -31,19 +32,24 @@ class SSDT(nn.Module):
         self.p_m_layers = nn.ModuleList(head[1])
         self.p_c_layers = nn.ModuleList(head[2])
 
+        # base net
+        self.conv1 = nn.ModuleList([base.conv1, base.bn1, base.relu, base.maxpool])
+        self.conv2 = base.layer1
+        self.conv3 = base.layer2
+        self.conv4 = base.layer3
+        self.conv5 = base.layer4
+
+        # extra net
+        self.conv6 = extra.layer1
+        self.conv7 = extra.layer2
+
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
             self.detect = Detect(config["num_classes"], 0, 200, 0.01, 0.45)
 
         # init the weights and bias
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
-                m.weight.data.normal_(0, math.sqrt(2. / n))
-            elif isinstance(m, nn.BatchNorm2d):
-                m.weight.data.fill_(1)
-                m.bias.data.zero_()
+        self.apply(param_init)
 
     def forward(self, x, times=None):
         sources = list()
@@ -51,27 +57,29 @@ class SSDT(nn.Module):
         p_m = list()
         p_c = list()
 
-        # apply resnet
-        x = self.base.conv1(x)
-        x = self.base.bn1(x)
-        x = self.base.relu(x)
-        x = self.base.maxpool(x)
-
+        # base net
+        for conv in self.conv1:
+            x = conv(x)
         show_feature_map(x, 'conv_1')
-
-        x = self.base.layer1(x)
+        x = self.conv2(x)
         show_feature_map(x, 'conv_2')
         sources += [x]
-        x = self.base.layer2(x)
+        x = self.conv3(x)
         show_feature_map(x, 'conv_3')
         sources += [x]
-        x = self.base.layer3(x)
+        x = self.conv4(x)
         show_feature_map(x, 'conv_4')
         sources += [x]
-        x = self.base.layer4(x)
+        x = self.conv5(x)
         show_feature_map(x, 'conv_5')
         sources += [x]
-        x = self.base.avgpool(x)
+
+        # extra net
+        x = self.conv6(x)
+        show_feature_map(x, 'conv_6')
+        sources += [x]
+        x = self.conv7(x)
+        show_feature_map(x, 'conv_7')
         sources += [x]
 
         # apply multibox head to source layers
@@ -111,8 +119,8 @@ class SSDT(nn.Module):
         other, ext = os.path.splitext(weight_file)
         if ext == '.pkl' or '.pth':
             print('Loading weights into state dict...')
-            self.load_state_dict(torch.load(weight_file,
-                                            map_location=lambda storage, loc: storage))
+            model_data = torch.load(weight_file)
+            self.load_state_dict(model_data['state_dict'])
             print('Finished!')
         else:
             print('Sorry only .pth and .pkl files supported.')
@@ -132,6 +140,15 @@ class SSDT(nn.Module):
         self.load_state_dict(model_data)
 
     @staticmethod
+    def build_extra_net1(in_channel):
+        torch.nn.Conv3d(in_channel, 32, kernel_size=1, stride=1, bias=False)
+        torch.nn.BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        torch.nn.Conv3d(32, 32, kernel_size=3, stride=1, padding=1, bias=False)
+        torch.nn.BatchNorm3d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        torch.nn.Conv3d(32, in_channel, kernel_size=1, stride=1, bias=False)
+        torch.nn.BatchNorm3d(in_channel, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+
+    @staticmethod
     def build(phase):
         if phase not in ['train', 'test']:
             print("ERROR: Phase: " + phase + " not recognized")
@@ -144,6 +161,11 @@ class SSDT(nn.Module):
             num_frames=config["frame_max_input_num"]//2,
             cuda=config["cuda"])
 
+        # build extra net
+        extra_net_inplanes = base_net.layer4[2].conv3.out_channels
+        extra_net = generate_extra_model(cuda=config["cuda"], inplanes = extra_net_inplanes)
+        # extra_net = SSDT.build_extra_net(base_net.layer4[2].conv3.out_channels)
+
         # build parameter layers, possibility motion layers, possibility classification layers.
         param_layers = []
         p_m_layers = []
@@ -152,28 +174,38 @@ class SSDT(nn.Module):
         num_channels_dims = config["frame_work"]["channel_dims"]
         num_temporal_dims = config["frame_work"]["temporal_dims"]
         for k, c, t in zip(num_boxes, num_channels_dims, num_temporal_dims):
-            param_layers += [nn.Conv3d(in_channels=c,
-                                       out_channels=k*config["num_motion_model_param"],
-                                       kernel_size=(t, 3, 3),
-                                       padding=(0, 1, 1),
-                                       stride=(1, 1, 1),
-                                       bias=True)]
-            p_m_layers += [nn.Conv3d(in_channels=c,
-                                     out_channels=k*(config["frame_max_input_num"]//2)*2,
+            param_layer = nn.Conv3d(in_channels=c,
+                                     out_channels=k*config["num_motion_model_param"],
                                      kernel_size=(t, 3, 3),
                                      padding=(0, 1, 1),
                                      stride=(1, 1, 1),
-                                     bias=True)]
-            p_c_layers += [nn.Conv3d(in_channels=c,
-                                     out_channels=k * (config["frame_max_input_num"]//2) * config["num_classes"],
-                                     kernel_size=(t, 3, 3),
-                                     padding=(0, 1, 1),
-                                     stride=(1, 1, 1),
-                                     bias=True)]
+                                     bias=True)
+            p_m_layer = nn.Conv3d( in_channels=c,
+                                    out_channels=k*(config["frame_max_input_num"]//2)*2,
+                                    kernel_size=(t, 3, 3),
+                                    padding=(0, 1, 1),
+                                    stride=(1, 1, 1),
+                                    bias=True)
+            p_c_layer = nn.Conv3d( in_channels=c,
+                                    out_channels=k * (config["frame_max_input_num"]//2) * config["num_classes"],
+                                    kernel_size=(t, 3, 3),
+                                    padding=(0, 1, 1),
+                                    stride=(1, 1, 1),
+                                    bias=True)
+            if config["cuda"]:
+                param_layer = param_layer.cuda()
+                p_m_layer = p_m_layer.cuda()
+                p_c_layer = p_c_layer.cuda()
+
+            param_layers += [param_layer]
+            p_m_layers += [p_m_layer]
+            p_c_layers += [p_c_layer]
+
 
         head = (param_layers, p_m_layers, p_c_layers)
         return SSDT(phase=phase,
                     base=base_net,
+                    extra = extra_net,
                     head=head)
 
 

@@ -150,18 +150,30 @@ def train():
             batch_iterator = iter(data_loader)
             all_epoch_loss = []
 
-        # adjust learning rate
+        # adjus t learning rate
         if iteration in step_values:
             step_index += 1
             # current_lr = adjust_learning_rate(optimizer, args.gamma, step_index)
 
+        if batch_iterator is None:
+            continue
         # reading item
-        frames_1, target_1, times_1, \
-        frames_2, target_2, times_2, \
-        similarity_matrix = \
-            next(batch_iterator)
+        try:
+            frames_1, target_1, times_1, \
+            frames_2, target_2, times_2, \
+            similarity_matrix = \
+                next(batch_iterator)
+        except:
+            batch_iterator = iter(data_loader)
+            frames_1, target_1, times_1, \
+            frames_2, target_2, times_2, \
+            similarity_matrix = \
+                next(batch_iterator)
+
         # print(iteration)
         # continue
+        if frames_1 is None or target_1 is None or times_1 is None:
+            continue
 
         if args.cuda:
             frames_1 = Variable(frames_1.cuda())
@@ -189,6 +201,7 @@ def train():
 
         if len(loss_all) != 0:
             loss = sum(loss_all) / len(loss_all)
+            # loss = sum(loss_all)
             # backward
             loss.backward()
             optimizer.step()
@@ -209,10 +222,11 @@ def train():
                 writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
                 writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
 
-        if args.tensorboard and iteration % add_histogram_iteration == 0:
-                # add weights
-                for name, param in net.named_parameters():
-                    writer.add_histogram(name, param.clone().cpu().data.numpy(), iteration, bins='fd')
+
+        # if args.tensorboard and iteration % add_histogram_iteration == 0:
+        #         # add weights
+        #         for name, param in net.named_parameters():
+        #             writer.add_histogram(name, param.cpu().data.numpy(), iteration, bins='fd')
 
         # save the result image
         show_bboxes(frames_1, target_1, is_save=True, iteration=iteration)

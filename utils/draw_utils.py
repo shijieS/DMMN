@@ -36,7 +36,7 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
             for id, bbox in enumerate(target):
                 if np.any(np.isinf(bbox)):
                     continue
-                if bbox[-1] != 0:
+                if bbox[-1] != 0 and bbox[0] > -config["frame_size"]*2 and bbox[1] > -config["frame_size"]*2 and bbox[2] < config["frame_size"]*2 and bbox[3] < config["frame_size"]*2:
                     bbox[:4] *= config["frame_size"]
                     color = get_color_by_id(id)
                     frame = cv2.rectangle(frame, tuple(bbox[:2].astype(int)), tuple(bbox[2:4].astype(int)), color)
