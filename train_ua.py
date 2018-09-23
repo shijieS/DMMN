@@ -197,15 +197,11 @@ def train():
                                    target_1,
                                    times_1)
 
-        loss_all = loss_l + loss_c
+        loss = loss_l + loss_c
 
-        if len(loss_all) != 0:
-            loss = sum(loss_all) / len(loss_all)
-            # loss = sum(loss_all)
-            # backward
-            loss.backward()
-            optimizer.step()
-            all_epoch_loss += [loss.data.cpu()]
+        loss.backward()
+        optimizer.step()
+        all_epoch_loss += [loss.data.cpu()]
 
         t1 = time.time()
 
@@ -218,9 +214,8 @@ def train():
         if args.tensorboard and iteration % add_scalar_iteration == 0:
             writer.add_scalar('data/learning_rate', current_lr, iteration)
             writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
-            for i in range(len(loss_l)):
-                writer.add_scalar('loss-l/loss-l-{}'.format(i), loss_l[i].data.cpu(), iteration)
-                writer.add_scalar('loss-c/loss-c-{}'.format(i), loss_c[i].data.cpu(), iteration)
+            writer.add_scalar('loss-location', loss_l.data.cpu(), iteration)
+            writer.add_scalar('loss-classification', loss_c.data.cpu(), iteration)
 
 
         # if args.tensorboard and iteration % add_histogram_iteration == 0:

@@ -97,12 +97,12 @@ class SSDT(nn.Module):
         p_c = torch.cat([o.view(o.size(0), -1) for o in p_c], 1)
 
         param = param.view(param.size(0), -1, 4, config["num_motion_model_param"] // 4)
-        p_m = p_m.view(p_m.size(0), -1, self.input_frame_num, 2).permute(0, 2, 1, 3).contiguous()
+        p_m = p_m.view(p_m.size(0), -1, 1, self.num_classes).permute(0, 2, 1, 3).contiguous()
         p_c = p_c.view(p_c.size(0), -1, self.input_frame_num, self.num_classes).permute(0, 2, 1, 3).contiguous()
         if self.phase == "test":
             output = self.detect(
                 param,
-                self.softmax(p_m),
+                self.softmax(p_c), #TODO: Should change to p_c
                 self.priors,
                 times
             )
@@ -181,7 +181,7 @@ class SSDT(nn.Module):
                                      stride=(1, 1, 1),
                                      bias=True)
             p_m_layer = nn.Conv3d( in_channels=c,
-                                    out_channels=k*(config["frame_max_input_num"]//2)*2,
+                                    out_channels=k*2,
                                     kernel_size=(t, 3, 3),
                                     padding=(0, 1, 1),
                                     stride=(1, 1, 1),

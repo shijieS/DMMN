@@ -1,2 +1,2 @@
 from .ssdt import SSDT
-from .loss import Loss as SSDTLoss
+from .loss_param import Loss as SSDTLoss
