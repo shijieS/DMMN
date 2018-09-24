@@ -69,6 +69,11 @@ class MultiBoxLoss(nn.Module):
         p_c_ts = torch.LongTensor(num, 1, num_priors)
         p_e_ts = torch.Tensor(num, num_frames, num_priors)
 
+        if self.use_gpu:
+            loc_ts = loc_ts.cuda()
+            p_c_ts = p_c_ts.cuda()
+            p_e_ts = p_e_ts.cuda()
+
         for idx in range(num):
             truths = loc_datas_t[idx]
             labels = p_c_t[idx]
@@ -76,11 +81,6 @@ class MultiBoxLoss(nn.Module):
             defaults = priors.data
 
             match(self.threshold, truths, defaults, self.variance, labels, exists, loc_ts, p_c_ts, p_e_ts, idx)
-
-        if self.use_gpu:
-            loc_ts = loc_ts.cuda()
-            p_c_ts = p_c_ts.cuda()
-            p_e_ts = p_e_ts.cuda()
 
         with torch.no_grad():
             loc_ts = Variable(loc_ts)

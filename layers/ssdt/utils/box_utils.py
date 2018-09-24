@@ -158,12 +158,13 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         all_best_truth_overlap += [best_truth_overlap]
 
     # adjust the all_best_truth_idx according the max frequent id
-    all_best_truth_idx = torch.stack(all_best_truth_idx, dim=1)
+    # speed up instead of using torch.bincount
+    all_best_truth_idx = torch.stack(all_best_truth_idx, dim=1).long()
+    bins = torch.zeros((num_prior, num_object)).cuda().long()
+    other = torch.LongTensor([1]).expand_as(all_best_truth_idx).cuda()
+    bins.scatter_add_(1, all_best_truth_idx, other)
 
-    bins = torch.zeros((num_prior, num_object), dtype=torch.long)
-    for r in range(all_best_truth_idx.size(0)):
-        for c in range(all_best_truth_idx.size(1)):
-            bins[r, all_best_truth_idx[r, c]] += 1
+    # bins = torch.stack([torch.bincount(all_best_truth_idx[i, :], minlength=num_object) for i in range(num_prior)], dim=0)
 
     best_truth_idx = torch.argmax(bins, dim=1, keepdim=True)
     best_truth_idx.squeeze_(1)

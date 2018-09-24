@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/collate_fn.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/collate_fn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/loss_param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1537751321850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1537776899539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$ua.coverage" NAME="ua Coverage Results" MODIFIED="1534700268873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
     <SUITE FILE_PATH="coverage/SSDT$faster_rcnn.coverage" NAME="faster_rcnn Coverage Results" MODIFIED="1534160011460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers" />
     <SUITE FILE_PATH="coverage/SSDT$detection.coverage" NAME="detection Coverage Results" MODIFIED="1535929162338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssdt/models" />
@@ -100,8 +89,8 @@
       <file leaf-file-name="config_train_ua_sy_debug.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-507">
-              <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+            <state relative-caret-position="370">
+              <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -109,8 +98,8 @@
       <file leaf-file-name="train_ua.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/train_ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="212" column="38" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="38" />
+            <state relative-caret-position="5025">
+              <caret line="214" column="144" selection-start-line="214" selection-start-column="144" selection-end-line="214" selection-end-column="144" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -121,8 +110,8 @@
       <file leaf-file-name="loss_param.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="558">
-              <caret line="54" column="85" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="85" />
+            <state relative-caret-position="1325">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -133,17 +122,8 @@
       <file leaf-file-name="multibox_loss_param.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="565">
-              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="multibox_loss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+            <state relative-caret-position="450">
+              <caret line="87" column="37" lean-forward="true" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -151,8 +131,8 @@
       <file leaf-file-name="box_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+            <state relative-caret-position="381">
+              <caret line="160" selection-start-line="160" selection-end-line="160" />
               <folding>
                 <element signature="e#2705#4804#0" />
               </folding>
@@ -160,10 +140,19 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="_TensorBase.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/723765392/torch/_C/_TensorBase.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56900">
+              <caret line="2284" column="8" selection-start-line="2284" selection-start-column="8" selection-end-line="2284" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="ua.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="3575">
               <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
             </state>
           </provider>
@@ -172,8 +161,8 @@
       <file leaf-file-name="motion_model_quadratic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="457">
-              <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
+            <state relative-caret-position="2325">
+              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
             </state>
           </provider>
         </entry>
@@ -181,7 +170,7 @@
       <file leaf-file-name="collate_fn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
+            <state relative-caret-position="1150">
               <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
@@ -290,10 +279,10 @@
         <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/max_frequency.py" />
         <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/dataset/ua.py" />
         <option value="$PROJECT_DIR$/train_ua.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" />
       </list>
     </option>
@@ -308,7 +297,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
+    <option name="x" value="244" />
+    <option name="y" value="418" />
     <option name="width" value="960" />
     <option name="height" value="1160" />
   </component>
@@ -320,7 +310,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -386,6 +375,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -687,7 +677,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537708882582</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="finally, finish the loss function which contains loss_l, loss_c, loss_e">
+      <created>1537751907931</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1537751907931</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -720,19 +717,18 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.20981713" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="15" weight="0.32916266" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.307026" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2196162" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="SciView" order="5" sideWeight="0.49820143" weight="0.28144988" />
+      <window_info anchor="right" id="SciView" order="5" sideWeight="0.49820143" visible="true" weight="0.28144988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.33493745" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.33493745" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="7" side_tool="true" />
@@ -742,9 +738,39 @@
       <window_info anchor="right" x="0" y="0" width="152" height="826" id="Documentation" order="6" sideWeight="0.50179857" side_tool="true" weight="0.2880816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="File Transfer" order="15" weight="0.32916266" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32916266" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="File Transfer" order="15" weight="0.32916266" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.20981713" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.307026" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916266" />
+      <window_info anchor="right" x="0" y="0" width="152" height="826" id="Documentation" order="6" sideWeight="0.50179857" side_tool="true" weight="0.2880816" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.33493745" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
+      <window_info anchor="right" id="SciView" order="5" sideWeight="0.49820143" weight="0.28144988" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Coverage" order="7" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2196162" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -769,7 +795,8 @@
     <MESSAGE value="add test in another server" />
     <MESSAGE value="fix the bug in training" />
     <MESSAGE value="change the loss function without considering the p_m." />
-    <option name="LAST_COMMIT_MESSAGE" value="change the loss function without considering the p_m." />
+    <MESSAGE value="finally, finish the loss function which contains loss_l, loss_c, loss_e" />
+    <option name="LAST_COMMIT_MESSAGE" value="finally, finish the loss function which contains loss_l, loss_c, loss_e" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -789,11 +816,6 @@
           <line>22</line>
           <option name="timeStamp" value="269" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train_ua.py</url>
-          <line>206</line>
-          <option name="timeStamp" value="334" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
@@ -805,11 +827,16 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="335" />
+      <option name="time" value="356" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>num_object &gt; 16</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>bool(torch.isinf(loc_t.min()).cpu().data)</expression-string>
         <language-id>Python</language-id>
@@ -855,21 +882,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>frame_1 is None</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/config_train_ua_ssm_debug.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/models/wide_resnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1950">
@@ -1015,9 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1143,23 +1155,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/max_frequency.py" />
+    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="54" column="85" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="85" />
+        <state relative-caret-position="1150">
+          <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/max_frequency.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
+    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+        <state relative-caret-position="3575">
+          <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5025">
+          <caret line="214" column="144" selection-start-line="214" selection-start-column="144" selection-end-line="214" selection-end-column="144" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1325">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
@@ -1168,56 +1195,46 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="457">
-          <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
+        <state relative-caret-position="2325">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/python_stubs/723765392/torch/_C/_TensorBase.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+        <state relative-caret-position="56900">
+          <caret line="2284" column="8" selection-start-line="2284" selection-start-column="8" selection-end-line="2284" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="381">
+          <caret line="160" selection-start-line="160" selection-end-line="160" />
           <folding>
             <element signature="e#2705#4804#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="565">
-          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
+        <state relative-caret-position="593">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_ua.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="212" column="38" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="87" column="37" lean-forward="true" selection-start-line="87" selection-start-column="37" selection-end-line="87" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-507">
-          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        <state relative-caret-position="370">
+          <caret line="22" column="74" selection-start-line="22" selection-start-column="74" selection-end-line="22" selection-end-column="74" />
         </state>
       </provider>
     </entry>
