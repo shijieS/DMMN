@@ -28,26 +28,38 @@ class Loss(nn.Module):
         # N_{ba} x N_{fn} x N_{tr} x 4
         return MotionModel.get_bbox_by_frames_pytorch(parameters, times)
 
+    def convert_to_bboxes_list(self, parameters, times):
+        result = []
+        for parameter, time in zip(parameters, times):
+            result += [MotionModel.get_bbox_by_frames_without_batch_pytorch(parameter, time)]
+
+        return result
+
     def forward(self, predictions, targets, times):
-        parameters, p_m_datas, p_c_datas, priors = predictions
+        parameters_p, p_c_p, p_e_p, priors = predictions
 
         # convert parameters to bboxes
-        loc_datas = self.convert_to_bboxes(parameters, times)
+        loc_datas = self.convert_to_bboxes(parameters_p, times)
 
-        prediction = (loc_datas, p_m_datas, p_c_datas, priors)
+        prediction = (loc_datas, p_c_p, p_e_p, priors)
 
         # process target
-        targets = [
-            [
-                i[t, :][i[t, :, -1] == 1].reshape(-1, 6)
-                for i in targets
-             ]
-            for t in range(times.shape[1])
-        ]
+        # bbox_with_label = [
+        #     [
+        #         i[t, :][i[t, :, -1] == 1].reshape(-1, 6)
+        #         for i in targets[0]
+        #      ]
+        #     for t in range(times.shape[1])
+        # ]
 
-        loss_l, loss_c = self.multibox_loss(prediction, targets)
+        loc_datas_org, parameters_t, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(4))
+        loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
 
-        return loss_l, loss_c
+        target = (loc_datas_t, p_c_t, p_e_t)
+
+        loss_l, loss_c, loss_m = self.multibox_loss(prediction, target)
+
+        return loss_l, loss_c, loss_m
 
 
 

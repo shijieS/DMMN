@@ -336,22 +336,22 @@ class ToTensor(object):
         i1 = torch.stack(i1, 0).transpose(1, 0)
         b1 = torch.from_numpy(items[1])
         m1 = torch.from_numpy(items[2])
-        p_m1 = torch.from_numpy(items[3])
+        p_e_1 = torch.from_numpy(items[3])
         t1 = torch.from_numpy(items[4])
-        p_c1 = torch.from_numpy(items[5])
+        p_c_1 = torch.from_numpy(items[5])
 
         i2 = [torch.from_numpy(i).permute(2, 0, 1) for i in items[6]]
         i2 = torch.stack(i2, 0).transpose(1, 0)
         b2 = torch.from_numpy(items[7])
         m2 = torch.from_numpy(items[8])
-        p_m2 = torch.from_numpy(items[9])
+        p_e_2 = torch.from_numpy(items[9])
         t2 = torch.from_numpy(items[10])
-        p_c2 = torch.from_numpy(items[11])
+        p_c_2 = torch.from_numpy(items[11])
 
         s = torch.from_numpy(items[12])
 
-        return i1, b1, m1, p_m1, t1, p_c1, \
-               i2, b2, m2, p_m2, t2, p_c2, \
+        return i1, b1, m1, p_e_1, t1, p_c_1, \
+               i2, b2, m2, p_e_2, t2, p_c_2, \
                s
 
 class Transforms(object):

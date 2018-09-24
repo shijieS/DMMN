@@ -75,7 +75,7 @@ class MotionModelQuadraticPoly(MotionModel):
             bbs = bboxes[:, i, :]
             mask = np.sum(bbs, axis=1) > 0
             motion_posibility += [mask]
-            if sum(mask) / len(mask) < invalid_node_rate:
+            if sum(mask) / len(mask) <= invalid_node_rate:
                 parameters += [MotionModelQuadraticPoly.get_invalid_params()]
             else:
                 param = mm.fit(bbs[mask, :], times[mask])
@@ -89,7 +89,18 @@ class MotionModelQuadraticPoly(MotionModel):
 
     @staticmethod
     def get_bbox_by_frames_pytorch(parameters, times):
-        times = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=2)
-        times = times.permute([1, 0, 2])[:, :, None, None, :]
-        parameters = torch.sum((parameters * times.float()).permute([1, 0, 2, 3, 4]), dim=4)
-        return parameters
+        times_1 = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=2)
+        times_1 = times_1.permute([1, 0, 2])[:, :, None, None, :]
+        parameters_1 = torch.sum((parameters * times_1.float()).permute([1, 0, 2, 3, 4]), dim=4)
+
+        return parameters_1
+
+    @staticmethod
+    def get_bbox_by_frames_without_batch_pytorch(parameter, time):
+        time_1 = torch.stack([torch.pow(time, 2), torch.pow(time, 1), torch.pow(time, 0)], dim=1)
+        time_1 = time_1[:, None, None, :]
+        parameter_1 = torch.sum(parameter.float() * time_1, dim=3)
+
+        parameter_1[:, :, 2:].clamp_(min=1e-4, max=2)
+        return parameter_1
+

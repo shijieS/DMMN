@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b877f99e-e5e9-4c26-a6a8-a18ca1c3d85c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/loss_param.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/collate_fn.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/collate_fn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/loss_param.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ua.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +26,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1537708434654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1537751321850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$ua.coverage" NAME="ua Coverage Results" MODIFIED="1534700268873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
     <SUITE FILE_PATH="coverage/SSDT$faster_rcnn.coverage" NAME="faster_rcnn Coverage Results" MODIFIED="1534160011460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers" />
     <SUITE FILE_PATH="coverage/SSDT$detection.coverage" NAME="detection Coverage Results" MODIFIED="1535929162338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssdt/models" />
     <SUITE FILE_PATH="coverage/SSDT$ua_convert_mat_2_mot.coverage" NAME="ua_convert_mat_2_mot Coverage Results" MODIFIED="1537187205813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/tools" />
     <SUITE FILE_PATH="coverage/SSDT$Doctests_in_Compose.coverage" NAME="Doctests in Compose Coverage Results" MODIFIED="1535193952527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/utils" />
     <SUITE FILE_PATH="coverage/SSDT$ssd.coverage" NAME="ssd Coverage Results" MODIFIED="1535011420518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssd" />
-    <SUITE FILE_PATH="coverage/SSDT$test_ua.coverage" NAME="test_ua Coverage Results" MODIFIED="1537692460188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_ua.coverage" NAME="test_ua Coverage Results" MODIFIED="1537717014627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1534698493869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/SSDT$test_ua_dataset.coverage" NAME="test_ua_dataset Coverage Results" MODIFIED="1535079365611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
@@ -91,34 +97,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config_train_ua_sy_debug.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="config_train_ua_sy_debug.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            <state relative-caret-position="-507">
+              <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ssdt.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
+      <file leaf-file-name="train_ua.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train_ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="99" column="59" selection-start-line="99" selection-start-column="59" selection-end-line="99" selection-end-column="59" />
+            <state relative-caret-position="417">
+              <caret line="212" column="38" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="38" />
               <folding>
-                <element signature="e#0#12#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loss.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/loss.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="59" column="25" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,8 +121,8 @@
       <file leaf-file-name="loss_param.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state relative-caret-position="558">
+              <caret line="54" column="85" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="85" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -136,29 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="train_ua.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/train_ua.py">
+      <file leaf-file-name="multibox_loss_param.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="217" column="82" selection-start-line="217" selection-start-column="82" selection-end-line="217" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_ua.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_ua.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="101" column="13" lean-forward="true" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+            <state relative-caret-position="565">
+              <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
             </state>
           </provider>
         </entry>
@@ -166,17 +142,8 @@
       <file leaf-file-name="multibox_loss.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="121" column="19" lean-forward="true" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="multibox_loss_param.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
+            <state relative-caret-position="62">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -184,8 +151,41 @@
       <file leaf-file-name="box_utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="94" selection-start-line="94" selection-end-line="94" />
+            <state relative-caret-position="271">
+              <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+              <folding>
+                <element signature="e#2705#4804#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ua.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/ua.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="motion_model_quadratic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="457">
+              <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collate_fn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="353">
+              <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -201,11 +201,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>view</find>
-      <find>torch.opti</find>
-      <find>optim</find>
-      <find>optimizer</find>
-      <find>save_image_iteration</find>
       <find>size_average</find>
       <find>cuda</find>
       <find>cudnn</find>
@@ -231,6 +226,11 @@
       <find>debug</find>
       <find>nex</find>
       <find>try</find>
+      <find>test</find>
+      <find>[3]</find>
+      <find>[5]</find>
+      <find>min</find>
+      <find>min_</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -244,8 +244,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/layers/ssd/data/coco.py" />
-        <option value="$PROJECT_DIR$/layers/ssd/ssd.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/resnet.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/transform/spatial_transforms.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/model.py" />
@@ -254,15 +252,12 @@
         <option value="$PROJECT_DIR$/dataset/utils/motion_model.py" />
         <option value="$PROJECT_DIR$/plan/README.MD" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" />
-        <option value="$PROJECT_DIR$/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/dataset/utils/motion_model_quadratic.py" />
         <option value="$PROJECT_DIR$/dataset/MotionModel/__init__.py" />
         <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model.py" />
         <option value="$PROJECT_DIR$/utils/__init__.py" />
         <option value="$PROJECT_DIR$/dataset/sequence_list.txt" />
         <option value="$PROJECT_DIR$/config/config_train_ua_ssm.json" />
-        <option value="$PROJECT_DIR$/dataset/ua.py" />
-        <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
         <option value="$PROJECT_DIR$/dataset/utils/__init__.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/detection.py" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -275,26 +270,31 @@
         <option value="$PROJECT_DIR$/dataset/backup/ua.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/generate_extra_net.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/generate_model.py" />
-        <option value="$PROJECT_DIR$/config/config_test_ua_lab_debug.json" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/__init__.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/extra_net.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/param_init.py" />
         <option value="$PROJECT_DIR$/utils/draw_utils.py" />
-        <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" />
-        <option value="$PROJECT_DIR$/dataset/utils/collate_fn.py" />
-        <option value="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" />
-        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
-        <option value="$PROJECT_DIR$/test_ua.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/loss.py" />
         <option value="$PROJECT_DIR$/layers/loss_param.py" />
-        <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/__init__.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
-        <option value="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" />
         <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/loss.py" />
+        <option value="$PROJECT_DIR$/config/config_test_ua_lab_debug.json" />
+        <option value="$PROJECT_DIR$/test_ua.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" />
+        <option value="$PROJECT_DIR$/config/__init__.py" />
+        <option value="$PROJECT_DIR$/dataset/__init__.py" />
+        <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
+        <option value="$PROJECT_DIR$/config/config_test_ua_sy_debug.json" />
+        <option value="$PROJECT_DIR$/dataset/utils/collate_fn.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/loss_param.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/utils/max_frequency.py" />
+        <option value="$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
+        <option value="$PROJECT_DIR$/dataset/ua.py" />
         <option value="$PROJECT_DIR$/train_ua.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" />
+        <option value="$PROJECT_DIR$/config/config_train_ua_sy_debug.json" />
       </list>
     </option>
   </component>
@@ -341,6 +341,18 @@
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="MotionModel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="layers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -356,6 +368,20 @@
               <item name="ssdt" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="layers" type="462c0819:PsiDirectoryNode" />
+              <item name="ssdt" type="462c0819:PsiDirectoryNode" />
+              <item name="transform" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="layers" type="462c0819:PsiDirectoryNode" />
+              <item name="ssdt" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -365,7 +391,7 @@
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="wra&#9;ACTION&#9;EditorGutterToggleGlobalSoftWraps&#10;wrap&#9;ACTION&#9;EditorToggleUseSoftWraps" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ssd.pytorch" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -379,11 +405,11 @@
       <recent name="$PROJECT_DIR$/test" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ssj\mmot\SSDT\layers\ssdt\models" />
       <recent name="D:\ssj\mmot\SSDT\layers\ssdt" />
       <recent name="D:\ssj\mmot\SSDT\config" />
       <recent name="D:\ssj\mmot\SSDT\dataset\backup" />
       <recent name="D:\ssj\mmot\SSDT\dataset" />
-      <recent name="D:\ssj\mmot\SSDT\images" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -654,7 +680,14 @@
       <option name="project" value="LOCAL" />
       <updated>1537689524109</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change the loss function without considering the p_m.">
+      <created>1537708882582</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1537708882582</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -688,29 +721,29 @@
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="File Transfer" order="15" weight="0.32916266" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.307026" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2153518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21748401" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="SciView" order="5" sideWeight="0.49820143" weight="0.28144988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.33493745" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="152" height="826" id="Documentation" order="6" sideWeight="0.50179857" side_tool="true" weight="0.2880816" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Coverage" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32916266" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -735,7 +768,8 @@
     <MESSAGE value="add another server support" />
     <MESSAGE value="add test in another server" />
     <MESSAGE value="fix the bug in training" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix the bug in training" />
+    <MESSAGE value="change the loss function without considering the p_m." />
+    <option name="LAST_COMMIT_MESSAGE" value="change the loss function without considering the p_m." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -746,14 +780,19 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dataset/ua.py</url>
-          <line>118</line>
-          <option name="timeStamp" value="183" />
+          <url>file://$PROJECT_DIR$/layers/ssdt/ssdt.py</url>
+          <line>102</line>
+          <option name="timeStamp" value="236" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test_ua.py</url>
-          <line>101</line>
-          <option name="timeStamp" value="217" />
+          <url>file://$PROJECT_DIR$/dataset/utils/collate_fn.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="269" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/train_ua.py</url>
+          <line>206</line>
+          <option name="timeStamp" value="334" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -766,11 +805,41 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="230" />
+      <option name="time" value="335" />
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>bool(torch.isinf(loc_t.min()).cpu().data)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>bool(((matched[:, 2:] - matched[:, :2]).min() &lt;= 0).data)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>g_wh &lt;= 0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>len(times)&lt;3</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>sum(mask)==0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>len(times)==0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>sample[0] is None or sample[1] is None or sample[2] is None or sample[3] is None or sample[4] is None</expression-string>
         <language-id>Python</language-id>
@@ -791,87 +860,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>torch.sum(pos) == 0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>bool(torch.isnan(loss_l))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>torch.max(overlaps, dim=1)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>len(targets[idx])==0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>len(parameters) == 0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>frame_index == 83</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/doc/visdom.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="84">
-            <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SECOND">
-          <first_editor relative-caret-position="348">
-            <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="36" />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/sequence_list.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/backup/transforms.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/remote_sources/1641809234/1072730271/torch/nn/parallel/data_parallel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="121" column="32" lean-forward="true" selection-start-line="121" selection-start-column="32" selection-end-line="121" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm2018.1/system/remote_sources/1641809234/1072730271/torch/nn/modules/module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="473" column="30" selection-start-line="473" selection-start-column="30" selection-end-line="473" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config_train_ua_ssm_debug.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
@@ -961,9 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="125" column="47" lean-forward="true" selection-start-line="125" selection-start-column="47" selection-end-line="125" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -992,16 +980,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_test_ua_lab_debug.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1026,40 +1004,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-857">
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharm2018.1/system/remote_sources/723765392/638184946/torch/utils/data/dataloader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1458">
           <caret line="449" column="8" selection-start-line="449" selection-start-column="8" selection-end-line="449" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="354" column="16" lean-forward="true" selection-start-line="354" selection-start-column="16" selection-end-line="354" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/backup/ua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2332">
-          <caret line="56" column="8" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="94" column="25" lean-forward="true" selection-start-line="94" selection-start-column="25" selection-end-line="94" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1083,44 +1031,6 @@
     <entry file="file://$PROJECT_DIR$/train_mot17.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
-          <caret line="120" column="21" selection-start-line="120" selection-start-column="21" selection-end-line="120" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="67" column="34" lean-forward="true" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_test_ua_sy_debug.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -1128,75 +1038,186 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_test_ua_lab_debug.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="14" column="74" selection-start-line="14" selection-start-column="66" selection-end-line="14" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="51" column="36" lean-forward="true" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection_param.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="75" column="41" lean-forward="true" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="101" column="13" lean-forward="true" selection-start-line="101" selection-start-column="13" selection-end-line="101" selection-end-column="13" />
+        <state relative-caret-position="295">
+          <caret line="95" column="36" lean-forward="true" selection-start-line="95" selection-start-column="36" selection-end-line="95" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-515">
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1116" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/backup/ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="43" column="30" lean-forward="true" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/transform/spatial_transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="346" column="42" lean-forward="true" selection-start-line="346" selection-start-column="42" selection-end-line="346" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_test_ua_sy_debug.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="28" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="99" column="59" selection-start-line="99" selection-start-column="59" selection-end-line="99" selection-end-column="59" />
+        <state relative-caret-position="2225">
+          <caret line="101" column="32" selection-start-line="101" selection-start-column="32" selection-end-line="101" selection-end-column="32" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        <state relative-caret-position="558">
+          <caret line="54" column="85" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/max_frequency.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="53" column="44" lean-forward="true" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/MotionModel/motion_model_quadratic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="103" column="45" selection-start-line="103" selection-start-column="45" selection-end-line="103" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="151" column="16" lean-forward="true" selection-start-line="151" selection-start-column="16" selection-end-line="151" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="121" column="19" lean-forward="true" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
+        <state relative-caret-position="62">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="59" column="25" selection-start-line="59" selection-start-column="15" selection-end-line="59" selection-end-column="25" />
+        <state relative-caret-position="271">
+          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#2705#4804#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="94" selection-start-line="94" selection-end-line="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="565">
+          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/train_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="217" column="82" selection-start-line="217" selection-start-column="82" selection-end-line="217" selection-end-column="82" />
+        <state relative-caret-position="417">
+          <caret line="212" column="38" selection-start-line="212" selection-start-column="23" selection-end-line="212" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-507">
+          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
         </state>
       </provider>
     </entry>

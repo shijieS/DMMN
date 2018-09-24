@@ -6,7 +6,7 @@ import math
 from functools import partial
 from config import config
 from .models.prior_box import PriorBox
-from .models.detection import Detect
+from .models.detection_param import Detect
 import os
 from .utils.generate_model import generate_resnext101, generate_extra_model
 from utils import show_feature_map
@@ -54,8 +54,8 @@ class SSDT(nn.Module):
     def forward(self, x, times=None):
         sources = list()
         param = list()
-        p_m = list()
         p_c = list()
+        p_e = list()
 
         # base net
         for conv in self.conv1:
@@ -86,31 +86,32 @@ class SSDT(nn.Module):
         i = 0
         for (x, p, m, c) in zip(sources, self.param_layers, self.p_m_layers, self.p_c_layers):
             show_feature_map(p(x), 'param{}'.format(i))
-            show_feature_map(m(x), 'p_m{}'.format(i))
-            show_feature_map(c(x), 'p_c{}'.format(i))
+            show_feature_map(m(x), 'p_c{}'.format(i))
+            show_feature_map(c(x), 'p_e{}'.format(i))
             param.append(p(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
-            p_m.append(m(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
-            p_c.append(c(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
+            p_c.append(m(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
+            p_e.append(c(x).squeeze_(dim=2).permute(0, 2, 3, 1).contiguous())
 
         param = torch.cat([o.view(o.size(0), -1) for o in param], 1)
-        p_m = torch.cat([o.view(o.size(0), -1) for o in p_m], 1)
         p_c = torch.cat([o.view(o.size(0), -1) for o in p_c], 1)
+        p_e = torch.cat([o.view(o.size(0), -1) for o in p_e], 1)
 
         param = param.view(param.size(0), -1, 4, config["num_motion_model_param"] // 4)
-        p_m = p_m.view(p_m.size(0), -1, 1, self.num_classes).permute(0, 2, 1, 3).contiguous()
-        p_c = p_c.view(p_c.size(0), -1, self.input_frame_num, self.num_classes).permute(0, 2, 1, 3).contiguous()
+        p_c = p_c.view(p_c.size(0), -1, 1, self.num_classes).permute(0, 2, 1, 3).contiguous()
+        p_e = p_e.view(p_e.size(0), -1, self.input_frame_num, 2).permute(0, 2, 1, 3).contiguous()
         if self.phase == "test":
             output = self.detect(
                 param,
-                self.softmax(p_c), #TODO: Should change to p_c
+                self.softmax(p_c),
+                self.softmax(p_e),
                 self.priors,
                 times
             )
         else:
             output = (
                 param,
-                p_m,
                 p_c,
+                p_e,
                 self.priors
             )
         return output

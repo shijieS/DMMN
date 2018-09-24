@@ -93,7 +93,7 @@ def test():
             for i in range(config["frame_max_input_num"]//2):
                 o = out[b, i, :]
                 o = o.view(-1, 5)
-                mask = o[:, 0] > 0.6
+                mask = o[:, 0] > 0.3
                 l_mask = mask.unsqueeze(-1).expand_as(o)
                 boxes += [o[l_mask].view(-1, 5)[:, 1:5].data]
             batch_boxes += [boxes]

@@ -122,20 +122,22 @@ class UATrainDataset(Dataset):
         frame_files = [os.path.join(sequence_frames_folder, "img{0:05}.jpg".format(i+1)) for i in frame_indexes]
 
         total_frame_num = len(frame_indexes)
-        range_1 = range(total_frame_num//2)
-        range_2 = range(total_frame_num//2, total_frame_num)
+        half_frame_num = total_frame_num // 2
+        range_1 = range(half_frame_num)
+        range_2 = range(half_frame_num, total_frame_num)
 
-        times_1 = frame_indexes[range_1] - frame_indexes[range_1[0]]
-        times_2 = frame_indexes[range_2] - frame_indexes[range_2[0]]
+        times_1 = (frame_indexes[range_1] - frame_indexes[range_1[0]])*0.1
+        times_2 = (frame_indexes[range_2] - frame_indexes[range_2[0]])*0.1
 
         temp_data = np.sum(ua_data, axis=2)
-        mask_1 = np.sum(temp_data, axis=0) > 0
-        mask_2 = np.sum(temp_data, axis=0) > 0
+        mask_1 = np.sum(temp_data[:half_frame_num, :] > 0, axis=0) > half_frame_num * config['min_valid_node_rate']
+        mask_2 = np.sum(temp_data[half_frame_num:, :] > 0, axis=0) > half_frame_num * config['min_valid_node_rate']
 
         # reading the first part of item
         frames_1 = [cv2.imread(frame_files[i]) for i in range_1]
         bboxes_1 = ua_data[range_1, :, :][:, mask_1, :]
-        motion_parameters_1, motion_possiblity_1 = MotionModel.get_parameters(
+        # p_e_1 is the possibility of existing
+        motion_parameters_1, p_e_1 = MotionModel.get_parameters(
             bboxes_1, times_1,
             config['min_valid_node_rate'])
 
@@ -143,7 +145,7 @@ class UATrainDataset(Dataset):
         # reading the second part of the item
         frames_2 = [cv2.imread(frame_files[i]) for i in range_2]
         bboxes_2 = ua_data[range_2, :, :][:, mask_2, :]
-        motion_parameters_2, motion_possiblity_2 = MotionModel.get_parameters(
+        motion_parameters_2, p_e_2 = MotionModel.get_parameters(
             bboxes_2, times_2,
             config['min_valid_node_rate'])
 
@@ -151,12 +153,13 @@ class UATrainDataset(Dataset):
         similarity_matrix = np.identity(len(mask_1), dtype=float)[mask_1, :][:, mask_2]
 
         # generating the classification
-        classification_possibility_1 = np.zeros(motion_possiblity_1.shape)
+        # p_c_1 is the track label, because there are only 1 label in UA-DETRAC, so p_c_1 is all 0
+        p_c_1 = np.zeros(p_e_1.shape[1])
 
-        classification_possibility_2 = np.zeros(motion_possiblity_2.shape)
+        p_c_2 = np.zeros(p_e_2.shape[1])
 
-        out = [frames_1, bboxes_1, motion_parameters_1, motion_possiblity_1, times_1, classification_possibility_1,
-               frames_2, bboxes_2, motion_parameters_2, motion_possiblity_2, times_2, classification_possibility_2,
+        out = [frames_1, bboxes_1, motion_parameters_1, p_e_1, times_1, p_c_1,
+               frames_2, bboxes_2, motion_parameters_2, p_e_2, times_2, p_c_2,
                similarity_matrix]
 
         if self.temporal_transform is not None:

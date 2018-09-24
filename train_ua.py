@@ -4,7 +4,7 @@ import torch.optim as optim
 import argparse
 from torch.autograd import Variable
 import torch.utils.data as data
-from dataset.backup.ua import UATrainDataset
+from dataset import UATrainDataset
 from config import config
 from layers.ssdt import SSDT, SSDTLoss
 import time
@@ -178,11 +178,15 @@ def train():
         if args.cuda:
             frames_1 = Variable(frames_1.cuda())
             with torch.no_grad():
-                target_1 = [Variable(i.cuda()) for i in target_1]
+                target_1 = [
+                    [Variable(target[j].cuda()) for j in range(4)]
+                for target in target_1]
                 times_1 = Variable(times_1.cuda())
             frames_2 = Variable(frames_2.cuda())
             with torch.no_grad():
-                target_2 = [Variable(i.cuda()) for i in target_2]
+                target_2 = [
+                    [Variable(target[j].cuda()) for j in range(4)]
+                    for target in target_2]
                 times_2 = Variable(times_2.cuda())
         else:
             pass
@@ -193,11 +197,11 @@ def train():
 
         # loss
         optimizer.zero_grad()
-        loss_l, loss_c = criterion(out,
+        loss_l, loss_c, loss_e = criterion(out,
                                    target_1,
                                    times_1)
 
-        loss = loss_l + loss_c
+        loss = loss_l + loss_c + loss_e
 
         loss.backward()
         optimizer.step()
@@ -216,6 +220,7 @@ def train():
             writer.add_scalar('loss/loss', loss.data.cpu(), iteration)
             writer.add_scalar('loss-location', loss_l.data.cpu(), iteration)
             writer.add_scalar('loss-classification', loss_c.data.cpu(), iteration)
+            writer.add_scalar('loss-exists', loss_e.data.cpu(), iteration)
 
 
         # if args.tensorboard and iteration % add_histogram_iteration == 0:
