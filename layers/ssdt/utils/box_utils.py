@@ -231,6 +231,16 @@ def decode(loc, priors, variances):
     return boxes
 
 
+def decode_with_frames(loc, priors, variances):
+    p = priors.expand_as(loc)
+    boxes = torch.cat((
+        p[:, :, :, :2] + loc[:, :, :, :2] * variances[0] * p[:, :, :, 2:],
+        p[:, :, :, 2:] * torch.exp(loc[:, :, :, 2:] * variances[1])), 3)
+    boxes[:, :, :, :2] -= boxes[:, :, :, 2:] / 2
+    boxes[:, :, :, 2:] += boxes[:, :, :, :2]
+    return boxes
+
+
 def log_sum_exp(x):
     """Utility function for computing log_sum_exp while determining
     This will be used to determine unaveraged confidence loss across
@@ -309,4 +319,70 @@ def nms(boxes, scores, overlap=0.5, top_k=200):
         IoU = inter/union  # store result in iou
         # keep only elements with an IoU <= overlap
         idx = idx[IoU.le(overlap)]
+    return keep, count
+
+
+def nms_with_frames(boxes, scores, overlap=0.5, top_k=200, min_vote=0.8):
+    num_frames = boxes.size(0)
+    min_vote = min_vote * num_frames
+    keep = scores.new(scores.size(0)).zero_().long()
+    if boxes.numel() == 0:
+        return keep
+
+    x1 = boxes[:, :, 0]
+    y1 = boxes[:, :, 1]
+    x2 = boxes[:, :, 2]
+    y2 = boxes[:, :, 3]
+
+    area = torch.mul(x2 - x1, y2 - y1)
+    v, idx = scores.sort(0)  # sort in ascending order
+    idx = idx[-top_k:]  # indices of the top-k largest vals
+
+    xx1 = boxes.new()
+    yy1 = boxes.new()
+    xx2 = boxes.new()
+    yy2 = boxes.new()
+    w = boxes.new()
+    h = boxes.new()
+
+    count = 0
+    while idx.numel() > 0:
+        i = idx[-1]  # index of current largest val
+        keep[count] = i
+        count += 1
+        if idx.size(0) == 1:
+            break
+        idx = idx[:-1]  # remove kept element from view
+
+        # load bboxes of next highest vals
+        torch.index_select(x1, 1, idx, out=xx1)
+        torch.index_select(y1, 1, idx, out=yy1)
+        torch.index_select(x2, 1, idx, out=xx2)
+        torch.index_select(y2, 1, idx, out=yy2)
+
+        # store element-wise max with next highest score
+        for frame_index in range(num_frames):
+            torch.clamp(xx1[frame_index, :], min=x1[frame_index, i], out=xx1[frame_index, :])
+            torch.clamp(yy1[frame_index, :], min=y1[frame_index, i], out=yy1[frame_index, :])
+            torch.clamp(xx2[frame_index, :], max=x2[frame_index, i], out=xx2[frame_index, :])
+            torch.clamp(yy2[frame_index, :], max=y2[frame_index, i], out=yy2[frame_index, :])
+
+        w.resize_as_(xx2)
+        h.resize_as_(yy2)
+        w = xx2 - xx1
+        h = yy2 - yy1
+        # check sizes of xx1 and xx2.. after each iteration
+        w = torch.clamp(w, min=0.0)
+        h = torch.clamp(h, min=0.0)
+        inter = w * h
+        # IoU = i / (area(a) + area(b) - i)
+        rem_areas = torch.index_select(area, 1, idx)  # load remaining areas)
+        union = (rem_areas - inter) + area[:, i, None].expand_as(rem_areas)
+        IoU = inter / union  # store result in iou
+        # keep only elements with an IoU <= overlap
+
+        idx_mask = IoU.gt(overlap).sum(dim=0).gt(min_vote) == 0
+
+        idx = idx[idx_mask]
+
     return keep, count

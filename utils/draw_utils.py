@@ -56,11 +56,48 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
 
     return result
 
+
+def show_bboxes_ssdt(frames, result, is_save=True, iteration=None):
+    if not is_save:
+        return
+    N_batch, _, N_time, W, H = frames.shape
+    all_result_frames = []
+    for n in range(N_batch):
+        result_frames = []
+        for t in range(N_time):
+            frame = frames[n, :, t].cpu().numpy()
+            frame = frame.transpose([1, 2, 0]) + config['pixel_mean']
+            frame = np.clip(frame, 0, 255).astype(np.uint8).copy()
+            bboxes = result[n][3][t, :].cpu().numpy()
+
+            for id, bbox in enumerate(bboxes):
+                if np.any(np.isinf(bbox)):
+                    continue
+                bbox *= config["frame_size"]
+                color = get_color_by_id(id)
+                frame = cv2.rectangle(frame, tuple(bbox[:2].astype(int)), tuple(bbox[2:4].astype(int)), color)
+            result_frames += [frame]
+    all_result_frames += [result_frames]
+
+    if is_save:
+        if not os.path.exists(cfg["image_save_folder"]):
+            os.mkdir(cfg["image_save_folder"])
+        for i in range(len(all_result_frames)):
+            for j in range(len(all_result_frames[i])):
+                image_name = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+'-{}-{}.jpg'.format(i, j)
+                if iteration is not None:
+                    image_name = str(iteration) + '-' + image_name
+
+                cv2.imwrite(os.path.join(cfg["image_save_folder"], image_name), all_result_frames[i][j])
+
+    return all_result_frames
+
+
 def convert2cv2(x):
     frame = x.cpu().data.numpy()
     min_pixel = np.min(frame)
     max_pixel = np.max(frame)
-    frame = ((frame + min_pixel) / (max_pixel - min_pixel) * 255).astype(np.uint8)
+    frame = ((frame + min_pixel) / (max_pixel - min_pixel) * 255 + 1e-4).astype(np.uint8)
     return frame
 
 def show_feature_map(x, prefix="cnn"):

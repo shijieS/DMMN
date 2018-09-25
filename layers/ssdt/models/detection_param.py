@@ -1,6 +1,6 @@
 import torch
 from torch.autograd import Function
-from ..utils.box_utils import decode, nms
+from ..utils.box_utils import decode, decode_with_frames, nms, nms_with_frames
 from config import config
 from dataset.MotionModel import MotionModel
 
@@ -63,19 +63,54 @@ class Detect(Function):
         flt[(rank < self.top_k).unsqueeze(-1).expand_as(flt)].fill_(0)
         return output
 
-    def forward(self, param, p_m, p_c, priors, times):
+    def forward(self, param, p_c, p_e, priors, times):
         # param.view(param.size(0), -1, config["num_motion_model_param"]),  # parameter predicts
-        # # self.softmax(p_m.view(p_m.size(0), -1, 2)),  # motion possibility
-        # self.softmax(p_c.view(p_c.size(0), -1, self.num_classes)),  # classification possiblity
+        # # self.softmax(p_c.view(p_c.size(0), -1, 2)),  # motion possibility
+        # self.softmax(p_e.view(p_e.size(0), -1, self.num_classes)),  # classification possiblity
         # self.priors  # default boxes
 
         loc_datas = MotionModel.get_bbox_by_frames_pytorch(param, times)
 
-        out = []
-        for i in range(times.shape[1]):
-            loc_data = loc_datas[:, i, :]
-            conf_data = p_c[:, i, :]
-            out += [self.forward_one(loc_data, conf_data, priors)]
+        num = loc_datas.size(0)  # batch size
+        num_priors = priors.size(0)
+        num_frames = times.size(1)
+        param_shape_1 = param.size(2)
+        param_shape_2 = param.size(3)
 
-        return torch.stack(out, dim=1)
-        # return output
+        output_boxes = torch.zeros(num, self.num_classes, num_frames, self.top_k, 4)
+        output_p_e = torch.zeros(num, self.num_classes, num_frames, self.top_k)
+        output_params = torch.zeros(num, self.num_classes, self.top_k, param_shape_1, param_shape_2)
+        output_p_c = torch.zeros(num, self.num_classes, self.top_k)
+        conf_preds = p_c.squeeze(1).view(num, num_priors,
+                                    self.num_classes).transpose(2, 1)
+        conf_exists = p_e.transpose(3, 2)
+
+        # Decode predictions into bboxes.
+        decoded_locs = decode_with_frames(loc_datas, priors, self.variance)
+        for i in range(num):
+            # For each class, perform nms
+            conf_scores = conf_preds[i]
+            decoded_boxes = decoded_locs[i, :]
+            for cl in range(1, self.num_classes):
+                c_mask = conf_scores[cl].gt(self.conf_thresh)
+                scores = conf_scores[cl][c_mask]
+                exists = conf_exists[i, :, cl, c_mask]
+
+                if scores.dim() == 0:
+                    continue
+                boxes = decoded_boxes[:, c_mask, :]
+                # idx of highest scoring and non-overlapping boxes per class
+                ids, count = nms_with_frames(boxes, scores, self.nms_thresh, self.top_k)
+
+                output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
+                output_p_e[i, cl, :, :count] = exists[:, ids[:count]]
+                output_params[i, cl, :count, :] = param[i, c_mask, :][ids[:count], :]
+                output_p_c[i, cl, :count] = scores[ids[:count]]
+        output_p_c_1 = output_p_c.contiguous().view(num, -1)
+        _, idx = output_p_c_1.sort(1, descending=True)
+        _, rank = idx.sort(1)
+        mask = rank > self.top_k
+        output_p_c_1.masked_fill_(mask, 0)
+
+        return (output_params, output_p_c, output_p_e, output_boxes)
+        # return output_boxes
