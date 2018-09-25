@@ -322,7 +322,7 @@ def nms(boxes, scores, overlap=0.5, top_k=200):
     return keep, count
 
 
-def nms_with_frames(boxes, scores, overlap=0.5, top_k=200, min_vote=0.8):
+def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, min_vote=0.2):
     num_frames = boxes.size(0)
     min_vote = min_vote * num_frames
     keep = scores.new(scores.size(0)).zero_().long()
@@ -342,6 +342,7 @@ def nms_with_frames(boxes, scores, overlap=0.5, top_k=200, min_vote=0.8):
     yy1 = boxes.new()
     xx2 = boxes.new()
     yy2 = boxes.new()
+    ppe = p_e.new()
     w = boxes.new()
     h = boxes.new()
 
@@ -359,6 +360,7 @@ def nms_with_frames(boxes, scores, overlap=0.5, top_k=200, min_vote=0.8):
         torch.index_select(y1, 1, idx, out=yy1)
         torch.index_select(x2, 1, idx, out=xx2)
         torch.index_select(y2, 1, idx, out=yy2)
+        torch.index_select(p_e, 1, idx, out=ppe)
 
         # store element-wise max with next highest score
         for frame_index in range(num_frames):
@@ -381,7 +383,7 @@ def nms_with_frames(boxes, scores, overlap=0.5, top_k=200, min_vote=0.8):
         IoU = inter / union  # store result in iou
         # keep only elements with an IoU <= overlap
 
-        idx_mask = IoU.gt(overlap).sum(dim=0).gt(min_vote) == 0
+        idx_mask = (IoU.gt(overlap).float() * ppe).sum(dim=0).gt(min_vote) == 0
 
         idx = idx[idx_mask]
 

@@ -12,7 +12,7 @@ class Detect(Function):
     scores and threshold to a top_k number of output predictions for both
     confidence score and locations.
     """
-    def __init__(self, num_classes, bkg_label, top_k, conf_thresh, nms_thresh):
+    def __init__(self, num_classes, bkg_label, top_k, conf_thresh, nms_thresh, track_overlap_threshold):
         self.num_classes = num_classes
         self.background_label = bkg_label
         self.top_k = top_k
@@ -22,6 +22,7 @@ class Detect(Function):
             raise ValueError('nms_threshold must be non negative.')
         self.conf_thresh = conf_thresh
         self.variance = config["frame_work"]['variance']
+        self.track_overlap_threshold = track_overlap_threshold
 
     def forward_one(self, loc_data, conf_data, prior_data):
         """
@@ -100,7 +101,7 @@ class Detect(Function):
                     continue
                 boxes = decoded_boxes[:, c_mask, :]
                 # idx of highest scoring and non-overlapping boxes per class
-                ids, count = nms_with_frames(boxes, scores, self.nms_thresh, self.top_k)
+                ids, count = nms_with_frames(boxes, scores, p_e[i, :, c_mask, cl], self.nms_thresh, self.top_k, self.track_overlap_threshold)
 
                 output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
                 output_p_e[i, cl, :, :count] = exists[:, ids[:count]]

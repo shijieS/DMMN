@@ -97,7 +97,11 @@ def convert2cv2(x):
     frame = x.cpu().data.numpy()
     min_pixel = np.min(frame)
     max_pixel = np.max(frame)
-    frame = ((frame + min_pixel) / (max_pixel - min_pixel) * 255 + 1e-4).astype(np.uint8)
+
+    delta = (max_pixel - min_pixel) * 255
+    if delta == 0:
+        delta += 1e-3
+    frame = ((frame + min_pixel) / delta).astype(np.uint8)
     return frame
 
 def show_feature_map(x, prefix="cnn"):
