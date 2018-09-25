@@ -17,7 +17,7 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.45, True, 0,
+            config["num_classes"], 0.40, True, 0,
             True, 3, 0.5, False, config["cuda"])
 
 
