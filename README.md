@@ -6,10 +6,12 @@ This is an end-to-end network which combines detector and matcher into one singl
 - $N_{tr}$: the track number.
 - $N_{ba}$: the batch number.
 - $N_{ti}$: the selected frame number
+- $N_{pr}$: the number of prior boxes
 - $W, H$: the input network image size (W, H).
 - $W_{re}, H_{re}$: the real input image size.
 - $F_t$: the $t^{th}$ frame
 - $N_{fn}$: the input frame number
+- $f(\cdot)$ is the operation to convert parameter to bboxes
 
 ## Network
 
@@ -18,6 +20,8 @@ The framework of our net is as following:
 ![framework](./images/framework.png)
 
 
+
+## Loss Function
 
 
 
