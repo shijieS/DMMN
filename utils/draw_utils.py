@@ -62,6 +62,7 @@ def show_bboxes_ssdt(frames, result, is_save=True, iteration=None):
         return
     N_batch, _, N_time, W, H = frames.shape
     all_result_frames = []
+    scale = 3
     for n in range(N_batch):
         result_frames = []
         for t in range(N_time):
@@ -69,14 +70,21 @@ def show_bboxes_ssdt(frames, result, is_save=True, iteration=None):
             frame = frame.transpose([1, 2, 0]) + config['pixel_mean']
             frame = np.clip(frame, 0, 255).astype(np.uint8).copy()
             bboxes = result[n][3][t, :].cpu().numpy()
-
-            for id, bbox in enumerate(bboxes):
+            p_c = result[n][1].cpu().numpy()
+            p_e = result[n][2][t, :].cpu().numpy()
+            for id, (bbox, c, e) in enumerate(zip(bboxes, p_c, p_e)):
                 if np.any(np.isinf(bbox)):
                     continue
                 bbox *= config["frame_size"]
                 color = get_color_by_id(id)
-                frame = cv2.rectangle(frame, tuple(bbox[:2].astype(int)), tuple(bbox[2:4].astype(int)), color)
+                title = "({:.2f}, {:.2f})".format(c, e)
+                lt = tuple(bbox[:2].astype(int))
+                br = tuple(bbox[2:4].astype(int))
+                frame = cv2.rectangle(frame, lt, br, color)
+                frame = cv2.putText(frame, title, lt, cv2.FONT_HERSHEY_SIMPLEX, 0.1, (0, 255, 0))
+
             result_frames += [frame]
+
     all_result_frames += [result_frames]
 
     if is_save:

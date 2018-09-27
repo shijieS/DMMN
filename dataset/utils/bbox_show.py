@@ -1,6 +1,34 @@
 import cv2
 
+def show_bboxes_with_alpha(frame, bboxes, color=None, titles=None, time=None):
+    if frame.shape[2] == 1:
+        frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2BGRA)
+    elif frame.shape[2] == 3:
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
+    for bbox in bboxes:
+        frame = cv2.rectangle(frame,
+                      tuple(bbox[:2].astype(int)),
+                      tuple(bbox[-2:].astype(int)),
+                      color,
+                      -1)
+    if time is not None:
+        frame = cv2.putText(frame, str(time), (25, 25), cv2.FONT_HERSHEY_PLAIN, 2, (0, 0, 255, 125), 2)
+
+    if titles is not None:
+        for i, title in enumerate(titles):
+            frame = cv2.putText(frame,
+                        title,
+                        tuple(bboxes[i, :][:2].astype(int)),
+                        cv2.FONT_HERSHEY_PLAIN,
+                        1,
+                        color,
+                        2)
+
+    return frame
+
+
 def show_bboxes(frame, bboxes, color=None, titles=None, alpha=0.3, time=None):
+
     overlay = frame.copy()
     output = frame.copy()
 

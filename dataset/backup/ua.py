@@ -50,7 +50,7 @@ class UATrainDataset(Dataset):
     1. **frames_1** / **frames_2** is the opencv format adjacent frames. Each contains :var:`config['frame_max_input_num']//2` frames.
     2. **bboxes_1** / **bboxes_2** is the bboxes at the first frame.
     3. **motion_parameters_1** / **motion_parameters_1** is the parameters for each bboxes at the first frame.
-    4. **motion_possibility_1** / **motion_possibility_1** is the possibility of having corresponding bboxes at the following frames.
+    4. **p_e_1** / **p_e_1** is the possibility of having corresponding bboxes at the following frames.
     5. **times_1 / times_2 are the 0 based frame indexes.
     5. **similarity_matrix** is the similarity matrix for tracklet in the first frames batch and second frames batch.
     """

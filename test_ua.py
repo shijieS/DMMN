@@ -98,7 +98,7 @@ def test():
             boxes = []
 
             for c in range(1, class_num):
-                mask = output_p_c[b, c, :] > 0.6
+                mask = output_p_c[b, c, :] > 0.5
                 result += [[
                     output_params[b, c, mask, :].data,
                     output_p_c[b, c, mask].data,
