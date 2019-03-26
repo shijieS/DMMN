@@ -111,8 +111,7 @@ class SSDT(nn.Module):
             output = (
                 param,
                 p_c,
-                p_e,
-                self.priors
+                p_e
             )
         return output
 

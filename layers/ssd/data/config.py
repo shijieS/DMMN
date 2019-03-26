@@ -1,4 +1,4 @@
-# config.py
+# configure.py
 import os.path
 
 # gets home dir cross platform

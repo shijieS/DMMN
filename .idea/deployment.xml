@@ -1,50 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="sy-ssdt">
+  <component name="PublishConfigData" autoUpload="Always" serverName="gpu4">
     <serverData>
-      <paths name="Copy of project-level server 'lab-py36'">
+      <paths name="gpu4">
         <serverdata>
           <mappings>
-            <mapping deploy="/media/jianliu/Data/ssj/github/SSDT" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/ssj/Data/github/SSDT" local="$PROJECT_DIR$" />
           </mappings>
-        </serverdata>
-      </paths>
-      <paths name="lab-py35">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="lab-py36">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/media/jianliu/Data/ssj/github/SSDT" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ssm-py35-ngrok">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/ssm/ssj/github/pytorch/SSDT" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ssm@viphk.ngrok.org:10038">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="sy-ssdt">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/shiyuan/ssj/github/SSDT" local="$PROJECT_DIR$" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/weights" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

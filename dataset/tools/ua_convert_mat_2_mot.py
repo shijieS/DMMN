@@ -14,7 +14,7 @@ Usage: ua_convert_mat_2_mot --ua_root="UA-DETRAC root"
 ''')
 
 parser = argparse.ArgumentParser(description='convert all the DETRAC-Train-Annotations-MAT format to mot17 format')
-parser.add_argument('--ua_root', default="/home/shiyuan/ssj/dataset/UATRAC", help='UA-DETRAC data set root directory, such as ua, we will create one directory called gt')
+parser.add_argument('--ua_root', default='/media/ssm/data/dataset/uadetrac/', help='UA-DETRAC data set root directory, such as ua, we will create one directory called gt')
 
 args = parser.parse_args()
 

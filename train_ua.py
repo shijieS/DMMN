@@ -12,7 +12,7 @@ from dataset import collate_fn
 from dataset.utils import Transforms
 from utils import show_bboxes
 import torch.backends.cudnn as cudnn
-
+from tools import ua_check_converted_mot
 
 # torch.multiprocessing.set_start_method('spawn', force=True)
 
@@ -64,7 +64,7 @@ step_values = [i*epoch_size for i in args.lr_decay_per_epoch]
 if args.tensorboard:
     from tensorboardX import SummaryWriter
     if not os.path.exists(args.log_save_folder):
-        os.mkdir(args.log_save_folder)
+        os.makedirs(args.log_save_folder)
     writer = SummaryWriter(log_dir=args.log_save_folder)
 
 # cuda configure
@@ -88,9 +88,9 @@ ssdt_net = SSDT.build("train")
 net = ssdt_net
 
 if args.cuda:
+    net = torch.nn.DataParallel(ssdt_net)
     cudnn.benchmark = True
     net = net.cuda()
-    net = torch.nn.DataParallel(ssdt_net)
 
 if args.resume:
     print("Resuming training, loading {}...".format(args.resume))
@@ -193,13 +193,14 @@ def train():
 
         # forward
         t0 = time.time()
-        out = net(frames_1)
+        param, p_c, p_e = net(frames_1)
 
         # loss
         optimizer.zero_grad()
-        loss_l, loss_c, loss_e = criterion(out,
-                                   target_1,
-                                   times_1)
+        loss_l, loss_c, loss_e = criterion(
+            (param, p_c, p_e, ssdt_net.priors),
+            target_1,
+            times_1)
 
         loss = loss_l + loss_c + loss_e
 

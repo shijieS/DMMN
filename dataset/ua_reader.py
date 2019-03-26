@@ -4,7 +4,7 @@ import torch.utils.data as data
 import cv2
 import numpy as np
 import pandas as pd
-from config.config import config
+from config.configure import config
 import random
 
 """
