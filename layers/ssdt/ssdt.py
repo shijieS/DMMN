@@ -9,7 +9,7 @@ from .models.prior_box import PriorBox
 from .models.detection_param import Detect
 import os
 from .utils.generate_model import generate_resnext101, generate_extra_model
-from utils import show_feature_map
+from draw_utils import show_feature_map
 from .utils import param_init
 
 

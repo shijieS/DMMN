@@ -3,9 +3,8 @@ import torch
 from torchvision import transforms
 import cv2
 import numpy as np
-import types
 from numpy import random
-from ..MotionModel import MotionModel
+from motion_model import MotionModel
 
 cfg = config[config["phase"]]
 
@@ -336,7 +335,7 @@ class ToTensor(object):
         i1 = torch.stack(i1, 0).transpose(1, 0)
         b1 = torch.from_numpy(items[1])
         m1 = torch.from_numpy(items[2])
-        p_e_1 = torch.from_numpy(items[3])
+        p_e_1 = torch.from_numpy(items[3].astype(np.uint8))
         t1 = torch.from_numpy(items[4])
         p_c_1 = torch.from_numpy(items[5])
 
@@ -344,7 +343,7 @@ class ToTensor(object):
         i2 = torch.stack(i2, 0).transpose(1, 0)
         b2 = torch.from_numpy(items[7])
         m2 = torch.from_numpy(items[8])
-        p_e_2 = torch.from_numpy(items[9])
+        p_e_2 = torch.from_numpy(items[9].astype(np.uint8))
         t2 = torch.from_numpy(items[10])
         p_c_2 = torch.from_numpy(items[11])
 
@@ -363,13 +362,13 @@ class Transforms(object):
             ConvertFromInts(),
             # ToAbsoluteCoords(),
             PhotometricDistort(),
-            Expand(self.mean),
+            # Expand(self.mean),
             # RandomSampleCrop(),
             RandomMirror(),
             ToPercentCoords(),
             Resize(self.size),
             SubtractMeans(self.mean),
-            RecalculateParameters(),     # re-calculate the parameters of rectangles
+            # RecalculateParameters(),     # re-calculate the parameters of rectangles
             ToTensor()
         ])
 

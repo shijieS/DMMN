@@ -9,16 +9,15 @@ import torch
 import argparse
 from torch.autograd import Variable
 import torch.utils.data as data
-from dataset.ua import UATrainDataset
+from dataset.ua.ua import UATrainDataset
 from config import config, cfg
 from layers.ssdt import SSDT
 from dataset import collate_fn
 from dataset.utils import TransformsTest
-from utils import show_bboxes, show_bboxes_ssdt
 
 parser = argparse.ArgumentParser(description='Single Shot Detector and Tracker Test')
 parser.add_argument('--version', default='v1', help='current version')
-parser.add_argument('--cuda', default=config['cuda'], type=bool, help='Use cuda to train model')
+parser.add_argument('--cuda', default=config['cuda'], type=bool, help='Use cuda to train motion_model')
 parser.add_argument('--resume', default=cfg['resume'], type=str, help='Resume from checkpoint')
 
 args = parser.parse_args()
@@ -107,7 +106,7 @@ def test():
                     c
                 ]]
 
-        show_bboxes_ssdt(frames_1, result, config['test']['debug_save_image'], index)
+        # show_bboxes_ssdt(frames_1, result, config['test']['debug_save_image'], index)
         a = 0
 
 

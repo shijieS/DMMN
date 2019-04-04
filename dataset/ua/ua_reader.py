@@ -4,7 +4,7 @@ import torch.utils.data as data
 import cv2
 import numpy as np
 import pandas as pd
-from config.configure import config
+from config import config
 import random
 
 """
@@ -386,4 +386,5 @@ def test_dataset():
         cv2.imshow('res', image)
         cv2.waitKey(0)
 
-# test_dataset()
+if __name__ == "__main__":
+    test_dataset()

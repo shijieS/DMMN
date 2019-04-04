@@ -93,7 +93,7 @@ class _Transition(nn.Sequential):
 
 
 class DenseNet(nn.Module):
-    """Densenet-BC model class
+    """Densenet-BC motion_model class
     Args:
         growth_rate (int) - how many filters to add each layer (k in paper)
         block_config (list of 4 ints) - how many layers in each pooling block

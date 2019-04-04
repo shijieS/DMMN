@@ -10,7 +10,7 @@ from layers.ssdt import SSDT, SSDTLoss
 import time
 from dataset import collate_fn
 from dataset.utils import Transforms
-from utils import show_bboxes
+from draw_utils import show_bboxes
 import torch.backends.cudnn as cudnn
 from tools import ua_check_converted_mot
 
@@ -31,7 +31,7 @@ parser.add_argument('--num_workers', default=cfg['num_workers'], type=int, help=
 parser.add_argument('--start_epoch', default=cfg['start_epoch'], type=int, help='end of iteration')
 parser.add_argument('--end_epoch', default=cfg['end_epoch'], type=int, help='begin of iteration')
 parser.add_argument('--lr_decay_per_epoch', default=cfg['lr_decay_per_epoch'], type=list, help='learning rate decay')
-parser.add_argument('--cuda', default=config['cuda'], type=str2bool, help='Use cuda to train model')
+parser.add_argument('--cuda', default=config['cuda'], type=str2bool, help='Use cuda to train motion_model')
 parser.add_argument('--lr', '--learning-rate', default=cfg['learning_rate'], type=float, help='initial learning rate')
 parser.add_argument('--momentum', default=cfg['momentum'], type=float, help='momentum')
 parser.add_argument('--weight_decay', default=cfg['weight_decay'], type=float, help='Weight decay for SGD')
@@ -44,7 +44,7 @@ parser.add_argument('--log_save_folder', default=cfg['log_save_folder'], help='L
 parser.add_argument('--weights_save_folder', default=cfg['weights_save_folder'], help='Location to save network weights')
 parser.add_argument('--save_weight_per_epoch', default=cfg['save_weight_per_epoch'], help='Every n epoch to save weights')
 parser.add_argument('--dataset_path', default=config['dataset_path'], help='ua dataset root folder')
-parser.add_argument('--run_mode', default=config["train"]["run_mode"], help="ua run mode, 'debug' mode will save print more message, otherwise, you should select 'run' model")
+parser.add_argument('--run_mode', default=config["train"]["run_mode"], help="ua run mode, 'debug' mode will save print more message, otherwise, you should select 'run' motion_model")
 
 args = parser.parse_args()
 

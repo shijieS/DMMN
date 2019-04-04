@@ -157,7 +157,7 @@ def get_fine_tuning_parameters(model, ft_begin_index):
     return parameters
 
 def resnet50(**kwargs):
-    """Constructs a ResNet-50 model.
+    """Constructs a ResNet-50 motion_model.
     """
     model = WideResNet(WideBottleneck, [3, 4, 6, 3], **kwargs)
     return model

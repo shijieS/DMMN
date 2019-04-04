@@ -9,7 +9,7 @@ except:
     warnings.warn('''
     the python code for non_maximum_suppression is about 2x slow
     It is strongly recommended to build cython code: 
-    `cd model/utils/nms/; python3 build.py build_ext --inplace''')
+    `cd motion_model/draw_utils/nms/; python3 build.py build_ext --inplace''')
     from ._nms_gpu_post_py import _nms_gpu_post
 
 

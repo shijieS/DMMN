@@ -1,9 +1,6 @@
-import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.autograd import Variable
 from config import config
-from dataset.MotionModel import MotionModel
+from motion_model import MotionModel
 from .multibox_loss_param import MultiBoxLoss
 
 

@@ -2,7 +2,7 @@ import torch
 from torch.autograd import Function
 from ..utils.box_utils import decode, decode_with_frames, nms, nms_with_frames
 from config import config
-from dataset.MotionModel import MotionModel
+from motion_model import MotionModel
 
 
 

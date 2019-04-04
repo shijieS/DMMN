@@ -2,15 +2,15 @@ import numpy as np
 
 
 class MotionModel:
-    """ Motion model focuses on the change of :math:`(x_c, y_c, w, h)` with :math:`t`.
-    In this model, we build a function :math:`f(t)`, for example:
+    """ Motion motion_model focuses on the change of :math:`(x_c, y_c, w, h)` with :math:`t`.
+    In this motion_model, we build a function :math:`f(t)`, for example:
 
     * :math:`x_c(t) = a_0 t^2 + a_1 t + a_2`
     * :math:`y_c(t) = b_0 t^2 + b_1 t + b_2`
     * :math:`w_c(t) = c_0 t^2 + c_1 t + c_2`
     * :math:`h_c(t) = d_0 t^2 + d_1 t + d_3`
 
-    There are 12 parameters to build a model which means **parameter_num = 12**.
+    There are 12 parameters to build a motion_model which means **parameter_num = 12**.
     """
 
     def __init__(self, parameter_num):
@@ -41,6 +41,7 @@ class MotionModel:
         :param times: multiple times
         :return: a list of bbox
         """
+        pass
 
     @staticmethod
     def get_invalid_params():

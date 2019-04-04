@@ -158,19 +158,19 @@ def get_fine_tuning_parameters(model, ft_begin_index):
     return parameters
 
 def resnet50(**kwargs):
-    """Constructs a ResNet-50 model.
+    """Constructs a ResNet-50 motion_model.
     """
     model = ResNeXt(ResNeXtBottleneck, [3, 4, 6, 3], **kwargs)
     return model
 
 def resnet101(**kwargs):
-    """Constructs a ResNet-101 model.
+    """Constructs a ResNet-101 motion_model.
     """
     model = ResNeXt(ResNeXtBottleneck, [3, 4, 23, 3], **kwargs)
     return model
 
 def resnet152(**kwargs):
-    """Constructs a ResNet-101 model.
+    """Constructs a ResNet-101 motion_model.
     """
     model = ResNeXt(ResNeXtBottleneck, [3, 8, 36, 3], **kwargs)
     return model
