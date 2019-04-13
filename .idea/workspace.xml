@@ -43,8 +43,9 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="483">
-                <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+              <first_editor relative-caret-position="225">
+                <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+                <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
               </first_editor>
               <second_editor />
             </state>
@@ -453,7 +454,7 @@
       <workItem from="1554261888890" duration="7735000" />
       <workItem from="1554354083092" duration="1573000" />
       <workItem from="1554373383215" duration="18000" />
-      <workItem from="1555064902496" duration="33761000" />
+      <workItem from="1555064902496" duration="34015000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -626,7 +627,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90166000" />
+    <option name="totallyTimeSpent" value="90420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
@@ -1140,6 +1141,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/images/progress/lost_objects.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_ua.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -1150,14 +1154,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/images/progress/lost_objects.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="483">
-            <caret line="36" column="43" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+          <first_editor relative-caret-position="225">
+            <caret line="8" column="48" lean-forward="true" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+            <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
           </first_editor>
           <second_editor />
         </state>

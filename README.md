@@ -2,31 +2,12 @@ An End-To-End Detector Matcher
 
 This is an end-to-end network which combines detector and matcher into one single network. Our target is to design an **End-to-End network** for detection and tracking.
 
-## Protocol
-- bbox: the format is *(left, top, right, bottom)*
-- $N_{tr}$: the track number.
-- $N_{ba}$: the batch number.
-- $N_{ti}$: the selected frame number
-- $N_{pr}$: the number of prior boxes
-- $W, H$: the input network image size (W, H).
-- $W_{re}, H_{re}$: the real input image size.
-- $F_t$: the $t^{th}$ frame
-- $N_{fn}$: the input frame number
-- $f(\cdot)$ is the operation to convert parameter to bboxes
-
-## Network
-
-The framework of our net is as following:
-
-![framework](./images/framework.png)
-
-## Loss Function
-
 ## RoadMap
 
 | Date   | Event                                |
 | ------ | ------------------------------       |
-| 201904 | Fix the Bugs of the network          |
+| 201905 | Can Train on A-MOT dataset           |
+| 201904 | Can Train On Whole UA-DETRAC dataset |
 | 201904 | Recording Five Cities                |
 | 201903 | Start A Plan of Create New Dataset   |
 | 201902 | Optimized this network               |
@@ -60,11 +41,25 @@ The framework of our net is as following:
 | 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   2019/04/13 :boom:   |
 
 
+## Protocol
+- bbox: the format is *(left, top, right, bottom)*
+- $N_{tr}$: the track number.
+- $N_{ba}$: the batch number.
+- $N_{ti}$: the selected frame number
+- $N_{pr}$: the number of prior boxes
+- $W, H$: the input network image size (W, H).
+- $W_{re}, H_{re}$: the real input image size.
+- $F_t$: the $t^{th}$ frame
+- $N_{fn}$: the input frame number
+- $f(\cdot)$ is the operation to convert parameter to bboxes
 
+## Network
 
+The framework of our net is as following:
 
+![framework](./images/framework.png)
 
-
+## Loss Function
 
 ## Framework
 
