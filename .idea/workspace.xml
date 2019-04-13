@@ -44,7 +44,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="350">
-                <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+                <caret line="38" column="165" selection-start-line="38" selection-start-column="165" selection-end-line="38" selection-end-column="165" />
               </first_editor>
               <second_editor />
             </state>
@@ -234,6 +234,17 @@
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="progress" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -453,7 +464,7 @@
       <workItem from="1554261888890" duration="7735000" />
       <workItem from="1554354083092" duration="1573000" />
       <workItem from="1554373383215" duration="18000" />
-      <workItem from="1555064902496" duration="34788000" />
+      <workItem from="1555064902496" duration="34947000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -626,13 +637,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91193000" />
+    <option name="totallyTimeSpent" value="91352000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15917915" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15917915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -646,7 +657,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23982398" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23982398" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.3091309" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
@@ -1157,7 +1168,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="350">
-            <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <caret line="38" column="165" selection-start-line="38" selection-start-column="165" selection-end-line="38" selection-end-column="165" />
           </first_editor>
           <second_editor />
         </state>
