@@ -43,12 +43,12 @@ class DrawBoxes:
         # put text
         if font_color is None:
             font_color = color
-        cv2.putText(frame, text, (l, t), cv2.FONT_HERSHEY_SIMPLEX, 1, font_color)
+        cv2.putText(frame, text, (l, t), cv2.FONT_HERSHEY_SIMPLEX, 0.3, font_color)
 
         return frame
 
     @staticmethod
-    def cv_draw_mult_boxes(frame, boxes, colors=None):
+    def cv_draw_mult_boxes(frame, boxes, colors=None, texts=None):
         """
         Draw multiple boxes on one frame
         :param frame: the frame to be drawn
@@ -60,13 +60,16 @@ class DrawBoxes:
         if colors is None:
             colors = [DrawBoxes.get_random_color(i) for i in range(boxes_len)]
 
-        for box, color in zip(boxes, colors):
-            frame = DrawBoxes.cv_draw_one_box(frame, box, color)
+        if texts is None:
+            texts = ["" for _ in range(boxes_len)]
+
+        for box, color, text in zip(boxes, colors, texts):
+            frame = DrawBoxes.cv_draw_one_box(frame, box, color, text=text)
 
         return frame
 
     @staticmethod
-    def cv_draw_mult_boxes_with_track(frame, boxes, index, colors=None):
+    def cv_draw_mult_boxes_with_track(frame, boxes, index, colors=None, texts=None):
         """
         Draw multiple boxes with its track
         :param frame: the frame to be drawn
@@ -79,13 +82,17 @@ class DrawBoxes:
         if colors is None:
             colors = DrawBoxes.get_random_colors(boxes_num)
 
+        if colors is None:
+            texts = ["" for _ in range(boxes_num)]
+
         # draw frame's boxes at the specified index
-        DrawBoxes.cv_draw_mult_boxes(frame, boxes[index, :, :], colors)
+        DrawBoxes.cv_draw_mult_boxes(frame, boxes[index, :, :], colors, texts)
 
         # draw tracks
         for box_index in range(boxes_num):
             color = colors[box_index]
             DrawBoxes.cv_draw_track_(frame, boxes[:, box_index, :], color)
+
 
     @staticmethod
     def cv_draw_one_box_center(frame, box, color=None, radius=1, thickness=1):

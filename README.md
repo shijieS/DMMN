@@ -1,4 +1,4 @@
-# An End-To-End Detector Matcher
+# An End-To-End Tracker
 
 This is an end-to-end network which combines detector and matcher into one single network. Our target is to design an **End-to-End network** for detection and tracking.
 
@@ -19,8 +19,6 @@ This is an end-to-end network which combines detector and matcher into one singl
 | 201807 | Start this idea                      |
 
 
-
-
 ## Issues
 |   Symbol  | Meanings   |
 | :-------: | :--------: |
@@ -35,7 +33,7 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
-| 2019/04/13  | Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> |  2019/04/13 :boom:     |
+| 2019/04/13  | Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> |  :ballot_box_with_check: set confidence and existing threshold<br> :boom:20​19/04/13 process  |
 | 2019/04/13  | NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> | 2019/04/13 :boom:  |
 | 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   2019/04/13 :boom:   |
 | 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   2019/04/13 :boom:   |

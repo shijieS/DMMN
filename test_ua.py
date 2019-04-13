@@ -99,7 +99,7 @@ def test():
             boxes = []
 
             for c in range(1, class_num):
-                mask = output_p_c[b, c, :] > 0.5
+                mask = output_p_c[b, c, :] > 0.45
                 result += [[
                     output_params[b, c, mask, :].data,
                     output_p_c[b, c, mask].data,
@@ -120,17 +120,26 @@ def test():
             for i in range(frames_1.shape[2]):
                 frame = TypeConverter.image_tensor_2_cv_gpu(frames_1[0, :, i, :, :])
                 all_bboxes = TypeConverter.tensor_2_numpy_gpu(all_bboxes_)
-                w, h, c = frame.shape
+                frame = cv2.resize(frame, (1920, 960))
+                h, w, c = frame.shape
                 all_bboxes[:, :, [0, 2]] *= w
                 all_bboxes[:, :, [1, 3]] *= h
 
-                DrawBoxes.cv_draw_mult_boxes_with_track(frame, all_bboxes, i, None)
+                colors = []
+                texts = []
+                for c, e in zip(all_p_c, all_p_e[i, :]):
+                    if e > 0.3:
+                        colors += [(0, 0, 255)]
+                    else:
+                        colors += [(255, 255, 255)]
+                    texts += ["{:.2}, {:.2}".format(c, e)]
+                DrawBoxes.cv_draw_mult_boxes_with_track(frame, all_bboxes, i, colors, texts)
 
                 if cfg['debug_save_image']:
                     if not os.path.exists(cfg["image_save_folder"]):
                         os.makedirs(cfg["image_save_folder"])
                     cv2.imshow("result", frame)
-                    cv2.waitKey(40)
+                    cv2.waitKey()
                     cv2.imwrite(os.path.join(cfg["image_save_folder"], "{}-{}-{}.png".format(index, result.index(r), i)), frame)
 
 

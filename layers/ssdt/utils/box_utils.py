@@ -337,7 +337,7 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
 
     area = torch.mul(x2 - x1, y2 - y1)
     v, idx = (scores*((p_e > exist_thresh).sum(dim=0) > 8).float()).sort(0)  # sort in ascending order
-    v, idx = scores.float().sort(0)  # sort in ascending order
+    # v, idx = scores.float().sort(0)  # sort in ascending order
     # v, idx = (num_frames*scores+p_e.sum(dim=0).float()).sort(0)  # sort in ascending order
     idx = idx[-top_k:]  # indices of the top-k largest vals
 
