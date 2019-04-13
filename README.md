@@ -22,6 +22,24 @@ The framework of our net is as following:
 
 ## Loss Function
 
+## RoadMap
+
+| Date   | Event                                |
+| ------ | ------------------------------       |
+| 201904 | Fix the Bugs of the network          |
+| 201904 | Recording Five Cities                |
+| 201903 | Start A Plan of Create New Dataset   |
+| 201902 | Optimized this network               |
+| 201812 | Can Do the Basic Detection           |
+| 201811 | Design the Loss Fucntion             |
+| 201810 | Try the UA-DETRAC dataset            |
+| 201809 | Re-design the input and output       |
+| 201808 | Design the whole network             |
+| 201807 | Start this idea                      |
+
+
+
+
 ## Issues
 |   Symbol  | Meanings  |
 | :-------: | :--------:|
@@ -39,7 +57,7 @@ The framework of our net is as following:
 | 2019/04/13  | NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> | 2019/04/13 :boom:  |
 | 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   2019/04/13 :boom:    |
 | 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   2019/04/13 :boom:   |
-| 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   2019/04/13 :boom:   | 
+| 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   2019/04/13 :boom:   |
 
 
 
