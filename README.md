@@ -22,15 +22,16 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 
 ## Issues
-|   Symbol  | Meanings  |
-| :-------: | :--------:|
-| :hourglass_flowing_sand:         | Plan to solve         |
-| :repeat:  | try to solve it again     |
-| :no_entry:| abandoned issue           |
-| :ballot_box_with_check: | solved      |
-| :black_square_button:   | unsolved    |
-| :boom:                  | focusing    |
-| :exclamation:           | important   |
+|   Symbol  | Meanings   |
+| :-------: | :--------: |
+| :hourglass_flowing_sand:      | Plan to solve         |
+| :repeat:                      | try to solve it again |
+| :no_entry:                    | abandoned issue       |
+| :ballot_box_with_check:       | solved                |
+| :black_square_button:         | unsolved              |
+| :negative_squared_cross_mark: | cannot get solved     |
+| :boom:                        | focusing              |
+| :exclamation:                 | important             |
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
