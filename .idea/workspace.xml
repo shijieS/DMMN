@@ -43,8 +43,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="375">
-                <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+              <first_editor relative-caret-position="350">
+                <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               </first_editor>
               <second_editor />
             </state>
@@ -453,7 +453,7 @@
       <workItem from="1554261888890" duration="7735000" />
       <workItem from="1554354083092" duration="1573000" />
       <workItem from="1554373383215" duration="18000" />
-      <workItem from="1555064902496" duration="34638000" />
+      <workItem from="1555064902496" duration="34788000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -626,7 +626,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91043000" />
+    <option name="totallyTimeSpent" value="91193000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
@@ -1156,8 +1156,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="375">
-            <caret line="33" column="57" lean-forward="true" selection-start-line="33" selection-start-column="57" selection-end-line="33" selection-end-column="57" />
+          <first_editor relative-caret-position="350">
+            <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           </first_editor>
           <second_editor />
         </state>
