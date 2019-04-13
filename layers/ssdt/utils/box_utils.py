@@ -322,9 +322,10 @@ def nms(boxes, scores, overlap=0.5, top_k=200):
     return keep, count
 
 
-def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, min_vote=0.2):
+def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3):
+
     num_frames = boxes.size(0)
-    min_vote = min_vote * num_frames
+
     keep = scores.new(scores.size(0)).zero_().long()
     if boxes.numel() == 0:
         return keep
@@ -335,7 +336,9 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, min_vote=0.2):
     y2 = boxes[:, :, 3]
 
     area = torch.mul(x2 - x1, y2 - y1)
-    v, idx = scores.sort(0)  # sort in ascending order
+    v, idx = (scores*((p_e > exist_thresh).sum(dim=0) > 8).float()).sort(0)  # sort in ascending order
+    v, idx = scores.float().sort(0)  # sort in ascending order
+    # v, idx = (num_frames*scores+p_e.sum(dim=0).float()).sort(0)  # sort in ascending order
     idx = idx[-top_k:]  # indices of the top-k largest vals
 
     xx1 = boxes.new()
@@ -362,8 +365,14 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, min_vote=0.2):
         torch.index_select(y2, 1, idx, out=yy2)
         torch.index_select(p_e, 1, idx, out=ppe)
 
+        other_exist_mask = ppe > exist_thresh
+        current_exist_mask = p_e[:, i] > exist_thresh
+        join_exist_mask = current_exist_mask[:, None].expand_as(other_exist_mask).__and__(other_exist_mask)
+
         # store element-wise max with next highest score
         for frame_index in range(num_frames):
+            # if current_exist_mask[frame_index]:
+            #     continue
             torch.clamp(xx1[frame_index, :], min=x1[frame_index, i], out=xx1[frame_index, :])
             torch.clamp(yy1[frame_index, :], min=y1[frame_index, i], out=yy1[frame_index, :])
             torch.clamp(xx2[frame_index, :], max=x2[frame_index, i], out=xx2[frame_index, :])
@@ -383,7 +392,10 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, min_vote=0.2):
         IoU = inter / union  # store result in iou
         # keep only elements with an IoU <= overlap
 
-        idx_mask = (IoU.gt(overlap).float() * ppe).sum(dim=0).gt(min_vote) == 0
+        # idx_mask = (IoU.gt(overlap).float() * ppe).sum(dim=0).gt(min_vote) == 0
+        IoU[1 - join_exist_mask] = 0
+        idx_mask = (IoU.sum(dim=0) / join_exist_mask.float().sum(dim=0)) <= overlap
+        # idx_mask = IoU.max(dim=0)[0] <= overlap
 
         idx = idx[idx_mask]
 

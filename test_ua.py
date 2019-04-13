@@ -14,6 +14,9 @@ from config import config, cfg
 from layers.ssdt import SSDT
 from dataset import collate_fn
 from dataset.utils import TransformsTest
+from draw_utils.Converter import TypeConverter
+from draw_utils.DrawBoxes import DrawBoxes
+import cv2
 
 parser = argparse.ArgumentParser(description='Single Shot Detector and Tracker Test')
 parser.add_argument('--version', default='v1', help='current version')
@@ -64,9 +67,8 @@ def test():
                                   collate_fn=collate_fn,
                                   pin_memory=False)
 
+    batch_iterator = iter(data_loader)
     for index in range(len(data_loader)):
-        batch_iterator = iter(data_loader)
-
         frames_1, target_1, times_1, \
         frames_2, target_2, times_2, \
         similarity_matrix = \
@@ -97,7 +99,7 @@ def test():
             boxes = []
 
             for c in range(1, class_num):
-                mask = output_p_c[b, c, :] > 0.3
+                mask = output_p_c[b, c, :] > 0.5
                 result += [[
                     output_params[b, c, mask, :].data,
                     output_p_c[b, c, mask].data,
@@ -106,8 +108,30 @@ def test():
                     c
                 ]]
 
-        # show_bboxes_ssdt(frames_1, result, config['test']['debug_save_image'], index)
-        a = 0
+        # draw something on the image
+        for r in result:
+            all_motion_parameters = r[0]
+            all_p_c = r[1]
+            all_p_e = r[2]
+            all_bboxes_ = r[3]
+            all_c = r[4]
+
+            # draw boxes
+            for i in range(frames_1.shape[2]):
+                frame = TypeConverter.image_tensor_2_cv_gpu(frames_1[0, :, i, :, :])
+                all_bboxes = TypeConverter.tensor_2_numpy_gpu(all_bboxes_)
+                w, h, c = frame.shape
+                all_bboxes[:, :, [0, 2]] *= w
+                all_bboxes[:, :, [1, 3]] *= h
+
+                DrawBoxes.cv_draw_mult_boxes_with_track(frame, all_bboxes, i, None)
+
+                if cfg['debug_save_image']:
+                    if not os.path.exists(cfg["image_save_folder"]):
+                        os.makedirs(cfg["image_save_folder"])
+                    cv2.imshow("result", frame)
+                    cv2.waitKey(40)
+                    cv2.imwrite(os.path.join(cfg["image_save_folder"], "{}-{}-{}.png".format(index, result.index(r), i)), frame)
 
 
 if __name__ == '__main__':

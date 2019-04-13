@@ -87,8 +87,6 @@ class DrawBoxes:
             color = colors[box_index]
             DrawBoxes.cv_draw_track_(frame, boxes[:, box_index, :], color)
 
-
-
     @staticmethod
     def cv_draw_one_box_center(frame, box, color=None, radius=1, thickness=1):
         """
@@ -113,6 +111,7 @@ class DrawBoxes:
             colors = DrawBoxes.get_random_colors(len(boxes))
         for b, c in zip(boxes, colors):
             DrawBoxes.cv_draw_one_box_center(frame, b, c, radius, thickness)
+
 
     @staticmethod
     def cv_draw_track_(frame, boxes, color=None, thickness=1):

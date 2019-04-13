@@ -114,7 +114,7 @@ def convert2cv2(x):
     return frame
 
 def show_feature_map(x, prefix="cnn"):
-    if not cfg['debug_save_image']:
+    if not cfg['debug_save_feature_map']:
         return
 
     batch_num, feature_num, time_num, w, h = x.shape
@@ -152,9 +152,3 @@ def get_frame_batch(all_frames, gap=3):
             start_h += (gap + max_H)
             start_w = 0
     return result_frame
-
-
-
-
-
-

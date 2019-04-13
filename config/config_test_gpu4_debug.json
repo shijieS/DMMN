@@ -1,7 +1,7 @@
 {
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/ssm/data/dataset/uadetrac/",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 32,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -16,7 +16,7 @@
   "image_width": 960,
   "image_height": 540,
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/ssdt-log-0313/weights/ssdt11250.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/ssdt-log-0402/weights/ssdt11250.pth",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
@@ -36,7 +36,8 @@
     "send_images": true,
     "log_iters": true,
     "run_mode": "debug",
-    "debug_save_image": false,
+    "debug_save_image": true,
+    "debug_save_feature_map": false,
     "contrast_lower": 0.5,
     "contrast_upper": 1.5,
     "saturation_lower": 0.5,
