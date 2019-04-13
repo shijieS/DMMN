@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/draw_utils/Converter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/progress/lost_objects.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_utils/DrawBoxes.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_utils/DrawBoxes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/draw_utils/draw_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/draw_utils/draw_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ua.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,14 +29,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+            <state relative-caret-position="42">
+              <caret line="93" column="24" lean-forward="true" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
               <folding>
                 <element signature="e#145#154#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="445">
+                <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -55,15 +61,6 @@
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/layers/ssdt/models/prior_box.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="37" column="36" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -98,15 +95,6 @@
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-671355304/torch/_C/_VariableFunctions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="4308" column="8" selection-start-line="4308" selection-start-column="8" selection-end-line="4308" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -223,6 +211,7 @@
         <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
         <option value="$PROJECT_DIR$/test_ua.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -261,15 +250,16 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/progress" />
+      <recent name="$PROJECT_DIR$/dataset" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/config" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/dataset/ua" />
       <recent name="$PROJECT_DIR$/dataset/mot17" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dataset" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/config" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -465,7 +455,7 @@
       <workItem from="1554261888890" duration="7735000" />
       <workItem from="1554354083092" duration="1573000" />
       <workItem from="1554373383215" duration="18000" />
-      <workItem from="1555064902496" duration="27690000" />
+      <workItem from="1555064902496" duration="32450000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -638,13 +628,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84095000" />
+    <option name="totallyTimeSpent" value="88855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23793676" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15917915" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -658,8 +648,8 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.23982398" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" visible="true" weight="0.3091309" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23982398" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.3091309" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32937366" />
       <window_info anchor="bottom" id="File Transfer" order="15" weight="0.3285958" />
@@ -758,19 +748,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-241">
-          <caret line="30" column="30" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/framework.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/images/network_output.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -1167,11 +1144,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+        <state relative-caret-position="42">
+          <caret line="93" column="24" lean-forward="true" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
           <folding>
             <element signature="e#145#154#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/progress/lost_objects.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="445">
+            <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
