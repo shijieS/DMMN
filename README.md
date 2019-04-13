@@ -33,9 +33,13 @@ The framework of our net is as following:
 | :boom:                  | focusing    |
 | :exclamation:           | important   |
 
-|   Date   |                            Issues                            | State |
-| :------: | :----------------------------------------------------------: | :---: |
-| 20190413 | 1. Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> 2. NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> 3. Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png)<br> 4. Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png)<br> 5. Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png)<br> |       |
+|   SartDate|                            Content                            | State |
+| :------:  | :----------------------------------------------------------: | :---: |
+| 2019/04/13  | Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> |  2019/04/13 :boom:     |
+| 2019/04/13  | NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> | 2019/04/13 :boom:  |
+| 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   2019/04/13 :boom:    |
+| 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   2019/04/13 :boom:   |
+| 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   2019/04/13 :boom:   | 
 
 
 
