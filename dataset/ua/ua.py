@@ -26,16 +26,24 @@ class SingleVideoParser:
             self.ua_data[row[0].astype(int), row[1].astype(int), :] = row[2:6] / image_wh
 
         select_size = config['frame_max_input_num']*config['frame_sample_scale']
-        parameters = [self.get_boxes_parameters(i, select_size) for i in range(self.max_frame)]
+        parameters = []
+        for i in trange(self.max_frame):
+            parameters += [self.get_boxes_parameters(i, select_size)]
+        # parameters = [self.get_boxes_parameters(i, select_size) for i in range(self.max_frame)]
 
         self.parameters = np.stack(parameters, axis=0)
+        # valid_parameters_mask = np.abs(self.parameters).sum(axis=3).sum(axis=2) > 0
+        # self.possibilities = np.logical_and(np.sum(np.abs(self.ua_data), axis=2) > 0, valid_parameters_mask)
+        # valid_parameters_mask = np.abs(self.parameters).sum(axis=3).sum(axis=2) > 0
         self.possibilities = np.sum(np.abs(self.ua_data), axis=2) > 0
 
     @jit
     def get_boxes_parameters(self, index, select_size):
-        index_start = int(max(0, index - select_size*config["parameter_frame_scale"]))
-        index_end = int(min(index_start + select_size * (1 + config["parameter_frame_scale"]*2), self.max_frame))
+        # index_start = int(max(0, index - select_size*config["parameter_frame_scale"]))
+        # index_end = int(min(index_start + select_size * (1 + config["parameter_frame_scale"]*2), self.max_frame))
 
+        index_start = index
+        index_end = int(min(index_start + select_size, self.max_frame))
         boxes = self.ua_data[index_start:index_end, :, :]
         times = np.arange(index_start, index_end) - index
         ret = MotionModel.get_parameters(boxes, times/config["video_fps"], config['min_valid_node_rate'] / 3.0)
@@ -43,7 +51,7 @@ class SingleVideoParser:
 
 
     def __len__(self):
-        return self.max_frame - config['frame_max_input_num']*config['frame_sample_scale']
+        return self.max_frame -  2*config['frame_max_input_num']*config['frame_sample_scale']
 
     def __getitem__(self, item):
         r = np.arange(item, item + config['frame_max_input_num']*config['frame_sample_scale'])
@@ -221,12 +229,16 @@ class UATrainDataset(Dataset):
         motion_bboxes_1 = np.stack([
             MotionModel(motion_parameters_1[i, :]).get_bbox_by_frames(times_1)
             for i in range(motion_parameters_1.shape[0])], axis=1)
+        # clean the motion parameters
+        p_e_1[np.sum(np.abs(motion_bboxes_1), axis=2) == 0] = False
         zero_mask_1 = np.repeat((np.sum(np.abs(bboxes_1), axis=2) == 0)[:, :, None], repeats=4, axis=2)
         bboxes_1[zero_mask_1] = motion_bboxes_1[zero_mask_1]
 
         motion_bboxes_2 = np.stack([
             MotionModel(motion_parameters_2[i, :]).get_bbox_by_frames(times_2)
             for i in range(motion_parameters_2.shape[0])], axis=1)
+        # clean the motion parameters
+        p_e_1[np.sum(np.abs(motion_bboxes_1), axis=2) == 0] = False
         zero_mask_2 = np.repeat((np.sum(np.abs(bboxes_2), axis=2) == 0)[:, :, None], repeats=4, axis=2)
         bboxes_2[zero_mask_2] = motion_bboxes_2[zero_mask_2]
 

@@ -2,6 +2,7 @@ weights/*
 .idea/
 config/__pycache__/
 dataset/__pycache__/
+motion_model/__pycache__
 dataset/ua/__pycache__/
 dataset/utils/__pycache__/
 draw_utils/__pycache__/DrawBoxes.cpython-36.pyc
@@ -13,3 +14,4 @@ tools/__pycache__/
 motion_model/__pycache__/motion_model.cpython-36.pyc
 motion_model/__pycache__/motion_model_quadratic.cpython-36.pyc
 draw_utils/__pycache__/
+motion_model/__pycache__/motion_model_perspective.cpython-36.pyc
