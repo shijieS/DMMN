@@ -47,7 +47,7 @@ if args.cuda:
     net = torch.nn.DataParallel(ssdt_net)
 
 # load the dataset
-dataset = UATrainDataset(spatial_transform=TransformsTest())
+dataset = UATrainDataset(transform=TransformsTest())
 
 # load weights
 if not os.path.exists(args.resume):

@@ -15,7 +15,7 @@ class TypeConverter:
     @staticmethod
     def image_tensor_2_cv(data):
         img = TypeConverter.tensor_2_numpy(data)
-        img = img.transpose([1, 2, 0])+config['pixel_mean']
+        img = img.transpose([1, 2, 0]) + config['pixel_mean']
         img = np.clip(img, 0, 255).astype(np.uint8)
         return img
 

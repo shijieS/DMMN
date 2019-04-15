@@ -8,3 +8,11 @@ def get_cx_cy_w_h(bboxes):
     w = bboxes[:, 2] - bboxes[:, 0]
     h = bboxes[:, 3] - bboxes[:, 1]
     return cx, cy, w, h
+
+def get_bx_by_w_h(bboxes):
+    bboxes = np.array(bboxes, dtype=np.float)
+    bx = (bboxes[:, 0] + bboxes[:, 2]) / 2.0
+    by = bboxes[:, 3]
+    w = bboxes[:, 2] - bboxes[:, 0]
+    h = bboxes[:, 3] - bboxes[:, 1]
+    return bx, by, w, h

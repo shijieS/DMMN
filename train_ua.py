@@ -49,7 +49,7 @@ parser.add_argument('--run_mode', default=config["train"]["run_mode"], help="ua 
 args = parser.parse_args()
 
 # load dataset
-dataset = UATrainDataset(spatial_transform=Transforms())
+dataset = UATrainDataset(transform=Transforms())
 
 epoch_size = len(dataset) // args.batch_size
 start_iter = args.start_epoch * epoch_size

@@ -23,7 +23,7 @@ class SSDT(nn.Module):
         self.priorbox = PriorBox(config)
         with torch.no_grad():
             self.priors = Variable(self.priorbox.forward())
-        self.input_frame_num = config["frame_max_input_num"]//2
+        self.input_frame_num = config["frame_max_input_num"]
 
         self.base = base
 
@@ -158,7 +158,7 @@ class SSDT(nn.Module):
         base_net = generate_resnext101(
             config["num_classes"],
             frame_size=config["frame_size"],
-            num_frames=config["frame_max_input_num"]//2,
+            num_frames=config["frame_max_input_num"],
             cuda=config["cuda"])
 
         # build extra net

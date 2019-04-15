@@ -70,6 +70,22 @@ u'' = \mathop{log}(p_1t+p_2)-\mathop{log}(p_3t + 1) \\
 v'' = \mathop{log}(p_5t+p_6)-\mathop{log}(p_7t + 1)
 \end{matrix}\right.​$
 
-Then, decode the $u, v$
+Then, decode the $u, v​$
 
-$\left\{\begin{matrix}u = e^{u''} \\ v = e^{v''}\end{matrix}\right.$
+$\left\{\begin{matrix}u = e^{u''} \\ v = e^{v''}\end{matrix}\right.​$
+
+Some range of parameters:
+
+- In real scene, $t=0$, the points should be in the image, which means , the $p_3 \in [0, 1]$. 
+
+- For each frame, the width and height of bounding boxes doesn't change. Therefore, for the parameters of width and height, let $\lim_{t\rightarrow \inf}\frac{p_1t+p_2}{p_3t + 1} = \frac{p_1}{p_3} \in [0, + \inf]​$,  
+
+- IMPORTANT:  As to width and height, the derivative of this should be always be 0, So
+
+  $(\frac{p_1t+p_2}{p_3t + 1})' = \frac{p_1(p_3t+1)-p_3(p_1t+p_2)}{(p_3t+1)^2}=0$
+
+  So
+
+  $p_1p_3t+p_1=p_1p_3t+p3 \\ p_1=p_3$
+
+  
