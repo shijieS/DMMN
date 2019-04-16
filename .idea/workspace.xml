@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ua/test_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/test_ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ua/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/collate_fn.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/collate_fn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/loss_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/motion_model.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/motion_model.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssd/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssd/box_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_model/motion_model_perspective.py" beforeDir="false" afterPath="$PROJECT_DIR$/motion_model/motion_model_perspective.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +44,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="394" column="2" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layers/ssd/box_utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="219">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="448">
@@ -63,23 +76,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+            <state relative-caret-position="425">
+              <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/ua/test_ua.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="169">
+                <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -102,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
+            <state relative-caret-position="194">
+              <caret line="101" column="77" selection-start-line="101" selection-start-column="77" selection-end-line="101" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -210,10 +223,11 @@
         <option value="$PROJECT_DIR$/dataset/ua/test_ua.py" />
         <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/loss_param.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/motion_model/motion_model_perspective.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" />
         <option value="$PROJECT_DIR$/config/config_test_gpu4_debug.json" />
+        <option value="$PROJECT_DIR$/layers/ssd/box_utils.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
       </list>
     </option>
   </component>
@@ -485,7 +499,7 @@
       <workItem from="1555168304048" duration="40284000" />
       <workItem from="1555244565733" duration="9586000" />
       <workItem from="1555292042992" duration="54386000" />
-      <workItem from="1555395427059" duration="17949000" />
+      <workItem from="1555395427059" duration="18580000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -658,7 +672,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215573000" />
+    <option name="totallyTimeSpent" value="216204000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -673,16 +687,16 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27066" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27066" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.2750275" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.2750275" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" visible="true" weight="0.2090209" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32916266" />
@@ -857,13 +871,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_mot17.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -895,16 +902,6 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="270">
-            <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
-          </first_editor>
           <second_editor />
         </state>
       </provider>
@@ -1149,16 +1146,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9700">
-          <caret line="394" column="2" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1197,13 +1184,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="174" lean-forward="true" selection-start-line="174" selection-end-line="174" />
         </state>
       </provider>
     </entry>
@@ -1260,8 +1240,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+        <state relative-caret-position="425">
+          <caret line="29" column="20" lean-forward="true" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="169">
+            <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="394" column="2" selection-start-line="394" selection-start-column="2" selection-end-line="394" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssd/box_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="101" column="77" selection-start-line="101" selection-start-column="77" selection-end-line="101" selection-end-column="77" />
         </state>
       </provider>
     </entry>

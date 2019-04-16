@@ -70,7 +70,7 @@ u'' = \mathop{log}(p_1t+p_2)-\mathop{log}(p_3t + 1) \\
 v'' = \mathop{log}(p_5t+p_6)-\mathop{log}(p_7t + 1)
 \end{matrix}\right.​$
 
-Then, decode the $u, v​$
+Then, decode the $u, v      $ 
 
 $\left\{\begin{matrix}u = e^{u''} \\ v = e^{v''}\end{matrix}\right.​$
 
@@ -86,6 +86,9 @@ Some range of parameters:
 
   So
 
-  $p_1p_3t+p_1=p_1p_3t+p3 \\ p_1=p_3$
+  $p_1p_3t+p_1=p_1p_3t+p3 \\ p_1=p_3​$
 
   
+
+​                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
