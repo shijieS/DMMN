@@ -158,17 +158,9 @@ def train():
         if batch_iterator is None:
             continue
         # reading item
-        try:
-            frames_1, target_1, times_1, \
-            frames_2, target_2, times_2, \
-            similarity_matrix = \
-                next(batch_iterator)
-        except:
-            batch_iterator = iter(data_loader)
-            frames_1, target_1, times_1, \
-            frames_2, target_2, times_2, \
-            similarity_matrix = \
-                next(batch_iterator)
+        frames_1, target_1, times_1 = next(batch_iterator)
+        if frames_1 is None:
+            continue
 
         # print(iteration)
         # continue
@@ -182,12 +174,6 @@ def train():
                     [Variable(target[j].cuda()) for j in range(4)]
                 for target in target_1]
                 times_1 = Variable(times_1.cuda())
-            frames_2 = Variable(frames_2.cuda())
-            with torch.no_grad():
-                target_2 = [
-                    [Variable(target[j].cuda()) for j in range(4)]
-                    for target in target_2]
-                times_2 = Variable(times_2.cuda())
         else:
             pass
 

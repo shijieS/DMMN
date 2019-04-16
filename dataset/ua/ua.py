@@ -99,56 +99,6 @@ class UATrainDataset(Dataset):
         for name, path, _ in zip(files_name, files_path, t):
             t.set_description('reading: {}'.format(name))
             self.data += [SingleVideoParser(path, name, self.frames_folder)]
-            # for frame_indexes, ua_data in parser:
-            #     # filter no boxes cases
-            #
-            #     # if np.sum(ua_data[:len(ua_data)//2, :]) == 0 or np.sum(ua_data[len(ua_data)//2:, :]) == 0:
-            #     #     continue
-            #
-            #     total_frame_num = len(frame_indexes)
-            #     half_frame_num = total_frame_num // 2
-            #     range_1 = range(half_frame_num)
-            #     range_2 = range(half_frame_num, total_frame_num)
-            #
-            #     sequence_frames_folder = os.path.join(self.frames_folder, name)
-            #     frames_1 = frame_indexes[range_1]
-            #     frames_2 = frame_indexes[range_2]
-            #     frames_name_1 = [os.path.join(sequence_frames_folder, "img{0:05}.jpg".format(i + 1)) for i in frames_1]
-            #     frames_name_2 = [os.path.join(sequence_frames_folder, "img{0:05}.jpg".format(i + 1)) for i in frames_2]
-            #
-            #     times_1 = (frame_indexes[range_1] - frame_indexes[range_1[0]])/config["video_fps"]
-            #     times_2 = (frame_indexes[range_2] - frame_indexes[range_2[0]])/config["video_fps"]
-            #
-            #     mask_1 = np.sum(parser.possibilities[frames_1, :] > 0, axis=0) > half_frame_num * config[
-            #         'min_valid_node_rate']
-            #     mask_2 = np.sum(parser.possibilities[frames_2, :] > 0, axis=0) > half_frame_num * config[
-            #         'min_valid_node_rate']
-            #
-            #     if np.sum(mask_1) == 0 or np.sum(mask_2) == 0:
-            #         continue
-            #
-            #     bboxes_1 = ua_data[range_1, :, :][:, mask_1, :]
-            #     bboxes_2 = ua_data[range_2, :, :][:, mask_2, :]
-            #
-            #     motion_parameters_1 = parser.parameters[frames_1[0], mask_1, :, :]
-            #     motion_parameters_2 = parser.parameters[frames_2[0], mask_2, :, :]
-            #
-            #     p_e_1 = parser.possibilities[frames_1, :][:, mask_1]
-            #     p_e_2 = parser.possibilities[frames_2, :][:, mask_2]
-            #
-            #     p_c_1 = np.zeros(p_e_1.shape[1])
-            #     p_c_2 = np.zeros(p_e_2.shape[1])
-            #
-            #     # reading the similarity matrix
-            #     similarity_matrix = np.identity(len(mask_1), dtype=float)[mask_1, :][:, mask_2]
-            #     extra_row = np.sum(similarity_matrix, axis=1) == 0
-            #     similarity_matrix = np.concatenate((similarity_matrix, extra_row[:, None]), axis=1)
-            #     extra_col = np.sum(similarity_matrix, axis=0) == 0
-            #     similarity_matrix = np.concatenate((similarity_matrix, extra_col[None, :]), axis=0)
-            #
-            #     self.data += [(frames_name_1, bboxes_1, motion_parameters_1, p_e_1, times_1, p_c_1,
-            #    frames_name_2, bboxes_2, motion_parameters_2, p_e_2, times_2, p_c_2,
-            #    similarity_matrix)]
 
         # some basic information
         self.lens = [len(p) for p in self.data]

@@ -24,30 +24,20 @@ def generate_targets(org_bboxes, motion_parameters, p_e, times, p_c):
 
 
 def collate_fn(batch):
-    frames_1 = []               # 0
-    target_1 = []               # 1 (N_{fn} x N_{re} x (4+1+1))
-    times_1 = []                # 2
-    frames_2 = []               # 3
-    target_2 = []               # 4 (N_{fn} x N_{re} x (4+1+1))
-    times_2 = []                # 5
-    similarity_matrix = []      # 6
+    frames = []               # 0
+    target = []               # 1 (N_{fn} x N_{re} x (4+1+1))
+    times = []                # 2
 
+    if sum([s is not None for s in batch]) == 0:
+        return None, None, None
     # split batch
-    for sample in batch:
-
+    for items in batch:
+        if items is None:
+            continue
         # convert to tensor
-        frames_1.append(sample[0])
-        target_1.append(generate_targets(sample[1], sample[2], sample[3], sample[4], sample[5]))
-        times_1.append(sample[4].float())
-
-        frames_2.append(sample[6])
-        target_2.append(generate_targets(sample[7], sample[8], sample[9], sample[10], sample[11]))
-        times_2.append(sample[10].float())
-
-        similarity_matrix.append(sample[12])
+        frames.append(items[3])
+        target.append(generate_targets(items[2], items[5], items[6], items[4], items[7]))
+        times.append(items[4].float())
 
     # stack batch
-    return torch.stack(frames_1, 0), target_1, torch.stack(times_1, 0), \
-           torch.stack(frames_2, 0), target_2, torch.stack(times_2, 0), \
-           similarity_matrix
-
+    return torch.stack(frames, 0).permute(0, 4, 1, 2, 3), target, torch.stack(times, 0)

@@ -17,8 +17,8 @@
   "image_height": 540,
   "test": {
     "resume": "/media/ssm/data/dataset/uadetrac/ssdt-log-0414/weights/ssdt11250.pth",
-    "batch_size": 1,
-    "num_workers": 1,
+    "batch_size": 4,
+    "num_workers": 4,
     "lr_decay_per_epoch": [1, 30, 45, 50],
     "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
     "log_save_folder": "/media/ssm/data/dataset/uadetrac/test_logs",
@@ -48,7 +48,7 @@
   },
   "train": {
     "resume": null,
-    "batch_size": 8,
+    "batch_size": 1,
     "num_workers": 8,
     "learning_rate": 1e-3,
     "lr_decay_per_epoch": [30, 60, 90, 120],

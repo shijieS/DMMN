@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 from config import config
 from motion_model import MotionModel
@@ -14,7 +15,7 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.40, True, 0,
+            config["num_classes"], 0.30, True, 0,
             True, 3, 0.5, False, config["cuda"])
 
 
@@ -52,13 +53,16 @@ class Loss(nn.Module):
         loc_datas_org, parameters_t, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(4))
         loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
 
+        # update p_e_t
+        p_e_t = [torch.sum(i, dim=2)> 0 for i in loc_datas_t]
+
+        # update p_c_t
+        p_c_t = [torch.sum(i, dim=0) > 0 for i in p_e_t]
+
+        # combine together
         target = (loc_datas_t, p_c_t, p_e_t)
 
         loss_l, loss_c, loss_m = self.multibox_loss(prediction, target)
 
         return loss_l, loss_c, loss_m
-
-
-
-
 

@@ -6,6 +6,7 @@ import numpy as np
 from config import config
 from dataset.utils.transforms import TransformReader
 
+
 def play_ua_training_data():
     dataset = UATrainDataset(transform=TransformReader())
 
@@ -36,9 +37,6 @@ def play_ua_training_data():
             DrawBoxes.cv_draw_mult_boxes_with_track(frame, bboxes, i)
             cv2.imshow("frame", frame)
             cv2.waitKey(0)
-
-
-
 
 
 if __name__ == "__main__":

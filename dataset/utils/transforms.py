@@ -392,7 +392,7 @@ class RandomSampleCrop(object):
 
         return current_image, current_boxes, current_labels
 
-
+# TODO: fix
 class RandomMirror(object):
     def __call__(self, items):
         _, width, _ = items[0][0].shape
@@ -486,7 +486,7 @@ class ToNumpy(object):
 
         return items
 
-
+#TODO: RandomCrop
 class Transforms(object):
     def __init__(self, size=config["frame_size"], mean=(104, 117, 123)):
         self.mean = mean
@@ -494,15 +494,13 @@ class Transforms(object):
 
         self.augument = Compose([
             ToFloat(),
-            # ToAbsoluteCoords(),
             PhotometricDistort(),
             Expand(self.mean),
-            RandomSampleCrop(),
-            RandomMirror(),
-            ToPercentCoords(),
+            # RandomSampleCrop(),
+            # RandomMirror(),
             Resize(self.size),
             SubtractMeans(self.mean),
-            # RecalculateParameters(),     # re-calculate the parameters of rectangles
+            CalculateParameters(),     # re-calculate the parameters of rectangles
             ToTensor()
         ])
 

@@ -6,6 +6,7 @@ import warnings
 warnings.simplefilter('ignore', np.RankWarning)
 from scipy.optimize import curve_fit
 from tqdm import trange
+np.seterr(divide='ignore', invalid='ignore')
 
 class MotionModelPerspective(MotionModel):
     """ Perspective Motion Model :math:`f(t) = (at + b) / (ct + 1)`
@@ -33,20 +34,9 @@ class MotionModelPerspective(MotionModel):
     def model_func_w_h(x, p0, p1):
         return np.log((x*p0 + p1)/(x*p0 + 1))
 
-
-    @staticmethod
-    def model_func_all(x, p0, p1, p2, p3, p4, p5, p6):
-        return np.array([
-            MotionModelPerspective.model_func(x, p0, p1, p2), #cx
-            MotionModelPerspective.model_func(x, p3, p4, p2), #cy
-            MotionModelPerspective.model_func(x, p2, p5, p2), #w
-            MotionModelPerspective.model_func(x, p2, p6, p2)  #h
-        ])
-
-
     @staticmethod
     def model_func_torch(x, p0, p1, p2):
-        return torch.log(x*p0 + p1) - torch.log(x*p2 + 1)
+        return torch.log((x*p0 + p1)/(x*p2 + 1))
 
     def fit(self, bboxes, times=None):
         if times is None:
@@ -179,13 +169,26 @@ class MotionModelPerspective(MotionModel):
         p2 = p[:, :, :, :, 2]
 
         bboxes = torch.exp(MotionModelPerspective.model_func_torch(t, p0, p1, p2))
+
+
+        # I cannot use the following setence for the inplace operation.
+        # Acutally, it's so user unfriendly.
         # bboxes[torch.isnan(bboxes.sum(dim=3)), :] = 0
+        nan_mask = torch.isnan(bboxes.sum(dim=3))[:, :, :, None].expand_as(bboxes)
+
+        bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
+
+        bboxes[:, :, :, 2:].clamp_(min=0, max=2)
+
 
         # times_1 = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=2)
         # times_1 = times_1.permute([1, 0, 2])[:, :, None, None, :]
         # parameters_1 = torch.sum((parameters * times_1.float()).permute([1, 0, 2, 3, 4]), dim=4)
 
-        return bboxes.contiguous()
+        return torch.cat([
+            bboxes[:, :, :, :2] - bboxes[:, :, :, 2:] / 2.,
+            bboxes[:, :, :, :2] + bboxes[:, :, :, 2:] / 2.
+        ], dim=3)
 
     @staticmethod
     def get_bbox_by_frames_without_batch_pytorch(parameter, time):
@@ -196,8 +199,19 @@ class MotionModelPerspective(MotionModel):
         p2 = p[:, :, :, 2]
 
         bboxes = torch.exp(MotionModelPerspective.model_func_torch(t, p0, p1, p2))
-        # bboxes[torch.isnan(bboxes.sum(dim=2)), :] = 0
-        bboxes[:, :, 2:].clamp_(min=1e-4, max=2)
 
-        return bboxes.contiguous()
+        # love this way
+        # bboxes[torch.isnan(bboxes.sum(dim=2)), :] = 0
+        # doesn't like this way.
+        nan_mask = torch.isnan(bboxes.sum(dim=2))[:, :, None].expand_as(bboxes)
+        bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
+
+
+        bboxes[:, :, 2:].clamp_(min=0, max=2)
+
+        # convert to l, r, t, b format
+        return torch.cat([
+            bboxes[:, :, :2] - bboxes[:, :, 2:]/2.,
+            bboxes[:, :, :2] + bboxes[:, :, 2:]/2.
+        ], dim=2)
 

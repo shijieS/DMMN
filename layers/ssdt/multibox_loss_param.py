@@ -87,36 +87,36 @@ class MultiBoxLoss(nn.Module):
             p_c_ts = Variable(p_c_ts)
             p_e_ts = Variable(p_e_ts)
 
+        # N_b x 1 x N_p
         pos = p_c_ts > 0
 
         # Localization Loss (Smooth L1)
-        pos_idx = pos.unsqueeze(pos.dim()).expand_as(loc_datas_p)
-        exist_idx = p_e_ts.unsqueeze(p_e_ts.dim()).expand_as(loc_datas_p) > 0
-        pos_idx = (pos_idx * exist_idx) > 0
+        pos_idx = pos.unsqueeze(pos.dim()).expand_as(loc_datas_p)   # N_b x N_f x N_p x 4
+        exist_idx = p_e_ts.unsqueeze(p_e_ts.dim()).expand_as(loc_datas_p) > 0 # N_b x N_f x N_p x 4
+        pos_idx = (pos_idx * exist_idx) > 0 # N_b x N_f x N_p x 4
         loc_p = loc_datas_p[pos_idx].view(-1, 4)
         loc_ts = loc_ts[pos_idx].view(-1, 4)
         loss_l = F.smooth_l1_loss(loc_p, loc_ts, reduction='sum')
 
         # Compute max conf across batch for hard negative mining
-        batch_conf = p_c_p.contiguous().view(-1, self.num_classes)
-        loss_c = log_sum_exp(batch_conf) - batch_conf.gather(1, p_c_ts.view(-1, 1))
+        batch_conf = p_c_p.contiguous().view(-1, self.num_classes) # (N_b x N_p) x N_c
+        loss_c = log_sum_exp(batch_conf) - batch_conf.gather(1, p_c_ts.view(-1, 1)) # N_b x 1 x N_p
 
         # Hard Negative Mining
-        loss_c = loss_c.view(num, -1).unsqueeze(1)
+        loss_c = loss_c.view(num, -1).unsqueeze(1) # N_b x 1 x N_p
         loss_c[pos] = 0  # filter out pos boxes
         _, loss_idx = loss_c.sort(2, descending=True)
         _, idx_rank = loss_idx.sort(2)
         num_pos = pos.long().sum(2, keepdim=True)
         num_neg = torch.clamp(self.negpos_ratio * num_pos, max=pos.shape[2] - 1)
-        neg = idx_rank < num_neg.expand_as(idx_rank)
+        neg = idx_rank < num_neg.expand_as(idx_rank) # N_b x 1 x N_p
 
         # Confidence Loss Including Positive and Negative Examples
-        pos_idx = pos.unsqueeze(3).expand_as(p_c_p)
-        neg_idx = neg.unsqueeze(3).expand_as(p_c_p)
+        pos_idx = pos.unsqueeze(3).expand_as(p_c_p) # N_b x 1 x N_p x 2
+        neg_idx = neg.unsqueeze(3).expand_as(p_c_p) # N_b x 1 x N_p x 2
         conf_p = p_c_p[(pos_idx + neg_idx).gt(0)].view(-1, self.num_classes)
         targets_weighted = p_c_ts[(pos + neg).gt(0)]
         loss_c = F.cross_entropy(conf_p, targets_weighted, reduction='sum')
-
 
         # calcualte the exists loss
         pos_idx = pos.unsqueeze(3).expand_as(p_e_p)
@@ -127,7 +127,6 @@ class MultiBoxLoss(nn.Module):
         targets_weighted = p_e_ts[(pos_idx + neg_idx).gt(0)].long()
         loss_e = F.cross_entropy(exist_p, targets_weighted, reduction='sum')
 
-
         N = (num_pos.sum() * num).data.float()
-        return loss_l / N, loss_c / N, loss_e / N
+        return loss_l / N, loss_c / N, loss_e / (N*num_frames)
 

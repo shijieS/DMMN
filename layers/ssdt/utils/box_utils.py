@@ -133,13 +133,16 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
     num_prior = priors.shape[0]
     all_best_truth_idx = []
     all_best_truth_overlap = []
+    all_overlaps = []
     for frame_index in range(num_frame):
         # jaccard index
-        truths[frame_index, :] = point_form(truths[frame_index, :])
+        # truths[frame_index, :] = point_form(truths[frame_index, :])
+        #TODO: the overlap is too small
         overlaps = jaccard(
             truths[frame_index, :],
             point_form(priors)
         )
+        all_overlaps += [overlaps]
         # (Bipartite Matching)
         # [1,num_objects] best prior for each ground truth
         best_prior_overlap, best_prior_idx = overlaps.max(1, keepdim=True)
@@ -168,7 +171,10 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
 
     best_truth_idx = torch.argmax(bins, dim=1, keepdim=True)
     best_truth_idx.squeeze_(1)
-    conf = labels[best_truth_idx] + 1  # Shape: [num_priors]
+    conf = labels[best_truth_idx]  # Shape: [num_priors]
+
+    # update all best overlap
+    all_best_truth_overlap = [torch.gather(overlaps, 0, best_truth_idx[None, :])[0] for overlaps in all_overlaps]
 
     # make truth label
     for frame_index in range(num_frame):

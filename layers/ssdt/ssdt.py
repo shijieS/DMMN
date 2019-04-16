@@ -187,7 +187,7 @@ class SSDT(nn.Module):
                                     stride=(1, 1, 1),
                                     bias=True)
             p_c_layer = nn.Conv3d( in_channels=c,
-                                    out_channels=k * (config["frame_max_input_num"]//2) * config["num_classes"],
+                                    out_channels=k * (config["frame_max_input_num"]) * config["num_classes"],
                                     kernel_size=(t, 3, 3),
                                     padding=(0, 1, 1),
                                     stride=(1, 1, 1),
