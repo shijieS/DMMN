@@ -41,11 +41,19 @@ This is an end-to-end network which combines detector and matcher into one singl
 | 2019/04/14 | Motion Model Needs Rewrite | :exclamation::exclamation::ballot_box_with_check: 2019/04/16 Rewriting motion model :)​<br>:boom: 2019/04/14 rewriting |
 | 2019/04/13  | Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> |  :ballot_box_with_check: set confidence and existing threshold<br> :boom:20​19/04/13 process  |
 | 2019/04/13  | NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> | :ballot_box_with_check: ​the bad training data<br>2019/04/13 :boom: |
-| 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   :ballot_box_with_check: ​remove edging boxes from training data<br>2019/04/13 :boom:   |
+| 2019/04/13  | Problems of object at the edge of the frames. <br> ![](./images/progress/object_at_frame_edge.png)![](./images/progress/object_at_frame_edge1.png) |   :ballot_box_with_check: ​remove edging boxes from training data<br>  2019/04/13 :boom:   |
 | 2019/04/13  | Weird detected objects.<br> ![](./images/progress/werid_detect_object.png)![](./images/progress/werid_detect_object1.png) |   :ballot_box_with_check: ​the motion model <br>2019/04/13 :boom:   |
 
+> In our experiment, we find the missing bounding box is caused by the following code:
+>
+> ```python
+> conf[mean_best_truth_overlap < threshold] = 0  # label as background
+> ```
+>
+> Be careful to set this threshold.
 
 ## Protocol
+
 - bbox: the format is *(left, top, right, bottom)*
 - $N_{tr}$: the track number.
 - $N_{ba}$: the batch number.

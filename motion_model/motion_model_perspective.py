@@ -27,7 +27,7 @@ class MotionModelPerspective(MotionModel):
 
     @staticmethod
     def model_func(x, p0, p1, p2):
-        return np.log((x*p0 + p1)/(x*p2 + 1))
+        return (p0*x + p1) / np.exp(p2*x + 1)
         # return np.log(x*p0 + p1) - np.log(x*p2 + 1)
 
     @staticmethod
@@ -36,7 +36,7 @@ class MotionModelPerspective(MotionModel):
 
     @staticmethod
     def model_func_torch(x, p0, p1, p2):
-        return torch.log((x*p0 + p1)/(x*p2 + 1))
+        return (p0*x + p1) / (p2*x + 1)
 
     def fit(self, bboxes, times=None):
         if times is None:
@@ -86,7 +86,7 @@ class MotionModelPerspective(MotionModel):
 
     def get_bbox_by_frame(self, time):
         p = self.parameters
-        cx_cy_w_h = np.exp(MotionModelPerspective.model_func(time, p[:, 0], p[:, 1], p[:, 2]))
+        cx_cy_w_h = MotionModelPerspective.model_func(time, p[:, 0], p[:, 1], p[:, 2])
         cx = cx_cy_w_h[0]
         cy = cx_cy_w_h[1]
         w = cx_cy_w_h[2]
@@ -102,9 +102,8 @@ class MotionModelPerspective(MotionModel):
         t = np.tile(times[:, None], (1, self.parameters.shape[0]))
         p = np.tile(self.parameters[None, :, :], (times.shape[0], 1, 1))
 
-        cx_cy_w_h = np.exp(MotionModelPerspective.model_func(t, p[:, :, 0], p[:, :, 1], p[:, :, 2]))
+        cx_cy_w_h = MotionModelPerspective.model_func(t, p[:, :, 0], p[:, :, 1], p[:, :, 2])
 
-        cx_cy_w_h[np.sum(np.isnan(cx_cy_w_h), axis=1) > 0, :] = np.zeros((4))
 
         bbox = np.concatenate([cx_cy_w_h[:, :2] - cx_cy_w_h[:, 2:] / 2., cx_cy_w_h[:, :2] + cx_cy_w_h[:, 2:] / 2.], axis=1)
         return bbox
@@ -168,27 +167,24 @@ class MotionModelPerspective(MotionModel):
         p1 = p[:, :, :, :, 1]
         p2 = p[:, :, :, :, 2]
 
-        bboxes = torch.exp(MotionModelPerspective.model_func_torch(t, p0, p1, p2))
+        bboxes = MotionModelPerspective.model_func_torch(t, p0, p1, p2)
 
 
         # I cannot use the following setence for the inplace operation.
         # Acutally, it's so user unfriendly.
         # bboxes[torch.isnan(bboxes.sum(dim=3)), :] = 0
-        nan_mask = torch.isnan(bboxes.sum(dim=3))[:, :, :, None].expand_as(bboxes)
+        # nan_mask = torch.isnan(bboxes.sum(dim=3))[:, :, :, None].expand_as(bboxes)
+        # #
+        # bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
 
-        bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
-
-        bboxes[:, :, :, 2:].clamp_(min=0, max=2)
+        # bboxes[:, :, :, 2:].clamp_(min=0, max=2)
 
 
         # times_1 = torch.stack([torch.pow(times, 2), torch.pow(times, 1), torch.pow(times, 0)], dim=2)
         # times_1 = times_1.permute([1, 0, 2])[:, :, None, None, :]
         # parameters_1 = torch.sum((parameters * times_1.float()).permute([1, 0, 2, 3, 4]), dim=4)
 
-        return torch.cat([
-            bboxes[:, :, :, :2] - bboxes[:, :, :, 2:] / 2.,
-            bboxes[:, :, :, :2] + bboxes[:, :, :, 2:] / 2.
-        ], dim=3)
+        return bboxes
 
     @staticmethod
     def get_bbox_by_frames_without_batch_pytorch(parameter, time):
@@ -198,20 +194,17 @@ class MotionModelPerspective(MotionModel):
         p1 = p[:, :, :, 1]
         p2 = p[:, :, :, 2]
 
-        bboxes = torch.exp(MotionModelPerspective.model_func_torch(t, p0, p1, p2))
+        bboxes = MotionModelPerspective.model_func_torch(t, p0, p1, p2)
 
         # love this way
         # bboxes[torch.isnan(bboxes.sum(dim=2)), :] = 0
         # doesn't like this way.
-        nan_mask = torch.isnan(bboxes.sum(dim=2))[:, :, None].expand_as(bboxes)
-        bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
+        # nan_mask = torch.isnan(bboxes.sum(dim=2))[:, :, None].expand_as(bboxes)
+        # bboxes = torch.where(nan_mask, torch.zeros_like(bboxes), bboxes)
 
 
-        bboxes[:, :, 2:].clamp_(min=0, max=2)
+        # bboxes[:, :, 2:].clamp_(min=0, max=2)
 
         # convert to l, r, t, b format
-        return torch.cat([
-            bboxes[:, :, :2] - bboxes[:, :, 2:]/2.,
-            bboxes[:, :, :2] + bboxes[:, :, 2:]/2.
-        ], dim=2)
+        return bboxes
 

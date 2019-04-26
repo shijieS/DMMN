@@ -138,7 +138,7 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         # truths[frame_index, :] = point_form(truths[frame_index, :])
         #TODO: the overlap is too small
         overlaps = jaccard(
-            truths[frame_index, :],
+            truths[frame_index, :].float(),
             point_form(priors)
         )
         all_overlaps += [overlaps]
@@ -150,11 +150,13 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         best_truth_idx.squeeze_(0)
         best_truth_overlap.squeeze_(0)
         best_prior_idx.squeeze_(1)
-        best_prior_overlap.squeeze_(1)
-        best_truth_overlap.index_fill_(0, best_prior_idx, 2)  # ensure best prior
+        best_prior_overlap = best_prior_overlap.squeeze_(1)
+        best_prior_mask = best_prior_overlap > 0
+        best_truth_overlap.index_fill_(0, best_prior_idx[best_prior_mask], 2)  # ensure best prior
         # ensure every gt matches with its prior of max overlap
         for j in range(best_prior_idx.size(0)):
-            best_truth_idx[best_prior_idx[j]] = j
+            if best_prior_mask[j]:
+                best_truth_idx[best_prior_idx[j]] = j
 
         all_best_truth_idx += [best_truth_idx]
         all_best_truth_overlap += [best_truth_overlap]
@@ -184,11 +186,28 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         exist_t[idx, frame_index, :] = exist
 
     all_best_truth_overlap = torch.stack(all_best_truth_overlap, dim=1)
-    mean_best_truth_overlap = torch.sum(all_best_truth_overlap, dim=1) / torch.sum(exist_t[idx], dim=0)
+    # mean_best_truth_overlap = torch.sum(all_best_truth_overlap, dim=1) / torch.sum(exist_t[idx], dim=0)
+    # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
+    # mean_best_truth_overlap = ((all_best_truth_overlap>=2*threshold).float() * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
+    mean_best_truth_overlap = ((torch.exp(all_best_truth_overlap)-1) * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
+    # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).max(dim=1)[0]
     conf[mean_best_truth_overlap < threshold] = 0  # label as background
     conf_t[idx] = conf  # [num_priors] top class label for each prior
 
+def encode_batch(matched, priors, variances):
+    priors_batch = priors[None, None, :, :].expand_as(matched)
+    # dist b/t match center and prior's center
 
+    g_cxcy = (matched[:, :, :, :2] + matched[:, :, :, 2:]) / 2 - priors_batch[:, :, :, :2]
+    # encode variance
+    g_cxcy /= (variances[0] * priors_batch[:, :, :, 2:])
+    # match wh / prior wh
+    g_wh = (matched[:, :, :, 2:] - matched[:, :, :, :2]) / priors_batch[:, :, :, 2:]
+    g_wh = torch.where(g_wh <= 0, torch.ones_like(g_wh) * 1e-6, g_wh)
+
+    g_wh = torch.log(g_wh) / variances[1]
+    # return target for smooth_l1_loss
+    return torch.cat([g_cxcy, g_wh], 3)  # [num_priors,4]
 
 def encode(matched, priors, variances):
     """Encode the variances from the priorbox layers into the ground truth boxes
@@ -341,7 +360,7 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
     y2 = boxes[:, :, 3]
 
     area = torch.mul(x2 - x1, y2 - y1)
-    v, idx = (scores*((p_e > exist_thresh).sum(dim=0) > 8).float()).sort(0)  # sort in ascending order
+    v, idx = (scores*((p_e > exist_thresh).sum(dim=0) > 3).float()).sort(0)  # sort in ascending order
     # v, idx = scores.float().sort(0)  # sort in ascending order
     # v, idx = (num_frames*scores+p_e.sum(dim=0).float()).sort(0)  # sort in ascending order
     idx = idx[-top_k:]  # indices of the top-k largest vals
@@ -399,7 +418,8 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
 
         # idx_mask = (IoU.gt(overlap).float() * ppe).sum(dim=0).gt(min_vote) == 0
         IoU[1 - join_exist_mask] = 0
-        idx_mask = (IoU.sum(dim=0) / join_exist_mask.float().sum(dim=0)) <= overlap
+        # idx_mask = (IoU.sum(dim=0) / join_exist_mask.float().sum(dim=0)) <= overlap
+        idx_mask = IoU.max(dim=0)[0] <= overlap
         # idx_mask = IoU.max(dim=0)[0] <= overlap
 
         idx = idx[idx_mask]

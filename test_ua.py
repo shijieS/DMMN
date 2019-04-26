@@ -69,10 +69,7 @@ def test():
 
     batch_iterator = iter(data_loader)
     for index in range(len(data_loader)):
-        frames_1, target_1, times_1, \
-        frames_2, target_2, times_2, \
-        similarity_matrix = \
-            next(batch_iterator)
+        frames_1, target_1, times_1 = next(batch_iterator)
 
         if args.cuda:
             frames_1 = Variable(frames_1.cuda())
@@ -81,12 +78,6 @@ def test():
                     [Variable(target[j].cuda()) for j in range(4)]
                     for target in target_1]
                 times_1 = Variable(times_1.cuda())
-            frames_2 = Variable(frames_2.cuda())
-            with torch.no_grad():
-                target_2 = [
-                    [Variable(target[j].cuda()) for j in range(4)]
-                    for target in target_2]
-                times_2 = Variable(times_2.cuda())
         else:
             pass
 
@@ -99,7 +90,7 @@ def test():
             boxes = []
 
             for c in range(1, class_num):
-                mask = output_p_c[b, c, :] > 0.45
+                mask = output_p_c[b, c, :] >= 0.00
                 result += [[
                     output_params[b, c, mask, :].data,
                     output_p_c[b, c, mask].data,
@@ -139,7 +130,7 @@ def test():
                     if not os.path.exists(cfg["image_save_folder"]):
                         os.makedirs(cfg["image_save_folder"])
                     cv2.imshow("result", frame)
-                    cv2.waitKey()
+                    cv2.waitKey(10)
                     cv2.imwrite(os.path.join(cfg["image_save_folder"], "{}-{}-{}.png".format(index, result.index(r), i)), frame)
 
 

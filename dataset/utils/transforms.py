@@ -392,7 +392,7 @@ class RandomSampleCrop(object):
 
         return current_image, current_boxes, current_labels
 
-# TODO: fix
+# TODO: Fix
 class RandomMirror(object):
     def __call__(self, items):
         _, width, _ = items[0][0].shape

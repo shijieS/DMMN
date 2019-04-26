@@ -130,7 +130,7 @@ def train():
 
     data_loader = data.DataLoader(dataset=dataset, batch_size=args.batch_size,
                                   num_workers=args.num_workers,
-                                  shuffle=True,
+                                  shuffle=False,
                                   collate_fn=collate_fn,
                                   pin_memory=False)
 
@@ -217,7 +217,6 @@ def train():
 
         # save the result image
         show_bboxes(frames_1, target_1, is_save=True, iteration=iteration)
-
 
         # weights save
         if iteration % save_weights_iteration == 0:

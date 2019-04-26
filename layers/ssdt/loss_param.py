@@ -15,8 +15,8 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.30, True, 0,
-            True, 3, 0.5, False, config["cuda"])
+            config["num_classes"], 0.3, True, 0,
+            True, 3, 0.3, False, config["cuda"])
 
 
     def convert_to_bboxes(self, parameters, times):
@@ -51,7 +51,8 @@ class Loss(nn.Module):
         # ]
 
         loc_datas_org, parameters_t, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(4))
-        loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
+        # loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
+        loc_datas_t = loc_datas_org
 
         # update p_e_t
         p_e_t = [torch.sum(i, dim=2)> 0 for i in loc_datas_t]

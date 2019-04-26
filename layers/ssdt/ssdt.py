@@ -46,7 +46,7 @@ class SSDT(nn.Module):
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
-            self.detect = Detect(config["num_classes"], 0, 1000, 0.3, 0.2, 0.5)
+            self.detect = Detect(config["num_classes"], 0, 500, 0.7, 0.2, 0.5)
 
         # init the weights and bias
         self.apply(param_init)

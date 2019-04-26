@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
-from .utils.box_utils import match, log_sum_exp
+from .utils.box_utils import match, log_sum_exp, encode_batch
 from config import config
 
 
@@ -75,7 +75,7 @@ class MultiBoxLoss(nn.Module):
             p_e_ts = p_e_ts.cuda()
 
         for idx in range(num):
-            truths = loc_datas_t[idx]
+            truths = loc_datas_t[idx].float()
             labels = p_c_t[idx]
             exists = p_e_t[idx]
             defaults = priors.data
@@ -94,6 +94,8 @@ class MultiBoxLoss(nn.Module):
         pos_idx = pos.unsqueeze(pos.dim()).expand_as(loc_datas_p)   # N_b x N_f x N_p x 4
         exist_idx = p_e_ts.unsqueeze(p_e_ts.dim()).expand_as(loc_datas_p) > 0 # N_b x N_f x N_p x 4
         pos_idx = (pos_idx * exist_idx) > 0 # N_b x N_f x N_p x 4
+        # encode loc_data_p
+        # loc_datas_p = encode_batch(loc_datas_p, priors, self.variance)
         loc_p = loc_datas_p[pos_idx].view(-1, 4)
         loc_ts = loc_ts[pos_idx].view(-1, 4)
         loss_l = F.smooth_l1_loss(loc_p, loc_ts, reduction='sum')
@@ -127,6 +129,6 @@ class MultiBoxLoss(nn.Module):
         targets_weighted = p_e_ts[(pos_idx + neg_idx).gt(0)].long()
         loss_e = F.cross_entropy(exist_p, targets_weighted, reduction='sum')
 
-        N = (num_pos.sum() * num).data.float()
-        return loss_l / N, loss_c / N, loss_e / (N*num_frames)
+        N = num_pos.data.sum().float()
+        return loss_l / N, loss_c / N * num_frames, loss_e / N
 
