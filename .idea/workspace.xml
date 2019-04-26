@@ -2,23 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/motion_model/motion_model_quadratic_backup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/sequence_list_test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/sequence_list_train.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_test_gpu4_debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/loss_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/motion_model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_model/motion_model_perspective.py" beforeDir="false" afterPath="$PROJECT_DIR$/motion_model/motion_model_perspective.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_model/motion_model_quadratic.py" beforeDir="false" afterPath="$PROJECT_DIR$/motion_model/motion_model_quadratic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_ua_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_ua_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/sequence_list.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/ua/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/ua.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +18,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SSDT$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1534698493869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
     <SUITE FILE_PATH="coverage/SSDT$test_ua.coverage" NAME="test_ua Coverage Results" MODIFIED="1556250235292" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1556019693019" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1556263184700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$ua_reader.coverage" NAME="ua_reader Coverage Results" MODIFIED="1554180363502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
     <SUITE FILE_PATH="coverage/SSDT$check_environment.coverage" NAME="check_environment Coverage Results" MODIFIED="1552445911005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$motion_model_perspective.coverage" NAME="motion_model_perspective Coverage Results" MODIFIED="1555185815183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/motion_model" />
@@ -45,34 +34,52 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_ua.py">
+        <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2850">
-              <caret line="126" column="43" selection-start-line="126" selection-start-column="43" selection-end-line="126" selection-end-column="43" />
-              <folding>
-                <element signature="e#145#154#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="402">
+              <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="24" column="75" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="75" />
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="394">
+                <caret line="81" column="20" lean-forward="true" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+        <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3025">
-              <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="25" />
+            <state relative-caret-position="232">
+              <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
               <folding>
-                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/sequence_list_train.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/sequence_list_test.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="725">
+              <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -90,15 +97,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/torch/nn/modules/batchnorm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
@@ -111,22 +109,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train_ua.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3125">
-              <caret line="139" column="39" selection-start-line="139" selection-start-column="39" selection-end-line="139" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="112" column="7" selection-start-line="112" selection-start-column="7" selection-end-line="112" selection-end-column="7" />
+            <state relative-caret-position="377">
+              <caret line="426" column="22" lean-forward="true" selection-start-line="426" selection-start-column="22" selection-end-line="426" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -168,9 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mean</find>
-      <find>[0, 2]</find>
-      <find>Cal</find>
       <find>mask</find>
       <find>UATrainDataset</find>
       <find>RandomMirror</find>
@@ -198,6 +181,9 @@
       <find>14224</find>
       <find>neg_overlap</find>
       <find>num_boxes</find>
+      <find>nms</find>
+      <find>seq</find>
+      <find>sequ</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,7 +203,6 @@
         <option value="$PROJECT_DIR$/plan/packages.puml" />
         <option value="$PROJECT_DIR$/dataset/ua/ua_reader.py" />
         <option value="$PROJECT_DIR$/config/__init__.py" />
-        <option value="$PROJECT_DIR$/dataset/sequence_list.txt" />
         <option value="$PROJECT_DIR$/draw_utils/DrawBBoxes.py" />
         <option value="$PROJECT_DIR$/draw_utils/__init__.py" />
         <option value="$PROJECT_DIR$/config/config_train_gpu4_debug.json" />
@@ -232,7 +217,6 @@
         <option value="$PROJECT_DIR$/draw_utils/DrawBoxes.py" />
         <option value="$PROJECT_DIR$/draw_utils/Converter.py" />
         <option value="$PROJECT_DIR$/dataset/utils/collate_fn.py" />
-        <option value="$PROJECT_DIR$/dataset/ua/ua.py" />
         <option value="$PROJECT_DIR$/dataset/ua/test_ua.py" />
         <option value="$PROJECT_DIR$/layers/ssd/box_utils.py" />
         <option value="$PROJECT_DIR$/motion_model/motion_model_quadratic.py" />
@@ -245,9 +229,13 @@
         <option value="$PROJECT_DIR$/test_ua.py" />
         <option value="$PROJECT_DIR$/train_ua.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
-        <option value="$PROJECT_DIR$/config/config_test_gpu4_debug.json" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/loss_param.py" />
+        <option value="$PROJECT_DIR$/dataset/sequence_list.txt" />
+        <option value="$PROJECT_DIR$/dataset/sequence_list_train.txt" />
+        <option value="$PROJECT_DIR$/dataset/sequence_list_test.txt" />
+        <option value="$PROJECT_DIR$/config/config_test_gpu4_debug.json" />
+        <option value="$PROJECT_DIR$/dataset/ua/ua.py" />
       </list>
     </option>
   </component>
@@ -276,6 +264,11 @@
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,7 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_ua">
+  <component name="RunManager" selected="Python.train_ua">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -459,8 +452,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_ua" />
         <item itemvalue="Python.train_ua" />
+        <item itemvalue="Python.test_ua" />
         <item itemvalue="Python.test_ua (1)" />
         <item itemvalue="Python.test_ua_dataset" />
         <item itemvalue="Python.motion_model_perspective" />
@@ -505,7 +498,7 @@
       <workItem from="1555636501583" duration="7520000" />
       <workItem from="1555706204234" duration="40854000" />
       <workItem from="1556247755978" duration="1708000" />
-      <workItem from="1556250078381" duration="3612000" />
+      <workItem from="1556250078381" duration="8975000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -678,7 +671,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="321360000" />
+    <option name="totallyTimeSpent" value="326723000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -699,7 +692,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3282002" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.24862486" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.24862486" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
@@ -708,7 +701,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32893288" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.23982398" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" visible="true" weight="0.31023103" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.31023103" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="14" weight="0.32893288" />
       <window_info anchor="bottom" id="File Transfer" order="15" weight="0.3285958" />
@@ -815,6 +808,21 @@
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
       <expression>
+        <expression-string>'MVI_20032' == self.sequence_name and 632 in frame_indexes</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>632 in frame_indexes</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>632 in frames</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>print(all_best_truth_overlap[0].sort(descending=True))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -849,41 +857,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>np.sum(np.isnan(motion_bboxes_2)) &gt; 0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>np.sum(np.isnan(np.array([np.exp(MotionModelPerspective.model_func(times, *p)) for p in self.parameters]).T)) &gt; 0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>np.sum(np.isnan(np.array([np.exp(MotionModelPerspective.model_func(times, *p)) for p in self.parameters]).T))</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dataset/ua/ua_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="248" selection-start-line="248" selection-end-line="248" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_nonlinear_curve_fit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -1060,16 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="66" column="30" lean-forward="true" selection-start-line="66" selection-start-column="30" selection-end-line="66" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/torch/nn/functional.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-45">
@@ -1160,16 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="419">
-            <caret line="82" column="20" lean-forward="true" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/multiprocessing/queues.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -1234,10 +1190,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="112" column="7" selection-start-line="112" selection-start-column="7" selection-end-line="112" selection-end-column="7" />
+        <state relative-caret-position="288">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1251,20 +1210,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/loss_param.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="377">
+          <caret line="426" column="22" lean-forward="true" selection-start-line="426" selection-start-column="22" selection-end-line="426" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/sequence_list_test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/sequence_list_train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="45" column="35" lean-forward="true" selection-start-line="45" selection-start-column="35" selection-end-line="45" selection-end-column="35" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="75" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="75" />
+        <state relative-caret-position="402">
+          <caret line="62" column="24" lean-forward="true" selection-start-line="62" selection-start-column="24" selection-end-line="62" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="394">
+            <caret line="81" column="20" lean-forward="true" selection-start-line="81" selection-start-column="20" selection-end-line="81" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

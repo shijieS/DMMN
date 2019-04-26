@@ -33,11 +33,14 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
-| 2019/04/16 | Clean this project | :hourglass_flowing_sand: |
-| 2019/04/16 | Overlap ratio of **Tunnel Anchor** too small | :hourglass_flowing_sand: |
-| 2019/04/16 | Add **Random Mirror** Preprocessing | :hourglass_flowing_sand: |
-| 2019/04/16 | Add **Random Crop** Preprocessing | :hourglass_flowing_sand: |
-| 2019/04/16 | Needs Testing The Network | :boom: 2019/04/16 processing |
+| 2019/04/26 | Try MOT 17 | :hourglass_flowing_sand: Need to do |
+| 2019/04/26 | Train A-MOT Dataset | :hourglass_flowing_sand: Need to do |
+| 2019/04/26 | Train UA-DETRAC | :boom: Training |
+| 2019/04/16 | Clean this project | :boom: Ready to do<br>:hourglass_flowing_sand: |
+| 2019/04/16 | Overlap ratio of **Tunnel Anchor** too small | :ballot_box_with_check: Find the best overlap ratio​<br>:boom:<br>:hourglass_flowing_sand: |
+| 2019/04/16 | Add **Random Mirror** Preprocessing | :no_entry:<br>:hourglass_flowing_sand: |
+| 2019/04/16 | Add **Random Crop** Preprocessing | :no_entry:<br>:hourglass_flowing_sand: |
+| 2019/04/16 | Needs Testing The Network | :ballot_box_with_check:Thoroughly testing see [result video](<https://www.dropbox.com/s/m63g9jotgs35xu5/1.avi?dl=0>)<br>:boom: 2019/04/16 processing |
 | 2019/04/14 | Motion Model Needs Rewrite | :exclamation::exclamation::ballot_box_with_check: 2019/04/16 Rewriting motion model :)​<br>:boom: 2019/04/14 rewriting |
 | 2019/04/13  | Lost some objects<br/> ![](./images/progress/lost_objects1.png)![](./images/progress/lost_objects2.png)<br> |  :ballot_box_with_check: set confidence and existing threshold<br> :boom:20​19/04/13 process  |
 | 2019/04/13  | NMS doesn't work well <br>![](./images/progress/nms_doesnt_work_well1.png) ![](./images/progress/nms_doesnt_work_well.png)<br> | :ballot_box_with_check: ​the bad training data<br>2019/04/13 :boom: |

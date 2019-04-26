@@ -43,6 +43,7 @@ class SingleVideoParser:
             selected_indexes = np.arange(0, config['frame_max_input_num']) * config['frame_sample_scale']
         frame_mask[selected_indexes] = True
         frame_indexes = r[frame_mask]
+        # print(self.sequence_name)
         ua_data = self.ua_data[frame_indexes, :]
 
         # get ids and bbox
@@ -140,14 +141,14 @@ class UATrainDataset(Dataset):
     def get_parser(self, item):
         for i, (start, end) in enumerate(self.ranges):
             if item >= start and item < end:
-                return self.data[i]
+                return self.data[i], item-start
         return None
 
 
     def __getitem__(self, item):
 
         # locate the parser
-        parser = self.get_parser(item)
+        parser, item = self.get_parser(item)
         out = parser[item]
         if parser is None:
             return None
