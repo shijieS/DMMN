@@ -69,7 +69,7 @@ class Compose2(object):
 
 class ToFloat(object):
     def __call__(self, items):
-        if items is None:
+        if items is None or items[3] is None:
             return None
 
         for i in range(len(items[3])):
@@ -414,6 +414,9 @@ class Resize(object):
         self.size = size
 
     def __call__(self, items):
+        if items is None:
+            return None
+
         for i in range(len(items[3])):
             items[3][i] = cv2.resize(items[3][i], (self.size, self.size))
         return items

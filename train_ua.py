@@ -130,7 +130,7 @@ def train():
 
     data_loader = data.DataLoader(dataset=dataset, batch_size=args.batch_size,
                                   num_workers=args.num_workers,
-                                  shuffle=False,
+                                  shuffle=True,
                                   collate_fn=collate_fn,
                                   pin_memory=False)
 
@@ -189,6 +189,9 @@ def train():
             times_1)
 
         loss = loss_l + loss_c + loss_e
+
+        if torch.isnan(loss):
+            continue
 
         loss.backward()
         optimizer.step()

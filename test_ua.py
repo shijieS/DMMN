@@ -63,7 +63,7 @@ def test():
 
     data_loader = data.DataLoader(dataset=dataset, batch_size=1,
                                   num_workers=1,
-                                  shuffle=False,
+                                  shuffle=True,
                                   collate_fn=collate_fn,
                                   pin_memory=False)
 

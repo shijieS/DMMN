@@ -152,7 +152,8 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         best_prior_idx.squeeze_(1)
         best_prior_overlap = best_prior_overlap.squeeze_(1)
         best_prior_mask = best_prior_overlap > 0
-        best_truth_overlap.index_fill_(0, best_prior_idx[best_prior_mask], 2)  # ensure best prior
+        if len(best_prior_idx[best_prior_mask]) > 0:
+            best_truth_overlap.index_fill_(0, best_prior_idx[best_prior_mask], 2)  # ensure best prior
         # ensure every gt matches with its prior of max overlap
         for j in range(best_prior_idx.size(0)):
             if best_prior_mask[j]:

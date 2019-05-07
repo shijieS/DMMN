@@ -118,7 +118,10 @@ class MultiBoxLoss(nn.Module):
         neg_idx = neg.unsqueeze(3).expand_as(p_c_p) # N_b x 1 x N_p x 2
         conf_p = p_c_p[(pos_idx + neg_idx).gt(0)].view(-1, self.num_classes)
         targets_weighted = p_c_ts[(pos + neg).gt(0)]
-        loss_c = F.cross_entropy(conf_p, targets_weighted, reduction='sum')
+        if len(targets_weighted) == 0 or len(conf_p) == 0:
+            loss_c = conf_p.sum()
+        else:
+            loss_c = F.cross_entropy(conf_p, targets_weighted, reduction='sum')
 
         # calcualte the exists loss
         pos_idx = pos.unsqueeze(3).expand_as(p_e_p)
@@ -127,7 +130,10 @@ class MultiBoxLoss(nn.Module):
         pos_idx = pos.expand_as(p_e_ts)
         neg_idx = neg.expand_as(p_e_ts)
         targets_weighted = p_e_ts[(pos_idx + neg_idx).gt(0)].long()
-        loss_e = F.cross_entropy(exist_p, targets_weighted, reduction='sum')
+        if len(targets_weighted) == 0 or len(exist_p) == 0:
+            loss_e = exist_p.sum()
+        else:
+            loss_e = F.cross_entropy(exist_p, targets_weighted, reduction='sum')
 
         N = num_pos.data.sum().float()
         return loss_l / N, loss_c / N * num_frames, loss_e / N
