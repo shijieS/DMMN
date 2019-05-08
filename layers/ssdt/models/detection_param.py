@@ -103,7 +103,7 @@ class Detect(Function):
 
                 # if there are exists the reasonable boxes.
                 print(c_mask.sum().item())
-                if c_mask.sum().item() >= 0:
+                if c_mask.sum().item() > 0:
                     # idx of highest scoring and non-overlapping boxes per class
                     ids, count = nms_with_frames(boxes, scores, p_e[i, :, c_mask, cl], self.nms_thresh, self.top_k, self.exist_thresh)
 

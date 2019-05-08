@@ -38,12 +38,16 @@ class DrawBoxes:
         if with_border:
             if border_color is None:
                 border_color = color
-            cv2.rectangle(frame, (l, t), (r, b), border_color, 1)
+            print(l, t, r, b)
+            if l + r >  0:
+                cv2.rectangle(frame, (l, t), (r, b), border_color, 1)
 
         # put text
         if font_color is None:
             font_color = color
-        cv2.putText(frame, text, (l, t), cv2.FONT_HERSHEY_SIMPLEX, 0.3, font_color)
+
+        if l + r > 0:
+            cv2.putText(frame, text, (l, t), cv2.FONT_HERSHEY_SIMPLEX, 0.3, font_color)
 
         return frame
 
@@ -127,6 +131,8 @@ class DrawBoxes:
 
         points = []
         for b in boxes:
+            if b[0]+b[2] == 0:
+                continue
             (l, t, r, b) = tuple([i for i in b])
             x = int((l + r) // 2)
             y = int(b)

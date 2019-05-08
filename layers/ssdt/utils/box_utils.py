@@ -190,8 +190,9 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
     # mean_best_truth_overlap = torch.sum(all_best_truth_overlap, dim=1) / torch.sum(exist_t[idx], dim=0)
     # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
     # mean_best_truth_overlap = ((all_best_truth_overlap>=2*threshold).float() * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
-    mean_best_truth_overlap = ((torch.exp(all_best_truth_overlap)-1) * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
-    # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).max(dim=1)[0]
+    # mean_best_truth_overlap = ((torch.exp(all_best_truth_overlap)-1) * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
+    mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).max(dim=1)[0]
+    # print((mean_best_truth_overlap>threshold).sum())
     conf[mean_best_truth_overlap < threshold] = 0  # label as background
     conf_t[idx] = conf  # [num_priors] top class label for each prior
 

@@ -39,7 +39,7 @@ class PriorBox(object):
                 mean += [cx, cy, s_k, s_k]
 
                 s_k_4 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 4.0) / self.frame_size
-                s_k_3 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 3.0)/ self.frame_size
+                s_k_3 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 1.2)/ self.frame_size
                 s_k_2 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 2.0) / self.frame_size
                 mean += [cx, cy, s_k_2, s_k_2]
                 mean += [cx, cy, s_k_3, s_k_3]
