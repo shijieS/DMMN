@@ -33,9 +33,9 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
-| 2019/05/07 | None-filling rectangles <br />![](./images/progress/none_filling1.png) | :boom:2019/05/07 process |
+| 2019/05/07 | None-filling rectangles <br />![](./images/progress/none_filling1.png) | :ballot_box_with_check: waiting <br />boom:2019/05/07 process |
 | 2019/05/07 | Weird rectangles without label <br />![](./images/progress/weird_rectangles1.png)![](./images/progress/weird_rectangles2.png) | :boom:2019/05/07 process |
-| 2019/05/07 | Lost some objects in other scene <br />![1557188487001](./images/progress/lost_objects3.png) ![](./images/progress/lost_objects4.png) | :boom:2019/05/07 process |
+| 2019/05/07 | Lost some objects in other scene <br />![1557188487001](./images/progress/lost_objects3.png) ![](./images/progress/lost_objects4.png) | :ballot_box_with_check:finish by reconfigure the anchor boxes<br />:boom:2019/05/07 process |
 | 2019/04/26 | Try MOT 17 | :hourglass_flowing_sand: Need to do |
 | 2019/04/26 | Train A-MOT Dataset | :hourglass_flowing_sand: Need to do |
 | 2019/04/26 | Train UA-DETRAC | :boom: Training |
@@ -62,7 +62,7 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 - bbox: the format is *(left, top, right, bottom)*
 - $N_{tr}$: the track number.
-- $N_{ba}$: the batch number.
+- $N_{ba}​$: the batch number.
 - $N_{ti}$: the selected frame number
 - $N_{pr}$: the number of prior boxes
 - $W, H$: the input network image size (W, H).

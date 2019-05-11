@@ -5,6 +5,15 @@ https://github.com/fmassa/vision/blob/voc_dataset/torchvision/datasets/voc.py
 
 Updated by: Ellis Brown, Max deGroot
 """
+#  #!/usr/bin/env python
+#   Copyright (c) 2019. ShiJie Sun at the Chang'an University
+#   This work is licensed under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+#   For a copy, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
+#   Author: shijie Sun
+#   Email: shijieSun@chd.edu.cn
+#   Github: www.github.com/shijieS
+#
+
 from .config import HOME
 import os.path as osp
 import sys

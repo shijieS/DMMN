@@ -1,3 +1,12 @@
+#  #!/usr/bin/env python
+#   Copyright (c) 2019. ShiJie Sun at the Chang'an University
+#   This work is licensed under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+#   For a copy, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
+#   Author: shijie Sun
+#   Email: shijieSun@chd.edu.cn
+#   Github: www.github.com/shijieS
+#
+
 import cv2
 import numpy as np
 
@@ -39,14 +48,14 @@ class DrawBoxes:
             if border_color is None:
                 border_color = color
             print(l, t, r, b)
-            if l + r >  0:
+            if l + r >  0 and r-l < 100000 and r-l > -100000 and b - l < 100000 and b - l > -100000:
                 cv2.rectangle(frame, (l, t), (r, b), border_color, 1)
 
         # put text
         if font_color is None:
             font_color = color
 
-        if l + r > 0:
+        if l + r > 0 and r - l > -10000 and r - l < 10000 and b - l < 100000 and b - l > -100000:
             cv2.putText(frame, text, (l, t), cv2.FONT_HERSHEY_SIMPLEX, 0.3, font_color)
 
         return frame
@@ -131,9 +140,9 @@ class DrawBoxes:
 
         points = []
         for b in boxes:
-            if b[0]+b[2] == 0:
-                continue
             (l, t, r, b) = tuple([i for i in b])
+            if l + r == 0 or r - l < -10000 or r - l > 10000 or b - l > 100000 or b - l < -100000:
+                continue
             x = int((l + r) // 2)
             y = int(b)
             cv2.circle(frame, (x, y), 1, color, thickness*2)

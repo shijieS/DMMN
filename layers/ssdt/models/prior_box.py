@@ -1,3 +1,12 @@
+#  #!/usr/bin/env python
+#   Copyright (c) 2019. ShiJie Sun at the Chang'an University
+#   This work is licensed under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+#   For a copy, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
+#   Author: shijie Sun
+#   Email: shijieSun@chd.edu.cn
+#   Github: www.github.com/shijieS
+#
+
 from __future__ import division
 from math import sqrt as sqrt
 from itertools import product as product
@@ -19,6 +28,7 @@ class PriorBox(object):
         self.max_sizes = config['frame_work']['max_sizes']
         self.steps = config['frame_work']['steps']
         self.aspect_ratios = config['frame_work']['aspect_ratios']
+        self.scales = config['frame_work']['boxes_scales']
         self.clip = config['frame_work']['clip']
         for v in self.variance:
             if v <= 0:
@@ -38,12 +48,16 @@ class PriorBox(object):
                 s_k = self.min_sizes[k]/self.frame_size
                 mean += [cx, cy, s_k, s_k]
 
-                s_k_4 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 4.0) / self.frame_size
-                s_k_3 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 1.2)/ self.frame_size
-                s_k_2 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 2.0) / self.frame_size
-                mean += [cx, cy, s_k_2, s_k_2]
-                mean += [cx, cy, s_k_3, s_k_3]
-                mean += [cx, cy, s_k_4, s_k_4]
+                for s in self.scales[k]:
+                    s_k_s = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) * s) / self.frame_size
+                    mean += [cx, cy, s_k_s, s_k_s]
+
+                # s_k_4 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 4.0) / self.frame_size
+                # s_k_3 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 1.2)/ self.frame_size
+                # s_k_2 = (self.min_sizes[k] + (self.max_sizes[k] - self.min_sizes[k]) / 2.0) / self.frame_size
+                # mean += [cx, cy, s_k_2, s_k_2]
+                # mean += [cx, cy, s_k_3, s_k_3]
+                # mean += [cx, cy, s_k_4, s_k_4]
 
                 # aspect_ratio: 1
                 # rel size: sqrt(s_k * s_(k+1))

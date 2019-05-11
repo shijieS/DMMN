@@ -15,3 +15,4 @@ motion_model/__pycache__/motion_model.cpython-36.pyc
 motion_model/__pycache__/motion_model_quadratic.cpython-36.pyc
 draw_utils/__pycache__/
 motion_model/__pycache__/motion_model_perspective.cpython-36.pyc
+tools/ua_data_bboxes.csv

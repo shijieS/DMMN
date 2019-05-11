@@ -1,3 +1,12 @@
+#  #!/usr/bin/env python
+#   Copyright (c) 2019. ShiJie Sun at the Chang'an University
+#   This work is licensed under the terms of the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+#   For a copy, see <http://creativecommons.org/licenses/by-nc-sa/3.0/>.
+#   Author: shijie Sun
+#   Email: shijieSun@chd.edu.cn
+#   Github: www.github.com/shijieS
+#
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -46,7 +55,7 @@ class SSDT(nn.Module):
 
         if phase == 'test':
             self.softmax = nn.Softmax(dim=-1)
-            self.detect = Detect(config["num_classes"], 0, 500, 0.5, 0.8, 0.5)
+            self.detect = Detect(config["num_classes"], 0, 500, 0.5, 0.2, 0.5)
 
         # init the weights and bias
         self.apply(param_init)
@@ -170,7 +179,12 @@ class SSDT(nn.Module):
         param_layers = []
         p_m_layers = []
         p_c_layers = []
-        num_boxes = config["frame_work"]["num_boxes"]
+
+        scales = config["frame_work"]["boxes_scales"]
+        aspect_ratios = config["frame_work"]["aspect_ratios"]
+        num_boxes = [2 + len(_s) + 2*len(_a) for _s, _a in zip(scales, aspect_ratios)]
+
+        # num_boxes = config["frame_work"]["num_boxes"]
         num_channels_dims = config["frame_work"]["channel_dims"]
         num_temporal_dims = config["frame_work"]["temporal_dims"]
         for k, c, t in zip(num_boxes, num_channels_dims, num_temporal_dims):
