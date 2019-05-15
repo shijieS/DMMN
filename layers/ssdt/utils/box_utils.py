@@ -145,6 +145,8 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
     all_best_prior_idx = []
     all_best_prior_overlap = []
     all_overlaps = []
+
+
     for frame_index in range(num_frame):
         # jaccard index
         # truths[frame_index, :] = point_form(truths[frame_index, :])
