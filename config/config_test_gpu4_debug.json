@@ -1,7 +1,7 @@
 {
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/ssm/data/dataset/uadetrac/",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -16,7 +16,7 @@
   "image_width": 960,
   "image_height": 540,
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-8/weights/ssdt11520.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9/weights/ssdt720.pth",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
@@ -52,17 +52,17 @@
     "detect_exist_thresh": 0.5
   },
   "train": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-7/weights/ssdt10080.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-8/weights/ssdt12960.pth",
     "batch_size": 8,
     "num_workers": 16,
     "learning_rate": 1e-3,
     "lr_decay_per_epoch": [30, 50, 70, 90],
     "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
-    "log_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-8/log",
-    "image_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-8/image",
-    "weights_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-8/weights",
+    "log_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9/log",
+    "image_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9/image",
+    "weights_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9/weights",
     "sequence_list": "./dataset/sequence_list_train.txt",
-    "save_weight_per_epoch": 10,
+    "save_weight_per_epoch": 5,
     "start_epoch": 0,
     "end_epoch": 100,
     "tensorboard": true,
@@ -82,7 +82,7 @@
     "hue_delta": 18.0,
     "brightness_delta": 32,
     "max_expand_ratio": 1.1,
-    "loss_overlap_thresh": 0.6,
+    "loss_overlap_thresh": 0.5,
     "loss_background_label": 0
 
   },
