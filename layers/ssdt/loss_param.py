@@ -24,8 +24,8 @@ class Loss(nn.Module):
         self.cuda = config["cuda"]
         # create multibox_loss from ssd
         self.multibox_loss = MultiBoxLoss(
-            config["num_classes"], 0.5, True, 0,
-            True, 3, 0.3, False, config["cuda"])
+            config["num_classes"], config["train"]["loss_overlap_thresh"], True,
+            config["train"]["loss_background_label"], True, 3, 0.5, False, config["cuda"])
 
 
     def convert_to_bboxes(self, parameters, times):

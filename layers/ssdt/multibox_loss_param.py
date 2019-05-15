@@ -146,5 +146,6 @@ class MultiBoxLoss(nn.Module):
             loss_e = F.cross_entropy(exist_p, targets_weighted, reduction='sum')
 
         N = num_pos.data.sum().float()
+
         return loss_l / N, loss_c / N * num_frames, loss_e / N
 

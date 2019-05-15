@@ -20,7 +20,7 @@ import torch
 
 parser = argparse.ArgumentParser(description='The tools for summary the distribution boxes of UA-DETRAC')
 parser.add_argument('--version', default='v1', help='version')
-parser.add_argument('--sequence_list', default='../dataset/sequence_list_all.txt', help='the sequence list')
+parser.add_argument('--sequence_list', default='../dataset/sequence_list_train.txt', help='the sequence list')
 parser.add_argument('--dataset_root', default='/media/ssm/data/dataset/uadetrac/', help='the dataset root')
 parser.add_argument('--save_file', default='./ua_data_bboxes.csv', help='the dataset root')
 
@@ -131,7 +131,7 @@ def find_best_anchor_configure(bboxes, input_size=168):
                                     image_size=input_size)
 
     print(anchor_boxes.shape[0])
-    valid_ratio, all_ratio = evaluate_anchor_bboxes(bboxes, anchor_boxes, min_overlap=0.4)
+    valid_ratio, all_ratio = evaluate_anchor_bboxes(bboxes, anchor_boxes, min_overlap=0.45)
     # 3. calculate the location overlap
     print(valid_ratio, all_ratio)
 

@@ -142,6 +142,8 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
     num_prior = priors.shape[0]
     all_best_truth_idx = []
     all_best_truth_overlap = []
+    all_best_prior_idx = []
+    all_best_prior_overlap = []
     all_overlaps = []
     for frame_index in range(num_frame):
         # jaccard index
@@ -165,13 +167,17 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         if len(best_prior_idx[best_prior_mask]) > 0:
             best_truth_overlap.index_fill_(0, best_prior_idx[best_prior_mask], 2)  # ensure best prior
         # ensure every gt matches with its prior of max overlap
-        for j in range(best_prior_idx.size(0)):
+        for j in range(num_object):
             if best_prior_mask[j]:
                 best_truth_idx[best_prior_idx[j]] = j
 
+        all_best_prior_idx += [best_prior_idx]
+        all_best_prior_overlap += [best_prior_overlap]
         all_best_truth_idx += [best_truth_idx]
         all_best_truth_overlap += [best_truth_overlap]
 
+
+    """
     # adjust the all_best_truth_idx according the max frequent id
     # speed up instead of using torch.bincount
     all_best_truth_idx = torch.stack(all_best_truth_idx, dim=1).long()
@@ -184,9 +190,19 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
     best_truth_idx = torch.argmax(bins, dim=1, keepdim=True)
     best_truth_idx.squeeze_(1)
     conf = labels[best_truth_idx]  # Shape: [num_priors]
+    
 
     # update all best overlap
     all_best_truth_overlap = [torch.gather(overlaps, 0, best_truth_idx[None, :])[0] for overlaps in all_overlaps]
+    """
+
+    all_best_truth_overlap = torch.stack(all_best_truth_overlap, dim=1)
+    all_best_truth_idx = torch.stack(all_best_truth_idx, dim=1)
+    best_truth_overlap, best_truth_frame_idx = all_best_truth_overlap.max(dim=1, keepdim=True)
+    best_truth_idx = all_best_truth_idx.gather(1, best_truth_frame_idx)
+    best_truth_idx.squeeze_(1)
+    best_truth_overlap.squeeze_(1)
+    conf = labels[best_truth_idx]
 
     # make truth label
     for frame_index in range(num_frame):
@@ -196,14 +212,18 @@ def match(threshold, truths, priors, variances, labels, exists, loc_t, conf_t, e
         loc_t[idx, frame_index, :] = loc    # [num_priors,4] encoded offsets to learn
         exist_t[idx, frame_index, :] = exist
 
-    all_best_truth_overlap = torch.stack(all_best_truth_overlap, dim=1)
+    # all_best_truth_overlap = torch.stack(all_best_truth_overlap, dim=1)
     # mean_best_truth_overlap = torch.sum(all_best_truth_overlap, dim=1) / torch.sum(exist_t[idx], dim=0)
     # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
     # mean_best_truth_overlap = ((all_best_truth_overlap>=2*threshold).float() * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
     # mean_best_truth_overlap = ((torch.exp(all_best_truth_overlap)-1) * exist_t[idx].permute([1, 0])).sum(dim=1) / exist_t[idx].sum(dim=0)
-    mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).max(dim=1)[0]
+    # mean_best_truth_overlap = (all_best_truth_overlap * exist_t[idx].permute([1, 0])).max(dim=1)[0]
+    # mean_best_truth_overlap = all_best_truth_overlap.max(dim=1)[0]
+    # first_exists = exist_t[idx].topk(1, dim=0, largest=True)[1][0]
+    # mean_best_truth_overlap = all_best_truth_overlap.gather(dim=1, index=first_exists[:, None].expand_as(all_best_truth_overlap))[:, 0]
     # print((mean_best_truth_overlap>threshold).sum())
-    conf[mean_best_truth_overlap < threshold] = 0  # label as background
+    select_exist = exist_t[idx].permute([1, 0]).gather(1, best_truth_frame_idx)[:, 0]
+    conf[best_truth_overlap < threshold] = 0  # label as background
     conf_t[idx] = conf  # [num_priors] top class label for each prior
 
 def encode_batch(matched, priors, variances):

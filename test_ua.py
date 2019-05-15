@@ -73,6 +73,8 @@ def test():
     batch_iterator = iter(data_loader)
     for index in range(len(data_loader)):
         frames_1, target_1, times_1 = next(batch_iterator)
+        if frames_1 is None:
+            continue
 
         if args.cuda:
             frames_1 = Variable(frames_1.cuda())
@@ -93,7 +95,7 @@ def test():
             boxes = []
 
             for c in range(1, class_num):
-                mask = output_p_c[b, c, :] >= 0.00
+                mask = output_p_c[b, c, :] > 0
                 result += [[
                     output_params[b, c, mask, :].data,
                     output_p_c[b, c, mask].data,
@@ -122,11 +124,13 @@ def test():
                 colors = []
                 texts = []
                 for c, e in zip(all_p_c, all_p_e[i, :]):
-                    if e > 0.3:
+                    if e > 0.5:
                         colors += [(0, 0, 255)]
+                        texts += ["{:.2}, {:.2}".format(c, e)]
                     else:
                         colors += [(255, 255, 255)]
-                    texts += ["{:.2}, {:.2}".format(c, e)]
+                        texts += ["NO-"]
+
                 DrawBoxes.cv_draw_mult_boxes_with_track(frame, all_bboxes, i, colors, texts)
 
                 if cfg['debug_save_image']:

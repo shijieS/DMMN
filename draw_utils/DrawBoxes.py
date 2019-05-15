@@ -37,6 +37,9 @@ class DrawBoxes:
         if content_color is None:
             content_color = color
 
+        if text == "NO":
+            return frame
+
         (l, t, r, b) = tuple([int(b) for b in box])
         roi = frame[t:b, l:r]
         black_box = np.zeros_like(roi)
