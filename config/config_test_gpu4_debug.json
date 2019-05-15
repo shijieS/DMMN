@@ -16,7 +16,7 @@
   "image_width": 960,
   "image_height": 540,
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9/weights/ssdt1440.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1/weights/ssdt3600.pth",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
