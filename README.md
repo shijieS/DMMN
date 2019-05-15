@@ -33,7 +33,7 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
-| 2019/05/15 | ![1557913738424](./images/progress/weird_rectangles3.png) | :boom: Weird rectangles and incorrect classifications |
+| 2019/05/15 | ![1557913738424](./images/progress/weird_rectangles3.png) | :ballot_box_with_check: solved by change the loss according the first exist box <br />:boom: Weird rectangles and incorrect classifications |
 | 2019/05/07 | None-filling rectangles <br />![](./images/progress/none_filling1.png) | :ballot_box_with_check: waiting <br />:boom:2019/05/07 process |
 | 2019/05/07 | Weird rectangles without label <br />![](./images/progress/weird_rectangles1.png)![](./images/progress/weird_rectangles2.png) | :ballot_box_with_check: find the reason <br />:boom:2019/05/07 process |
 | 2019/05/07 | Lost some objects in other scene <br />![1557188487001](./images/progress/lost_objects3.png) ![](./images/progress/lost_objects4.png) | :ballot_box_with_check:finish by reconfigure the anchor boxes<br />:boom:2019/05/07 process |
