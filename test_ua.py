@@ -73,6 +73,9 @@ def test():
     batch_iterator = iter(data_loader)
     for index in range(len(data_loader)):
         frames_1, target_1, times_1 = next(batch_iterator)
+        # if index % 32 != 0:
+        #     continue
+
         if frames_1 is None:
             continue
 

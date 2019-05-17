@@ -32,6 +32,10 @@ class SSDT(nn.Module):
         self.priorbox = PriorBox(config)
         with torch.no_grad():
             self.priors = Variable(self.priorbox.forward())
+            # if config['cuda']:
+            #     self.priors = Variable(self.priorbox.forward().cuda())
+            # else:
+            #     self.priors = Variable(self.priorbox.forward())
         self.input_frame_num = config["frame_max_input_num"]
 
         self.base = base

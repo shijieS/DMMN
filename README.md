@@ -7,6 +7,7 @@ This is an end-to-end network which combines detector and matcher into one singl
 | Date   | Event                                    |
 | ------ | ---------------------------------------- |
 | 201905 | Can Train on A-MOT dataset               |
+| 201905 | Design the tracker                       |
 | 201905 | Can Train On the Whole UA-DETRAC dataset |
 | 201904 | Recording Five Cities Training Dataset   |
 | 201903 | Start A Plan of Create New Dataset       |

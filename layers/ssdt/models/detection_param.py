@@ -81,6 +81,15 @@ class Detect(Function):
 
         loc_datas = MotionModel.get_bbox_by_frames_pytorch(param, times)
 
+        # find the times scale
+        if loc_datas.size(1) % p_e.size(1) != 0:
+            raise AssertionError("time scales should be the int in nms_with_frames")
+
+        time_scales = loc_datas.size(1) // p_e.size(1)
+        if time_scales > 1:
+            p_e = p_e[:, :, None, :, :].repeat(1, 1, time_scales, 1, 1)\
+                .view(p_e.size(0), -1, 1, p_e.size(2), p_e.size(3)).squeeze(2)
+
         num = loc_datas.size(0)  # batch size
         num_priors = priors.size(0)
         num_frames = times.size(1)
@@ -111,7 +120,7 @@ class Detect(Function):
                 boxes = decoded_boxes[:, c_mask, :]
 
                 # if there are exists the reasonable boxes.
-                print(c_mask.sum().item())
+                # print(c_mask.sum().item())
                 # if c_mask.sum().item() > 0:
                     # idx of highest scoring and non-overlapping boxes per class
                 ids, count = nms_with_frames(boxes, scores, exists, self.nms_thresh, self.top_k, self.exist_thresh)

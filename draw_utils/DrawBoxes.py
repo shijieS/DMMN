@@ -16,6 +16,7 @@ class DrawBoxes:
                         box,
                         color,
                         content_color=None,
+                        exist=1,
                         alpha=0.5,
                         text="",
                         font_color=None,
@@ -37,7 +38,7 @@ class DrawBoxes:
         if content_color is None:
             content_color = color
 
-        if text == "NO":
+        if text == "NO" or exist == 0:
             return frame
 
         (l, t, r, b) = tuple([int(b) for b in box])
@@ -50,7 +51,6 @@ class DrawBoxes:
         if with_border:
             if border_color is None:
                 border_color = color
-            print(l, t, r, b)
             if l + r >  0 and r-l < 100000 and r-l > -100000 and b - l < 100000 and b - l > -100000:
                 cv2.rectangle(frame, (l, t), (r, b), border_color, 1)
 
@@ -64,7 +64,7 @@ class DrawBoxes:
         return frame
 
     @staticmethod
-    def cv_draw_mult_boxes(frame, boxes, colors=None, texts=None):
+    def cv_draw_mult_boxes(frame, boxes, colors=None, texts=None, exists=None):
         """
         Draw multiple boxes on one frame
         :param frame: the frame to be drawn
@@ -79,8 +79,11 @@ class DrawBoxes:
         if texts is None:
             texts = ["" for _ in range(boxes_len)]
 
-        for box, color, text in zip(boxes, colors, texts):
-            frame = DrawBoxes.cv_draw_one_box(frame, box, color, text=text)
+        if exists is None:
+            exists = [1 for _ in range(boxes_len)]
+
+        for box, color, text, exist in zip(boxes, colors, texts, exists):
+            frame = DrawBoxes.cv_draw_one_box(frame, box, color, text=text, exist=exist)
 
         return frame
 
@@ -184,3 +187,43 @@ class DrawBoxes:
         else:
             colors = [DrawBoxes.get_random_color() for _ in range(num)]
         return colors
+
+    @staticmethod
+    def draw_ssdt_result(frames, boxes, p_c, p_e, exist_threh=0.5):
+        """
+        awesome tools for drawing ssdt result :).
+        :param boxes: boxes with shape [num_boxes, num_frames, 4]. values are in [0, 1+]
+        :param p_c: track confidence [num_boxes]. values are in [0, 1]
+        :param p_e: boxes confidences [num_boxes, num_frames]. values are in [0, 1]
+        :return: frames
+        """
+
+        boxes = boxes.data.cpu().numpy()
+        p_c = p_c.data.cpu().numpy()
+        p_e = p_e.data.cpu().numpy()
+
+        result_frames = []
+        h, w, _ = frames[0].shape
+
+        boxes[:, :, [0, 2]] *= w
+        boxes[:, :, [1, 3]] *= h
+        boxes = boxes.astype(int)
+
+        # generate a color list for each track randomly
+        track_num = boxes.shape[0]
+        colors = [DrawBoxes.get_random_color(i) for i in range(track_num)]
+        for frame_index, frame in enumerate(frames):
+            # 1. draw current frame boxes
+            current_boxes = boxes[:, frame_index, :]
+            exists_mask = p_e[:, frame_index] > exist_threh
+            texts = ["{:.2}, {:.2}".format(c, e) for c, e in zip(p_c, p_e[:, frame_index])]
+            DrawBoxes.cv_draw_mult_boxes(frame, current_boxes, colors, texts, exists=exists_mask)
+
+            # 2. draw nodes
+
+            for box_index in range(track_num):
+                DrawBoxes.cv_draw_track_(frame, boxes[box_index, :, :], colors[box_index])
+
+            result_frames += [frame]
+
+        return result_frames

@@ -16,7 +16,8 @@
   "image_width": 960,
   "image_height": 540,
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1/weights/ssdt3600.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-4-1/weights/ssdt152970.pth",
+    "dataset_type": "train",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
@@ -47,8 +48,8 @@
     "max_expand_ratio": 1.1,
     "detect_bkg_label": 0,
     "detect_top_k": 300,
-    "detect_conf_thresh": 0.7,
-    "detect_nms_thresh": 0.3,
+    "detect_conf_thresh": 0.5,
+    "detect_nms_thresh": 0.4,
     "detect_exist_thresh": 0.5
   },
   "train": {
@@ -58,9 +59,9 @@
     "learning_rate": 1e-3,
     "lr_decay_per_epoch": [30, 50, 70, 90],
     "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
-    "log_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1/log",
-    "image_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1/image",
-    "weights_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1/weights",
+    "log_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1-temp/log",
+    "image_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1-temp/image",
+    "weights_save_folder": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-9-1-temp/weights",
     "sequence_list": "./dataset/sequence_list_train.txt",
     "save_weight_per_epoch": 5,
     "start_epoch": 0,
