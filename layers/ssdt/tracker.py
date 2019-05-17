@@ -65,6 +65,7 @@ class Tracker:
 
         #3. create a recorder
         self.recorder = Recorder()
+        self.save_frame_index = 0
 
     def update(self, frames, times):
         """
@@ -73,6 +74,7 @@ class Tracker:
         :param input_times: a list of times
         :return: None
         """
+
         # 1. format frames and times
         if frames is None or times is None:
             return
@@ -100,7 +102,7 @@ class Tracker:
         # 2. get the image results
         start_time = time.time()
         output_params, output_p_c, output_p_e, output_boxes = self.net(frames_input, times_input)
-        print("times is {} sec".format(len(frames) / (time.time() - start_time)))
+        print("fps is {} sec".format(len(frames) / (time.time() - start_time)))
 
 
         # 3. update recorder
@@ -121,6 +123,8 @@ class Tracker:
             for frame in frames:
                 cv2.imshow("result", frame)
                 cv2.waitKey(30)
+                cv2.imwrite("result/{0:08}.png".format(self.save_frame_index), frame)
+                self.save_frame_index += 1
 
 
 

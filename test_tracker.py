@@ -15,8 +15,12 @@ if __name__ == "__main__":
     dataset = UATestDataset()
     tracker = Tracker()
 
-    for images, times in dataset:
+    index = 0
+    while index < len(dataset):
+        print(index)
+        frames, times = dataset[index]
         # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale
         # image_input_list = [images[i] for i in selected_indexes]
         # times_input_list = times[selected_indexes]
-        tracker.update(images, times)
+        result_frames = tracker.update(frames, times)
+        index += dataset.max_frame_num_with_scale

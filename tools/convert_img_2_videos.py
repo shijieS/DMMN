@@ -16,8 +16,8 @@ import cv2
 
 parser = argparse.ArgumentParser(description='The tools for convert images to video')
 parser.add_argument('--version', default='v1', help='version')
-parser.add_argument('--image_folder', default='/media/ssm/data/dataset/uadetrac/test_logs/images', help='the image folder')
-parser.add_argument('--video_file', default='/media/ssm/data/dataset/uadetrac/test_logs/images/result.avi', help='the video file to be saved')
+parser.add_argument('--image_folder', default='/home/ssj/Data/github/SSDT/result', help='the image folder')
+parser.add_argument('--video_file', default='/home/ssj/Data/github/SSDT/result/result1.avi', help='the video file to be saved')
 parser.add_argument('--video_fps', default=25, help="Video fps")
 parser.add_argument('--video_height', default=960, help="Video height")
 parser.add_argument('--video_width', default=1920, help="Video width")

@@ -90,7 +90,7 @@ class UATestDataset:
             start_index += l
 
     def __len__(self):
-        self.frame_num_range[-1][1]
+        return self.frame_num_range[-1][1]
 
     def __getitem__(self, item):
 
