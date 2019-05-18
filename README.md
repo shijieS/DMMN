@@ -34,6 +34,14 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
+| 2019/05/18 | ![1558137403985](images/progress/1558137403985.png) ![1558137434625](images/progress/1558137434625.png)![1558137448039](images/progress/1558137448039.png) | :boom: Cannot detect static vehicle |
+| 2019/05/18 | ![1558137352644](images/progress/1558137352644.png) | :boom: cannot detect bus |
+| 2019/05/18 | ![1558137469303](images/progress/1558137469303.png) | :boom: Limit on the detection regions |
+| 2019/05/18 | ![1558137499772](images/progress/1558137499772.png) | :boom: Something overlapped in the bus |
+| 2019/05/18 | ![1558137539934](images/progress/1558137539934.png)![1558137545991](images/progress/1558137545991.png) | :boom: totally different scene |
+| 2019/05/18 | ![1558137571322](images/progress/1558137571322.png) | :boom: Some weird boxes |
+| 2019/05/18 | ![1558137594908](images/progress/1558137594908.png) | :boom: totally different vehicle |
+| 2019/05/18 | ![1558137620722](images/progress/1558137620722.png) | :boom: Wrongly located boxes |
 | 2019/05/15 | ![1557913738424](./images/progress/weird_rectangles3.png) | :ballot_box_with_check: solved by change the loss according the first exist box <br />:boom: Weird rectangles and incorrect classifications |
 | 2019/05/07 | None-filling rectangles <br />![](./images/progress/none_filling1.png) | :ballot_box_with_check: waiting <br />:boom:2019/05/07 process |
 | 2019/05/07 | Weird rectangles without label <br />![](./images/progress/weird_rectangles1.png)![](./images/progress/weird_rectangles2.png) | :ballot_box_with_check: find the reason <br />:boom:2019/05/07 process |

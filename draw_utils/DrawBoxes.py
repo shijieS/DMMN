@@ -197,6 +197,8 @@ class DrawBoxes:
         :param p_e: boxes confidences [num_boxes, num_frames]. values are in [0, 1]
         :return: frames
         """
+        if len(boxes) == 0:
+            return frames
 
         boxes = boxes.data.cpu().numpy()
         p_c = p_c.data.cpu().numpy()

@@ -403,9 +403,10 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
 
     num_frames = boxes.size(0)
 
+    count = 0
     keep = scores.new(scores.size(0)).zero_().long()
     if boxes.numel() == 0:
-        return keep
+        return keep, count
 
     x1 = boxes[:, :, 0]
     y1 = boxes[:, :, 1]
@@ -426,7 +427,6 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
     w = boxes.new()
     h = boxes.new()
 
-    count = 0
     while idx.numel() > 0:
         i = idx[-1]  # index of current largest val
         keep[count] = i

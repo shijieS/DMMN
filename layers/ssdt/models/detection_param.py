@@ -124,11 +124,11 @@ class Detect(Function):
                 # if c_mask.sum().item() > 0:
                     # idx of highest scoring and non-overlapping boxes per class
                 ids, count = nms_with_frames(boxes, scores, exists, self.nms_thresh, self.top_k, self.exist_thresh)
-
-                output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
-                output_p_e[i, cl, :, :count] = exists[:, ids[:count]]
-                output_params[i, cl, :count, :] = param[i, c_mask, :][ids[:count], :]
-                output_p_c[i, cl, :count] = scores[ids[:count]]
+                if count > 0:
+                    output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
+                    output_p_e[i, cl, :, :count] = exists[:, ids[:count]]
+                    output_params[i, cl, :count, :] = param[i, c_mask, :][ids[:count], :]
+                    output_p_c[i, cl, :count] = scores[ids[:count]]
         output_p_c_1 = output_p_c.contiguous().view(num, -1)
         _, idx = output_p_c_1.sort(1, descending=True)
         _, rank = idx.sort(1)

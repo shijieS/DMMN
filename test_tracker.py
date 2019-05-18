@@ -17,6 +17,9 @@ if __name__ == "__main__":
 
     index = 0
     while index < len(dataset):
+        # if index != 736:
+        #     index += dataset.max_frame_num_with_scale
+        #     continue
         print(index)
         frames, times = dataset[index]
         # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale
