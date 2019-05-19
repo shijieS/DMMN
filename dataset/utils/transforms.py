@@ -498,6 +498,32 @@ class ToNumpy(object):
 
         return items
 
+
+class ToStatic:
+    def __call__(self, items):
+        if items is None or items[2] is None:
+            return None
+
+        # randomly select the same frames in order to detect the stop vehicle
+        if cfg['static_possiblity'] is not None and (random.choice(range(int(1 / cfg['static_possiblity']))) == 0):
+            num = items[2].shape[0]
+            index = random.choice(range(num))
+            boxes = items[2][index, :, :]
+            mask = boxes.sum(axis=1) > 0
+            if mask.sum() == 0:
+                return None
+
+            boxes = boxes[mask, :]
+            track_ids = items[1][mask]
+            frame = items[3][index]
+
+            items[1] = track_ids
+            items[2] = np.repeat(boxes[None, :], num, 0)
+            items[3] = [frame for _ in range(num)]
+
+        return items
+
+
 #TODO: RandomCrop
 class Transforms(object):
     def __init__(self, size=config["frame_size"], mean=(104, 117, 123)):
@@ -505,6 +531,7 @@ class Transforms(object):
         self.size = size
 
         self.augument = Compose([
+            ToStatic(),
             ToFloat(),
             PhotometricDistort(),
             Expand(self.mean),
