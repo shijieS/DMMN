@@ -1,7 +1,7 @@
 {
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/ssm/data/dataset/uadetrac/",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -15,8 +15,14 @@
   "video_fps": 30.0,
   "image_width": 960,
   "image_height": 540,
+  "label_map": {
+    "bus": 1,
+    "car": 2,
+    "others": 3,
+    "van": 4
+  },
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-4-1/weights/ssdt152970.pth",
+    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0510-4-2/weights/ssdt101980.pth",
     "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,

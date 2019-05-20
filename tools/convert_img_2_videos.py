@@ -17,7 +17,7 @@ import cv2
 parser = argparse.ArgumentParser(description='The tools for convert images to video')
 parser.add_argument('--version', default='v1', help='version')
 parser.add_argument('--image_folder', default='/home/ssj/Data/github/SSDT/result', help='the image folder')
-parser.add_argument('--video_file', default='/home/ssj/Data/github/SSDT/result/result1.avi', help='the video file to be saved')
+parser.add_argument('--video_file', default='/home/ssj/Desktop/E/result_after_nms.avi', help='the video file to be saved')
 parser.add_argument('--video_fps', default=25, help="Video fps")
 parser.add_argument('--video_height', default=960, help="Video height")
 parser.add_argument('--video_width', default=1920, help="Video width")
@@ -33,10 +33,13 @@ def convert(image_folder, video_file, fps, width, height):
     vw = cv2.VideoWriter(video_file, cv2.VideoWriter_fourcc(*"XVID"), fps, (width, height))
 
     for i in trange(len(images)):
-        I = cv2.imread(images[i])
-        I = cv2.resize(I, (width, height))
-        vw.write(I)
-        cv2.waitKey(int(1000/fps))
+        try:
+            I = cv2.imread(images[i])
+            I = cv2.resize(I, (width, height))
+            vw.write(I)
+            cv2.waitKey(int(1000/fps))
+        except:
+            continue
 
 
 
