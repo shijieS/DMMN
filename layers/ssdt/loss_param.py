@@ -59,7 +59,8 @@ class Loss(nn.Module):
         #     for t in range(times.shape[1])
         # ]
 
-        loc_datas_org, parameters_t, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(4))
+        # loc_datas_org, p_c_t, p_e_t, parameters_t = ([target[i] for target in targets] for i in range(4))
+        loc_datas_org, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(3))
         # loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
         loc_datas_t = loc_datas_org
 

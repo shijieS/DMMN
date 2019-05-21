@@ -234,6 +234,37 @@ class PhotometricDistort(object):
         return items
 
 
+class GetCategory:
+    """
+    Must before GetExists
+    """
+    def __call__(self, items):
+        if items is None:
+            return None
+
+        p_c = items[2][:, :, -1].max(axis=0)
+        items += [p_c]
+
+        items[2] = items[2][:, :, :-1]
+
+        return items
+
+
+class GetExists:
+    """
+    Must After GetCategory
+    """
+    def __call__(self, items):
+        if items is None:
+            return None
+
+        p_e = items[2][:, :, -1]
+        items += [p_e]
+
+        items[2] = items[2][:, :, :-1]
+
+        return items
+
 
 class CalculateParameters(object):
     def __call__(self, items):
@@ -241,23 +272,11 @@ class CalculateParameters(object):
             return None
 
         # re-calcuate the curve parameters
-        parameters, p_e, p_c = MotionModel.get_parameters(
-            bboxes_with_overlap_class=items[2], times=items[4],
+        parameters = MotionModel.get_parameters(
+            bboxes=items[2], times=items[4],
             invalid_node_rate=config['min_valid_node_rate'])
 
-        if sum(p_c) == 0:
-            return None
-
-        # remove background tracks
-        track_mask = p_c > 0
-
-        items += [parameters, p_e, p_c]
-
-        items[1] = items[1][track_mask]
-        items[2] = items[2][:, track_mask, :4]
-        items[5] = items[5][track_mask, : , :]
-        items[6] = items[6][:, track_mask]
-        items[7] = items[7][track_mask]
+        items += [parameters]
 
         return items
 
@@ -404,20 +423,18 @@ class RandomSampleCrop(object):
 
         return current_image, current_boxes, current_labels
 
-# TODO: Fix
 class RandomMirror(object):
     def __call__(self, items):
-        _, width, _ = items[0][0].shape
         if random.randint(2):
-            for i in range(len(items[0])):
-                items[0][i] = items[0][i][:, ::-1]
-                items[1][i, :][:, 0::2] = width - items[1][i, :][:, 2::-2]
+            items[3] = [f[:, ::-1].copy() for f in items[3]]
+            mask = items[2][:, :, :4].sum(axis=2) > 0
+            items[2][mask, 0:4:2] = 1 - items[2][mask, 2::-2]
 
-                items[6][i] = items[6][i][:, ::-1]
-                items[7][i, :][:, 0::2] = width - items[7][i, :][:, 2::-2]
-        # reset the mask region
-        items[1] *= items[3][:, :, None]
-        items[7] *= items[9][:, :, None]
+        if random.randint(10) == 0:
+            items[3] = [f[::-1, :].copy() for f in items[3]]
+            mask = items[2][:, :, :4].sum(axis=2) > 0
+            items[2][mask, 1:4:2] = 1 - items[2][mask, 3::-2]
+
         return items
 
 
@@ -471,9 +488,9 @@ class ToTensor(object):
         items[2] = torch.from_numpy(items[2])
         items[3] = torch.stack([torch.from_numpy(i) for i in items[3]], 0)
         items[4] = torch.from_numpy(items[4])
-        items[5] = torch.from_numpy(items[5])
+        items[5] = torch.from_numpy(items[5].astype(np.uint8))
         items[6] = torch.from_numpy(items[6].astype(np.uint8))
-        items[7] = torch.from_numpy(items[7].astype(np.uint8))
+        # items[7] = torch.from_numpy(items[7])
 
         return items
 
@@ -495,9 +512,9 @@ class ToNumpy(object):
         items[2] = items[2].numpy()
         items[3] = [self.image_tensor_2_cv(i) for i in items[3]]
         items[4] = items[4].numpy()
-        items[5] = items[5].numpy()
+        items[5] = items[5].numpy().astype(bool)
         items[6] = items[6].numpy().astype(bool)
-        items[7] = items[7].numpy().astype(bool)
+        items[7] = items[7].numpy()
 
         return items
 
@@ -539,10 +556,12 @@ class Transforms(object):
             PhotometricDistort(),
             Expand(self.mean),
             # RandomSampleCrop(),
-            # RandomMirror(),
+            RandomMirror(),
             Resize(self.size),
             SubtractMeans(self.mean),
-            CalculateParameters(),     # re-calculate the parameters of rectangles
+            GetCategory(),
+            GetExists(),
+            # CalculateParameters(),     # re-calculate the parameters of rectangles
             ToTensor()
         ])
 
@@ -578,6 +597,9 @@ class TransformReader(object):
             SubtractMeans(config["pixel_mean"]),
             AddMeans(config["pixel_mean"]),
             Expand(config["pixel_mean"]),
+            RandomMirror(),
+            GetCategory(),
+            GetExists(),
             CalculateParameters(),
             ToTensor(),
             ToNumpy(),

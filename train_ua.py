@@ -180,7 +180,7 @@ def train():
             frames_1 = Variable(frames_1.cuda())
             with torch.no_grad():
                 target_1 = [
-                    [Variable(target[j].cuda()) for j in range(4)]
+                    [Variable(target[j].cuda()) for j in range(len(target))]
                 for target in target_1]
                 times_1 = Variable(times_1.cuda())
         else:

@@ -88,7 +88,7 @@ class SingleVideoParser:
         frame_mask[selected_indexes] = True
         frame_indexes = r[frame_mask]
         # print(self.sequence_name)
-        ua_data = self.ua_data[frame_indexes, :]
+        ua_data = self.ua_data[frame_indexes+1, :]
 
         # get ids and bbox
         # 16 x 52

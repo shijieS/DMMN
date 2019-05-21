@@ -60,8 +60,8 @@ class MotionModelQuadratic(MotionModel):
             for i, y in enumerate(res):
                 param = curve_fit(
                     MotionModelQuadratic.model_func,
-                    x, np.log(y),
-                    bounds=([0, -0.1, 0], [np.inf, 1.1, 3]))[0]
+                    x, np.log(y))[0]
+                # , bounds = ([0, -0.1, 0], [np.inf, 1.1, 3]
                 parameters += [
                     [param[0], param[1], param[2]]
                 ]
@@ -110,7 +110,7 @@ class MotionModelQuadratic(MotionModel):
         return 12
 
     @staticmethod
-    def get_parameters(bboxes_with_overlap_class, times, invalid_node_rate):
+    def get_parameters(bboxes, times, invalid_node_rate):
         """
         Get the parameter of boxes.
         :param bboxes: (N_f, N_t, 4)
@@ -121,26 +121,22 @@ class MotionModelQuadratic(MotionModel):
 
         """
         parameters = list()
-        p_e = bboxes_with_overlap_class[:, :, 4]
-        p_c = bboxes_with_overlap_class[:, :, 5].max(axis=0)
-        bboxes = bboxes_with_overlap_class[:, :, :4]
         frame_num, track_num, _ = bboxes.shape
         mm = MotionModelQuadratic()
         for i in range(track_num):
             bbs = bboxes[:, i, :]
-            bbox_mask = np.logical_and(np.sum(bbs, axis=1) > 0, p_e[:, i] > 0)
-
+            # bbox_mask = np.logical_and(np.sum(bbs, axis=1) > 0, p_e[:, i] > 0)
+            bbox_mask = np.sum(bbs, axis=1) > 0
             param = mm.fit(bbs[bbox_mask, :], times[bbox_mask])
             if param is None:
                 param = MotionModelQuadratic.get_invalid_params()
-                p_c[i] = 0
+
             parameters += [param]
-            p_e[:, i] = bbox_mask
 
         # p_e = np.stack(p_e, axis=1)
         # p_c = np.array(p_c)
         parameters = np.stack(parameters, axis=0)
-        return parameters, p_e, p_c
+        return parameters
 
     @staticmethod
     def get_str(parameters):

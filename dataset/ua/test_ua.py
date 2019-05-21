@@ -25,7 +25,7 @@ def play_ua_training_data():
     for item in dataset:
         if item is None:
             continue
-        frame_indexes, track_ids, bboxes, frames, times, parameters, p_e, p_c = item
+        frame_indexes, track_ids, bboxes, frames, times, p_c, p_e, parameters = item
         image_wh = np.array([frames[0].shape[1], frames[0].shape[0], frames[0].shape[1], frames[0].shape[0]])
 
         bboxes *= image_wh

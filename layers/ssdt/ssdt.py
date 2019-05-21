@@ -42,8 +42,8 @@ class SSDT(nn.Module):
 
         # localization and confidence network
         self.param_layers = nn.ModuleList(head[0])
-        self.p_m_layers = nn.ModuleList(head[1])
-        self.p_c_layers = nn.ModuleList(head[2])
+        self.p_c_layers = nn.ModuleList(head[1])
+        self.p_e_layers = nn.ModuleList(head[2])
 
         # base net
         self.conv1 = nn.ModuleList([base.conv1, base.bn1, base.relu, base.maxpool])
@@ -99,7 +99,7 @@ class SSDT(nn.Module):
 
         # apply multibox head to source layers
         i = 0
-        for (x, p, m, c) in zip(sources, self.param_layers, self.p_m_layers, self.p_c_layers):
+        for (x, p, m, c) in zip(sources, self.param_layers, self.p_c_layers, self.p_e_layers):
             show_feature_map(p(x), 'param{}'.format(i))
             show_feature_map(m(x), 'p_c{}'.format(i))
             show_feature_map(c(x), 'p_e{}'.format(i))
@@ -183,8 +183,8 @@ class SSDT(nn.Module):
 
         # build parameter layers, possibility motion layers, possibility classification layers.
         param_layers = []
-        p_m_layers = []
         p_c_layers = []
+        p_e_layers = []
 
         scales = config["frame_work"]["boxes_scales"]
         aspect_ratios = config["frame_work"]["aspect_ratios"]
@@ -218,11 +218,11 @@ class SSDT(nn.Module):
                 p_e_layer = p_e_layer.cuda()
 
             param_layers += [param_layer]
-            p_m_layers += [p_c_layer]
-            p_c_layers += [p_e_layer]
+            p_c_layers += [p_c_layer]
+            p_e_layers += [p_e_layer]
 
 
-        head = (param_layers, p_m_layers, p_c_layers)
+        head = (param_layers, p_c_layers, p_e_layers)
         return SSDT(phase=phase,
                     base=base_net,
                     extra=extra_net,
