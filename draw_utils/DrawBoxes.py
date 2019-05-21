@@ -189,7 +189,7 @@ class DrawBoxes:
         return colors
 
     @staticmethod
-    def draw_ssdt_result(frames, boxes, p_c, p_e, exist_threh=0.5):
+    def draw_ssdt_result(frames, boxes, p_c, p_e, category, exist_threh=0.5):
         """
         awesome tools for drawing ssdt result :).
         :param boxes: boxes with shape [num_boxes, num_frames, 4]. values are in [0, 1+]
@@ -218,7 +218,7 @@ class DrawBoxes:
             # 1. draw current frame boxes
             current_boxes = boxes[:, frame_index, :]
             exists_mask = p_e[:, frame_index] > exist_threh
-            texts = ["{:.2}, {:.2}".format(c, e) for c, e in zip(p_c, p_e[:, frame_index])]
+            texts = ["{}, {:.2}, {:.2}".format(category, c, e) for c, e in zip(p_c, p_e[:, frame_index])]
             DrawBoxes.cv_draw_mult_boxes(frame, current_boxes, colors, texts, exists=exists_mask)
 
             # 2. draw nodes

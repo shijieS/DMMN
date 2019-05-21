@@ -200,32 +200,32 @@ class SSDT(nn.Module):
                                      padding=(0, 1, 1),
                                      stride=(1, 1, 1),
                                      bias=True)
-            p_m_layer = nn.Conv3d( in_channels=c,
-                                    out_channels=k*2,
+            p_c_layer = nn.Conv3d( in_channels=c,
+                                    out_channels=k*config["num_classes"],
                                     kernel_size=(t, 3, 3),
                                     padding=(0, 1, 1),
                                     stride=(1, 1, 1),
                                     bias=True)
-            p_c_layer = nn.Conv3d( in_channels=c,
-                                    out_channels=k * (config["frame_max_input_num"]) * config["num_classes"],
+            p_e_layer = nn.Conv3d( in_channels=c,
+                                    out_channels=k * config["frame_max_input_num"] * 2,
                                     kernel_size=(t, 3, 3),
                                     padding=(0, 1, 1),
                                     stride=(1, 1, 1),
                                     bias=True)
             if config["cuda"]:
                 param_layer = param_layer.cuda()
-                p_m_layer = p_m_layer.cuda()
                 p_c_layer = p_c_layer.cuda()
+                p_e_layer = p_e_layer.cuda()
 
             param_layers += [param_layer]
-            p_m_layers += [p_m_layer]
-            p_c_layers += [p_c_layer]
+            p_m_layers += [p_c_layer]
+            p_c_layers += [p_e_layer]
 
 
         head = (param_layers, p_m_layers, p_c_layers)
         return SSDT(phase=phase,
                     base=base_net,
-                    extra = extra_net,
+                    extra=extra_net,
                     head=head)
 
 

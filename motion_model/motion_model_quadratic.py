@@ -11,11 +11,15 @@ import numpy as np
 from .motion_model import MotionModel
 from dataset.utils.common import get_cx_cy_w_h
 import torch
-import warnings
-warnings.simplefilter('ignore', np.RankWarning)
+import scipy
 from scipy.optimize import curve_fit
 from tqdm import trange
 np.seterr(divide='ignore', invalid='ignore')
+import warnings
+warnings.simplefilter('ignore', np.RankWarning)
+warnings.simplefilter('ignore', np.ComplexWarning)
+warnings.filterwarnings('ignore', "Intel MKL ERROR")
+warnings.filterwarnings('ignore', "OptimizeWarning")
 
 class MotionModelQuadratic(MotionModel):
     """ Perspective Motion Model :math:`f(t) = (at + b) / (ct + 1)`
@@ -106,7 +110,7 @@ class MotionModelQuadratic(MotionModel):
         return 12
 
     @staticmethod
-    def get_parameters(bboxes, times, invalid_node_rate):
+    def get_parameters(bboxes_with_overlap_class, times, invalid_node_rate):
         """
         Get the parameter of boxes.
         :param bboxes: (N_f, N_t, 4)
@@ -117,25 +121,24 @@ class MotionModelQuadratic(MotionModel):
 
         """
         parameters = list()
-        p_e = list()
-        p_c = list()
+        p_e = bboxes_with_overlap_class[:, :, 4]
+        p_c = bboxes_with_overlap_class[:, :, 5].max(axis=0)
+        bboxes = bboxes_with_overlap_class[:, :, :4]
         frame_num, track_num, _ = bboxes.shape
         mm = MotionModelQuadratic()
         for i in range(track_num):
             bbs = bboxes[:, i, :]
-            bbox_mask = np.sum(bbs, axis=1) > 0
+            bbox_mask = np.logical_and(np.sum(bbs, axis=1) > 0, p_e[:, i] > 0)
 
             param = mm.fit(bbs[bbox_mask, :], times[bbox_mask])
             if param is None:
                 param = MotionModelQuadratic.get_invalid_params()
-                p_c += [False]
-            else:
-                p_c += [True]
+                p_c[i] = 0
             parameters += [param]
-            p_e += [bbox_mask]
+            p_e[:, i] = bbox_mask
 
-        p_e = np.stack(p_e, axis=1)
-        p_c = np.array(p_c)
+        # p_e = np.stack(p_e, axis=1)
+        # p_c = np.array(p_c)
         parameters = np.stack(parameters, axis=0)
         return parameters, p_e, p_c
 

@@ -242,19 +242,22 @@ class CalculateParameters(object):
 
         # re-calcuate the curve parameters
         parameters, p_e, p_c = MotionModel.get_parameters(
-            bboxes=items[2], times=items[4],
+            bboxes_with_overlap_class=items[2], times=items[4],
             invalid_node_rate=config['min_valid_node_rate'])
 
         if sum(p_c) == 0:
             return None
 
+        # remove background tracks
+        track_mask = p_c > 0
+
         items += [parameters, p_e, p_c]
 
-        items[1] = items[1][p_c]
-        items[2] = items[2][:, p_c, :]
-        items[5] = items[5][p_c, : , :]
-        items[6] = items[6][:, p_c]
-        items[7] = items[7][p_c]
+        items[1] = items[1][track_mask]
+        items[2] = items[2][:, track_mask, :4]
+        items[5] = items[5][track_mask, : , :]
+        items[6] = items[6][:, track_mask]
+        items[7] = items[7][track_mask]
 
         return items
 

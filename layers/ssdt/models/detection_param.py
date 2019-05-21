@@ -97,7 +97,7 @@ class Detect(Function):
         param_shape_2 = param.size(3)
 
         output_boxes = torch.zeros(num, self.num_classes, num_frames, self.top_k, 4)
-        output_p_e = torch.zeros(num, self.num_classes, num_frames, self.top_k)
+        output_p_e = torch.zeros(num, 2, num_frames, self.top_k)
         output_params = torch.zeros(num, self.num_classes, self.top_k, param_shape_1, param_shape_2)
         output_p_c = torch.zeros(num, self.num_classes, self.top_k)
         conf_preds = p_c.squeeze(1).view(num, num_priors,
@@ -112,11 +112,11 @@ class Detect(Function):
             decoded_boxes = decoded_locs[i, :]
             for cl in range(1, self.num_classes):
                 c_mask = conf_scores[cl].gt(self.conf_thresh)
-                scores = conf_scores[cl][c_mask]
-                exists = conf_exists[i, :, cl, c_mask]
-
-                if scores.dim() == 0:
+                if c_mask.sum() == 0:
                     continue
+
+                scores = conf_scores[cl][c_mask]
+                exists = conf_exists[i, :, 1, c_mask]
                 boxes = decoded_boxes[:, c_mask, :]
 
                 # if there are exists the reasonable boxes.
@@ -126,7 +126,7 @@ class Detect(Function):
                 ids, count = nms_with_frames(boxes, scores, exists, self.nms_thresh, self.top_k, self.exist_thresh)
                 if count > 0:
                     output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
-                    output_p_e[i, cl, :, :count] = exists[:, ids[:count]]
+                    output_p_e[i, 1, :, :count] = exists[:, ids[:count]]
                     output_params[i, cl, :count, :] = param[i, c_mask, :][ids[:count], :]
                     output_p_c[i, cl, :count] = scores[ids[:count]]
         output_p_c_1 = output_p_c.contiguous().view(num, -1)

@@ -64,10 +64,10 @@ class Loss(nn.Module):
         loc_datas_t = loc_datas_org
 
         # update p_e_t
-        p_e_t = [torch.sum(i, dim=2)> 0 for i in loc_datas_t]
+        # p_e_t = [torch.sum(i, dim=2)> 0 for i in loc_datas_t]
 
         # update p_c_t
-        p_c_t = [torch.sum(i, dim=0) > 0 for i in p_e_t]
+        # p_c_t = [torch.sum(i, dim=0) > 0 for i in p_e_t]
 
         # combine together
         target = (loc_datas_t, p_c_t, p_e_t)

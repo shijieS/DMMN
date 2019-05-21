@@ -29,6 +29,12 @@ class Config:
     frame_scale = 2
     detect_conf_thresh = 0.5
     show_result = True
+    category_map = {
+        1: "bus",
+        2: "car",
+        3: "others",
+        4: "van"
+    }
 
 
 class Recorder:
@@ -106,25 +112,31 @@ class Tracker:
 
 
         # 3. update recorder
-        output_p_c_mask = output_p_c > Config.detect_conf_thresh
-        output_p_c = output_p_c[output_p_c_mask]
-
-        output_boxes = output_boxes.permute(0, 1, 3, 2, 4)
-        output_boxes = output_boxes[output_p_c_mask]
-
+        # output_p_c_mask = output_p_c > Config.detect_conf_thresh
         output_p_e = output_p_e.permute(0, 1, 3, 2)
-        output_p_e = output_p_e[output_p_c_mask]
-        output_params = output_params[output_p_c_mask]  # actually this motion function is based on anchor boxes
+        output_p_c = output_p_c.permute(0, 2, 1)
+        output_boxes = output_boxes.permute(0, 1, 3, 2, 4)
 
-        # 4. show result
+        for c in range(1, output_p_c.size(2)):
+            mask = output_p_c[0, :, c] > Config.detect_conf_thresh
+            if mask.sum() == 0:
+                continue
+
+            boxes = output_boxes[0, c, mask, :, :]
+            p_c = output_p_c[0, mask, c]
+            p_e = output_p_e[0, 1, mask, :]
+
+            if Config.show_result:
+                DrawBoxes.draw_ssdt_result(frames, boxes, p_c, p_e, category=Config.category_map[c])
+
         if Config.show_result:
-            DrawBoxes.draw_ssdt_result(frames, output_boxes, output_p_c, output_p_e)
-
             for frame in frames:
                 cv2.imshow("result", frame)
-                cv2.waitKey(30)
+                cv2.waitKey(0)
                 # cv2.imwrite("result/{0:08}.png".format(self.save_frame_index), frame)
                 self.save_frame_index += 1
+
+            pass
 
 
 

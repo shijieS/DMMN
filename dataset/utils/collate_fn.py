@@ -10,7 +10,7 @@
 import torch
 
 
-def generate_targets(org_bboxes, motion_parameters, p_e, times, p_c):
+def generate_targets(org_bboxes, motion_parameters, p_e, p_c):
     """
     generate a benchmark target
     :param motion_parameters: shape:[N_t
@@ -45,7 +45,7 @@ def collate_fn(batch):
             continue
         # convert to tensor
         frames.append(items[3])
-        target.append(generate_targets(items[2], items[5], items[6], items[4], items[7]))
+        target.append(generate_targets(items[2], items[5], items[6], items[7]))
         times.append(items[4].float())
 
     # stack batch

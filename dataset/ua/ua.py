@@ -15,7 +15,9 @@ from torch.utils.data import Dataset
 from motion_model import MotionModel
 from tqdm import trange
 import random
-from numba import jit
+import glob
+import pandas as pd
+import xml.etree.ElementTree as ET
 
 cfg = config[config["phase"]]
 
@@ -25,17 +27,50 @@ class SingleVideoParser:
     """
     def __init__(self, mot_file_path, sequence_name, frames_folder):
         # reading the mot_file
-        mot_data = np.loadtxt(mot_file_path, delimiter=',')
+        xtree = ET.parse(mot_file_path)
+        xroot = xtree.getroot()
+
+        columns = [
+            "frame_index", "track_id", "l", "t", "r", "b",
+            "overlap_ratio", "object_type"
+        ]
+        converted_data = []
+        for i in range(2, len(xroot)):
+            object_num = int(xroot[i].attrib['density'])
+            frame_index = int(xroot[i].attrib['num'])
+            node = xroot[i][0]
+            for j in range(object_num):
+                track_id = int(node[j].attrib["id"])
+                l = float(node[j][0].attrib["left"])
+                t = float(node[j][0].attrib["top"])
+                w = float(node[j][0].attrib["width"])
+                h = float(node[j][0].attrib["height"])
+                r = l + w
+                b = t + h
+                object_type = node[j][1].attrib["vehicle_type"]
+                overlap_ratio = float(node[j][1].attrib["truncation_ratio"])
+
+                converted_data += [[
+                    frame_index, track_id, l, t, r, b,
+                    overlap_ratio, object_type
+                ]]
+
+        converted_data = pd.DataFrame(converted_data, columns=columns)
+        converted_data = converted_data.replace({"object_type":config["label_map"]})
+
+        mot_data = converted_data.values
         self.max_frame = np.max(mot_data[:, 0]).astype(int) + 1
         self.max_id = np.max(mot_data[:, 1]).astype(int) + 1
-        self.ua_data = np.zeros((self.max_frame, self.max_id, 4), dtype=float)
+        self.ua_data = np.zeros((self.max_frame, self.max_id, 6), dtype=float)
         self.sequence_name = sequence_name
         self.frames_folder = frames_folder
         self.sequence_frames_folder = os.path.join(self.frames_folder, self.sequence_name)
 
         image_wh = np.array([config["image_width"], config["image_height"], config["image_width"], config["image_height"]])
+        mot_data[:, 2:6] /= image_wh
+        mot_data[:, 6] = (mot_data[:, 6] < config["train"]["dataset_overlap_thresh"])
         for row in mot_data:
-            self.ua_data[row[0].astype(int), row[1].astype(int), :] = row[2:6] / image_wh
+            self.ua_data[row[0].astype(int), row[1].astype(int), :] = row[2:]
 
         self.selecte_frame_scale = config['frame_max_input_num'] * config['frame_sample_scale']
 
@@ -88,18 +123,18 @@ class UATrainDataset(Dataset):
         self.save_folder = os.path.join(root, 'DETRAC-Train-Annotations-Training')
         self.mot_folder = os.path.join(root, 'DETRAC-Train-Annotations-MOT')
         self.frames_folder = os.path.join(root, 'Insight-MVT_Annotation_Train')
+        self.xml_folder = os.path.join(root, 'DETRAC-Train-Annotations-XML')
+
+
         self.transform = transform
         if not os.path.exists(self.save_folder):
             os.mkdir(self.save_folder)
 
         # analysis files in DETRAC-Train-Annotations-MOT
+        files_path = glob.glob(os.path.join(self.xml_folder, "MVI_[0-9][0-9][0-9][0-9][0-9].xml"))
 
-        files_path = [os.path.join(self.mot_folder, f) for f in os.listdir(self.mot_folder)]
-        if sequence_list is None:
-            files_path = list(filter(lambda f: os.path.isfile(f), files_path))
-        else:
+        if sequence_list is not None:
             sequence_file_list = np.loadtxt(sequence_list, dtype=np.str)
-
             files_path = list(filter(lambda f: os.path.isfile(f) and os.path.splitext(os.path.basename(f))[0] in sequence_file_list, files_path))
         files_name = [os.path.basename(f)[:9] for f in files_path]
 
@@ -121,6 +156,12 @@ class UATrainDataset(Dataset):
 
     def __len__(self):
         return self.len
+
+    def get_parser(self, item):
+        for i, (start, end) in enumerate(self.ranges):
+            if item >= start and item < end:
+                return self.data[i], item-start
+        return None
 
     @staticmethod
     def get_parameters(bboxes, times):
@@ -146,13 +187,6 @@ class UATrainDataset(Dataset):
                 parameters += [param]
                 motion_posibility += [1.0]
         return np.stack(parameters, axis=0), motion_posibility
-
-    def get_parser(self, item):
-        for i, (start, end) in enumerate(self.ranges):
-            if item >= start and item < end:
-                return self.data[i], item-start
-        return None
-
 
     def __getitem__(self, item):
 
