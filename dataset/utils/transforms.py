@@ -425,15 +425,19 @@ class RandomSampleCrop(object):
 
 class RandomMirror(object):
     def __call__(self, items):
+        if items is None:
+            return None
+
         if random.randint(2):
             items[3] = [f[:, ::-1].copy() for f in items[3]]
             mask = items[2][:, :, :4].sum(axis=2) > 0
             items[2][mask, 0:4:2] = 1 - items[2][mask, 2::-2]
+            items[2][mask, 0:4:2] = items[2][mask, 0:4:2].copy()
 
-        if random.randint(10) == 0:
-            items[3] = [f[::-1, :].copy() for f in items[3]]
-            mask = items[2][:, :, :4].sum(axis=2) > 0
-            items[2][mask, 1:4:2] = 1 - items[2][mask, 3::-2]
+        # if random.randint(10) == 0:
+        #     items[3] = [f[::-1, :].copy() for f in items[3]]
+        #     mask = items[2][:, :, :4].sum(axis=2) > 0
+        #     items[2][mask, 1:4:2] = 1 - items[2][mask, 3::-2]
 
         return items
 

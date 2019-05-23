@@ -147,5 +147,5 @@ class MultiBoxLoss(nn.Module):
 
         N = num_pos.data.sum().float()
 
-        return loss_l / N, loss_c / N * num_frames, loss_e / N
+        return loss_l / N / num_frames, loss_c / N, loss_e / N / num_frames
 
