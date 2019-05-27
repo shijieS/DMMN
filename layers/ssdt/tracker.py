@@ -132,7 +132,7 @@ class Tracker:
         if Config.show_result:
             for frame in frames:
                 cv2.imshow("result", frame)
-                cv2.waitKey(0)
+                cv2.waitKey(20)
                 # cv2.imwrite("result/{0:08}.png".format(self.save_frame_index), frame)
                 self.save_frame_index += 1
 
