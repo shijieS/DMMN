@@ -8,7 +8,7 @@
 #
 from dataset.ua.ua_reader import UATestDataset
 import numpy as np
-from layers.ssdt.tracker import Tracker
+from layers.ssdt.tracker import Tracker, Config
 
 
 if __name__ == "__main__":
@@ -25,5 +25,5 @@ if __name__ == "__main__":
         # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale
         # image_input_list = [images[i] for i in selected_indexes]
         # times_input_list = times[selected_indexes]
-        result_frames = tracker.update(frames, times)
-        index += dataset.max_frame_num_with_scale
+        result_frames = tracker.update(frames, times, index)
+        index += (dataset.max_frame_num_with_scale -  Config.share_frame_num)

@@ -189,6 +189,37 @@ class DrawBoxes:
         return colors
 
     @staticmethod
+    def draw_node_result(frames, boxes, p_c, p_e, category, id):
+        """
+        awesome tools for drawing ssdt node result :).
+        :param frames: frames
+        :param boxes: boxes with shape [num_frames, 4]. values are in [0, 1+]
+        :param p_c: track confidence [num_boxes]. values are in [0, 1]
+        :param p_e: boxes visibility [num_boxes, num_frames]. values are in [0, 1]
+        :param category: track category
+        :param id: track id
+        :return: the drawed frames
+        """
+
+        boxes = boxes.data.cpu().numpy()
+        p_c = p_c.data.cpu().numpy()
+        p_e = p_e.data.cpu().numpy()
+        # result_frames = []
+        h, w, _ = frames[0].shape
+        boxes[:, [0, 2]] *= w
+        boxes[:, [1, 3]] *= h
+        boxes = boxes.astype(int)
+
+        color = DrawBoxes.get_random_color(id)
+        for frame_index, frame in enumerate(frames):
+            current_box = boxes[frame_index, :]
+            text = "{}, {:.2}, {:.2}".format(category, p_c, p_e[frame_index])
+            DrawBoxes.cv_draw_one_box(frame, current_box, color, text=text)
+            DrawBoxes.cv_draw_track_(frame, boxes, color)
+
+        return frames
+
+    @staticmethod
     def draw_ssdt_result(frames, boxes, p_c, p_e, category, exist_threh=0.5):
         """
         awesome tools for drawing ssdt result :).
