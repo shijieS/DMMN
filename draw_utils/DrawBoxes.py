@@ -88,7 +88,7 @@ class DrawBoxes:
         return frame
 
     @staticmethod
-    def cv_draw_mult_boxes_with_track(frame, boxes, index, colors=None, texts=None):
+    def cv_draw_mult_boxes_with_track(frame, boxes, index, colors=None, texts=None, exists=None):
         """
         Draw multiple boxes with its track
         :param frame: the frame to be drawn
@@ -104,8 +104,11 @@ class DrawBoxes:
         if colors is None:
             texts = ["" for _ in range(boxes_num)]
 
+        if exists is None:
+            exists = np.ones((frame_num, boxes_num), dtype=int)
+
         # draw frame's boxes at the specified index
-        DrawBoxes.cv_draw_mult_boxes(frame, boxes[index, :, :], colors, texts)
+        DrawBoxes.cv_draw_mult_boxes(frame, boxes[index, :, :], colors, texts, exists=exists[index, :])
 
         # draw tracks
         for box_index in range(boxes_num):

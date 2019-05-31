@@ -159,7 +159,7 @@ class TrackSet:
             for node in nodes:
                 self.tracks += [Track(node)]
 
-        else:
+        elif len(nodes) > 0:
             #2. decide wether to create a new track or not
             node_indexes = self.is_match(nodes)
             for i in range(len(nodes)):
@@ -290,6 +290,4 @@ class Tracker:
                 self.save_frame_index += 1
 
             pass
-
-
 
