@@ -31,6 +31,22 @@
     "reflection": 12,
     "crowd": 13
   },
+  "replace_map": {
+    "invalid": -1,
+    "ped": -1,
+    "person_on_vhcl": -1,
+    "car": -1,
+    "bicycle": -1,
+    "mbike": -1,
+    "non_mot_vhcl": -1,
+    "static_person": -1,
+    "distractor": -1,
+    "occluder": -1,
+    "occluder_on_grnd": -1,
+    "occluder_full": -1,
+    "reflection": -1,
+    "crowd": 0
+  },
   "test": {
     "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0522/weights/ssdt459225.pth",
     "dataset_type": "train",
@@ -102,7 +118,7 @@
     "static_possiblity": 0.05,
     "loss_overlap_thresh": 0.5,
     "loss_background_label": 0,
-    "dataset_overlap_thresh": 0.90
+    "dataset_overlap_thresh": 0.85
 
   },
   "frame_work":{

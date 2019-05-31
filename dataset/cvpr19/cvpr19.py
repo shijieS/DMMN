@@ -65,7 +65,18 @@ class SingleVideoParser:
         converted_data.loc[:, 'r'] += converted_data.loc[:, 'l']
         converted_data.loc[:, 'b'] += converted_data.loc[:, 't']
 
+        # filter ignore classes
+        label_map = {v:config["replace_map"][k] for k, v in config["label_map"].items()}
+        converted_data["class_id"] = converted_data["class_id"].map(label_map)
+        converted_data = converted_data[converted_data["class_id"]>-1]
+
         mot_data = converted_data.values
+
+        if len(mot_data) == 0:
+            self.ua_data = None
+            return
+
+
         self.max_frame = np.max(mot_data[:, 0]).astype(int) + 1
         self.max_id = np.max(mot_data[:, 1]).astype(int) + 1
         self.ua_data = np.zeros((self.max_frame, self.max_id, 6), dtype=float)
@@ -80,6 +91,8 @@ class SingleVideoParser:
 
 
     def __len__(self):
+        if self.ua_data is None:
+            return 0
         return self.max_frame - self.selecte_frame_scale
 
 
@@ -217,6 +230,9 @@ if __name__ == "__main__":
     dataset = CVPR19TrainDataset()
     for index in range(0, len(dataset), 32):
         frame_indexes, track_ids, bboxes, frames, times = dataset[index]
+
+        if frame_indexes is None:
+            continue
 
         for i, frame in enumerate(frames):
             h, w, _ = frame.shape
