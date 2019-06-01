@@ -1,7 +1,7 @@
 {
   "dataset_name": "CVPR19",
   "dataset_path": "/media/ssm/data/dataset/CVPR19",
-  "phase": "test",
+  "phase": "train",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -33,19 +33,19 @@
   },
   "replace_map": {
     "invalid": -1,
-    "ped": -1,
-    "person_on_vhcl": -1,
+    "ped": 1,
+    "person_on_vhcl": 0,
     "car": -1,
     "bicycle": -1,
     "mbike": -1,
     "non_mot_vhcl": -1,
-    "static_person": -1,
+    "static_person": 1,
     "distractor": -1,
     "occluder": -1,
     "occluder_on_grnd": -1,
     "occluder_full": -1,
     "reflection": -1,
-    "crowd": 0
+    "crowd": -1
   },
   "test": {
     "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0522/weights/ssdt459225.pth",
@@ -116,9 +116,9 @@
     "brightness_delta": 32,
     "max_expand_ratio": 1.1,
     "static_possiblity": 0.05,
-    "loss_overlap_thresh": 0.5,
+    "loss_overlap_thresh": 0.3,
     "loss_background_label": 0,
-    "dataset_overlap_thresh": 0.85
+    "dataset_overlap_thresh": 0.90
 
   },
   "frame_work":{

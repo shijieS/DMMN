@@ -6,6 +6,7 @@
 #   Email: shijieSun@chd.edu.cn
 #   Github: www.github.com/shijieS
 #
+#
 
 import os
 import torch
@@ -13,7 +14,7 @@ import torch.optim as optim
 import argparse
 from torch.autograd import Variable
 import torch.utils.data as data
-from dataset import UATrainDataset
+from dataset import CVPR19TrainDataset
 from config import config
 from layers.ssdt import SSDT, SSDTLoss
 import time
@@ -21,7 +22,6 @@ from dataset import collate_fn
 from dataset.utils import Transforms
 from draw_utils import show_bboxes
 import torch.backends.cudnn as cudnn
-from tools import ua_check_converted_mot
 
 # torch.multiprocessing.set_start_method('spawn', force=True)
 
@@ -58,7 +58,7 @@ parser.add_argument('--run_mode', default=config["train"]["run_mode"], help="ua 
 args = parser.parse_args()
 
 # load dataset
-dataset = UATrainDataset(transform=Transforms())
+dataset = CVPR19TrainDataset(transform=Transforms())
 
 epoch_size = len(dataset) // args.batch_size
 start_iter = args.start_epoch * epoch_size
@@ -90,7 +90,6 @@ else:
 # check saving directory
 if not os.path.exists(args.weights_save_folder):
     os.mkdir(args.weights_save_folder)
-
 
 # creat the network
 ssdt_net = SSDT.build("train")

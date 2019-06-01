@@ -9,3 +9,4 @@
 
 from .utils.collate_fn import collate_fn
 from dataset.ua.ua import UATrainDataset
+from dataset.cvpr19.cvpr19 import CVPR19TrainDataset
