@@ -48,7 +48,7 @@
     "crowd": -1
   },
   "test": {
-    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/weights/ssdt38500.pth",
+    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/weights/ssdt93500.pth",
     "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,

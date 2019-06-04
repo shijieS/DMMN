@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/dataset/cvpr19/sequence_list_train_part.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_tracker_ua.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_gpu4_cvpr19.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_gpu4_cvpr19.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_gpu4_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_gpu4_ua.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/cvpr19/cvpr19.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/cvpr19/cvpr19.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/ssdt.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/ssdt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layers/ssdt/tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/tracker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_tracker_cvpr19.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_cvpr19.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_cvpr19.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_ua.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +18,8 @@
     <SUITE FILE_PATH="coverage/SSDT$train_cvpr19.coverage" NAME="train_cvpr19 Coverage Results" MODIFIED="1559439687229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$check_environment.coverage" NAME="check_environment Coverage Results" MODIFIED="1552445911005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$motion_model_perspective.coverage" NAME="motion_model_perspective Coverage Results" MODIFIED="1555185815183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/motion_model" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker_cvpr19.coverage" NAME="test_tracker_cvpr19 Coverage Results" MODIFIED="1559557748640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker.coverage" NAME="test_tracker Coverage Results" MODIFIED="1559567375872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker.coverage" NAME="test_tracker Coverage Results" MODIFIED="1559639242174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker_cvpr19.coverage" NAME="test_tracker_cvpr19 Coverage Results" MODIFIED="1559640318276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$detection.coverage" NAME="detection Coverage Results" MODIFIED="1535929162338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssdt/models" />
     <SUITE FILE_PATH="coverage/SSDT$faster_rcnn.coverage" NAME="faster_rcnn Coverage Results" MODIFIED="1534160011460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers" />
     <SUITE FILE_PATH="coverage/SSDT$test_ua__1_.coverage" NAME="test_ua (1) Coverage Results" MODIFIED="1558171214183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
@@ -66,11 +58,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config_gpu4_cvpr19.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="33" column="17" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="17" />
+              <caret line="57" column="73" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -78,17 +70,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            <state relative-caret-position="325">
+              <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            <state relative-caret-position="375">
+              <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_tracker_cvpr19.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+              <folding>
+                <element signature="e#370#428#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -108,20 +112,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="66" column="81" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="81" />
+            <state relative-caret-position="170">
+              <caret line="352" column="43" lean-forward="true" selection-start-line="352" selection-start-column="43" selection-end-line="352" selection-end-column="43" />
               <folding>
                 <element signature="e#369#378#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/concurrent/futures/thread.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2750">
-              <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -184,7 +179,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fps</find>
       <find>label_map</find>
       <find>overla</find>
       <find>0.0</find>
@@ -214,6 +208,7 @@
       <find>param_init</find>
       <find>&gt;</find>
       <find>1.0</find>
+      <find>save_frame_index</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -267,16 +262,16 @@
         <option value="$PROJECT_DIR$/train_ua.py" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/sequence_list_train_part.txt" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/cvpr19.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/tracker.py" />
         <option value="$PROJECT_DIR$/test_tracker_cvpr19.py" />
-        <option value="$PROJECT_DIR$/config/config_gpu4_cvpr19.json" />
-        <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/test_tracker_ua.py" />
         <option value="$PROJECT_DIR$/config/config_gpu4_ua.json" />
+        <option value="$PROJECT_DIR$/config/__init__.py" />
+        <option value="$PROJECT_DIR$/config/config_gpu4_cvpr19.json" />
+        <option value="$PROJECT_DIR$/layers/ssdt/tracker.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="27" />
     <option name="width" value="927" />
@@ -302,16 +297,6 @@
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="motion_model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="weights" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -352,7 +337,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_tracker">
+  <component name="RunManager" selected="Python.test_tracker_cvpr19">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -420,29 +405,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_tracker" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="CUDA_VISIBLE_DEVICES" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_tracker_ua.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_tracker_cvpr19" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -457,6 +419,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_tracker_cvpr19.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_tracker_ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="CUDA_VISIBLE_DEVICES" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_tracker_ua.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -488,7 +473,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test_tracker" />
+      <item itemvalue="Python.test_tracker_ua" />
       <item itemvalue="Python.cvpr19" />
       <item itemvalue="Python.cvpr19_boxes_distribution" />
       <item itemvalue="Python.train_cvpr19" />
@@ -496,8 +481,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_tracker" />
         <item itemvalue="Python.test_tracker_cvpr19" />
+        <item itemvalue="Python.test_tracker_ua" />
         <item itemvalue="Python.cvpr19" />
         <item itemvalue="Python.train_cvpr19" />
         <item itemvalue="Python.cvpr19_boxes_distribution" />
@@ -559,7 +544,7 @@
       <workItem from="1559282731673" duration="33350000" />
       <workItem from="1559383756430" duration="15665000" />
       <workItem from="1559443258888" duration="14357000" />
-      <workItem from="1559542359628" duration="5866000" />
+      <workItem from="1559542359628" duration="8205000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -732,7 +717,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="804873000" />
+    <option name="totallyTimeSpent" value="807212000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -744,16 +729,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="27" width="1853" height="1053" extended-state="7" />
+    <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20632279" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20632279" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3278328" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.3179318" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.3179318" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
@@ -1249,16 +1234,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_tracker_cvpr19.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#370#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/concurrent/futures/thread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2750">
@@ -1303,13 +1278,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -1320,10 +1288,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="72" column="14" lean-forward="true" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="14" column="40" lean-forward="true" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_tracker_cvpr19.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="21" column="26" lean-forward="true" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+          <folding>
+            <element signature="e#370#428#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="66" column="81" selection-start-line="66" selection-start-column="70" selection-end-line="66" selection-end-column="81" />
+        <state relative-caret-position="170">
+          <caret line="352" column="43" lean-forward="true" selection-start-line="352" selection-start-column="43" selection-end-line="352" selection-end-column="43" />
           <folding>
             <element signature="e#369#378#0" expanded="true" />
           </folding>
@@ -1333,14 +1325,7 @@
     <entry file="file://$PROJECT_DIR$/config/config_gpu4_cvpr19.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="64" column="30" lean-forward="true" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+          <caret line="57" column="73" lean-forward="true" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="73" />
         </state>
       </provider>
     </entry>

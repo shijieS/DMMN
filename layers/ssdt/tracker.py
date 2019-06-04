@@ -44,6 +44,8 @@ class Config:
     max_direction_thresh = 3.14 / 2.0
     min_similarity = 0.3
     min_visibility = 0.5
+    save_images = True
+    save_images_folder = "./"
 
     @staticmethod
     def init(name, version, config,
@@ -70,6 +72,8 @@ class Config:
         Config.min_similarity = min_similarity
         Config.min_visibility = min_visibility
         Config.max_thread_num = max_thread_num
+        Config.save_images = config["test"]["debug_save_image"]
+        Config.save_images_folder = config["test"]["image_save_folder"]
 
 class Recorder:
     pass
@@ -244,6 +248,10 @@ class Tracker:
         if config is not None:
             Config.init(name, version, config)
 
+        if Config.save_images:
+            if not os.path.exists(Config.save_images_folder):
+                os.makedirs(Config.save_images_folder)
+
         #0. set torch cuda configure
         if torch.cuda.is_available():
             if Config.cuda:
@@ -340,11 +348,13 @@ class Tracker:
         self.tracks.update(nodes)
         self.tracks.draw(frames)
 
-
         if Config.show_result:
             for frame in frames:
                 cv2.imshow("result", frame)
                 cv2.waitKey(20)
+                if Config.save_images_folder:
+                    cv2.imwrite(os.path.join(Config.save_images_folder, "{0:08}.png".format(self.save_frame_index)),
+                                frame)
                 # cv2.imwrite("result/{0:08}.png".format(self.save_frame_index), frame)
                 self.save_frame_index += 1
 
