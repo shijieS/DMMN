@@ -17,14 +17,15 @@ from draw_utils.DrawBoxes import DrawBoxes
 from scipy.optimize import linear_sum_assignment
 from layers.ssdt.utils.box_utils import jaccard
 import time
-
+# from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
+from deco import concurrent, synchronized
 
 
 class Config:
     tracker_name = "SSDT"
     tracker_version = "V1"
     cuda = True
-    weigth_file = "./weights/ssdt.pth"
+    weight_file = "./weights/ssdt_cvpr19.pth"
     frame_num = 16
     frame_height = 168
     frame_width = 168
@@ -43,6 +44,32 @@ class Config:
     max_direction_thresh = 3.14 / 2.0
     min_similarity = 0.3
     min_visibility = 0.5
+
+    @staticmethod
+    def init(name, version, config,
+             show_result=True,
+             share_frame_num=5, max_age=16,
+             max_direction_thresh=1.57,
+             min_similarity=0.3, min_visibility=0.5,
+             max_thread_num=32):
+        Config.tracker_name = name
+        Config.tracker_version = version
+        Config.cuda = config["cuda"]
+        Config.weight_file = config["test"]["resume"]
+        Config.frame_num = config["frame_max_input_num"]
+        Config.frame_height = config["frame_size"]
+        Config.frame_width = config["frame_size"]
+        Config.pixel_mean = config["pixel_mean"]
+        Config.frame_scale = config["frame_sample_scale"]
+        Config.share_frame_num = share_frame_num
+        Config.detect_conf_thresh = config["test"]["detect_conf_thresh"]
+        Config.show_result = show_result
+        Config.category_map = {v:k for k, v in reversed(tuple(config["replace_map"].items())) if v != -1}
+        Config.max_age = max_age
+        Config.max_direction_thresh = max_direction_thresh
+        Config.min_similarity = min_similarity
+        Config.min_visibility = min_visibility
+        Config.max_thread_num = max_thread_num
 
 class Recorder:
     pass
@@ -124,13 +151,42 @@ class TrackSet:
     def __init__(self):
         self.tracks = []
 
+    @concurrent
+    @staticmethod
+    def _get_tracks_similarity_direction(i, n, tracks):
+        similarity = []
+        direction = []
+        for j, t in enumerate(tracks):
+            similarity += [t.get_similarity(n)]
+            direction += [t.get_direction_distance(n)]
+        return similarity, direction
+
+    @synchronized
+    @staticmethod
+    def _get_similarity_direction(nodes, tracks):
+        similarity = []
+        direction = []
+        for i, n in enumerate(nodes):
+            s, d = TrackSet._get_tracks_similarity_direction(i, n, tracks)
+            similarity += [s]
+            direction += [d]
+
+        return similarity, direction
+
+
     def is_match(self, nodes):
+        # implement serialized
         similarity = torch.zeros((len(nodes), len(self.tracks)))
         direction = torch.zeros((len(nodes), len(self.tracks)))
+
         for i, n in enumerate(nodes):
             for j, t in enumerate(self.tracks):
-                similarity[i, j] = t.get_similarity(n)
-                direction[i, j] = t.get_direction_distance(n)
+                similarity[i, j] += t.get_similarity(n)
+                direction[i, j] += t.get_direction_distance(n)
+
+        # similarity, direction = TrackSet._get_similarity_direction(nodes, self.tracks)
+        # similarity = torch.from_numpy(np.array(similarity))
+        # direction = torch.from_numpy(np.array(direction))
 
         direction_mask = direction >= Config.max_direction_thresh
         similarity_mask = similarity < Config.min_similarity
@@ -184,7 +240,10 @@ class TrackSet:
 
 
 class Tracker:
-    def __init__(self):
+    def __init__(self, name, version, config=None):
+        if config is not None:
+            Config.init(name, version, config)
+
         #0. set torch cuda configure
         if torch.cuda.is_available():
             if Config.cuda:
@@ -204,11 +263,11 @@ class Tracker:
             self.net = torch.nn.DataParallel(self.ssdt_net)
 
         #2. load weight
-        if not os.path.exists(Config.weigth_file):
-            raise FileNotFoundError("cannot find {}".format(Config.weigth_file))
+        if not os.path.exists(Config.weight_file):
+            raise FileNotFoundError("cannot find {}".format(Config.weight_file))
         else:
             print("Loading the network")
-            self.ssdt_net.load_weights(Config.weigth_file)
+            self.ssdt_net.load_weights(Config.weight_file)
 
         self.net.eval()
 

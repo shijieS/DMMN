@@ -103,10 +103,9 @@ if args.cuda:
 if args.resume:
     print("Resuming training, loading {}...".format(args.resume))
     ssdt_net.load_weights(args.resume)
-else:
+elif args.basenet is not None:
     print("Loading base network...")
     ssdt_net.load_base_weights(args.basenet)
-
 
 # create optimizer
 optimizer = optim.Adam(net.parameters(), args.lr, weight_decay=args.weight_decay)

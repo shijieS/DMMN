@@ -34,13 +34,13 @@
   "replace_map": {
     "invalid": -1,
     "ped": 1,
-    "person_on_vhcl": 0,
+    "person_on_vhcl": 1,
     "car": -1,
     "bicycle": -1,
     "mbike": -1,
     "non_mot_vhcl": -1,
     "static_person": 1,
-    "distractor": -1,
+    "distractor": 0,
     "occluder": -1,
     "occluder_on_grnd": -1,
     "occluder_full": -1,
@@ -48,8 +48,8 @@
     "crowd": -1
   },
   "test": {
-    "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0522/weights/ssdt459225.pth",
-    "dataset_type": "train",
+    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/weights/ssdt38500.pth",
+    "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
@@ -57,7 +57,7 @@
     "log_save_folder": "/media/ssm/data/dataset/CVPR19/test_logs",
     "image_save_folder": "/media/ssm/data/dataset/CVPR19/test_logs/images",
     "weights_save_folder": "/media/ssm/data/dataset/CVPR19/test_logs/weights",
-    "sequence_list": "./dataset/cvpr19/sequence_list_train.txt",
+    "sequence_list": "./dataset/cvpr19/sequence_list_test.txt",
     "save_weight_per_epoch": 5,
     "start_epoch": 0,
     "end_epoch": 55,
@@ -81,8 +81,8 @@
     "detect_bkg_label": 0,
     "detect_top_k": 300,
     "detect_conf_thresh": 0.5,
-    "detect_nms_thresh": 0.4,
-    "detect_exist_thresh": 0.5
+    "detect_nms_thresh": 0.65,
+    "detect_exist_thresh": 0.55
   },
   "train": {
     "resume": null,
@@ -90,10 +90,10 @@
     "num_workers": 16,
     "learning_rate": 1e-3,
     "lr_decay_per_epoch": [30, 50, 70, 90],
-    "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
-    "log_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0522/log",
-    "image_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0522/image",
-    "weights_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0522/weights",
+    "base_net_weights": null,
+    "log_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/log",
+    "image_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/image",
+    "weights_save_folder": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602/weights",
     "sequence_list": "./dataset/cvpr19/sequence_list_train.txt",
     "save_weight_per_epoch": 5,
     "start_epoch": 0,
@@ -105,7 +105,7 @@
     "gamma": 0.1,
     "send_images": true,
     "log_iters": true,
-    "run_mode": "debug",
+    "run_mode": "release ",
     "debug_save_image": false,
     "debug_save_feature_map": false,
     "contrast_lower": 0.5,
@@ -116,9 +116,9 @@
     "brightness_delta": 32,
     "max_expand_ratio": 1.1,
     "static_possiblity": 0.05,
-    "loss_overlap_thresh": 0.3,
+    "loss_overlap_thresh": 0.5,
     "loss_background_label": 0,
-    "dataset_overlap_thresh": 0.90
+    "dataset_overlap_thresh": 1.0
 
   },
   "frame_work":{

@@ -21,6 +21,12 @@
     "others": 3,
     "van": 4
   },
+  "replace_map": {
+    "bus": 1,
+    "car": 2,
+    "others": 3,
+    "van": 4
+  },
   "test": {
     "resume": "/media/ssm/data/dataset/uadetrac/logs/ssdt-log-0522/weights/ssdt867425.pth",
     "dataset_type": "test",

@@ -184,31 +184,6 @@ class CVPR19TrainDataset(Dataset):
                 return self.data[i], item-start
         return None
 
-    # @staticmethod
-    # def get_parameters(bboxes, times):
-    #     """
-    #     Get the parameter of boxes.
-    #     :param bboxes: (FrameId, TrackId, 4)
-    #     :returns: parameters: (TrackId, ParameterData)
-    #               motion_possibility: (trackId, possibility)
-    #
-    #     """
-    #     parameters = list()
-    #     motion_posibility = list()
-    #     frame_num, track_num, _ = bboxes.shape
-    #     mm = MotionModel()
-    #     for i in range(track_num):
-    #         bbs = bboxes[:, i, :]
-    #         mask = np.sum(bbs, axis=1) > 0
-    #         if sum(mask) / len(mask) < config['min_valid_node_rate']:
-    #             parameters += [MotionModel.get_invalid_params()]
-    #             motion_posibility += [0.0]
-    #         else:
-    #             param = mm.fit(bbs[mask, :], times[mask])
-    #             parameters += [param]
-    #             motion_posibility += [1.0]
-    #     return np.stack(parameters, axis=0), motion_posibility
-
 
     def __getitem__(self, item):
 

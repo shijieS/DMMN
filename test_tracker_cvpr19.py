@@ -6,20 +6,25 @@
 #   Email: shijieSun@chd.edu.cn
 #   Github: www.github.com/shijieS
 #
-from dataset.ua.ua_reader import UATestDataset
+#
+from dataset.cvpr19.cvpr19_reader import CVPR19TestDataset
 import numpy as np
 from layers.ssdt.tracker import Tracker, Config
+from config import config
 
 
 if __name__ == "__main__":
-    dataset = UATestDataset()
-    tracker = Tracker()
+    dataset = CVPR19TestDataset()
+    tracker = Tracker("CVPR19", "V1", config)
 
     index = 0
     while index < len(dataset):
         # if index != 736:
         #     index += dataset.max_frame_num_with_scale
         #     continue
+        # if index > 1000:
+        #     break
+
         print(index)
         frames, times = dataset[index]
         # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale

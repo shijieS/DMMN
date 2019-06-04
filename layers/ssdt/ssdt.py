@@ -154,6 +154,7 @@ class SSDT(nn.Module):
         model_data = torch.load(resume)
         self.load_state_dict(model_data)
 
+
     @staticmethod
     def build_extra_net1(in_channel):
         torch.nn.Conv3d(in_channel, 32, kernel_size=1, stride=1, bias=False)
