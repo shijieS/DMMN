@@ -52,7 +52,7 @@ class Config:
              show_result=True,
              share_frame_num=5, max_age=16,
              max_direction_thresh=1.57,
-             min_similarity=0.3, min_visibility=0.5,
+             min_similarity=0.01, min_visibility=0.5,
              max_thread_num=32):
         Config.tracker_name = name
         Config.tracker_version = version
@@ -135,7 +135,7 @@ class Track:
         if visibility_mask.sum() == 0:
             return 0
         else:
-            return ious.diag()[visibility_mask].max()
+            return ious.diag()[visibility_mask].sum()
 
 
     def get_direction_distance(self, node):
