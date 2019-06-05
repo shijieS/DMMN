@@ -96,13 +96,21 @@ class CVPR19TestDataset:
     def __len__(self):
         return self.frame_num_range[-1][1]
 
-    def __getitem__(self, item):
+    def get_groupd_index(self, item):
+        group_index = -1
+        for i, (start, end) in enumerate(self.frame_num_range):
+            if item >= start and item < end:
+                group_index = i
+                break
+        return group_index
 
+    def __getitem__(self, item):
         for i, (start, end) in enumerate(self.frame_num_range):
             if item >= start and item < end:
                 return [cv2.imread(image_file) for image_file in self.all_image_group[i][item-start]], \
                        (np.array(self.all_time_group[i][item-start]) - min(self.all_time_group[i][item-start])) / \
-                       (len(self.all_time_group[i][item-start]) - self.frame_scale)
+                       (len(self.all_time_group[i][item-start]) - self.frame_scale), \
+                        self.all_time_group[i][item-start][0]
 
         return None, None
 

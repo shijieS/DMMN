@@ -46,6 +46,7 @@ class Config:
     min_visibility = 0.5
     save_images = True
     save_images_folder = "./"
+    save_track_data = True
 
     @staticmethod
     def init(name, version, config,
@@ -74,9 +75,7 @@ class Config:
         Config.max_thread_num = max_thread_num
         Config.save_images = config["test"]["debug_save_image"]
         Config.save_images_folder = config["test"]["image_save_folder"]
-
-class Recorder:
-    pass
+        Config.save_track_data = config["test"]["save_track_data"]
 
 
 class Node:
@@ -98,6 +97,10 @@ class Node:
         DrawBoxes.draw_node_result(frames, self.boxes, self.p_c, self.p_e,
                                    Config.category_map[self.category], track_id)
         return frames
+
+    def save_mot_data(self, file_name):
+        frame_num = len(self.frame_indexes)
+        pass
 
 
 class Track:
@@ -149,11 +152,16 @@ class Track:
 
         return frames
 
+    def save_mot_data(self, file_name):
+        for n in self.nodes:
+            n.save_mot_data(file_name)
+        pass
 
 
 class TrackSet:
     def __init__(self):
         self.tracks = []
+        self.removed_tracks = []
 
     @concurrent
     @staticmethod
@@ -233,6 +241,9 @@ class TrackSet:
             t.age += 1
 
         #4. remove old tracks
+        if Config.save_track_data:
+            self.removed_tracks = [t for t in self.tracks if t.age >= 2]
+
         self.tracks = [t for t in self.tracks if t.age < 2]
 
 
@@ -242,6 +253,9 @@ class TrackSet:
 
         return frames
 
+    def save_mot_data(self, file_name):
+        for t in self.removed_tracks:
+            t.save_mot_data(file_name)
 
 class Tracker:
     def __init__(self, name, version, config=None):
@@ -282,6 +296,10 @@ class Tracker:
         #3. create a track set
         self.tracks = TrackSet()
         self.save_frame_index = 0
+
+    def save_mot_result(self, file_name):
+        if Config.save_track_data:
+            self.tracks.save_mot_data(file_name)
 
     def update(self, frames, times, frame_index):
         """

@@ -11,6 +11,7 @@ from dataset.cvpr19.cvpr19_reader import CVPR19TestDataset
 import numpy as np
 from layers.ssdt.tracker import Tracker, Config
 from config import config
+import os
 
 
 if __name__ == "__main__":
@@ -26,9 +27,15 @@ if __name__ == "__main__":
         #     break
 
         print(index)
-        frames, times = dataset[index]
-        # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale
-        # image_input_list = [images[i] for i in selected_indexes]
-        # times_input_list = times[selected_indexes]
-        result_frames = tracker.update(frames, times, index)
-        index += (dataset.max_frame_num_with_scale -  Config.share_frame_num)
+        frames, times, start_frame_index = dataset[index]
+        result_frames = tracker.update(frames, times, start_frame_index)
+
+        # save removed tracks
+        save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
+        if not os.path.exists(save_mot_folder):
+            os.makedirs(save_mot_folder)
+        mot_file = os.path.join(save_mot_folder,
+                                     "{}.txt".format(dataset.sequence_list[dataset.get_groupd_index(index)]))
+        tracker.save_mot_result(mot_file)
+
+        index += (dataset.max_frame_num_with_scale - Config.share_frame_num)

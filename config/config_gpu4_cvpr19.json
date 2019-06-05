@@ -48,7 +48,7 @@
     "crowd": -1
   },
   "test": {
-    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602-1/weights/ssdt22000.pth",
+    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602-1/weights/ssdt38500.pth",
     "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,
@@ -71,6 +71,7 @@
     "run_mode": "debug",
     "debug_save_image": true,
     "debug_save_feature_map": false,
+    "save_track_data": true,
     "contrast_lower": 0.5,
     "contrast_upper": 1.5,
     "saturation_lower": 0.5,
