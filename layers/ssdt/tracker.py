@@ -79,9 +79,9 @@ class Config:
 
 
 class Node:
-    global_id = 0
+    global_id = 1
 
-    def __init__(self, times, frame_indexes, params, boxes, p_c, p_e, category):
+    def __init__(self, times, frame_indexes, params, boxes, p_c, p_e, category, width, height):
 
         self.times = times
         self.frame_indexes = frame_indexes
@@ -92,19 +92,33 @@ class Node:
         self.id = Node.global_id
         self.category = category
         Node.global_id += 1
+        self.width = width
+        self.height = height
 
     def draw(self, frames, track_id):
         DrawBoxes.draw_node_result(frames, self.boxes, self.p_c, self.p_e,
                                    Config.category_map[self.category], track_id)
         return frames
 
-    def save_mot_data(self, file_name):
+    def save_mot_data(self, file_name, track_id):
         frame_num = len(self.frame_indexes)
-        pass
+        if Config.cuda:
+            boxes = self.boxes.data.cpu().numpy()
+            p_e = self.p_e.data.cpu().numpy()
+        else:
+            boxes = self.boxes.data.numpy()
+            p_e = self.p_e.data.numpy()
 
+        boxes *= np.array([self.width, self.height, self.width, self.height])
+
+        saved_data = np.array([[f]+[track_id]+b.tolist()+[1]+[self.category]+[float(self.p_c)]
+                      for i, b, e, f in zip(range(frame_num-Config.share_frame_num), boxes, p_e, self.frame_indexes)])
+        with open(file_name, "a+") as f:
+            np.savetxt(f, saved_data, fmt=["%d", "%d", "%f", "%f", "%f", "%f", "%d", "%d", "%f"],
+                       delimiter=",")
 
 class Track:
-    global_id = 0
+    global_id = 1
 
     def __init__(self, node):
         self.nodes = [node]
@@ -154,8 +168,7 @@ class Track:
 
     def save_mot_data(self, file_name):
         for n in self.nodes:
-            n.save_mot_data(file_name)
-        pass
+            n.save_mot_data(file_name, self.id)
 
 
 class TrackSet:
@@ -256,6 +269,7 @@ class TrackSet:
     def save_mot_data(self, file_name):
         for t in self.removed_tracks:
             t.save_mot_data(file_name)
+        self.removed_tracks = []
 
 class Tracker:
     def __init__(self, name, version, config=None):
@@ -297,9 +311,18 @@ class Tracker:
         self.tracks = TrackSet()
         self.save_frame_index = 0
 
-    def save_mot_result(self, file_name):
-        if Config.save_track_data:
-            self.tracks.save_mot_data(file_name)
+    def save_mot_result(self, file_name, force=False):
+        if not Config.save_track_data:
+            return None
+
+        if force:
+            for t in self.tracks.tracks:
+                t.age += 10
+            Track.global_id = 1
+            Node.global_id = 1
+
+        self.tracks.save_mot_data(file_name)
+
 
     def update(self, frames, times, frame_index):
         """
@@ -313,6 +336,7 @@ class Tracker:
         if frames is None or times is None:
             return
 
+        h, w, _ = frames[0].shape
         frame_indexes = np.arange(frame_index, frame_index+Config.frame_num*Config.frame_scale)
         selected_indexes = np.arange(0, Config.frame_num) * Config.frame_scale
         input_frames = [frames[i] for i in selected_indexes]
@@ -357,7 +381,7 @@ class Tracker:
             p_e = output_p_e[0, 1, mask, :]
             param = output_params[0, c, mask, :, :]
 
-            nodes += [Node(times_input, frame_indexes, param[i, :], boxes[i, :], p_c[i], p_e[i, :], c)
+            nodes += [Node(times_input, frame_indexes, param[i, :], boxes[i, :], p_c[i], p_e[i, :], c, w, h)
                       for i in range(p_c.shape[0])]
 
             # if Config.show_result:

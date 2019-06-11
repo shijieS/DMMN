@@ -1,7 +1,7 @@
 {
   "dataset_name": "CVPR19",
   "dataset_path": "/media/ssm/data/dataset/CVPR19",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -48,7 +48,7 @@
     "crowd": -1
   },
   "test": {
-    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602-1/weights/ssdt38500.pth",
+    "resume": "/media/ssm/data/dataset/CVPR19/logs/ssdt-log-0602-1/weights/ssdt165000.pth",
     "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,
