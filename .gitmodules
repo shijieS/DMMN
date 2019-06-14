@@ -1,0 +1,3 @@
+[submodule "py_motmetrics"]
+	path = py_motmetrics
+	url = https://github.com/shijieS/py-motmetrics.git
