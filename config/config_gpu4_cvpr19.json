@@ -69,7 +69,7 @@
     "send_images": true,
     "log_iters": true,
     "run_mode": "debug",
-    "debug_save_image": true,
+    "debug_save_image": false,
     "debug_save_feature_map": false,
     "save_track_data": true,
     "contrast_lower": 0.5,

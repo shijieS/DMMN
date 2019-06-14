@@ -10,6 +10,7 @@ from dataset.ua.ua_reader import UATestDataset
 import numpy as np
 from config import config
 from layers.ssdt.tracker import Tracker, Config
+import os
 
 
 if __name__ == "__main__":
@@ -17,14 +18,35 @@ if __name__ == "__main__":
     tracker = Tracker("UA", "V1", config)
 
     index = 0
+    sequence_name = None
     while index < len(dataset):
-        # if index != 736:
-        #     index += dataset.max_frame_num_with_scale
-        #     continue
-        print(index)
-        frames, times = dataset[index]
-        # selected_indexes = np.arange(0, dataset.max_frame_num) * dataset.frame_scale
-        # image_input_list = [images[i] for i in selected_indexes]
-        # times_input_list = times[selected_indexes]
-        result_frames = tracker.update(frames, times, index)
-        index += (dataset.max_frame_num_with_scale -  Config.share_frame_num)
+        # 1. if switch video, then save and clear all tracks
+        current_sequence_name = dataset.sequence_list[dataset.get_groupd_index(index)]
+        if sequence_name is None:
+            sequence_name = current_sequence_name
+
+        if sequence_name != current_sequence_name:
+            save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
+            if not os.path.exists(save_mot_folder):
+                os.makedirs(save_mot_folder)
+            mot_file = os.path.join(save_mot_folder,
+                                    "{}.txt".format(sequence_name))
+            tracker.save_mot_result(mot_file, True)
+
+        sequence_name = current_sequence_name
+
+        # 2. get items
+        frames, times, start_frame_index = dataset[index]
+
+        # 3. update trackers
+        result_frames = tracker.update(frames, times, start_frame_index)
+
+        # 4. save mot results
+        save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
+        if not os.path.exists(save_mot_folder):
+            os.makedirs(save_mot_folder)
+        mot_file = os.path.join(save_mot_folder,
+                                "{}.txt".format(sequence_name))
+        tracker.save_mot_result(mot_file)
+
+        index += (dataset.max_frame_num_with_scale - Config.share_frame_num)
