@@ -16,6 +16,7 @@ import pandas as pd
 from config import config
 import random
 import glob
+from tqdm import trange
 
 
 class UATestDataset:
@@ -111,14 +112,34 @@ class UATestDataset:
                        (len(self.all_time_group[i][item-start]) - self.frame_scale), \
                         self.all_time_group[i][item - start][0]
 
-        return None, None
+        return None, None, None
 
+
+def get_mean_pixel_value():
+    dataset = UATestDataset()
+    rets = []
+    for i in trange(0, len(dataset), 32):
+        frame, _, _ = dataset[i]
+        if frame is None:
+            continue
+        a = np.array([0, 0, 0])
+        for f in frame:
+            a = a+f.sum(axis=0).sum(axis=0)
+        b = frame[0].shape[0]*frame[0].shape[1]*len(frame)
+        rets += [a / np.array([b, b, b])]
+
+
+    ret = sum(rets) / len(rets)
+    print(ret)
+    return ret
 
 if __name__ == "__main__":
-    dataset = UATestDataset()
+    get_mean_pixel_value()
 
-    for images, times in dataset:
-        for image in images:
-            cv2.imshow("result", image)
-            cv2.waitKey(30)
-        cv2.waitKey(30)
+    # dataset = UATestDataset()
+    #
+    # for images, times, _ in dataset:
+    #     for image in images:
+    #         cv2.imshow("result", image)
+    #         cv2.waitKey(30)
+    #     cv2.waitKey(30)

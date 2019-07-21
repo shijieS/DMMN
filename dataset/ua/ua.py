@@ -12,7 +12,6 @@ import numpy as np
 from config import config
 import cv2
 from torch.utils.data import Dataset
-from motion_model import MotionModel
 from tqdm import trange
 import random
 import glob
@@ -59,8 +58,8 @@ class SingleVideoParser:
         converted_data = converted_data.replace({"object_type":config["label_map"]})
 
         mot_data = converted_data.values
-        self.max_frame = np.max(mot_data[:, 0]).astype(int) + 1
-        self.max_id = np.max(mot_data[:, 1]).astype(int) + 1
+        self.max_frame = int(np.max(mot_data[:, 0])) + 1
+        self.max_id = int(np.max(mot_data[:, 1])) + 1
         self.ua_data = np.zeros((self.max_frame, self.max_id, 6), dtype=float)
         self.sequence_name = sequence_name
         self.frames_folder = frames_folder
@@ -70,7 +69,7 @@ class SingleVideoParser:
         mot_data[:, 2:6] /= image_wh
         mot_data[:, 6] = (mot_data[:, 6] < config["train"]["dataset_overlap_thresh"])
         for row in mot_data:
-            self.ua_data[row[0].astype(int), row[1].astype(int), :] = row[2:]
+            self.ua_data[int(row[0])-1, int(row[1])-1, :] = row[2:]
 
         self.selecte_frame_scale = config['frame_max_input_num'] * config['frame_sample_scale']
 
@@ -88,7 +87,7 @@ class SingleVideoParser:
         frame_mask[selected_indexes] = True
         frame_indexes = r[frame_mask]
         # print(self.sequence_name)
-        ua_data = self.ua_data[frame_indexes+1, :]
+        ua_data = self.ua_data[frame_indexes, :]
 
         # get ids and bbox
         # 16 x 52
@@ -100,8 +99,13 @@ class SingleVideoParser:
             return [None, None, None, None, None]
         bboxes = ua_data[:, track_mask, :]
 
-        # get frame path
+        # get frame path (as the frame index is 1-based)
         frame_paths = [os.path.join(self.sequence_frames_folder, "img{0:05}.jpg".format(i + 1)) for i in frame_indexes]
+        # frames = []
+        # for p in frame_paths:
+        #     print(p)
+        #     frames += [cv2.imread(p)]
+        # # print(frame_paths)
         frames = [cv2.imread(p) for p in frame_paths]
 
         # get times
@@ -110,20 +114,22 @@ class SingleVideoParser:
         return [frame_indexes, track_ids, bboxes, frames, times]
 
 class UATrainDataset(Dataset):
+    """
+    UA Train Dataset
+    """
     def __init__(self, root=config['dataset_path'],
                  transform=None,
                  sequence_list=cfg["sequence_list"]):
         """
         Init the UA-DETRAC dataset
         :param root: dataset root
-        :param transform: the spatial transform function
-        :param temporal_transform: the temporal transform function
-        :param sequence_list: the selected sequence list from ua
+        :param transform: the transform function
+        :param sequence_list: the selected sequence list from ua (default location is "./dataset/ua/sequence_list_train.json)
         """
         self.save_folder = os.path.join(root, 'DETRAC-Train-Annotations-Training')
         self.mot_folder = os.path.join(root, 'DETRAC-Train-Annotations-MOT')
         self.frames_folder = os.path.join(root, 'Insight-MVT_Annotation_Train')
-        self.xml_folder = os.path.join(root, 'DETRAC-Train-Annotations-XML')
+        self.xml_folder = os.path.join(root, 'DETRAC-Train-Annotations-XML-v3')
 
 
         self.transform = transform
@@ -131,11 +137,11 @@ class UATrainDataset(Dataset):
             os.mkdir(self.save_folder)
 
         # analysis files in DETRAC-Train-Annotations-MOT
-        files_path = glob.glob(os.path.join(self.xml_folder, "MVI_[0-9][0-9][0-9][0-9][0-9].xml"))
+        files_path = glob.glob(os.path.join(self.xml_folder, "MVI_[0-9][0-9][0-9][0-9][0-9]_v3.xml"))
 
         if sequence_list is not None:
             sequence_file_list = np.loadtxt(sequence_list, dtype=np.str)
-            files_path = list(filter(lambda f: os.path.isfile(f) and os.path.splitext(os.path.basename(f))[0] in sequence_file_list, files_path))
+            files_path = list(filter(lambda f: os.path.isfile(f) and os.path.splitext(os.path.basename(f))[0][:-3] in sequence_file_list, files_path))
         files_name = [os.path.basename(f)[:9] for f in files_path]
 
         # load all the mot files
@@ -166,12 +172,13 @@ class UATrainDataset(Dataset):
     @staticmethod
     def get_parameters(bboxes, times):
         """
-        Get the parameter of boxes.
+        Abandom. Get the parameter of boxes,
         :param bboxes: (FrameId, TrackId, 4)
         :returns: parameters: (TrackId, ParameterData)
                   motion_possibility: (trackId, possibility)
 
         """
+        from motion_model import MotionModel
         parameters = list()
         motion_posibility = list()
         frame_num, track_num, _ = bboxes.shape
@@ -189,7 +196,10 @@ class UATrainDataset(Dataset):
         return np.stack(parameters, axis=0), motion_posibility
 
     def __getitem__(self, item):
-
+        """
+        Get the dataset item
+        :param item: the 0-based index
+        """
         # locate the parser
         parser, item = self.get_parser(item)
         out = parser[item]
@@ -200,3 +210,37 @@ class UATrainDataset(Dataset):
             out = self.transform(out)
 
         return out
+
+
+if __name__ == "__main__":
+    from draw_utils.DrawBoxes import DrawBoxes
+
+    dataset = UATrainDataset()
+    for index in range(0, len(dataset), 32):
+        frame_indexes, track_ids, bboxes, frames, times = dataset[index]
+
+        if frame_indexes is None:
+            continue
+
+        for i, frame in enumerate(frames):
+            h, w, _ = frame.shape
+            label_map = {v: k for k, v in config["label_map"].items()}
+
+            texts = []
+            for c in bboxes[i, :, -1].astype(int):
+                # print(c)
+                if c == 0:
+                    texts += ['']
+                else:
+                    texts += [label_map[c]]
+            colors = []
+            for t in track_ids:
+                colors += [DrawBoxes.get_random_color(t)]
+            DrawBoxes.cv_draw_mult_boxes_with_track(frame,
+                                                    bboxes[:, :, :4]*np.array([w, h, w, h]),
+                                                    i,
+                                                    colors=colors,
+                                                    texts=texts,
+                                                    exists=bboxes[:, :, -2].astype(int))
+            cv2.imshow("result", frame)
+            cv2.waitKey(25)

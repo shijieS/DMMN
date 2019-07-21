@@ -533,7 +533,8 @@ class ToStatic:
             num = items[2].shape[0]
             index = random.choice(range(num))
             boxes = items[2][index, :, :]
-            mask = boxes.sum(axis=1) > 0
+            mask = np.logical_and(boxes.sum(axis=1) > 0,
+                                  boxes[:, 4]>0)
             if mask.sum() == 0:
                 return None
 

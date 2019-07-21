@@ -2,13 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evaluate_utlils/Evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evaluate_utlils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py_motmetrics" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/config_gpu4_amot.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/amot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/amot_reader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/sequence_list_all.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/amot/sequence_list_train.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/ua/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/ua/img/type_distribution.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/train_amot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SSDT.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSDT.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_gpu4_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_gpu4_ua.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_test_gpu4_debug_backup.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/sequence_list_all.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/sequence_list_all.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/sequence_list_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/sequence_list_test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/sequence_list_train.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/sequence_list_train.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/sequence_list_train_part.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/sequence_list_train_part.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/ua/ua.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/ua.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/ua/ua_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ua/ua_reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/utils/transforms.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/utils/transforms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layers/ssdt/models/resnext.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/models/resnext.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py_motmetrics" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py_motmetrics/motmetrics/io.py" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics/motmetrics/io.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/cvpr19_evaluate_train_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/cvpr19_evaluate_train_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py_motmetrics/motmetrics/mot.py" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics/motmetrics/mot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/ua_mot_result_player.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/ua_mot_result_player.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,28 +43,30 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/SSDT$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1534698493869" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/config" />
-    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1558460846037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1563630327967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$train_cvpr19.coverage" NAME="train_cvpr19 Coverage Results" MODIFIED="1559439687229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$eval_motchallenge.coverage" NAME="eval_motchallenge Coverage Results" MODIFIED="1560490374749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1560418137611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$eval_motchallenge.coverage" NAME="eval_motchallenge Coverage Results" MODIFIED="1560734800510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1563677898699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$check_environment.coverage" NAME="check_environment Coverage Results" MODIFIED="1552445911005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$motion_model_perspective.coverage" NAME="motion_model_perspective Coverage Results" MODIFIED="1555185815183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/motion_model" />
-    <SUITE FILE_PATH="coverage/SSDT$ua_mot_result_player.coverage" NAME="ua_mot_result_player Coverage Results" MODIFIED="1560423100211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/SSDT$ua_mot_result_player.coverage" NAME="ua_mot_result_player Coverage Results" MODIFIED="1562507853382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$test_tracker.coverage" NAME="test_tracker Coverage Results" MODIFIED="1559639242174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker_cvpr19.coverage" NAME="test_tracker_cvpr19 Coverage Results" MODIFIED="1560431696032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker_cvpr19.coverage" NAME="test_tracker_cvpr19 Coverage Results" MODIFIED="1562228082865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$detection.coverage" NAME="detection Coverage Results" MODIFIED="1535929162338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssdt/models" />
     <SUITE FILE_PATH="coverage/SSDT$faster_rcnn.coverage" NAME="faster_rcnn Coverage Results" MODIFIED="1534160011460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers" />
     <SUITE FILE_PATH="coverage/SSDT$test_ua__1_.coverage" NAME="test_ua (1) Coverage Results" MODIFIED="1558171214183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$ssd.coverage" NAME="ssd Coverage Results" MODIFIED="1535011420518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssd" />
     <SUITE FILE_PATH="coverage/SSDT$convert_img_2_videos.coverage" NAME="convert_img_2_videos Coverage Results" MODIFIED="1559743637820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/SSDT$train_amot.coverage" NAME="train_amot Coverage Results" MODIFIED="1563537028970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$amot.coverage" NAME="amot Coverage Results" MODIFIED="1563632169682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$check_mot_result.coverage" NAME="check_mot_result Coverage Results" MODIFIED="1560435899897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
-    <SUITE FILE_PATH="coverage/SSDT$test_ua.coverage" NAME="test_ua Coverage Results" MODIFIED="1558459584573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
+    <SUITE FILE_PATH="coverage/SSDT$test_ua.coverage" NAME="test_ua Coverage Results" MODIFIED="1563677856370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$ua_boxes_distribution.coverage" NAME="ua_boxes_distribution Coverage Results" MODIFIED="1557754930093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$tracker.coverage" NAME="tracker Coverage Results" MODIFIED="1558382609183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/layers/ssdt" />
     <SUITE FILE_PATH="coverage/SSDT$play_ua_training_dataset.coverage" NAME="play_ua_training_dataset Coverage Results" MODIFIED="1558365847830" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$ua_reader.coverage" NAME="ua_reader Coverage Results" MODIFIED="1558064284822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
-    <SUITE FILE_PATH="coverage/SSDT$ua.coverage" NAME="ua Coverage Results" MODIFIED="1534700268873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset" />
+    <SUITE FILE_PATH="coverage/SSDT$ua_reader.coverage" NAME="ua_reader Coverage Results" MODIFIED="1563677528035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$Doctests_in_Compose.coverage" NAME="Doctests in Compose Coverage Results" MODIFIED="1535193952527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/utils" />
+    <SUITE FILE_PATH="coverage/SSDT$ua.coverage" NAME="ua Coverage Results" MODIFIED="1563677846592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$cvpr19_boxes_distribution.coverage" NAME="cvpr19_boxes_distribution Coverage Results" MODIFIED="1559310422891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$ua_convert_mat_2_mot.coverage" NAME="ua_convert_mat_2_mot Coverage Results" MODIFIED="1552446715105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/tools" />
     <SUITE FILE_PATH="coverage/SSDT$cvpr19_reader.coverage" NAME="cvpr19_reader Coverage Results" MODIFIED="1559130800087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
@@ -49,7 +76,7 @@
     <SUITE FILE_PATH="coverage/SSDT$collate_fn.coverage" NAME="collate_fn Coverage Results" MODIFIED="1558370774125" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dataset/utils" />
   </component>
   <component name="CoverageViewManager">
-    <option name="myElementSize" value="438" />
+    <option name="myElementSize" value="481" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -68,80 +95,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/evaluate_utlils/Evaluate.py">
+        <entry file="file://$PROJECT_DIR$/config/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-              <caret line="35" column="26" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="26" />
-              <caret line="36" column="54" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="54" />
-              <folding>
-                <element signature="e#369#392#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/mot.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2209">
-              <caret line="242" column="27" selection-start-line="242" selection-start-column="17" selection-end-line="242" selection-end-column="27" />
-              <folding>
-                <element signature="e#144#162#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
-              <folding>
-                <element signature="e#144#163#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="22" column="4" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="22" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/motmetrics/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-928">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            <state relative-caret-position="350">
+              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/io.py">
+        <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="206" column="28" selection-start-line="206" selection-start-column="28" selection-end-line="206" selection-end-column="28" />
-              <folding>
-                <element signature="e#167#188#0" expanded="true" />
-                <element signature="e#916#1657#1" />
-                <element signature="e#2301#5532#0" />
-              </folding>
+            <state relative-caret-position="413">
+              <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/ua/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="687">
+                <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/config_gpu4_amot.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -149,8 +136,51 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+            <state relative-caret-position="257">
+              <caret line="156" column="23" lean-forward="true" selection-start-line="156" selection-start-column="23" selection-end-line="156" selection-end-column="23" />
+              <folding>
+                <element signature="e#369#378#0" expanded="true" />
+                <element signature="e#6574#7479#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/pandas/core/arrays/categorical.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="397" column="23" selection-start-line="397" selection-start-column="23" selection-end-line="397" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_ua.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#368#414#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/ua/ua_reader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
               <folding>
                 <element signature="e#369#378#0" expanded="true" />
               </folding>
@@ -159,22 +189,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/lap.py">
+        <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/tqdm/_monitor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4434">
-              <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1225">
-              <caret line="200" column="33" selection-start-line="200" selection-start-column="26" selection-end-line="200" selection-end-column="33" />
+            <state relative-caret-position="166">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
             </state>
           </provider>
         </entry>
@@ -192,27 +210,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>0.85</find>
-      <find>95</find>
-      <find>save_file</find>
-      <find>loss_overlap_thresh</find>
-      <find>overlap_thresh</find>
-      <find>threshold</find>
-      <find>nms_thresh</find>
-      <find>static_possiblity</find>
-      <find>detect_nms_thresh</find>
-      <find>print(</find>
-      <find>print_iteration</find>
-      <find>pixel</find>
-      <find>framce</find>
-      <find>sequ</find>
-      <find>wai</find>
-      <find>synchronized</find>
-      <find>base_net_weights</find>
-      <find>basenet</find>
-      <find>init(</find>
-      <find>param_init</find>
-      <find>&gt;</find>
       <find>1.0</find>
       <find>save_frame_index</find>
       <find>iou</find>
@@ -221,7 +218,28 @@
       <find>mot</find>
       <find>save_track_data</find>
       <find>log_save_folder</find>
+      <find>tracker</find>
+      <find>track</find>
+      <find>jaccard</find>
+      <find>debug_save_image</find>
+      <find>github</find>
+      <find>resume</find>
       <find>sequence_list</find>
+      <find>sequence</find>
+      <find>.avi</find>
+      <find>replace_map</find>
+      <find>set(</find>
+      <find>UATrain</find>
+      <find>MotionModel</find>
+      <find>reading</find>
+      <find>get_frame</find>
+      <find>xml</find>
+      <find>print</find>
+      <find>self.ty</find>
+      <find>static</find>
+      <find>print(</find>
+      <find>save</find>
+      <find>min_valid_node_rate</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -230,26 +248,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dataset/ua/ua_boxes_distribution.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/models/prior_box.py" />
-        <option value="$PROJECT_DIR$/tools/ua_boxes_distribution.py" />
-        <option value="$PROJECT_DIR$/test_ua.py" />
-        <option value="$PROJECT_DIR$/draw_utils/draw_utils.py" />
-        <option value="$PROJECT_DIR$/dataset/sequence_list_all.txt" />
-        <option value="$PROJECT_DIR$/dataset/sequence_list_test.txt" />
-        <option value="$PROJECT_DIR$/dataset/sequence_list_train.txt" />
-        <option value="$PROJECT_DIR$/dataset/sequence_list_train_part.txt" />
-        <option value="$PROJECT_DIR$/tools/play_ua_training_dataset.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/models/detection_param.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
-        <option value="$PROJECT_DIR$/dataset/ua/test_ua.py" />
         <option value="$PROJECT_DIR$/dataset/utils/common.py" />
         <option value="$PROJECT_DIR$/motion_model/motion_model_quadratic.py" />
-        <option value="$PROJECT_DIR$/dataset/ua/ua.py" />
         <option value="$PROJECT_DIR$/dataset/utils/collate_fn.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/loss_param.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/multibox_loss_param.py" />
-        <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
         <option value="$PROJECT_DIR$/test_tracker.py" />
         <option value="$PROJECT_DIR$/config/config_test_gpu4_debug.json" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/test_cvpr19.py" />
@@ -259,38 +262,53 @@
         <option value="$PROJECT_DIR$/draw_utils/DrawBoxes.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/tools/cvpr19_boxes_distribution.py" />
-        <option value="$PROJECT_DIR$/dataset/__init__.py" />
         <option value="$PROJECT_DIR$/train_cvpr19.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/ssdt.py" />
-        <option value="$PROJECT_DIR$/train_ua.py" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/sequence_list_train_part.txt" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/cvpr19.py" />
         <option value="$PROJECT_DIR$/tools/convert_img_2_videos.py" />
         <option value="$PROJECT_DIR$/test_tracker_cvpr19.py" />
         <option value="$PROJECT_DIR$/test_tracker_ua.py" />
         <option value="$PROJECT_DIR$/dataset/cvpr19/cvpr19_reader.py" />
-        <option value="$PROJECT_DIR$/dataset/ua/ua_reader.py" />
-        <option value="$PROJECT_DIR$/config/config_gpu4_ua.json" />
-        <option value="$PROJECT_DIR$/tools/ua_mot_result_player.py" />
-        <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/tracker.py" />
         <option value="$PROJECT_DIR$/config/config_gpu4_cvpr19.json" />
         <option value="$PROJECT_DIR$/tools/check_mot_result.py" />
         <option value="$PROJECT_DIR$/tools/fix_mot_result.py" />
         <option value="$PROJECT_DIR$/tools/cvpr19_evaluate_train_dataset.py" />
         <option value="$PROJECT_DIR$/evaluate_utlils/Evaluate.py" />
-        <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py" />
         <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/io.py" />
+        <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py" />
+        <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/mot.py" />
+        <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py" />
+        <option value="$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py" />
+        <option value="$PROJECT_DIR$/tools/ua_mot_result_player.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/models/resnext.py" />
+        <option value="$PROJECT_DIR$/train_ua.py" />
+        <option value="$PROJECT_DIR$/dataset/amot/amot_reader.py" />
+        <option value="$PROJECT_DIR$/dataset/amot/sequence_list_test.json" />
+        <option value="$PROJECT_DIR$/dataset/amot/sequence_list_test.txt" />
+        <option value="$PROJECT_DIR$/dataset/__init__.py" />
+        <option value="$PROJECT_DIR$/train_amot.py" />
+        <option value="$PROJECT_DIR$/dataset/amot/amot.py" />
+        <option value="$PROJECT_DIR$/dataset/amot/sequence_list_train.txt" />
+        <option value="$PROJECT_DIR$/config/__init__.py" />
+        <option value="$PROJECT_DIR$/dataset/ua/sequence_list_train.txt" />
+        <option value="$PROJECT_DIR$/dataset/utils/transforms.py" />
+        <option value="$PROJECT_DIR$/dataset/ua/README.md" />
+        <option value="$PROJECT_DIR$/dataset/ua/ua.py" />
+        <option value="$PROJECT_DIR$/config/config_gpu4_amot.json" />
+        <option value="$PROJECT_DIR$/dataset/ua/ua_reader.py" />
+        <option value="$PROJECT_DIR$/config/config_gpu4_ua.json" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="67" />
     <option name="y" value="27" />
-    <option name="width" value="917" />
-    <option name="height" value="789" />
+    <option name="width" value="1853" />
+    <option name="height" value="1053" />
   </component>
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
@@ -324,25 +342,13 @@
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluate_utlils" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="py_motmetrics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="py_motmetrics" type="462c0819:PsiDirectoryNode" />
-              <item name="motmetrics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
-              <item name="py_motmetrics" type="462c0819:PsiDirectoryNode" />
-              <item name="motmetrics" type="462c0819:PsiDirectoryNode" />
-              <item name="apps" type="462c0819:PsiDirectoryNode" />
+              <item name="draw_utils" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -354,22 +360,22 @@
   <component name="PropertiesComponent">
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AMOTDRecorder" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SST" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tools" />
-      <recent name="$PROJECT_DIR$/dataset/cvpr19" />
-      <recent name="$PROJECT_DIR$/weights" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/config" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tools" />
       <recent name="$PROJECT_DIR$/dataset/ua" />
+      <recent name="$PROJECT_DIR$/tools" />
       <recent name="$PROJECT_DIR$/dataset/mot17" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dataset/ua/img" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/dataset/amot" />
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/tools" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -384,7 +390,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.eval_motchallenge">
+  <component name="RunManager" selected="Python.ua_reader">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -407,77 +413,39 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="check_mot_result" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="amot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/amot/amot.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_tracker_ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/check_mot_result.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="eval_motchallenge" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py" />
-      <option name="PARAMETERS" value="/media/ssm/data/dataset/CVPR19/train /media/ssm/data/dataset/CVPR19/test_logs/mot" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="fix_mot_result" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/fix_mot_result.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test_tracker_cvpr19" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_tracker_cvpr19.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_tracker_ua.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -486,7 +454,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ua_mot_result_player" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -494,12 +462,50 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/ua_mot_result_player.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_ua.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ua" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/ua/ua.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ua_reader" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/ua/ua_reader.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -509,19 +515,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test_tracker_cvpr19" />
-      <item itemvalue="Python.check_mot_result" />
-      <item itemvalue="Python.ua_mot_result_player" />
-      <item itemvalue="Python.fix_mot_result" />
-      <item itemvalue="Python.eval_motchallenge" />
+      <item itemvalue="Python.amot" />
+      <item itemvalue="Python.ua" />
+      <item itemvalue="Python.ua_reader" />
+      <item itemvalue="Python.test_ua" />
+      <item itemvalue="Python.test_tracker_ua" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.eval_motchallenge" />
-        <item itemvalue="Python.fix_mot_result" />
-        <item itemvalue="Python.check_mot_result" />
-        <item itemvalue="Python.test_tracker_cvpr19" />
-        <item itemvalue="Python.ua_mot_result_player" />
+        <item itemvalue="Python.ua_reader" />
+        <item itemvalue="Python.test_tracker_ua" />
+        <item itemvalue="Python.test_ua" />
+        <item itemvalue="Python.ua" />
+        <item itemvalue="Python.amot" />
       </list>
     </recent_temporary>
   </component>
@@ -582,7 +588,10 @@
       <workItem from="1559443258888" duration="14357000" />
       <workItem from="1559542359628" duration="20363000" />
       <workItem from="1559744697091" duration="259000" />
-      <workItem from="1559745009414" duration="49128000" />
+      <workItem from="1559745009414" duration="66550000" />
+      <workItem from="1562478510006" duration="45580000" />
+      <workItem from="1563460390501" duration="18289000" />
+      <workItem from="1563534658355" duration="29872000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -755,7 +764,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="868757000" />
+    <option name="totallyTimeSpent" value="979920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -770,13 +779,13 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2118691" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22018857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3278328" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.41034102" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.4147415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
@@ -862,11 +871,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/torch/utils/data/dataloader.py</url>
-          <line>303</line>
-          <option name="timeStamp" value="214" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/motion_model/motion_model_perspective.py</url>
           <line>47</line>
           <option name="timeStamp" value="383" />
@@ -882,14 +886,24 @@
           <option name="timeStamp" value="516" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/train_ua.py</url>
-          <line>182</line>
-          <option name="timeStamp" value="651" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
           <url>file://$PROJECT_DIR$/dataset/cvpr19/cvpr19_reader.py</url>
           <line>121</line>
           <option name="timeStamp" value="706" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="741" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py</url>
+          <line>127</line>
+          <option name="timeStamp" value="744" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py</url>
+          <line>143</line>
+          <option name="timeStamp" value="750" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
@@ -906,6 +920,26 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>index==64</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>item==64</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>c==0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>frame_index==1270</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>frame_index_end-frame_index_start &lt; 2</expression-string>
         <language-id>Python</language-id>
@@ -931,146 +965,138 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>len(best_prior_idx) == 0 or sum(best_prior_mask)==0</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>iteration==1300</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>iteration==850</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>iteration == 860</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="e#369#394#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/torch/utils/data/dataloader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="109" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/multiprocessing/queues.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="223" column="20" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="49" column="30" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="52" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding>
-            <element signature="e#369#409#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/box_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="401" column="4" selection-start-line="401" selection-start-column="4" selection-end-line="401" selection-end-column="4" />
+        <state relative-caret-position="337">
+          <caret line="77" column="33" lean-forward="true" selection-start-line="38" selection-end-line="77" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/motion_model/motion_model.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssd/functions/prior_box.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1125" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/motion_model/motion_model_perspective.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        <state relative-caret-position="525">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/motion_model/motion_model_quadratic.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssd/data/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        <state relative-caret-position="325">
+          <caret line="34" column="18" lean-forward="true" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/motion_model/motion_model_quadratic_backup.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssd/data/voc0712.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-225">
+        <state relative-caret-position="175">
+          <caret line="88" column="13" selection-start-line="88" selection-start-column="13" selection-end-line="88" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssd/ssd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           <folding>
-            <element signature="e#369#387#0" expanded="true" />
+            <element signature="e#369#381#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/sequence_list_train_part.txt">
+    <entry file="file://$PROJECT_DIR$/dataset/dataset.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        <state relative-caret-position="200">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/concurrent/futures/thread.py">
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/extra_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2750">
-          <caret line="116" column="46" selection-start-line="116" selection-start-column="46" selection-end-line="116" selection-end-column="46" />
+        <state relative-caret-position="-68">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_mot17.py">
+    <entry file="file://$PROJECT_DIR$/config/config_gpu4_cvpr19.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/generate_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="132" column="24" selection-start-line="132" selection-start-column="24" selection-end-line="132" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/resnext.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="177" column="65" selection-start-line="177" selection-start-column="65" selection-end-line="177" selection-end-column="65" />
+          <folding>
+            <element signature="e#616#766#0" />
+            <element signature="e#820#1207#0" />
+            <element signature="e#1250#2479#0" />
+            <element signature="e#2513#5379#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/utils/param_init.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/amot/amot_reader.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_ua.py">
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-671355304/cv2/cv2/VideoCapture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2700">
-          <caret line="108" column="44" selection-start-line="108" selection-start-column="44" selection-end-line="108" selection-end-column="44" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="2875">
+          <caret line="130" column="8" selection-start-line="130" selection-start-column="8" selection-end-line="130" selection-end-column="8" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/ntpath.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/warnings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/mot17/mot17.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/cvpr19.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="14" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1850">
-          <caret line="154" column="40" selection-start-line="154" selection-start-column="40" selection-end-line="154" selection-end-column="40" />
+        <state relative-caret-position="166">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
           <folding>
             <element signature="e#369#381#0" expanded="true" />
-            <element signature="e#2452#4590#0" />
             <element signature="e#4641#4991#0" />
             <element signature="e#5045#5462#0" />
             <element signature="e#5508#5580#0" />
@@ -1078,101 +1104,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/train_cvpr19.py">
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/multiprocessing/queues.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
-          <caret line="95" column="14" selection-start-line="95" selection-start-column="14" selection-end-line="95" selection-end-column="14" />
+        <state relative-caret-position="266">
+          <caret line="336" selection-start-line="336" selection-end-line="336" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/torch/utils/data/dataloader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="335" selection-start-line="335" selection-end-line="335" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/collate_fn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="39" column="47" lean-forward="true" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2018.3/system/python_stubs/-671355304/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="323" column="4" selection-start-line="323" selection-start-column="4" selection-end-line="323" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/multiprocessing/connection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="379" column="26" lean-forward="true" selection-start-line="379" selection-start-column="26" selection-end-line="379" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/configure.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/amot/sequence_list_all.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="1405" lean-forward="true" selection-start-line="1405" selection-end-line="1520" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train_amot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="807">
+          <caret line="143" column="27" selection-start-line="143" selection-start-column="27" selection-end-line="143" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/amot/sequence_list_train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/amot/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="46" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
           <folding>
-            <element signature="e#371#380#0" expanded="true" />
+            <element signature="e#369#409#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/sequence_list_train.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+    <entry file="file://$PROJECT_DIR$/dataset/amot/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/sequence_list_test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="1168" column="22" lean-forward="true" selection-start-line="1168" selection-start-column="22" selection-end-line="1168" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/mot17/mot17.py">
+    <entry file="file://$PROJECT_DIR$/dataset/ua/ua_reader_backup.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/test_cvpr19.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/mot17/mot17_reader.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/cvpr19.py">
+    <entry file="file:///media/ssm/data/dataset/UA_DETRAC/DETRAC-Train-Annotations-XML-v3/MVI_20011_v3.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="250">
+          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_tracker_cvpr19.py">
+    <entry file="file://$PROJECT_DIR$/dataset/amot/amot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="32" column="53" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="53" />
+        <state relative-caret-position="287">
+          <caret line="100" column="31" lean-forward="true" selection-start-line="100" selection-start-column="31" selection-end-line="100" selection-end-column="31" />
           <folding>
-            <element signature="e#370#428#0" expanded="true" />
+            <element signature="e#902#911#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/cvpr19/cvpr19_reader.py">
+    <entry file="file:///media/ssm/data/dataset/UA_DETRAC/DETRAC-Train-Annotations-XML-v3/MVI_39801_v3.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="112" column="61" lean-forward="true" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="61" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/check_environment.py">
+    <entry file="file://$PROJECT_DIR$/dataset/ua/sequence_list_train.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" selection-start-line="9" selection-end-line="11" selection-end-column="9" />
+        <state relative-caret-position="299">
+          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/utils/transforms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="546" column="36" selection-start-line="546" selection-start-column="36" selection-end-line="546" selection-end-column="36" />
           <folding>
             <element signature="e#369#394#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/convert_img_2_videos.py">
+    <entry file="file://$PROJECT_DIR$/train_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="26" selection-start-line="26" selection-end-line="26" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/play_ua_training_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3386">
-          <caret line="213" column="20" selection-start-line="213" selection-start-column="13" selection-end-line="213" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua/ua_reader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
+        <state relative-caret-position="176">
+          <caret line="104" column="10" selection-start-line="104" selection-start-column="4" selection-end-line="104" selection-end-column="10" />
           <folding>
             <element signature="e#369#378#0" expanded="true" />
           </folding>
@@ -1181,38 +1240,87 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/draw_utils/DrawBoxes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+        <state relative-caret-position="82">
+          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
           <folding>
             <element signature="e#369#379#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/ua_mot_result_player.py">
+    <entry file="file://$PROJECT_DIR$/config/config_test_gpu4_debug_backup.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="37" column="23" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="23" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="250">
+          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/img/type_distribution.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="687">
+            <caret line="114" lean-forward="true" selection-start-line="114" selection-end-line="114" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/pandas/core/arrays/categorical.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="397" column="23" selection-start-line="397" selection-start-column="23" selection-end-line="397" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_gpu4_amot.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="35" column="45" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
+        <state relative-caret-position="234">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#368#414#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
+    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/tqdm/_monitor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="275" column="31" selection-start-line="275" selection-start-column="31" selection-end-line="275" selection-end-column="31" />
+        <state relative-caret-position="166">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="156" column="23" lean-forward="true" selection-start-line="156" selection-start-column="23" selection-end-line="156" selection-end-column="23" />
+          <folding>
+            <element signature="e#369#378#0" expanded="true" />
+            <element signature="e#6574#7479#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/ua_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
           <folding>
             <element signature="e#369#378#0" expanded="true" />
           </folding>
@@ -1221,151 +1329,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_gpu4_cvpr19.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/check_mot_result.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/fix_mot_result.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#371#380#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/cvpr19_evaluate_train_dataset.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/motmetrics/io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="171" column="10" selection-start-line="171" selection-start-column="10" selection-end-line="171" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/lap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4434">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/metrics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1225">
-          <caret line="200" column="33" selection-start-line="200" selection-start-column="26" selection-end-line="200" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/mot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2209">
-          <caret line="242" column="27" selection-start-line="242" selection-start-column="17" selection-end-line="242" selection-end-column="27" />
-          <folding>
-            <element signature="e#144#162#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/evaluate_utlils/Evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="35" column="8" lean-forward="true" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="8" />
-          <caret line="35" column="26" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="26" />
-          <caret line="36" column="54" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="54" />
-          <folding>
-            <element signature="e#369#392#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/distances.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="107" column="12" lean-forward="true" selection-start-line="107" selection-start-column="12" selection-end-line="107" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
-          <folding>
-            <element signature="e#144#163#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/motmetrics/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-928">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/apps/eval_motchallenge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="58" column="47" selection-start-line="58" selection-start-column="47" selection-end-line="58" selection-end-column="47" />
+        <state relative-caret-position="350">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="17" selection-start-column="15" selection-end-line="22" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataset/ua/ua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="60" column="40" lean-forward="true" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
-          <folding>
-            <element signature="e#369#378#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/py_motmetrics/motmetrics/io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="206" column="28" selection-start-line="206" selection-start-column="28" selection-end-line="206" selection-end-column="28" />
-          <folding>
-            <element signature="e#167#188#0" expanded="true" />
-            <element signature="e#916#1657#1" />
-            <element signature="e#2301#5532#0" />
-          </folding>
+        <state relative-caret-position="413">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
         </state>
       </provider>
     </entry>

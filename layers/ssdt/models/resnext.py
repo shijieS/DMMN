@@ -175,7 +175,8 @@ def resnet50(**kwargs):
 def resnet101(**kwargs):
     """Constructs a ResNet-101 motion_model.
     """
-    model = ResNeXt(ResNeXtBottleneck, [3, 4, 23, 3], **kwargs)
+    # model = ResNeXt(ResNeXtBottleneck, [3, 4, 23, 3], **kwargs)
+    model = ResNeXt(ResNeXtBottleneck, [10, 10, 7, 6], **kwargs)
     return model
 
 def resnet152(**kwargs):

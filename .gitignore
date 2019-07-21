@@ -20,3 +20,4 @@ tools/ua_data_bboxes.csv
 result/*
 cvpr_data_bboxes.csv
 dataset/cvpr19/__pycache__/
+dataset/amot/__pycache__/
