@@ -25,7 +25,7 @@ class UATestDataset:
                  max_input_frame=config['frame_max_input_num'],
                  frame_scale=config['frame_sample_scale'],
                  sequence_list=config["test"]['sequence_list'],
-                 dataset_name='UA-DETRAC'
+                 dataset_name=config['dataset_name']
                  ):
         self.dataset_name = dataset_name
         self.frame_scale = frame_scale
@@ -132,6 +132,7 @@ def get_mean_pixel_value():
     ret = sum(rets) / len(rets)
     print(ret)
     return ret
+
 
 if __name__ == "__main__":
     get_mean_pixel_value()

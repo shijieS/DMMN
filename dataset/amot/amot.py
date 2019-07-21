@@ -46,6 +46,7 @@ import random
 import glob
 import pandas as pd
 import warnings
+from threading import Lock
 
 cfg = config[config["phase"]]
 
@@ -86,7 +87,7 @@ class SingleVideoParser:
         self.amot_data = np.zeros((self.max_frame, self.max_id, 6), dtype=float)
         self.sequence_frames_folder = sequence_name
         self.video_file = video_file
-        # self.video_capture = cv2.VideoCapture(video_file)
+        self.video_capture = cv2.VideoCapture(video_file)
 
         mot_data[:, 6] = (mot_data[:, 6] >= 1 - config["train"]["dataset_overlap_thresh"])
         for row in mot_data:
@@ -94,14 +95,16 @@ class SingleVideoParser:
 
         self.selecte_frame_scale = config['frame_max_input_num'] * config['frame_sample_scale']
 
+        self.mutex = Lock()
+
     def get_frame(self, item):
-        video_capture = cv2.VideoCapture(self.video_file)
-        video_capture.set(cv2.CAP_PROP_POS_FRAMES, item)
-        ret, frame = video_capture.read()
-        video_capture.release()
+        if not self.video_capture.isOpened():
+            self.video_capture.open(self.video_file)
+        self.mutex.acquire()
+        self.video_capture.set(cv2.CAP_PROP_POS_FRAMES, item)
+        ret, frame = self.video_capture.read()
+        self.mutex.release()
         return ret, frame
-
-
 
     def __len__(self):
         if self.amot_data is None:
@@ -170,7 +173,7 @@ class AmotTrainDataset(Dataset):
         self.transform = transform
 
         if sequence_list is not None:
-            sequence_file_list = np.loadtxt(sequence_list, dtype=np.str)
+            sequence_file_list = np.loadtxt(sequence_list, dtype=np.str).reshape((-1))
             all_list = [os.path.join(self.data_folder, f+".avi") for f in sequence_file_list]
         else:
             all_list = glob.glob(os.path.join(self.data_folder, "*/*/*/*.avi"))
@@ -206,6 +209,23 @@ class AmotTrainDataset(Dataset):
             start_index += l
         self.len = np.sum(self.lens)
 
+    def get_mean_pixel(self):
+        rets = []
+        for index in trange(0, len(self), 32):
+            _, _, _, frames, _ = dataset[index]
+            if frames is None:
+                continue
+            mean_pixel = np.array([0, 0, 0])
+            for f in frames:
+                mean_pixel = mean_pixel + f.sum(axis=0).sum(axis=0)
+            b = f.shape[0] * f.shape[1] * len(frames)
+            rets += [mean_pixel / np.array([b, b, b])]
+        ret = sum(rets) / len(rets)
+        print(ret)
+        return ret
+
+
+
     def __len__(self):
         return self.len
 
@@ -229,30 +249,30 @@ class AmotTrainDataset(Dataset):
 
         return out
 
-
 if __name__ == "__main__":
     from draw_utils.DrawBoxes import DrawBoxes
 
     dataset = AmotTrainDataset()
-    for index in range(0, len(dataset), 32):
-        frame_indexes, track_ids, bboxes, frames, times = dataset[index]
-
-        if frame_indexes is None:
-            continue
-
-        for i, frame in enumerate(frames):
-            h, w, _ = frame.shape
-            label_map = {v: k for k, v in config["label_map"].items()}
-
-            texts = [label_map[c] for c in bboxes[i, :, -1].astype(int)]
-            colors = []
-            for t in track_ids:
-                colors += DrawBoxes.get_random_color(t)
-            DrawBoxes.cv_draw_mult_boxes_with_track(frame,
-                                                    bboxes[:, :, :4]*np.array([w, h, w, h]),
-                                                    i,
-                                                    colors=colors,
-                                                    texts=texts,
-                                                    exists=bboxes[:, :, -2].astype(int))
-            cv2.imshow("result", frame)
-            cv2.waitKey(25)
+    dataset.get_mean_pixel()
+    # for index in range(0, len(dataset), 32):
+    #     frame_indexes, track_ids, bboxes, frames, times = dataset[index]
+    #
+    #     if frame_indexes is None:
+    #         continue
+    #
+    #     for i, frame in enumerate(frames):
+    #         h, w, _ = frame.shape
+    #         label_map = {v: k for k, v in config["label_map"].items()}
+    #
+    #         texts = [label_map[c] for c in bboxes[i, :, -1].astype(int)]
+    #         colors = []
+    #         for t in track_ids:
+    #             colors += [DrawBoxes.get_random_color(t)]
+    #         DrawBoxes.cv_draw_mult_boxes_with_track(frame,
+    #                                                 bboxes[:, :, :4]*np.array([w, h, w, h]),
+    #                                                 i,
+    #                                                 colors=colors,
+    #                                                 texts=texts,
+    #                                                 exists=bboxes[:, :, -2].astype(int))
+    #         cv2.imshow("result", frame)
+    #         cv2.waitKey(25)

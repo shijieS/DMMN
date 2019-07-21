@@ -1,7 +1,7 @@
 {
   "dataset_name": "AMOTD",
   "dataset_path": "/media/ssj/新加卷",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
