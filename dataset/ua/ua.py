@@ -95,8 +95,8 @@ class SingleVideoParser:
         # 52
         track_mask = np.sum(ua_mask, axis=0) > config['frame_max_input_num'] * config['min_valid_node_rate']
         track_ids = np.arange(ua_data.shape[1])[track_mask]
-        if len(track_ids) == 0:
-            return [None, None, None, None, None]
+        # if len(track_ids) == 0:
+        #     return [None, None, None, None, None]
         bboxes = ua_data[:, track_mask, :]
 
         # get frame path (as the frame index is 1-based)

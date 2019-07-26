@@ -45,8 +45,7 @@ from tqdm import trange
 import random
 import glob
 import pandas as pd
-import warnings
-from threading import Lock
+from dataset.amot.videocaptureasync import VideoCaptureAsync
 
 cfg = config[config["phase"]]
 
@@ -87,7 +86,7 @@ class SingleVideoParser:
         self.amot_data = np.zeros((self.max_frame, self.max_id, 6), dtype=float)
         self.sequence_frames_folder = sequence_name
         self.video_file = video_file
-        self.video_capture = cv2.VideoCapture(video_file)
+        # self.video_capture = VideoCaptureAsync(video_file)
 
         mot_data[:, 6] = (mot_data[:, 6] >= 1 - config["train"]["dataset_overlap_thresh"])
         for row in mot_data:
@@ -95,15 +94,18 @@ class SingleVideoParser:
 
         self.selecte_frame_scale = config['frame_max_input_num'] * config['frame_sample_scale']
 
-        self.mutex = Lock()
-
     def get_frame(self, item):
-        if not self.video_capture.isOpened():
-            self.video_capture.open(self.video_file)
-        self.mutex.acquire()
-        self.video_capture.set(cv2.CAP_PROP_POS_FRAMES, item)
-        ret, frame = self.video_capture.read()
-        self.mutex.release()
+        # if not self.video_capture.isOpened():
+        #     self.video_capture.open(self.video_file)
+        # print("start {}".format(item))
+        # self.video_capture.set(cv2.CAP_PROP_POS_FRAMES, item)
+        # ret, frame = self.video_capture.read()
+        # print("end {}".format(item))
+
+        # print("start {} {}".format(self.video_file, item))
+        ret, frame = VideoCaptureAsync.get_frame(self.video_file, item)
+        # print("end {} {}".format(self.video_file, item))
+
         return ret, frame
 
     def __len__(self):
@@ -130,8 +132,8 @@ class SingleVideoParser:
         # 52
         track_mask = np.sum(amot_mask, axis=0) > config['frame_max_input_num'] * config['min_valid_node_rate']
         track_ids = np.arange(amot_data.shape[1])[track_mask]
-        if len(track_ids) == 0:
-            return [None, None, None, None, None]
+        # if len(track_ids) == 0:
+        #     return [None, None, None, None, None]
         bboxes = amot_data[:, track_mask, :]
 
         # get frame path
@@ -178,6 +180,7 @@ class AmotTrainDataset(Dataset):
         else:
             all_list = glob.glob(os.path.join(self.data_folder, "*/*/*/*.avi"))
 
+        self.sequence_list = all_list
         # check the video files
         for f in all_list:
             if not os.path.exists(f):
@@ -253,26 +256,26 @@ if __name__ == "__main__":
     from draw_utils.DrawBoxes import DrawBoxes
 
     dataset = AmotTrainDataset()
-    dataset.get_mean_pixel()
-    # for index in range(0, len(dataset), 32):
-    #     frame_indexes, track_ids, bboxes, frames, times = dataset[index]
-    #
-    #     if frame_indexes is None:
-    #         continue
-    #
-    #     for i, frame in enumerate(frames):
-    #         h, w, _ = frame.shape
-    #         label_map = {v: k for k, v in config["label_map"].items()}
-    #
-    #         texts = [label_map[c] for c in bboxes[i, :, -1].astype(int)]
-    #         colors = []
-    #         for t in track_ids:
-    #             colors += [DrawBoxes.get_random_color(t)]
-    #         DrawBoxes.cv_draw_mult_boxes_with_track(frame,
-    #                                                 bboxes[:, :, :4]*np.array([w, h, w, h]),
-    #                                                 i,
-    #                                                 colors=colors,
-    #                                                 texts=texts,
-    #                                                 exists=bboxes[:, :, -2].astype(int))
-    #         cv2.imshow("result", frame)
-    #         cv2.waitKey(25)
+    # dataset.get_mean_pixel()
+    for index in range(544, len(dataset), 32):
+        frame_indexes, track_ids, bboxes, frames, times = dataset[index]
+
+        if frame_indexes is None:
+            continue
+
+        for i, frame in enumerate(frames):
+            h, w, _ = frame.shape
+            label_map = {v: k for k, v in config["label_map"].items()}
+
+            texts = ['' if c==0 else label_map[c] for c in bboxes[i, :, -1].astype(int)]
+            colors = []
+            for t in track_ids:
+                colors += [DrawBoxes.get_random_color(t)]
+            DrawBoxes.cv_draw_mult_boxes_with_track(frame,
+                                                    bboxes[:, :, :4]*np.array([w, h, w, h]),
+                                                    i,
+                                                    colors=colors,
+                                                    texts=texts,
+                                                    exists=bboxes[:, :, -2].astype(int))
+            cv2.imshow("result", frame)
+            cv2.waitKey(25)

@@ -35,10 +35,19 @@ class Config:
     detect_conf_thresh = 0.5
     show_result = True
     category_map = {
-        1: "bus",
-        2: "car",
-        3: "others",
-        4: "van"
+        1: "Sedan",
+        2: "Suv",
+        3: "Taxi",
+        4: "Van",
+        5: "Bus",
+        6: "MiniVan",
+        7: "Truck-Box-Large",
+        8: "Truck-Pickup",
+        9: "Hatchback",
+        10: "Police",
+        11: "Truck-Box-Med",
+        12: "Truck-Util",
+        13: "Truck-Flatbed"
     }
     max_age = 16
     max_direction_thresh = 3.14 / 2.0
@@ -96,6 +105,7 @@ class Node:
         self.height = height
 
     def draw(self, frames, track_id):
+        print(self.category)
         DrawBoxes.draw_node_result(frames, self.boxes, self.p_c, self.p_e,
                                    Config.category_map[self.category], track_id)
         return frames

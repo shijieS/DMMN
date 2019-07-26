@@ -128,8 +128,8 @@ def train():
         add_histogram_iteration = 10
 
     else:
-        print_iteration = 100
-        add_scalar_iteration = 10
+        print_iteration = 10
+        add_scalar_iteration = 100
         save_image_iteration = 1000
         add_histogram_iteration = 1000
 

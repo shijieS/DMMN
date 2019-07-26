@@ -60,9 +60,9 @@ class Loss(nn.Module):
         # ]
 
         # loc_datas_org, p_c_t, p_e_t, parameters_t = ([target[i] for target in targets] for i in range(4))
-        loc_datas_org, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(3))
+        loc_datas_t, p_c_t, p_e_t = ([target[i] for target in targets] for i in range(3))
         # loc_datas_t = self.convert_to_bboxes_list(parameters_t, times)
-        loc_datas_t = loc_datas_org
+        # loc_datas_t = loc_datas_org
 
         # update p_e_t
         # p_e_t = [torch.sum(i, dim=2)> 0 for i in loc_datas_t]

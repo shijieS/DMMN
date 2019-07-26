@@ -95,7 +95,8 @@ class ResNeXt(nn.Module):
         last_duration = math.ceil(frame_duration / 16)
         last_size = math.ceil(frame_size / 32)
         self.avgpool = nn.AvgPool3d((last_duration, last_size, last_size), stride=1)
-        self.fc = nn.Linear(cardinality * 32 * block.expansion, num_classes)
+        if not self.last_fc:
+            self.fc = nn.Linear(cardinality * 32 * block.expansion, num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv3d):

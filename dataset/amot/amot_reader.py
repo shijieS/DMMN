@@ -50,6 +50,8 @@ class AmotTestDataset:
         else:
             self.video_list = glob.glob(os.path.join(folder, "*/*/*/*.avi"))
 
+        self.sequence_list = self.video_list
+
         self.video_captures = [cv2.VideoCapture(v) for v in self.video_list]
         # 2. get all the image files and its corresponding time
         time_list = [list(range(video_frame_num)) for _ in self.video_list]
@@ -133,7 +135,7 @@ def get_mean_pixel_value():
 if __name__ == "__main__":
     dataset = AmotTestDataset()
 
-    for i in range(0, len(dataset), 32):
+    for i in trange(0, len(dataset), 32):
         images, times, _ = dataset[i]
         for image in images:
             cv2.imshow("result", image)

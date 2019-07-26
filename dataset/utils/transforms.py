@@ -489,11 +489,11 @@ class ToTensor(object):
 
         items[0] = torch.from_numpy(items[0])
         items[1] = torch.from_numpy(items[1])
-        items[2] = torch.from_numpy(items[2])
+        items[2] = torch.from_numpy(items[2]) if items[2].size > 0 else torch.from_numpy(np.array([]))
         items[3] = torch.stack([torch.from_numpy(i) for i in items[3]], 0)
         items[4] = torch.from_numpy(items[4])
         items[5] = torch.from_numpy(items[5].astype(np.uint8))
-        items[6] = torch.from_numpy(items[6].astype(np.uint8))
+        items[6] = torch.from_numpy(items[6].astype(np.uint8)) if items[6].size>0 else torch.from_numpy(np.array([]).astype(np.uint8))
         # items[7] = torch.from_numpy(items[7])
 
         return items

@@ -450,6 +450,7 @@ def nms_with_frames(boxes, scores, p_e, overlap=0.5, top_k=200, exist_thresh=0.3
         for frame_index in range(num_frames):
             # if current_exist_mask[frame_index]:
             #     continue
+            # print(xx1.shape)
             torch.clamp(xx1[frame_index, :], min=x1[frame_index, i], out=xx1[frame_index, :])
             torch.clamp(yy1[frame_index, :], min=y1[frame_index, i], out=yy1[frame_index, :])
             torch.clamp(xx2[frame_index, :], max=x2[frame_index, i], out=xx2[frame_index, :])
