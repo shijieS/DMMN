@@ -17,7 +17,7 @@ from config import config
 from .models.prior_box import PriorBox
 from .models.detection_param import Detect
 import os
-from .utils.generate_model import generate_resnext101, generate_extra_model
+from .utils.generate_model import generate_resnextSSDT, generate_extra_model
 from draw_utils import show_feature_map
 from .utils import param_init
 
@@ -46,7 +46,7 @@ class SSDT(nn.Module):
         self.p_e_layers = nn.ModuleList(head[2])
 
         # base net
-        self.conv1 = nn.ModuleList([base.conv1, base.bn1, base.relu, base.maxpool])
+        self.conv1 = base.layer0
         self.conv2 = base.layer1
         self.conv3 = base.layer2
         self.conv4 = base.layer3
@@ -73,8 +73,9 @@ class SSDT(nn.Module):
         p_e = list()
 
         # base net
-        for conv in self.conv1:
-            x = conv(x)
+        x = self.conv1(x)
+        # for conv in self.conv1:
+        #     x = conv(x)
         show_feature_map(x, 'conv_1')
         x = self.conv2(x)
         show_feature_map(x, 'conv_2')
@@ -170,15 +171,15 @@ class SSDT(nn.Module):
             print("ERROR: Phase: " + phase + " not recognized")
             return
 
-        # build ResnNeXt 101
-        base_net = generate_resnext101(
+        # build ResnNeXt SSDT
+        base_net = generate_resnextSSDT(
             config["num_classes"],
             frame_size=config["frame_size"],
             num_frames=config["frame_max_input_num"],
             cuda=config["cuda"])
 
         # build extra net
-        extra_net_inplanes = base_net.layer4[2].conv3.out_channels
+        extra_net_inplanes = base_net.layer4[-1].conv3.out_channels
         extra_net = generate_extra_model(cuda=config["cuda"], inplanes = extra_net_inplanes)
         # extra_net = SSDT.build_extra_net(base_net.layer4[2].conv3.out_channels)
 

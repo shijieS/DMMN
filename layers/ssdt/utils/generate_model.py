@@ -129,6 +129,19 @@ def generate_base_model(opt):
     return model
 
 
+def generate_resnextSSDT(num_classes, frame_size, num_frames, cuda):
+    model = resnext.resnetSSDT(num_classes=num_classes,
+                              shortcut_type="B",
+                              # cardinality=32,
+                              cardinality=8,
+                              frame_size=frame_size,
+                              frame_duration=num_frames,
+                              last_fc=None)
+    if cuda:
+        model = model.cuda()
+    return model
+
+
 def generate_resnext101(num_classes, frame_size, num_frames, cuda):
     model = resnext.resnet101(num_classes=num_classes,
                               shortcut_type="B",

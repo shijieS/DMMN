@@ -147,6 +147,79 @@ class ResNeXt(nn.Module):
 
         return x
 
+class ResNeXtSSDT(nn.Module):
+
+    def __init__(self, block, layers, frame_size, frame_duration, shortcut_type='B', cardinality=32, num_classes=400, last_fc=True):
+        self.last_fc = last_fc
+
+        self.inplanes = 64
+        super(ResNeXtSSDT, self).__init__()
+        self.conv1 = nn.Conv3d(3, 64, kernel_size=(3, 3, 3), stride=(1, 2, 2),
+                               padding=(1, 1, 1), bias=False)
+        self.bn1 = nn.BatchNorm3d(64)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool3d(kernel_size=(3, 3, 3), stride=2, padding=1)
+
+        self.layer0 = nn.Sequential(self.conv1, self.bn1, self.relu, self.maxpool)
+        self.layer1 = self._make_layer(block, 128, layers[0], shortcut_type, cardinality)
+        self.layer2 = self._make_layer(block, 256, layers[1], shortcut_type, cardinality, stride=2)
+        self.layer3 = self._make_layer(block, 512, layers[2], shortcut_type, cardinality, stride=2)
+        self.layer4 = self._make_layer(block, 1024, layers[3], shortcut_type, cardinality, stride=2)
+
+        if self.last_fc:
+            last_duration = math.ceil(frame_duration / 16)
+            last_size = math.ceil(frame_size / 32)
+            self.avgpool = nn.AvgPool3d((last_duration, last_size, last_size), stride=1)
+            self.fc = nn.Linear(cardinality * 32 * block.expansion, num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv3d):
+                n = m.kernel_size[0] * m.kernel_size[1] * m.out_channels
+                m.weight.data.normal_(0, math.sqrt(2. / n))
+            elif isinstance(m, nn.BatchNorm3d):
+                m.weight.data.fill_(1)
+                m.bias.data.zero_()
+
+    def _make_layer(self, block, planes, blocks, shortcut_type, cardinality, stride=1):
+        downsample = None
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            if shortcut_type == 'A':
+                downsample = partial(downsample_basic_block,
+                                     planes=planes * block.expansion,
+                                     stride=stride)
+            else:
+                downsample = nn.Sequential(
+                    nn.Conv3d(self.inplanes, planes * block.expansion,
+                              kernel_size=1, stride=stride, bias=False),
+                    nn.BatchNorm3d(planes * block.expansion)
+                )
+
+        layers = []
+        layers.append(block(self.inplanes, planes, cardinality, stride, downsample))
+        self.inplanes = planes * block.expansion
+        for i in range(1, blocks):
+            layers.append(block(self.inplanes, planes, cardinality))
+
+        return nn.Sequential(*layers)
+
+    def forward(self, x):
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.maxpool(x)
+
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.layer3(x)
+        x = self.layer4(x)
+
+        if self.last_fc:
+            x = self.avgpool(x)
+            x = x.view(x.size(0), -1)
+            x = self.fc(x)
+
+        return x
+
 def get_fine_tuning_parameters(model, ft_begin_index):
     if ft_begin_index == 0:
         return model.parameters()
@@ -173,11 +246,15 @@ def resnet50(**kwargs):
     model = ResNeXt(ResNeXtBottleneck, [3, 4, 6, 3], **kwargs)
     return model
 
+def resnetSSDT(**kwargs):
+    model = ResNeXtSSDT(ResNeXtBottleneck, [10, 10, 7, 6], **kwargs)
+    return model
+
 def resnet101(**kwargs):
     """Constructs a ResNet-101 motion_model.
     """
-    # model = ResNeXt(ResNeXtBottleneck, [3, 4, 23, 3], **kwargs)
-    model = ResNeXt(ResNeXtBottleneck, [10, 10, 7, 6], **kwargs)
+    model = ResNeXt(ResNeXtBottleneck, [3, 4, 23, 3], **kwargs)
+    # model = ResNeXt(ResNeXtBottleneck, [10, 10, 7, 6], **kwargs)
     return model
 
 def resnet152(**kwargs):
