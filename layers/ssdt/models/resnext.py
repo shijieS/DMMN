@@ -42,12 +42,12 @@ class ResNeXtBottleneck(nn.Module):
     def __init__(self, inplanes, planes, cardinality, stride=1, downsample=None):
         super(ResNeXtBottleneck, self).__init__()
         mid_planes = cardinality * int(planes / 32)
-        self.conv1 = nn.Conv3d(inplanes, mid_planes, kernel_size=1, bias=False)
+        self.conv1 = nn.Conv3d(inplanes, mid_planes, kernel_size=1, bias=True)
         self.bn1 = nn.BatchNorm3d(mid_planes)
         self.conv2 = nn.Conv3d(mid_planes, mid_planes, kernel_size=3, stride=stride,
-                               padding=1, groups=cardinality, bias=False)
+                               padding=1, groups=cardinality, bias=True)
         self.bn2 = nn.BatchNorm3d(mid_planes)
-        self.conv3 = nn.Conv3d(mid_planes, planes * self.expansion, kernel_size=1, bias=False)
+        self.conv3 = nn.Conv3d(mid_planes, planes * self.expansion, kernel_size=1, bias=True)
         self.bn3 = nn.BatchNorm3d(planes * self.expansion)
         self.relu = nn.ReLU(inplace=True)
         self.downsample = downsample
@@ -84,7 +84,7 @@ class ResNeXt(nn.Module):
         self.inplanes = 64
         super(ResNeXt, self).__init__()
         self.conv1 = nn.Conv3d(3, 64, kernel_size=7, stride=(1, 2, 2),
-                               padding=(3, 3, 3), bias=False)
+                               padding=(3, 3, 3), bias=True)
         self.bn1 = nn.BatchNorm3d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool3d(kernel_size=(3, 3, 3), stride=2, padding=1)

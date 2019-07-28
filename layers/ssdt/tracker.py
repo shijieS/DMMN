@@ -105,7 +105,7 @@ class Node:
         self.height = height
 
     def draw(self, frames, track_id):
-        print(self.category)
+        # print(self.category)
         DrawBoxes.draw_node_result(frames, self.boxes, self.p_c, self.p_e,
                                    Config.category_map[self.category], track_id)
         return frames
