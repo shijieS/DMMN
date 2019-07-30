@@ -121,13 +121,13 @@ class Node:
 
         boxes *= np.array([self.width, self.height, self.width, self.height])
 
-        saved_data = np.array([[f]+[track_id]+b.tolist()+[1]+[self.category]+[float(self.p_c)]
+        saved_data = np.array([[f]+[track_id]+b.tolist()+[float(self.p_c)]+[self.category]+[e]
                       for i, b, e, f in zip(range(frame_num-Config.share_frame_num), boxes, p_e, self.frame_indexes)])
-        saved_data[:, [6, 7]] = -1
+        # saved_data[:, [6, 7]] = -1
         saved_data[:, [4, 5]] -=  saved_data[:, [2, 3]]
-        saved_data = saved_data[:, [0, 1, 2, 3, 4, 5, 8, 6, 7]]
+        # saved_data = saved_data[:, [0, 1, 2, 3, 4, 5, 8, 6, 7]]
         with open(file_name, "a+") as f:
-            np.savetxt(f, saved_data, fmt=["%d", "%d", "%f", "%f", "%f", "%f", "%f", "%d", "%d"],
+            np.savetxt(f, saved_data, fmt=["%d", "%d", "%f", "%f", "%f", "%f", "%f", "%d", "%f"],
                        delimiter=",")
 
 class Track:
@@ -181,6 +181,7 @@ class Track:
 
     def save_mot_data(self, file_name):
         for n in self.nodes:
+            # print(n.frame_indexes)
             n.save_mot_data(file_name, self.id)
 
 
@@ -284,7 +285,7 @@ class TrackSet:
             self.removed_tracks = [t for t in self.tracks]
             Node.global_id = 1
             Track.global_id = 1
-
+            self.tracks = []
 
         for t in self.removed_tracks:
             t.save_mot_data(file_name)

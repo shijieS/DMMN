@@ -20,6 +20,24 @@ This is an end-to-end network which combines detector and matcher into one singl
 | 201808 | Design the whole network                                     |
 | 201807 | Start this idea                                              |
 
+## Evaluation
+The test_tracker_<dataset>.py script can gnerate the tracking result by the  following format
+
+|   0   |   1-4 |   5   |   6   |   7   |   8   |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+|frame no.| track id|lrtb |confidence|category index|  visibility |
+ 
+> - frame no. is 1-based 
+> - track id is 1-based
+> - lrtb reprents the box, where ``l`` is left, ``r`` is right, ``t`` is top, and ``b`` is bottom.
+> - confidence is in [0, 1] which represents the possibility of being a category.
+> - visibility is in [0, 1].
+
+### UA-DETRAC result generating
+We provide a script ``/tools/convert_mot_result_2_ua_result.py`` to converting the MOT17 result to UA-DETRAC result.
+
+> Please note that, the speed is generated randomly.
+
 
 ## Issues
 |   Symbol  | Meanings   |
