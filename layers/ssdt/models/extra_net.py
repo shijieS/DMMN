@@ -20,7 +20,7 @@ class ExtraNet(nn.Module):
         self.inplanes = inplanes
         super(ExtraNet, self).__init__()
         self.layer1 = self._make_layer(block, 1024, layers[0], shortcut_type, cardinality, stride=2)
-        self.layer2 = self._make_layer(block, 1024, layers[0], shortcut_type, cardinality, stride=2)
+        self.layer2 = self._make_layer(block, 1024, layers[1], shortcut_type, cardinality, stride=2)
 
         self.apply(param_init)
 

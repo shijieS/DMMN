@@ -252,6 +252,7 @@ class AmotTrainDataset(Dataset):
 
         return out
 
+
 if __name__ == "__main__":
     from draw_utils.DrawBoxes import DrawBoxes
 
