@@ -1,7 +1,7 @@
 {
   "dataset_name": "UA-DETRAC",
   "dataset_path": "/media/ssm/data/dataset/UA_DETRAC",
-  "phase": "train",
+  "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
   "parameter_frame_scale": 0.25,
@@ -46,15 +46,15 @@
     "Truck-Flatbed": 13
   },
   "test": {
-    "resume": "/media/ssm/data/dataset/UA_DETRAC/logs/ssdt-log-0725-normal/weights/ssdt51025.pth",
+    "resume": "/media/ssm/data/dataset/UA_DETRAC/logs/ssdt-log-test/weights/ssdt285754.pth",
     "dataset_type": "test",
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
     "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
-    "log_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/logs",
-    "image_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/images",
-    "weights_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/weights",
+    "log_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/logs-285754",
+    "image_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/images-285754",
+    "weights_save_folder": "/media/ssm/data/dataset/UA_DETRAC/test_logs/weights-285754",
     "sequence_list": "./dataset/ua/sequence_list_test.txt",
     "save_weight_per_epoch": 5,
     "start_epoch": 0,
