@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="" />
+    <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/config/config_gpu4_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_gpu4_ua.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +15,7 @@
     <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1564194278186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$train_cvpr19.coverage" NAME="train_cvpr19 Coverage Results" MODIFIED="1559439687229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$eval_motchallenge.coverage" NAME="eval_motchallenge Coverage Results" MODIFIED="1560734800510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1564922968290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1565006877857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$check_environment.coverage" NAME="check_environment Coverage Results" MODIFIED="1552445911005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$motion_model_perspective.coverage" NAME="motion_model_perspective Coverage Results" MODIFIED="1555185815183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/motion_model" />
     <SUITE FILE_PATH="coverage/SSDT$ua_mot_result_player.coverage" NAME="ua_mot_result_player Coverage Results" MODIFIED="1562507853382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
@@ -67,11 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
+            <state relative-caret-position="373">
+              <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -97,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="95" column="25" lean-forward="true" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
+            <state relative-caret-position="412">
+              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
               <folding>
                 <element signature="e#369#381#0" expanded="true" />
                 <element signature="e#4641#4991#0" />
@@ -409,9 +411,6 @@
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -532,7 +531,7 @@
       <workItem from="1564142030700" duration="842000" />
       <workItem from="1564143328800" duration="14247000" />
       <workItem from="1564374844094" duration="36744000" />
-      <workItem from="1564921407756" duration="1346000" />
+      <workItem from="1564921407756" duration="3337000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -705,7 +704,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1097516000" />
+    <option name="totallyTimeSpent" value="1099507000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -726,14 +725,14 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3278328" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" weight="0.4147415" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.4147415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010661" side_tool="true" weight="0.33493745" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.23982398" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.23982398" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.32893288" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.4989339" weight="0.31353134" />
       <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32937366" />
@@ -1250,13 +1249,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="58" column="31" lean-forward="true" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/models/resnext.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="146">
@@ -1290,12 +1282,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="95" column="25" lean-forward="true" selection-start-line="95" selection-start-column="25" selection-end-line="95" selection-end-column="25" />
+        <state relative-caret-position="412">
+          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
           <folding>
             <element signature="e#369#381#0" expanded="true" />
             <element signature="e#4641#4991#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
         </state>
       </provider>
     </entry>
