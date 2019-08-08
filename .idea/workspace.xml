@@ -15,7 +15,7 @@
     <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1564194278186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$train_cvpr19.coverage" NAME="train_cvpr19 Coverage Results" MODIFIED="1559439687229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$eval_motchallenge.coverage" NAME="eval_motchallenge Coverage Results" MODIFIED="1560734800510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
-    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1565006877857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1565187833901" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$check_environment.coverage" NAME="check_environment Coverage Results" MODIFIED="1552445911005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$motion_model_perspective.coverage" NAME="motion_model_perspective Coverage Results" MODIFIED="1555185815183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/motion_model" />
     <SUITE FILE_PATH="coverage/SSDT$ua_mot_result_player.coverage" NAME="ua_mot_result_player Coverage Results" MODIFIED="1562507853382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
@@ -69,11 +69,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+            <state relative-caret-position="75">
+              <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dataset/ua/sequence_list_train.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -88,13 +97,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection_param.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="125" column="58" selection-start-line="125" selection-start-column="52" selection-end-line="125" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/convert_mot_result_2_ua_result.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
-              <folding>
-                <element signature="e#369#384#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-25">
+              <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -102,8 +117,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="-1043">
+              <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
               <folding>
                 <element signature="e#369#381#0" expanded="true" />
                 <element signature="e#4641#4991#0" />
@@ -124,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
+            <state relative-caret-position="275">
+              <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
               <folding>
                 <element signature="e#368#414#0" expanded="true" />
               </folding>
@@ -138,11 +153,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3025">
-              <caret line="132" column="12" lean-forward="true" selection-start-line="132" selection-start-column="12" selection-end-line="132" selection-end-column="12" />
+            <state relative-caret-position="351">
+              <caret line="398" column="51" lean-forward="true" selection-start-line="398" selection-start-column="51" selection-end-line="398" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -160,9 +175,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sequence_list</find>
-      <find>sequence</find>
-      <find>.avi</find>
       <find>replace_map</find>
       <find>set(</find>
       <find>UATrain</find>
@@ -190,6 +202,9 @@
       <find>force</find>
       <find>save</find>
       <find>40761</find>
+      <find>category_map</find>
+      <find>update</find>
+      <find>update(</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -237,7 +252,6 @@
         <option value="$PROJECT_DIR$/dataset/ua/ua.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/utils/box_utils.py" />
         <option value="$PROJECT_DIR$/train_ua.py" />
-        <option value="$PROJECT_DIR$/layers/ssdt/tracker.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/dataset/amot/amot.py" />
         <option value="$PROJECT_DIR$/dataset/amot/tools/get_dataset_info.py" />
@@ -245,9 +259,10 @@
         <option value="$PROJECT_DIR$/config/__init__.py" />
         <option value="$PROJECT_DIR$/tools/ua_combine_result.py" />
         <option value="$PROJECT_DIR$/dataset/ua/README.md" />
-        <option value="$PROJECT_DIR$/tools/convert_mot_result_2_ua_result.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/resnext.py" />
         <option value="$PROJECT_DIR$/layers/ssdt/models/extra_net.py" />
+        <option value="$PROJECT_DIR$/tools/convert_mot_result_2_ua_result.py" />
+        <option value="$PROJECT_DIR$/layers/ssdt/tracker.py" />
         <option value="$PROJECT_DIR$/config/config_gpu4_ua.json" />
       </list>
     </option>
@@ -278,6 +293,22 @@
               <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
               <item name="SSDT" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="dataset" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="layers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SSDT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SSDT" type="462c0819:PsiDirectoryNode" />
+              <item name="layers" type="462c0819:PsiDirectoryNode" />
+              <item name="ssdt" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -531,7 +562,7 @@
       <workItem from="1564142030700" duration="842000" />
       <workItem from="1564143328800" duration="14247000" />
       <workItem from="1564374844094" duration="36744000" />
-      <workItem from="1564921407756" duration="3337000" />
+      <workItem from="1564921407756" duration="10316000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -704,7 +735,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1099507000" />
+    <option name="totallyTimeSpent" value="1106486000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -719,13 +750,13 @@
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23960066" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23960066" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3278328" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3278328" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.4147415" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989339" visible="true" weight="0.4147415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49946696" weight="0.2090209" />
@@ -914,13 +945,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/miniconda3/envs/SSDT/lib/python3.6/site-packages/pandas/core/arrays/categorical.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="397" column="23" selection-start-line="397" selection-start-column="23" selection-end-line="397" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/threading.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1063,13 +1087,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11325">
           <caret line="453" column="30" selection-start-line="453" selection-start-column="30" selection-end-line="453" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection_param.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3025">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
         </state>
       </provider>
     </entry>
@@ -1229,25 +1246,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/convert_mot_result_2_ua_result.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#369#384#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/config_train_ua_sy_debug.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3025">
-          <caret line="132" column="12" lean-forward="true" selection-start-line="132" selection-start-column="12" selection-end-line="132" selection-end-column="12" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/models/resnext.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1270,20 +1270,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
+    <entry file="file://$PROJECT_DIR$/tools/convert_mot_result_2_ua_result.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-25">
+          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/models/detection_param.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="125" column="58" selection-start-line="125" selection-start-column="52" selection-end-line="125" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="3" column="52" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-          <folding>
-            <element signature="e#368#414#0" expanded="true" />
-          </folding>
+          <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataset/ua/sequence_list_train.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="59" column="9" lean-forward="true" selection-start-line="59" selection-start-column="9" selection-end-line="59" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/layers/ssdt/ssdt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="-1043">
+          <caret line="67" lean-forward="true" selection-start-line="67" selection-end-line="67" />
           <folding>
             <element signature="e#369#381#0" expanded="true" />
             <element signature="e#4641#4991#0" />
@@ -1291,10 +1309,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config_gpu4_ua.json">
+    <entry file="file://$PROJECT_DIR$/test_tracker_ua.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="81" column="29" selection-start-line="81" selection-start-column="29" selection-end-line="81" selection-end-column="29" />
+        <state relative-caret-position="275">
+          <caret line="41" column="35" lean-forward="true" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
+          <folding>
+            <element signature="e#368#414#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layers/ssdt/tracker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="398" column="51" lean-forward="true" selection-start-line="398" selection-start-column="51" selection-end-line="398" selection-end-column="51" />
         </state>
       </provider>
     </entry>
