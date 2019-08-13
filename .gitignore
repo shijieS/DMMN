@@ -1,5 +1,6 @@
 weights/*
 .idea/
+dataset/mot17/__pycache__/
 config/__pycache__/
 dataset/__pycache__/
 motion_model/__pycache__

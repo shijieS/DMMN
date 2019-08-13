@@ -12,8 +12,9 @@ from.configure import Config
 # from motion_model.motion_model_quadratic import motion_model
 
 # configure_name = 'config_gpu4_cvpr19.json'
-configure_name = 'config_gpu4_ua.json'
-# configure_name = 'config_gpu4_amot.json'
+# configure_name = 'config_gpu4_ua.json'
+configure_name = 'config_gpu4_amot.json'
+# configure_name = 'config_gpu4_mot17.json'
 
 config = Config.get_configure(configure_name)
 cfg = config[config["phase"]]

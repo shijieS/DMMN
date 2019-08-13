@@ -1,0 +1,5 @@
+Town02/Clear/50/Easy_Camera_0
+Town02/Clear/50/Easy_Camera_1
+Town02/Clear/50/Easy_Camera_5
+Town02/Clear/50/Easy_Camera_7
+Town02/Clear/50/Easy_Camera_8
