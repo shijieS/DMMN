@@ -16,12 +16,12 @@ from itertools import product as product
 from layers.ssdt.utils.box_utils import jaccard, point_form
 from math import ceil
 import torch
-
+from config import config
 
 parser = argparse.ArgumentParser(description='The tools for summary the distribution boxes of UA-DETRAC')
 parser.add_argument('--version', default='v1', help='version')
-parser.add_argument('--sequence_list', default='../dataset/sequence_list_train.txt', help='the sequence list')
-parser.add_argument('--dataset_root', default='/media/ssm/data/dataset/uadetrac/', help='the dataset root')
+parser.add_argument('--sequence_list', default=config['train']['sequence_list'], help='the sequence list')
+parser.add_argument('--dataset_root', default=config['dataset_path'], help='the dataset root')
 parser.add_argument('--save_file', default='./ua_data_bboxes.csv', help='the dataset root')
 
 args = parser.parse_args()
