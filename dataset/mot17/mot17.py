@@ -89,6 +89,8 @@ class SingleVideoParser:
 
         self.selecte_frame_scale = config['frame_max_input_num'] * config['frame_sample_scale']
 
+        # frame width and height
+        self.h, self.w, _ = cv2.imread(os.path.join(self.frame_folder, '000001.jpg')).shape
 
     def __len__(self):
         if self.ua_data is None:

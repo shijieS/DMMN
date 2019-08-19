@@ -80,7 +80,13 @@ class Config:
         Config.max_age = max_age
         Config.max_direction_thresh = max_direction_thresh
         Config.min_similarity = min_similarity
+        if 'tracker_min_iou_thresh' in config['test'].keys():
+            Config.min_similarity = config['test']['tracker_min_iou_thresh']
+
         Config.min_visibility = min_visibility
+        if 'tracker_min_visibility' in config['test'].keys():
+            Config.min_visibility = config['test']['tracker_min_visibility']
+
         Config.max_thread_num = max_thread_num
         Config.save_images = config["test"]["debug_save_image"]
         Config.save_images_folder = config["test"]["image_save_folder"]

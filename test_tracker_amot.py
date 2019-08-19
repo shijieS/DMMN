@@ -26,7 +26,7 @@ if __name__ == "__main__":
         if sequence_name is None:
             sequence_name = current_sequence_name
 
-        if sequence_name in current_sequence_name:
+        if sequence_name not in current_sequence_name:
             save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
             if not os.path.exists(save_mot_folder):
                 os.makedirs(save_mot_folder)

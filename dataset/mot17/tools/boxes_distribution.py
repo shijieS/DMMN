@@ -6,8 +6,9 @@
 #   Email: shijieSun@chd.edu.cn
 #   Github: www.github.com/shijieS
 #
+#
 
-from dataset.ua.ua import UATrainDataset
+from dataset.mot17.mot17 import MOT17TrainDataset
 import numpy as np
 # This import registers the 3D projection, but is otherwise unused.
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
@@ -16,9 +17,12 @@ from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
 class BoxesDistribution:
+    """
+    Boxes distribution calculation.
+    """
     def __init__(self):
         print("===== 1. Open the dataset")
-        self.dataset = UATrainDataset()
+        self.dataset = MOT17TrainDataset()
 
         print("===== 2. Read All Boxes")
         self.all_boxes = self.read_all()
@@ -37,6 +41,7 @@ class BoxesDistribution:
 
             # remove confidence and visibilty
             ua_data = ua_data[:, :4]
+            ua_data /= np.array([p.w, p.h, p.w, p.h])
 
             # get all boxes
             self.boxes_list += [ua_data]
@@ -58,7 +63,7 @@ class BoxesDistribution:
         else:
             ax = fig.add_subplot(pos)
             ax.hist2d(x, y, bins=(bins, bins), cmap=plt.cm.jet)
-            ax.colorbar()
+            # plt.colorbar()
 
         if title is not None:
             ax.set_title(title)
@@ -93,7 +98,7 @@ class BoxesDistribution:
         return boxes
 
     @staticmethod
-    def get_ious(boxes, anchor_boxes, batch_size=10000, top_k=5, min_iou=0.3):
+    def get_ious(boxes, anchor_boxes, batch_size=2000, top_k=2, min_iou=0.3):
         from math import ceil
         from tqdm import trange
         from layers.ssdt.utils.box_utils import jaccard, point_form
