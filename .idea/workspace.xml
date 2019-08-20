@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_gpu4_amot.json" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_gpu4_amot.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layers/ssdt/tracker.py" beforeDir="false" afterPath="$PROJECT_DIR$/layers/ssdt/tracker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_tracker_amot.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_tracker_amot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/convert_img_2_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/convert_img_2_videos.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +82,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/py_motmetrics" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1PS0dPLuvv42wFWRa0B4xjno3cD" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -124,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.eval_amot">
+  <component name="RunManager" selected="Python.convert_img_2_videos">
     <configuration name="boxes_distribution (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,6 +161,28 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/ua/tools/boxes_distribution.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="convert_img_2_videos" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="SSDT" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/convert_img_2_videos.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -213,42 +233,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ua_boxes_distribution" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="SSDT" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/ua_boxes_distribution.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.ua_boxes_distribution" />
       <item itemvalue="Python.boxes_distribution" />
       <item itemvalue="Python.test_tracker_amot" />
       <item itemvalue="Python.boxes_distribution (1)" />
       <item itemvalue="Python.eval_amot" />
+      <item itemvalue="Python.convert_img_2_videos" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.convert_img_2_videos" />
         <item itemvalue="Python.eval_amot" />
         <item itemvalue="Python.test_tracker_amot" />
         <item itemvalue="Python.boxes_distribution (1)" />
         <item itemvalue="Python.boxes_distribution" />
-        <item itemvalue="Python.ua_boxes_distribution" />
       </list>
     </recent_temporary>
   </component>
@@ -323,7 +321,7 @@
       <workItem from="1565852278665" duration="14654000" />
       <workItem from="1566052843940" duration="582000" />
       <workItem from="1566056480953" duration="80000" />
-      <workItem from="1566092118393" duration="52156000" />
+      <workItem from="1566092118393" duration="53725000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -617,6 +615,7 @@
     <SUITE FILE_PATH="coverage/SSDT$eval_amot.coverage" NAME="eval_amot Coverage Results" MODIFIED="1566274676141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
     <SUITE FILE_PATH="coverage/SSDT$boxes_distribution__1_.coverage" NAME="boxes_distribution (1) Coverage Results" MODIFIED="1566197772514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$boxes_distribution.coverage" NAME="boxes_distribution Coverage Results" MODIFIED="1566104038287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SSDT$convert_img_2_videos.coverage" NAME="convert_img_2_videos Coverage Results" MODIFIED="1566278217880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="breakpointCondition">
