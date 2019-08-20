@@ -25,14 +25,20 @@ if __name__ == "__main__":
         current_sequence_name = dataset.sequence_list[dataset.get_groupd_index(index)]
         if sequence_name is None:
             sequence_name = current_sequence_name
+            Config.set_image_folder(
+                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.split('/')[-5:])[:-4])
+            )
 
         if sequence_name not in current_sequence_name:
             save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
             if not os.path.exists(save_mot_folder):
                 os.makedirs(save_mot_folder)
             mot_file = os.path.join(save_mot_folder,
-                                    "{}.txt".format(sequence_name))
+                                    "{}.txt".format(''.join(sequence_name.split('/')[-5:])[:-4]))
             tracker.save_mot_result(mot_file, True)
+            Config.set_image_folder(
+                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.split('/')[-5:])[:-4])
+            )
 
         sequence_name = current_sequence_name
 
@@ -47,7 +53,7 @@ if __name__ == "__main__":
         if not os.path.exists(save_mot_folder):
             os.makedirs(save_mot_folder)
         mot_file = os.path.join(save_mot_folder,
-                                "{}.txt".format(sequence_name))
+                                "{}.txt".format(''.join(sequence_name.split('/')[-5:])[:-4]))
         tracker.save_mot_result(mot_file)
 
         index += (dataset.max_frame_num_with_scale - Config.share_frame_num)

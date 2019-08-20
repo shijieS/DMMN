@@ -92,6 +92,11 @@ class Config:
         Config.save_images_folder = config["test"]["image_save_folder"]
         Config.save_track_data = config["test"]["save_track_data"]
 
+    @staticmethod
+    def set_image_folder(image_folder):
+        if not os.path.exists(image_folder):
+            os.makedirs(image_folder)
+        Config.save_images_folder = image_folder
 
 class Node:
     global_id = 1
@@ -411,11 +416,11 @@ class Tracker:
         self.tracks.draw(frames)
 
         if Config.show_result:
-            for frame in frames:
+            for frame, index in zip(frames, frame_indexes):
                 cv2.imshow("result", frame)
                 cv2.waitKey(20)
                 if Config.save_images_folder:
-                    cv2.imwrite(os.path.join(Config.save_images_folder, "{0:08}.png".format(self.save_frame_index)),
+                    cv2.imwrite(os.path.join(Config.save_images_folder, "{0:08}.jpg".format(index)),
                                 frame)
                 # cv2.imwrite("result/{0:08}.png".format(self.save_frame_index), frame)
                 self.save_frame_index += 1
