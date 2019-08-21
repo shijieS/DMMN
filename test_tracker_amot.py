@@ -14,6 +14,8 @@ from layers.ssdt.tracker import Tracker, Config
 import os
 
 
+
+
 if __name__ == "__main__":
     dataset = AmotTestDataset()
     tracker = Tracker("Amot", "V1", config)

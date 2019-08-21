@@ -32,6 +32,7 @@ class Detect(Function):
         self.conf_thresh = conf_thresh
         self.variance = config["frame_work"]['variance']
         self.exist_thresh = exist_thresh
+        self.min_valid_node_rate = config["min_valid_node_rate"]
 
     def forward_one(self, loc_data, conf_data, prior_data):
         """
@@ -111,13 +112,24 @@ class Detect(Function):
             conf_scores = conf_preds[i]
             decoded_boxes = decoded_locs[i, :]
             for cl in range(1, self.num_classes):
+                # filter boxes by confidence
                 c_mask = conf_scores[cl].gt(self.conf_thresh)
                 if c_mask.sum() == 0:
                     continue
-
                 scores = conf_scores[cl][c_mask]
                 exists = conf_exists[i, :, 1, c_mask]
                 boxes = decoded_boxes[:, c_mask, :]
+
+                # filter boxes by visibility
+                v_mask = (exists > self.exist_thresh).sum(dim=0) / exists.shape[0] >= self.min_valid_node_rate
+                if v_mask.sum() == 0:
+                    continue
+
+                scores = scores[v_mask]
+                exists = exists[:, v_mask]
+                boxes = boxes[:, v_mask, :]
+
+
 
                 # if there are exists the reasonable boxes.
                 # print(c_mask.sum().item())
@@ -127,7 +139,7 @@ class Detect(Function):
                 if count > 0:
                     output_boxes[i, cl, :, :count, :] = boxes[:, ids[:count]]
                     output_p_e[i, 1, :, :count] = exists[:, ids[:count]]
-                    output_params[i, cl, :count, :] = param[i, c_mask, :][ids[:count], :]
+                    output_params[i, cl, :count, :] = param[i, c_mask, :][v_mask, :][ids[:count], :]
                     output_p_c[i, cl, :count] = scores[ids[:count]]
         output_p_c_1 = output_p_c.contiguous().view(num, -1)
         _, idx = output_p_c_1.sort(1, descending=True)

@@ -13,7 +13,7 @@ from layers.ssdt.tracker import Tracker, Config
 import os
 
 
-if __name__ == "__main__":
+def run_tracker(config):
     dataset = UATestDataset()
     tracker = Tracker("UA", "V1", config)
 
@@ -24,6 +24,9 @@ if __name__ == "__main__":
         current_sequence_name = dataset.sequence_list[dataset.get_groupd_index(index)]
         if sequence_name is None:
             sequence_name = current_sequence_name
+            Config.set_image_folder(
+                os.path.join(config['test']['image_save_folder'], current_sequence_name)
+            )
 
         if sequence_name != current_sequence_name:
             save_mot_folder = os.path.join(config["test"]["log_save_folder"], "mot")
@@ -32,6 +35,9 @@ if __name__ == "__main__":
             mot_file = os.path.join(save_mot_folder,
                                     "{}.txt".format(sequence_name))
             tracker.save_mot_result(mot_file, True)
+            Config.set_image_folder(
+                os.path.join(config['test']['image_save_folder'], current_sequence_name)
+            )
 
         sequence_name = current_sequence_name
 
@@ -50,3 +56,32 @@ if __name__ == "__main__":
         tracker.save_mot_result(mot_file)
 
         index += (dataset.max_frame_num_with_scale - Config.share_frame_num)
+
+if __name__ == "__main__":
+    # run_tracker(config)
+    # test data set
+
+    config_list = [
+        [("test", "./dataset/ua/sequence_list_test.txt", 0.4+0.03*i),
+         ("train", "./dataset/ua/sequence_list_train.txt", 0.4+0.03*i)] for i in range(1,11)
+    ]
+    log_save_folder = config["test"]["log_save_folder"]
+    image_save_folder = config["test"]["image_save_folder"]
+    weights_save_folder = config["test"]["weights_save_folder"]
+    for item in config_list:
+        config["test"]["dataset_type"] = item[0][0]
+        config["test"]["sequence_list"] = item[0][1]
+        config["test"]["detect_conf_thresh"] = item[0][2]
+        config["test"]["log_save_folder"] = log_save_folder + str(item[0][2])
+        config["test"]["image_save_folder"] = image_save_folder + str(item[0][2])
+        config["test"]["weights_save_folder"] = weights_save_folder + str(item[0][2])
+
+        if not os.path.exists(config["test"]["log_save_folder"]):
+            os.makedirs(config["test"]["log_save_folder"])
+        if not os.path.exists(config["test"]["image_save_folder"]):
+            os.makedirs(config["test"]["image_save_folder"])
+        if not os.path.exists(config["test"]["weights_save_folder"]):
+            os.makedirs(config["test"]["weights_save_folder"])
+
+        run_tracker(config)
+
