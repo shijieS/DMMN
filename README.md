@@ -55,21 +55,21 @@ We provide a script ``/tools/convert_mot_result_2_ua_result.py`` to converting t
 
 |   SartDate|                            Content                            | State |
 | :------:  | :----------------------------------------------------------: | :---: |
-| 2019/05/18 | ![1558137403985](images/progress/1558137403985.png) ![1558137434625](images/progress/1558137434625.png)![1558137448039](images/progress/1558137448039.png) | :boom: Cannot detect static vehicle |
-| 2019/05/18 | ![1558137352644](images/progress/1558137352644.png) | :boom: cannot detect bus |
-| 2019/05/18 | ![1558137469303](images/progress/1558137469303.png) | :boom: Limit on the detection regions |
-| 2019/05/18 | ![1558137499772](images/progress/1558137499772.png) | :boom: Something overlapped in the bus |
+| 2019/05/18 | ![1558137403985](images/progress/1558137403985.png) ![1558137434625](images/progress/1558137434625.png)![1558137448039](images/progress/1558137448039.png) | :ballot_box_with_check: Cannot detect static vehicle (because of the training dataset)|
+| 2019/05/18 | ![1558137352644](images/progress/1558137352644.png) | :ballot_box_with_check: cannot detect bus （because of the training dataset) |
+| 2019/05/18 | ![1558137469303](images/progress/1558137469303.png) | :ballot_box_with_check: Limit on the detection regions |
+| 2019/05/18 | ![1558137499772](images/progress/1558137499772.png) | :ballot_box_with_check: Something overlapped in the bus |
 | 2019/05/18 | ![1558137539934](images/progress/1558137539934.png)![1558137545991](images/progress/1558137545991.png) | :boom: totally different scene |
-| 2019/05/18 | ![1558137571322](images/progress/1558137571322.png) | :boom: Some weird boxes |
-| 2019/05/18 | ![1558137594908](images/progress/1558137594908.png) | :boom: totally different vehicle |
-| 2019/05/18 | ![1558137620722](images/progress/1558137620722.png) | :boom: Wrongly located boxes |
+| 2019/05/18 | ![1558137571322](images/progress/1558137571322.png) | :ballot_box_with_check: Some weird boxes (because of the visibility)|
+| 2019/05/18 | ![1558137594908](images/progress/1558137594908.png) | :ballot_box_with_check: totally different vehicle |
+| 2019/05/18 | ![1558137620722](images/progress/1558137620722.png) | :ballot_box_with_check: Wrongly located boxes |
 | 2019/05/15 | ![1557913738424](./images/progress/weird_rectangles3.png) | :ballot_box_with_check: solved by change the loss according the first exist box <br />:boom: Weird rectangles and incorrect classifications |
 | 2019/05/07 | None-filling rectangles <br />![](./images/progress/none_filling1.png) | :ballot_box_with_check: waiting <br />:boom:2019/05/07 process |
 | 2019/05/07 | Weird rectangles without label <br />![](./images/progress/weird_rectangles1.png)![](./images/progress/weird_rectangles2.png) | :ballot_box_with_check: find the reason <br />:boom:2019/05/07 process |
 | 2019/05/07 | Lost some objects in other scene <br />![1557188487001](./images/progress/lost_objects3.png) ![](./images/progress/lost_objects4.png) | :ballot_box_with_check:finish by reconfigure the anchor boxes<br />:boom:2019/05/07 process |
-| 2019/04/26 | Try MOT 17 | :hourglass_flowing_sand: Need to do |
-| 2019/04/26 | Train A-MOT Dataset | :hourglass_flowing_sand: Need to do |
-| 2019/04/26 | Train UA-DETRAC | :boom: Training |
+| 2019/04/26 | Try MOT 17 | :ballot_box_with_check: Need to do (Finish) |
+| 2019/04/26 | Train A-MOT Dataset | :ballot_box_with_check: Need to do (Finish) |
+| 2019/04/26 | Train UA-DETRAC | :ballot_box_with_check: Training (Finish)|
 | 2019/04/16 | Clean this project | :boom: Ready to do<br>:hourglass_flowing_sand: |
 | 2019/04/16 | Overlap ratio of **Tunnel Anchor** too small | :ballot_box_with_check: Find the best overlap ratio​<br>:boom:<br>:hourglass_flowing_sand: |
 | 2019/04/16 | Add **Random Mirror** Preprocessing | :no_entry:<br>:hourglass_flowing_sand: |
