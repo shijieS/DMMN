@@ -57,13 +57,10 @@ def run_tracker(config):
 
         index += (dataset.max_frame_num_with_scale - Config.share_frame_num)
 
-if __name__ == "__main__":
-    # run_tracker(config)
-    # test data set
-
+def run_tracker_for_ua_result():
     config_list = [
-        [("test", "./dataset/ua/sequence_list_test.txt", 0.4+0.03*i),
-         ("train", "./dataset/ua/sequence_list_train.txt", 0.4+0.03*i)] for i in range(1,11)
+        [("test", "./dataset/ua/sequence_list_test.txt", 0.4 + 0.03 * i),
+         ("train", "./dataset/ua/sequence_list_train.txt", 0.4 + 0.03 * i)] for i in range(1, 11)
     ]
     log_save_folder = config["test"]["log_save_folder"]
     image_save_folder = config["test"]["image_save_folder"]
@@ -84,4 +81,9 @@ if __name__ == "__main__":
             os.makedirs(config["test"]["weights_save_folder"])
 
         run_tracker(config)
+
+if __name__ == "__main__":
+    # run_tracker(config)
+    # test data set
+    run_tracker_for_ua_result()
 
