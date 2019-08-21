@@ -28,7 +28,7 @@ if __name__ == "__main__":
         if sequence_name is None:
             sequence_name = current_sequence_name
             Config.set_image_folder(
-                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.split('/')[-5:])[:-4])
+                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.replace('/', '-')[-5:])[:-4])
             )
 
         if sequence_name not in current_sequence_name:
@@ -39,7 +39,7 @@ if __name__ == "__main__":
                                     "{}.txt".format(''.join(sequence_name.split('/')[-5:])[:-4]))
             tracker.save_mot_result(mot_file, True)
             Config.set_image_folder(
-                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.split('/')[-5:])[:-4])
+                os.path.join(config['test']['image_save_folder'], ''.join(current_sequence_name.replace('/', '-')[-5:])[:-4])
             )
 
         sequence_name = current_sequence_name
