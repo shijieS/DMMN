@@ -6,10 +6,12 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 | Date   | Event                                                        |
 | ------ | ------------------------------------------------------------ |
+| 201908 | Get Result on AMOT dataset                                   |
+| 201908 | Can Train on AMOT dataset                                   |
+| 201907 | Can Train on MOT17 dataset                                   |
 | 201906 | Can Train on ``[CVPR 2019 Tracking Challenge](<https://motchallenge.net/data/CVPR_2019_Tracking_Challenge/#download>)'' |
-| 201905 | Can Train on A-MOT dataset                                   |
-| 201905 | Design the tracker                                           |
 | 201905 | Can Train On the Whole UA-DETRAC dataset                     |
+| 201905 | Design the tracker                                           |
 | 201904 | Recording Five Cities Training Dataset                       |
 | 201903 | Start A Plan of Create New Dataset                           |
 | 201902 | Optimized this network                                       |
