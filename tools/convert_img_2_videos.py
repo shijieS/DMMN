@@ -16,7 +16,7 @@ import cv2
 
 parser = argparse.ArgumentParser(description='The tools for convert images to video')
 parser.add_argument('--version', default='v1', help='version')
-parser.add_argument('--image_folder', default='/media/ssm/data/dataset/amotd/test_logs/0808-67650/images', help='the image folder')
+parser.add_argument('--image_folder', default='/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-1081730/images0.4', help='the image folder')
 parser.add_argument('--video_file', default='/media/ssm/data/dataset/amotd/test_logs/0808-67650/images/testTown02Clear50Easy_Camera_0.avi', help='the video file to be saved')
 parser.add_argument('--video_fps', default=25, help="Video fps")
 parser.add_argument('--video_height', default=1080, help="Video height")
@@ -51,6 +51,15 @@ def convert_amot_images_2_videos(image_folder):
         video_name = f + ".avi"
         convert(f, video_name, args.video_fps, args.video_width, args.video_height)
 
+def convert_ua_images_2_videos(image_folder):
+    folders = glob.glob(os.path.join(image_folder, "*"))
+    for f in tqdm(folders):
+        if not os.path.isdir(f):
+            continue
+        video_name = f + ".avi"
+        convert(f, video_name, args.video_fps, args.video_width, args.video_height)
+
 if __name__ == "__main__":
-    convert(args.image_folder, args.video_file, args.video_fps, args.video_width, args.video_height)
+    # convert(args.image_folder, args.video_file, args.video_fps, args.video_width, args.video_height)
     # convert_amot_images_2_videos(args.image_folder)
+    convert_ua_images_2_videos(args.image_folder)

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2f190b54-1891-4140-a22a-606d10995b88" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/convert_img_2_videos.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/convert_img_2_videos.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,8 +91,13 @@
   <component name="PropertiesComponent">
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/weights" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="D:/ssj/UA-DETRAC/DETRAC-Test-Tra/DETRAC-Test-Tra/trackers/iou-tracker" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -122,7 +127,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_tracker_ua">
+  <component name="RunManager" selected="Python.convert_img_2_videos">
     <configuration name="convert_img_2_videos" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="SSDT" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -242,9 +247,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.convert_img_2_videos" />
         <item itemvalue="Python.test_tracker_ua" />
         <item itemvalue="Python.train_ua" />
-        <item itemvalue="Python.convert_img_2_videos" />
         <item itemvalue="Python.eval_amot" />
         <item itemvalue="Python.test_tracker_amot" />
       </list>
@@ -321,7 +326,7 @@
       <workItem from="1565852278665" duration="14654000" />
       <workItem from="1566052843940" duration="582000" />
       <workItem from="1566056480953" duration="80000" />
-      <workItem from="1566092118393" duration="68306000" />
+      <workItem from="1566092118393" duration="79019000" />
     </task>
     <task id="LOCAL-00001" summary="start programming ua_detrac">
       <created>1534465196254</created>
@@ -602,6 +607,11 @@
           <line>62</line>
           <option name="timeStamp" value="941" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/tools/convert_img_2_videos.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="946" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint type="python-line" />
@@ -620,7 +630,7 @@
     <SUITE FILE_PATH="coverage/SSDT$eval_amot.coverage" NAME="eval_amot Coverage Results" MODIFIED="1566274676141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/py_motmetrics/motmetrics/apps" />
     <SUITE FILE_PATH="coverage/SSDT$boxes_distribution__1_.coverage" NAME="boxes_distribution (1) Coverage Results" MODIFIED="1566197772514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
     <SUITE FILE_PATH="coverage/SSDT$boxes_distribution.coverage" NAME="boxes_distribution Coverage Results" MODIFIED="1566104038287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SSDT$convert_img_2_videos.coverage" NAME="convert_img_2_videos Coverage Results" MODIFIED="1566278217880" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/SSDT$convert_img_2_videos.coverage" NAME="convert_img_2_videos Coverage Results" MODIFIED="1566785572749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
     <SUITE FILE_PATH="coverage/SSDT$train_ua.coverage" NAME="train_ua Coverage Results" MODIFIED="1566293913965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SSDT$test_tracker_ua.coverage" NAME="test_tracker_ua Coverage Results" MODIFIED="1566360301608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
