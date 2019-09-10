@@ -21,7 +21,7 @@ Usage: convert_mat_2_ua --ua="ua root path"
 
 
 parser = argparse.ArgumentParser(description='UA Result Covnerter')
-parser.add_argument('--mot_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-449020-train/logs/mot",
+parser.add_argument('--mot_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-1081730/logs0.4/mot",
                     help='''mot result folder, with the following directory structure:
                     folder
                     |
@@ -29,7 +29,7 @@ parser.add_argument('--mot_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/
                     |-- 0.2
                     |-- ...
                     ''')
-parser.add_argument('--ua_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-449020-train/logs/mot-ua", help='ua result folder. This tool would create this folder with same sturcture')
+parser.add_argument('--ua_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-1081730/logs0.4/mot-ua", help='ua result folder. This tool would create this folder with same sturcture')
 parser.add_argument('--dataset_folder', default=r"/media/ssm/data/dataset/UA_DETRAC", help='ua result folder. This tool would create this folder with same sturcture')
 parser.add_argument('--min_visibility', default=0.5)
 

@@ -57,7 +57,7 @@ def convert_ua_images_2_videos(image_folder):
         if not os.path.isdir(f):
             continue
         video_name = f + ".avi"
-        convert(f, video_name, args.video_fps, args.video_width, args.video_height)
+        convert(f, video_name, args.video_fps, 960, 540)
 
 if __name__ == "__main__":
     # convert(args.image_folder, args.video_file, args.video_fps, args.video_width, args.video_height)

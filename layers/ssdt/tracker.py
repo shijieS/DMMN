@@ -248,7 +248,10 @@ class TrackSet:
         similarity = similarity.data.cpu().numpy()
 
         # hungarian algorithm
+
+        start_time = time.time()
         row_indexes, column_indexes = linear_sum_assignment(-similarity)
+        print("linear_sum_assigment time(ms):{}".format(32/(time.time() - start_time)))
 
         # create the map between node and the track
 
@@ -304,6 +307,7 @@ class TrackSet:
 
 class Tracker:
     def __init__(self, name, version, config=None):
+        self.all_fps = []
         if config is not None:
             Config.init(name, version, config)
 
@@ -386,7 +390,12 @@ class Tracker:
         # 2. get the image results
         start_time = time.time()
         output_params, output_p_c, output_p_e, output_boxes = self.net(frames_input, times_input)
-        print("fps is {} f/s".format((len(frames)-Config.share_frame_num) / (time.time() - start_time)))
+        fps = (len(frames)-Config.share_frame_num) / (time.time() - start_time)
+
+        self.all_fps += [fps]
+        mean_fps = np.mean(self.all_fps)
+        print("fps is {} f/s".format(fps))
+        print("mean fps is {} f/s".format(mean_fps))
 
 
         # 3. update recorder
