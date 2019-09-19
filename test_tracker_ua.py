@@ -58,9 +58,10 @@ def run_tracker(config):
         index += (dataset.max_frame_num_with_scale - Config.share_frame_num)
 
 def run_tracker_for_ua_result():
+    key_value = {i:j for i, j in zip([0.4+0.03*_i for _i in range(11)], [0.1*_j for _j in range(11)])}
     config_list = [
-        [("test", "./dataset/ua/sequence_list_test.txt", 0.4 + 0.03 * i),
-         ("train", "./dataset/ua/sequence_list_train.txt", 0.4 + 0.03 * i)] for i in range(1, 11)
+        [("test", "./dataset/ua/sequence_list_test.txt", key),
+         ("train", "./dataset/ua/sequence_list_train.txt", key)] for key in key_value.keys()
     ]
     log_save_folder = config["test"]["log_save_folder"]
     image_save_folder = config["test"]["image_save_folder"]
@@ -69,9 +70,9 @@ def run_tracker_for_ua_result():
         config["test"]["dataset_type"] = item[0][0]
         config["test"]["sequence_list"] = item[0][1]
         config["test"]["detect_conf_thresh"] = item[0][2]
-        config["test"]["log_save_folder"] = log_save_folder + str(item[0][2])
-        config["test"]["image_save_folder"] = image_save_folder + str(item[0][2])
-        config["test"]["weights_save_folder"] = weights_save_folder + str(item[0][2])
+        config["test"]["log_save_folder"] = log_save_folder + '{:0.1f}'.format(key_value[item[0][2]])
+        config["test"]["image_save_folder"] = image_save_folder + '{:0.1f}'.format(key_value[item[0][2]])
+        config["test"]["weights_save_folder"] = weights_save_folder + '{:0.1f}'.format(key_value[item[0][2]])
 
         if not os.path.exists(config["test"]["log_save_folder"]):
             os.makedirs(config["test"]["log_save_folder"])
