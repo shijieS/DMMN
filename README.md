@@ -39,11 +39,12 @@ This the source code of the end-to-end Fast Motion Modeling Network (FMMN) which
 ## Network
 
 ![framework](./images/framework.png)
-> The framework of the FMMN. The input item is a set of video frames (16 frames in our experiment). We 3D ResNet and the extended 3D ResNet to extract the spatial-temporal feature maps. These feature maps input into three subnet: Motion Subnet, Classifier Subnet, and Visibility Subnet, in order to output each object's motion parameters, categories, and visibility.
+> The framework of the FMMN. The input item is a set of video frames (16 frames in our experiment). We use 3D ResNet and the extended 3D ResNet to extract the spatial-temporal feature maps. These feature maps input into three subnet: Motion Subnet, Classifier Subnet, and Visibility Subnet, in order to output each object's motion parameters, categories, and visibility.
 
-## Loss Function
+## Tracker Framework
 
-## Framework
+![framework](./images/tracker.png)
+> we input $2N_F$ frames into the tracker and select $N_F$ frames as the input of the trained FMMN. Then, the FMMN output the motion parameters ($O_M$), visibility ($O_V$), and categories ($O_C$) of all the possible objects. The tunnel NMS method removes redundant detected objects. After that, the track updater performs based on estimated bounding boxes in the overlap frames.
 
 
 ## Requirement
