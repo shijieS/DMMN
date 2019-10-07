@@ -22,6 +22,55 @@ This is an end-to-end network which combines detector and matcher into one singl
 | 201808 | Design the whole network                                     |
 | 201807 | Start this idea                                              |
 
+## Protocol
+
+- bbox: the format is *(left, top, right, bottom)*
+- $N_{tr}$: the track number.
+- $N_{ba}​$: the batch number.
+- $N_{ti}$: the selected frame number
+- $N_{pr}$: the number of prior boxes
+- $W, H$: the input network image size (W, H).
+- $W_{re}, H_{re}$: the real input image size.
+- $F_t$: the $t^{th}$ frame
+- $N_{fn}$: the input frame number
+- $f(\cdot)$ is the operation to convert parameter to bboxes
+
+## Network
+
+The framework of our net is as following:
+
+![framework](./images/framework.png)
+
+## Loss Function
+
+## Framework
+
+
+## Requirement
+|name           |version
+|:---:          |:---:
+|python         |3.6
+|cuda           |8.0
+
+Besides, install all the python package by following command
+
+```shell
+cd <project path>
+pip install -r requiement.txt
+```
+
+## Preparation
+- Download this code
+- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
+
+## Train
+
+## Test
+
+## Citation
+
+## Copyright
+
 ## Evaluation
 The test_tracker_<dataset>.py script can gnerate the tracking result by the  following format
 
@@ -88,52 +137,3 @@ We provide a script ``/tools/convert_mot_result_2_ua_result.py`` to converting t
 > ```
 >
 > Be careful to set this threshold.
-
-## Protocol
-
-- bbox: the format is *(left, top, right, bottom)*
-- $N_{tr}$: the track number.
-- $N_{ba}​$: the batch number.
-- $N_{ti}$: the selected frame number
-- $N_{pr}$: the number of prior boxes
-- $W, H$: the input network image size (W, H).
-- $W_{re}, H_{re}$: the real input image size.
-- $F_t$: the $t^{th}$ frame
-- $N_{fn}$: the input frame number
-- $f(\cdot)$ is the operation to convert parameter to bboxes
-
-## Network
-
-The framework of our net is as following:
-
-![framework](./images/framework.png)
-
-## Loss Function
-
-## Framework
-
-
-## Requirement
-|name           |version
-|:---:          |:---:
-|python         |3.6
-|cuda           |8.0
-
-Besides, install all the python package by following command
-
-```shell
-cd <project path>
-pip install -r requiement.txt
-```
-
-## Preparation
-- Download this code
-- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
-
-## Train
-
-## Test
-
-## Citation
-
-## Copyright
