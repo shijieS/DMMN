@@ -31,13 +31,13 @@ parser.add_argument('--mot_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/
                     ''')
 parser.add_argument('--ua_folder', default=r"/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-1081730/logs0.4/mot-ua", help='ua result folder. This tool would create this folder with same sturcture')
 parser.add_argument('--dataset_folder', default=r"/media/ssm/data/dataset/UA_DETRAC", help='ua result folder. This tool would create this folder with same sturcture')
-parser.add_argument('--min_visibility', default=0.5)
+parser.add_argument('--min_visibility', default=0.4)
 
 args = parser.parse_args()
 
 
 class ConvertTools:
-    min_visibility = 0.5
+    min_visibility = 0.4
 
     @staticmethod
     def get_max_frames(name):
@@ -94,6 +94,18 @@ class ConvertTools:
             ConvertTools.generate_ua_result(f, ua_folder)
 
 
+def run_converter():
+    for i in range(11):
+        mot_folder = '/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0911-ua-amot-408394-2/logs{:.1f}/mot'.format(i*0.1)
+        ua_folder = '/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0911-ua-amot-408394-2/ua/SSDT/{:.1f}'.format(i*0.1)
+        mini_visibility = 0.3
+        if not os.path.exists(ua_folder):
+            os.makedirs(ua_folder)
+        ConvertTools.init(mot_folder, ua_folder, mini_visibility)
+
+
+
 if __name__ == '__main__':
     # condition
-    ConvertTools.init(args.mot_folder, args.ua_folder, args.min_visibility)
+    # ConvertTools.init(args.mot_folder, args.ua_folder, args.min_visibility)
+    run_converter()
