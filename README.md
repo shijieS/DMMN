@@ -1,6 +1,7 @@
 # An End-To-End Tracker
+This the source code of the end-to-end Fast Motion Modeling Network (FMMN) which jointly perform detection and association. Based on this network, we design a tracker. It can accurately tracking mutlple objects in video frames with amazing speed (more than 120 fps). 
 
-This is an end-to-end network which combines detector and matcher into one single network. Our target is to design an **End-to-End network** for detection and tracking.
+> We spend one and half year to finish it. Yes, we finally finish it and publish this tracker along with an Awesome Multiple Object Tracking Dataset ([AMOTD](https://github.com/shijieS/AwesomeMOTDataset)).
 
 ## RoadMap
 
@@ -22,7 +23,7 @@ This is an end-to-end network which combines detector and matcher into one singl
 | 201808 | Design the whole network                                     |
 | 201807 | Start this idea                                              |
 
-## Protocol
+<!-- ## Protocol
 
 - bbox: the format is *(left, top, right, bottom)*
 - $N_{tr}$: the track number.
@@ -33,13 +34,12 @@ This is an end-to-end network which combines detector and matcher into one singl
 - $W_{re}, H_{re}$: the real input image size.
 - $F_t$: the $t^{th}$ frame
 - $N_{fn}$: the input frame number
-- $f(\cdot)$ is the operation to convert parameter to bboxes
+- $f(\cdot)$ is the operation to convert parameter to bboxes -->
 
 ## Network
 
-The framework of our net is as following:
-
 ![framework](./images/framework.png)
+> The framework of the FMMN. The input item is a set of video frames (16 frames in our experiment). We 3D ResNet and the extended 3D ResNet to extract the spatial-temporal feature maps. These feature maps input into three subnet: Motion Subnet, Classifier Subnet, and Visibility Subnet, in order to output each object's motion parameters, categories, and visibility.
 
 ## Loss Function
 
