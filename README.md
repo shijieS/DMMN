@@ -53,16 +53,23 @@ This the source code of the end-to-end Fast Motion Modeling Network (FMMN) which
 |python         |3.6
 |cuda           |8.0
 
-Besides, install all the python package by following command
+## Preparation & Run Examples
+- Clone this code
+
+- Install all the python package by the following command:
 
 ```shell
 cd <project path>
 pip install -r requiement.txt
 ```
 
-## Preparation
-- Download this code
+- Download the UA-DETRAC dataset
 - Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
+- Modify the Config
+```json
+
+```
+- Run
 
 ## Train
 
@@ -72,7 +79,11 @@ pip install -r requiement.txt
 
 ## Copyright
 
-## Evaluation
+-----
+
+## Cool Examples
+
+<!-- ## Evaluation
 The test_tracker_<dataset>.py script can gnerate the tracking result by the  following format
 
 |   0   |   1-4 |   5   |   6   |   7   |   8   |
@@ -88,7 +99,7 @@ The test_tracker_<dataset>.py script can gnerate the tracking result by the  fol
 ### UA-DETRAC result generating
 We provide a script ``/tools/convert_mot_result_2_ua_result.py`` to converting the MOT17 result to UA-DETRAC result.
 
-> Please note that, the speed is generated randomly.
+> Please note that, the speed is generated randomly. -->
 
 
 ## Issues
