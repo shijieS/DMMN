@@ -1,7 +1,7 @@
 # An End-To-End Tracker
 This the source code of the end-to-end Fast Motion Modeling Network (FMMN) which jointly perform detection and association. Based on this network, we design a tracker. It can accurately tracking mutlple objects in video frames with amazing speed (more than 120 fps). 
 
-> We spend one and half year to finish it. Yes, we finally finish it and publish this tracker along with an Awesome Multiple Object Tracking Dataset ([AMOTD](https://github.com/shijieS/AwesomeMOTDataset)).
+> We spend one and half year to make this idea possible. Yes, we finally finish it and publish this tracker along with an Awesome Multiple Object Tracking Dataset ([AMOTD](https://github.com/shijieS/AwesomeMOTDataset)).
 
 ## RoadMap
 
