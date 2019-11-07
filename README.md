@@ -52,15 +52,10 @@ We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as s
 
 
 ## Requirement
-|name           |version
-|:---:          |:---:
-|python         |3.6
-|cuda           |8.0
-
 | Name   | Version |
 | ------ | ------- |
 | Python | 3.6     |
-| CUDA   | 8.0     |
+| CUDA   | 10.0    |
 |        |         |
 
 Besides, install all the python package by following command
@@ -71,7 +66,12 @@ pip install -r requiement.txt
 ```
 
 ## Preparation
-- Download this code
+- clone this repository
+
+  ```shell
+  git clone <repository url>
+  ```
+
 - Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
 
 ## Test
