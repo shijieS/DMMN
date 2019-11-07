@@ -76,9 +76,55 @@ pip install -r requiement.txt
 
 ## Test
 
+- Modify the *<project path>/config/config_gpu4_ua.json*
 
+```json
+1. {
+2.   "dataset_name": "UA-DETRAC",
+3.   "dataset_path": <the UA-DETRAC dataset folder>,
+4.   "phase": "test",
+    ...
+36.  "test": {
+37.    "resume": <network weights file>,
+38.    "dataset_type": "test",    
+    ...
+42.    "base_net_weights": null,
+43.    "log_save_folder": <your log save folder>,
+44.    "image_save_folder": <your image save folder>,
+45.    "weights_save_folder": <your network weights save folder>,    
+
+```
+
+- activate your python environment, and run
+
+  ```shell
+  cd <project folder>
+  PYTHONPATH=. python test_tracker_ua.py
+  ```
 
 ## Train
+
+- Modify the *<project path>/config/config_gpu4_ua.json*
+
+  ```json
+  1. {
+  2.   "dataset_name": "UA-DETRAC",
+  3.   "dataset_path": <the UA-DETRAC dataset folder>,
+  4.   "phase": "test",  <change "test" to "train">
+      ...
+  81.		"log_save_folder": <your log save folder>,
+  82.     "image_save_folder": <your image save folder>,
+  83.     "weights_save_folder": <your network weights save folder>,
+  ```
+
+- activate your python environment, and run
+
+  ```shell
+  cd <project folder>
+  PYTHONPATH=. python train_ua.py
+  ```
+
+  
 
 ## Citation
 
