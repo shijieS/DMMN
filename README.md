@@ -1,13 +1,15 @@
-# An End-To-End Tracker
+# Deep Motion Modeling Tracker
 
-This is an end-to-end network which combines detector and matcher into one single network. Our target is to design an **End-to-End network** for detection and tracking.
+We propose a **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for object localization from the spatial-temporal dimension in an end-to-end fashion. The proposed **DMM-Net** can learn compact, yet comprehensive features of a set of video frames to infer the motion parameters of multiple objects. Besides it can also estimate all possible objects' categories and visibilities. After that, we deploy this network into the proposed Deep Motion Modeling Tracker (**DMMT**). This tracker can achieve **the fastest speed (120 fps)** and a promising performance in comparison with state-of-the-arts.
 
 ## RoadMap
 
 | Date   | Event                                                        |
 | ------ | ------------------------------------------------------------ |
+| 201911 | Finish the papers :-)                                        |
+| 201910 | Preparing papers                                             |
 | 201908 | Get Result on AMOT dataset                                   |
-| 201908 | Can Train on AMOT dataset                                   |
+| 201908 | Can Train on AMOT dataset                                    |
 | 201907 | Can Train on MOT17 dataset                                   |
 | 201906 | Can Train on ``[CVPR 2019 Tracking Challenge](<https://motchallenge.net/data/CVPR_2019_Tracking_Challenge/#download>)'' |
 | 201905 | Can Train On the Whole UA-DETRAC dataset                     |
@@ -24,26 +26,29 @@ This is an end-to-end network which combines detector and matcher into one singl
 
 ## Protocol
 
-- bbox: the format is *(left, top, right, bottom)*
-- $N_{tr}$: the track number.
-- $N_{ba}​$: the batch number.
-- $N_{ti}$: the selected frame number
-- $N_{pr}$: the number of prior boxes
-- $W, H$: the input network image size (W, H).
-- $W_{re}, H_{re}$: the real input image size.
-- $F_t$: the $t^{th}$ frame
-- $N_{fn}$: the input frame number
-- $f(\cdot)$ is the operation to convert parameter to bboxes
+- <img src="https://latex.codecogs.com/gif.latex?N_F, N_C, N_P, N_T"/> respectively denote the number of input frames, object categories (0 for `background'), time-related motion parameters, and anchor tunnels.
+- <img src="https://latex.codecogs.com/gif.latex?W, H"/> are the frame width, and frame height.
+- <img src="https://latex.codecogs.com/gif.latex?\bm{I}_t"/> denotes the video frame at time <img src="https://latex.codecogs.com/gif.latex?t"/>. Subsequently, a 4-D tensor <img src="https://latex.codecogs.com/gif.latex?\bm{I}_{t_1:t_2:N_F}\in \mathbb{R}^{3\times N_F \times W \times H}"/> denotes <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?t_1"/> to <img src="https://latex.codecogs.com/gif.latex?t_2-1"/>. For simplicity, we often ignore the subscript ``<img src="https://latex.codecogs.com/gif.latex?:N_F"/>''.
+- <img src="https://latex.codecogs.com/gif.latex?\bm{B}_{t_1:t_2:N_F}, \bm{C}_{t_1:t_2:N_F}, \bm{V}_{t_1:t_2:N_F}"/> respectively denote the ground truth boxes, categories, and visibilities in the selected <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?t_1"/> to <img src="https://latex.codecogs.com/gif.latex?t_2-1"/>. The text also ignores ``<img src="https://latex.codecogs.com/gif.latex?:N_F"/>'' for these notations.
+- <img src="https://latex.codecogs.com/gif.latex?\bm{O}_{M, t_1:t_2:N_F}, \smat O_{C, t_1:t_2:N_F}, \smat O_{V, t_1:t_2:N_F}"/> denote the estimated motion parameters, categories, and visiblities. With time stamps and frames clear from the context, we simplify these notations as <img src="https://latex.codecogs.com/gif.latex?O_M, O_C, O_V"/>.
 
-## Network
+## DMM-Net
 
-The framework of our net is as following:
+To absolve deep learning based tracking-by-detection from relying on off-the-shelf detectors, we propose **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for on-line MOT, shown in Figure 1. Our network enables MOT by jointly performing object detection, tracking, and categorization across multiple video frames without requiring pre-detections and subsequent data association. For the given input video, it outputs objects' motion parameters, categories, and their visibilities across the input frames.
 
-![framework](./images/framework.png)
 
-## Loss Function
 
-## Framework
+![1573106119176](images/framework.png)
+
+## DMM Tracker
+
+We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as shown in Figure 2.  frames are processed by the tracker, where we select frames as the input of the network. The output of this network is converted to a set of encoded tunnels and then further decoded into the estimated tracks. The Tunnel None Maximum Suppression (**TNMS**) is proposed for further filtering. After that, the tracker updater performs based on the IOU association strategy.
+
+![1573106119176](images/tracker.png)
+
+> This tracker can achieve 120 fps for jointly detection and tracking.
+
+
 
 
 ## Requirement
@@ -51,6 +56,12 @@ The framework of our net is as following:
 |:---:          |:---:
 |python         |3.6
 |cuda           |8.0
+
+| Name   | Version |
+| ------ | ------- |
+| Python | 3.6     |
+| CUDA   | 8.0     |
+|        |         |
 
 Besides, install all the python package by following command
 
@@ -63,9 +74,11 @@ pip install -r requiement.txt
 - Download this code
 - Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
 
-## Train
-
 ## Test
+
+
+
+## Train
 
 ## Citation
 
@@ -77,7 +90,7 @@ The test_tracker_<dataset>.py script can gnerate the tracking result by the  fol
 |   0   |   1-4 |   5   |   6   |   7   |   8   |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 |frame no.| track id|lrtb |confidence|category index|  visibility |
- 
+
 > - frame no. is 1-based 
 > - track id is 1-based
 > - lrtb reprents the box, where ``l`` is left, ``r`` is right, ``t`` is top, and ``b`` is bottom.

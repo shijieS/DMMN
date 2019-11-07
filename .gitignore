@@ -1,4 +1,5 @@
 weights/*
+.vscode/
 .idea/
 dataset/mot17/__pycache__/
 config/__pycache__/
