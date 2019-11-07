@@ -74,7 +74,23 @@ pip install -r requiement.txt
 
 - Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ)
 
-## Test
+## OMOTD
+
+- Download the training dataset and testing dataset from [this link]()
+
+### Test
+
+### Train
+
+
+
+## UA-DETRAC
+
+- Download the training and testing dataset from [UA-DETRAC]()
+
+### Test
+
+- Download the network weights file
 
 - Modify the *<project path>/config/config_gpu4_ua.json*
 
@@ -102,7 +118,7 @@ pip install -r requiement.txt
   PYTHONPATH=. python test_tracker_ua.py
   ```
 
-## Train
+### Train
 
 - Modify the *<project path>/config/config_gpu4_ua.json*
 
@@ -128,25 +144,13 @@ pip install -r requiement.txt
 
 ## Citation
 
-## Copyright
+## Acknowledge
 
-## Evaluation
-The test_tracker_<dataset>.py script can gnerate the tracking result by the  following format
+This work is inspired by the [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking)
 
-|   0   |   1-4 |   5   |   6   |   7   |   8   |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-|frame no.| track id|lrtb |confidence|category index|  visibility |
+## License
 
-> - frame no. is 1-based 
-> - track id is 1-based
-> - lrtb reprents the box, where ``l`` is left, ``r`` is right, ``t`` is top, and ``b`` is bottom.
-> - confidence is in [0, 1] which represents the possibility of being a category.
-> - visibility is in [0, 1].
-
-### UA-DETRAC result generating
-We provide a script ``/tools/convert_mot_result_2_ua_result.py`` to converting the MOT17 result to UA-DETRAC result.
-
-> Please note that, the speed is generated randomly.
+The methods provided on this page are published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-nc-sa/3.0/) . This means that you must attribute the work in the manner specified by the authors, you may not use this work for commercial purposes and if you alter, transform, or build upon this work, you may distribute the resulting work only under the same license. If you are interested in commercial usage you can contact us for further options.
 
 
 ## Issues
