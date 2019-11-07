@@ -78,7 +78,7 @@ pip install -r requiement.txt
 
 - Modify the *<project path>/config/config_gpu4_ua.json*
 
-```json
+```python
 1. {
 2.   "dataset_name": "UA-DETRAC",
 3.   "dataset_path": <the UA-DETRAC dataset folder>,
@@ -106,7 +106,7 @@ pip install -r requiement.txt
 
 - Modify the *<project path>/config/config_gpu4_ua.json*
 
-  ```json
+  ```python
   1. {
   2.   "dataset_name": "UA-DETRAC",
   3.   "dataset_path": <the UA-DETRAC dataset folder>,
