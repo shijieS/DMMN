@@ -144,6 +144,8 @@ pip install -r requiement.txt
 
 ## Citation
 
+Our paper is still preparing :-).
+
 ## Acknowledge
 
 This work is inspired by the [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking)
