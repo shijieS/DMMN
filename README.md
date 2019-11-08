@@ -86,11 +86,11 @@ pip install -r requiement.txt
 
 ## UA-DETRAC
 
-- Download the training and testing dataset from [UA-DETRAC]()
+- Download the training and testing dataset from [[UA-DETRAC Official Site]](https://detrac-db.rit.albany.edu/) or [[baidu]<code: cne2>](https://pan.baidu.com/s/1QZZGLarNg-AtvSlMSmWMyA)
 
 ### Test
 
-- Download the network weights file
+- Download the network weights file([[dropbox]](https://www.dropbox.com/s/25ao070zfx8jq9o/ssdt193895.pth?dl=0), [[baidu]<code:zimh>](https://pan.baidu.com/s/160KQdotufH-N6fuUoZ-4Zw))
 
 - Modify the *<project path>/config/config_gpu4_ua.json*
 
