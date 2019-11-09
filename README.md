@@ -76,7 +76,7 @@ pip install -r requiement.txt
 
 ## OMOTD
 
-- Download the training dataset and testing dataset from [[baidu]<code: ncdd>](https://pan.baidu.com/s/13sjHN0pvU8U75oY0MDLLGg) or [[dropbox]]()
+- Download the training dataset and testing dataset from [[baidu]<code: ncdd>](https://pan.baidu.com/s/13sjHN0pvU8U75oY0MDLLGg) or [dropbox no space availabe :-(]
 
 ### Test
 
