@@ -1,6 +1,6 @@
 {
   "dataset_name": "AMOTD",
-  "dataset_path": "/media/ssj/新加卷",
+  "dataset_path": "/media/ssj/新加卷/omot_partial_dataset",
   "phase": "test",
   "frame_max_input_num": 16,
   "frame_sample_scale": 2,
@@ -27,7 +27,7 @@
     "batch_size": 1,
     "num_workers": 1,
     "lr_decay_per_epoch": [1, 30, 45, 50],
-    "base_net_weights": "./weights/resnext-101-64f-kinetics.pth",
+    "base_net_weights": null,
     "log_save_folder": "/media/ssm/data/dataset/amotd/test_logs/0808-67650/logs",
     "image_save_folder": "/media/ssm/data/dataset/amotd/test_logs/0808-67650/images",
     "weights_save_folder": "/media/ssm/data/dataset/amotd/test_logs/0808-67650/weights",
