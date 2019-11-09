@@ -26,11 +26,11 @@ We propose a **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for obje
 
 ## Protocol
 
-- <img src="https://latex.codecogs.com/gif.latex?N_F, N_C, N_P, N_T"/> respectively denote the number of input frames, object categories (0 for `background'), time-related motion parameters, and anchor tunnels.
-- <img src="https://latex.codecogs.com/gif.latex?W, H"/> are the frame width, and frame height.
-- <img src="https://latex.codecogs.com/gif.latex?\bm{I}_t"/> denotes the video frame at time <img src="https://latex.codecogs.com/gif.latex?t"/>. Subsequently, a 4-D tensor <img src="https://latex.codecogs.com/gif.latex?\bm{I}_{t_1:t_2:N_F}\in \mathbb{R}^{3\times N_F \times W \times H}"/> denotes <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?t_1"/> to <img src="https://latex.codecogs.com/gif.latex?t_2-1"/>. For simplicity, we often ignore the subscript ``<img src="https://latex.codecogs.com/gif.latex?:N_F"/>''.
-- <img src="https://latex.codecogs.com/gif.latex?\bm{B}_{t_1:t_2:N_F}, \bm{C}_{t_1:t_2:N_F}, \bm{V}_{t_1:t_2:N_F}"/> respectively denote the ground truth boxes, categories, and visibilities in the selected <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?t_1"/> to <img src="https://latex.codecogs.com/gif.latex?t_2-1"/>. The text also ignores ``<img src="https://latex.codecogs.com/gif.latex?:N_F"/>'' for these notations.
-- <img src="https://latex.codecogs.com/gif.latex?\bm{O}_{M, t_1:t_2:N_F}, \smat O_{C, t_1:t_2:N_F}, \smat O_{V, t_1:t_2:N_F}"/> denote the estimated motion parameters, categories, and visiblities. With time stamps and frames clear from the context, we simplify these notations as <img src="https://latex.codecogs.com/gif.latex?O_M, O_C, O_V"/>.
+- <img src="https://latex.codecogs.com/gif.latex?$N_F, N_C, N_P, N_T$"/> respectively denote the number of input frames, object categories (0 for `background'), time-related motion parameters, and anchor tunnels.
+- <img src="https://latex.codecogs.com/gif.latex?$W, H$"/> are the frame width, and frame height.
+- <img src="https://latex.codecogs.com/gif.latex?$\bm{I}_t$"/> denotes the video frame at time <img src="https://latex.codecogs.com/gif.latex?$t$"/>. Subsequently, a 4-D tensor <img src="https://latex.codecogs.com/gif.latex?$\bm{I}_{t_1:t_2:N_F}\in \mathbb{R}^{3\times N_F \times W \times H}$"/> denotes <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?$t_1$"/> to <img src="https://latex.codecogs.com/gif.latex?$t_2-1$"/>. For simplicity, we often ignore the subscript ``<img src="https://latex.codecogs.com/gif.latex?$:N_F$"/>''.
+- <img src="https://latex.codecogs.com/gif.latex?$\bm{B}_{t_1:t_2:N_F}, \bm{C}_{t_1:t_2:N_F}, \bm{V}_{t_1:t_2:N_F}$"/> respectively denote the ground truth boxes, categories, and visibilities in the selected <img src="https://latex.codecogs.com/gif.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/gif.latex?t_1"/> to <img src="https://latex.codecogs.com/gif.latex?$t_2-1$"/>. The text also ignores ``<img src="https://latex.codecogs.com/gif.latex?$:N_F$"/>'' for these notations.
+- <img src="https://latex.codecogs.com/gif.latex?$\bm{O}_{M, t_1:t_2:N_F}, \smat O_{C, t_1:t_2:N_F}, \smat O_{V, t_1:t_2:N_F}$"/> denote the estimated motion parameters, categories, and visibilities. With time stamps and frames clear from the context, we simplify these notations as <img src="https://latex.codecogs.com/gif.latex?$O_M, O_C, O_V$"/>.
 
 ## DMM-Net
 
@@ -42,11 +42,11 @@ To absolve deep learning based tracking-by-detection from relying on off-the-she
 
 ## DMM Tracker
 
-We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as shown in Figure 2.  frames are processed by the tracker, where we select frames as the input of the network. The output of this network is converted to a set of encoded tunnels and then further decoded into the estimated tracks. The Tunnel None Maximum Suppression (**TNMS**) is proposed for further filtering. After that, the tracker updater performs based on the IOU association strategy.
+We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as shown in the following figure.  frames are processed by the tracker, where the trained DMM-Net selects $N_F$ frames as its input, and outputs predicted tunnels containing all possible object's motion parameter matrice <img src="https://latex.codecogs.com/gif.latex?$(O_M)$"/>, category matrice <img src="https://latex.codecogs.com/gif.latex?$(O_C)$"/> and visibility matrice <img src="https://latex.codecogs.com/gif.latex?$(O_V)$"/>, which are then filtered by the Tunnel Filter. After that, the track set <img src="https://latex.codecogs.com/gif.latex?$\mathcal{T}_{t_i}$"/> is updated by associating the filtered tunnels by their IOU with previous track set <img src="https://latex.codecogs.com/gif.latex?$\mathcal{T}_{t_{i-1}}$"/>.
 
 ![1573106119176](images/tracker.png)
 
-> This tracker can achieve 120 fps for jointly detection and tracking.
+> This tracker can achieve more than **120** fps for jointly detection and tracking.
 
 
 
@@ -66,7 +66,7 @@ pip install -r requiement.txt
 ```
 
 ## Preparation
-- clone this repository
+- Clone this repository
 
   ```shell
   git clone <repository url>
@@ -111,7 +111,7 @@ pip install -r requiement.txt
 
 ```
 
-- activate your python environment, and run
+- Activate your python environment, and run
 
   ```shell
   cd <project folder>
@@ -144,7 +144,7 @@ pip install -r requiement.txt
 
 ## Citation
 
-Our paper is still preparing :-).
+We're going to publish our paper.
 
 ## Acknowledge
 
@@ -154,8 +154,12 @@ This work is inspired by the [SSD](https://github.com/amdegroot/ssd.pytorch) and
 
 The methods provided on this page are published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-nc-sa/3.0/) . This means that you must attribute the work in the manner specified by the authors, you may not use this work for commercial purposes and if you alter, transform, or build upon this work, you may distribute the resulting work only under the same license. If you are interested in commercial usage you can contact us for further options.
 
+## Cool Demos
+
+
 
 ## Issues
+
 |   Symbol  | Meanings   |
 | :-------: | :--------: |
 | :hourglass_flowing_sand:      | Plan to solve         |

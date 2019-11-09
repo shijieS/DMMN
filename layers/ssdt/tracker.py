@@ -427,7 +427,7 @@ class Tracker:
         if Config.show_result:
             for frame, index in zip(frames, frame_indexes):
                 cv2.imshow("result", frame)
-                cv2.waitKey(20)
+                cv2.waitKey()
                 if Config.save_images_folder:
                     cv2.imwrite(os.path.join(Config.save_images_folder, "{0:08}.jpg".format(index)),
                                 frame)
