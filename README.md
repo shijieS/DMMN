@@ -38,7 +38,7 @@ To absolve deep learning based tracking-by-detection from relying on off-the-she
 
 
 
-![1573106119176](images/framework.png)
+![1573106119176](./images/framework.png)
 
 ## DMM Tracker
 
