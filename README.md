@@ -76,11 +76,11 @@ pip install -r requiement.txt
 
 ## OMOTD
 
-- Download the training dataset and testing dataset from [[baidu]<code: ncdd>](https://pan.baidu.com/s/13sjHN0pvU8U75oY0MDLLGg) or [dropbox no space availabe :-(]
+- Download the training dataset and testing dataset from [[baidu]](https://pan.baidu.com/s/1yqeoBd5RidsIn8mn7_m7zA) or [dropbox no space availabe :-(]
 
 ### Test
 
-- Download the network weights file ([[dropbox]](https://www.dropbox.com/s/v050d0fvgj41nkx/ssdt67650.pth?dl=0), [[baidu]<code: 8f33>](https://pan.baidu.com/s/1G5LAWz_TeUVl45rzzG4bdg))
+- Download the network weights file ([[dropbox]](https://www.dropbox.com/s/y5a3vutowfgp68u/ssdt67650.pth?dl=0), [[baidu]](https://pan.baidu.com/s/1HEXPriqLvLBAFkgotmbxDA))
 
 - Modify the *<project path>/config/\_\_init\_\_.py* to
 
@@ -155,11 +155,11 @@ pip install -r requiement.txt
 
 ## UA-DETRAC
 
-- Download the training and testing dataset from [[UA-DETRAC Official Site]](https://detrac-db.rit.albany.edu/) or [[baidu]<code: cne2>](https://pan.baidu.com/s/1QZZGLarNg-AtvSlMSmWMyA)
+- Download the training and testing dataset from [[UA-DETRAC Official Site]](https://detrac-db.rit.albany.edu/) or [[baidu]](https://pan.baidu.com/s/1K1-o_gNKgBv4LKUWC3N_Mg)
 
 ### Test
 
-- Download the network weights file([[dropbox]](https://www.dropbox.com/s/25ao070zfx8jq9o/ssdt193895.pth?dl=0), [[baidu]<code:zimh>](https://pan.baidu.com/s/160KQdotufH-N6fuUoZ-4Zw))
+- Download the network weights file([[dropbox]](https://www.dropbox.com/s/25ao070zfx8jq9o/ssdt193895.pth?dl=0), [[baidu]](https://pan.baidu.com/s/1Phq1FR2LpaE0UJ8FxqHmsQ))
 
 - Modify the *<project path>/config/\_\_init\_\_.py* to
 
