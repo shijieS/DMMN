@@ -36,8 +36,6 @@ We propose a **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for obje
 
 To absolve deep learning based tracking-by-detection from relying on off-the-shelf detectors, we propose **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for on-line MOT, shown in Figure 1. Our network enables MOT by jointly performing object detection, tracking, and categorization across multiple video frames without requiring pre-detections and subsequent data association. For the given input video, it outputs objects' motion parameters, categories, and their visibilities across the input frames.
 
-
-
 ![1573106119176](./images/framework.png)
 
 ## DMM Tracker
