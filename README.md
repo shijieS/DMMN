@@ -76,6 +76,10 @@ pip install -r requiement.txt
 
 ## OMOTD
 
+ [![](images/progress/lx6LXJ.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
+
+------
+
 - Download the training dataset and testing dataset from [[baidu]](https://pan.baidu.com/s/1yqeoBd5RidsIn8mn7_m7zA) or [dropbox no space availabe :-(]
 
 ### Test
@@ -154,6 +158,10 @@ pip install -r requiement.txt
   ```
 
 ## UA-DETRAC
+
+​	[![](https://j.gifs.com/OM9kGB.gif)](https://www.youtube.com/playlist?list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju)
+
+------
 
 - Download the training and testing dataset from [[UA-DETRAC Official Site]](https://detrac-db.rit.albany.edu/) or [[baidu]](https://pan.baidu.com/s/1K1-o_gNKgBv4LKUWC3N_Mg)
 

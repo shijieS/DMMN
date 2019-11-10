@@ -60,6 +60,6 @@ def convert_ua_images_2_videos(image_folder):
         convert(f, video_name, args.video_fps, 960, 540)
 
 if __name__ == "__main__":
-    # convert(args.image_folder, args.video_file, args.video_fps, args.video_width, args.video_height)
+    convert(args.image_folder, args.video_file, args.video_fps, args.video_width, args.video_height)
     # convert_amot_images_2_videos(args.image_folder)
-    convert_ua_images_2_videos(args.image_folder)
+    # convert_ua_images_2_videos(args.image_folder)
