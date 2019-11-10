@@ -159,7 +159,7 @@ pip install -r requiement.txt
 
 ## UA-DETRAC
 
-​	[![](https://j.gifs.com/OM9kGB.gif)](https://www.youtube.com/playlist?list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju)
+​	[![](./images/progress/OM9kGB.gif)](https://www.youtube.com/playlist?list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju)
 
 ------
 
