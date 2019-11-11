@@ -1,0 +1,5 @@
+Town05/Cloudy/230/Hard_Camera_1
+Town05/Cloudy/230/Hard_Camera_12
+Town05/Cloudy/230/Hard_Camera_0
+Town05/Cloudy/230/Middle_Camera_9
+Town05/Cloudy/230/Middle_Camera_5
