@@ -1,6 +1,29 @@
 # Deep Motion Modeling Tracker
 
-We propose a **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for object localization from the spatial-temporal dimension in an end-to-end fashion. The proposed **DMM-Net** can learn compact, yet comprehensive features of a set of video frames to infer the motion parameters of multiple objects. Besides it can also estimate all possible objects' categories and visibilities. After that, we deploy this network into the proposed Deep Motion Modeling Tracker (**DMMT**). This tracker can achieve **the fastest speed (120 fps)** and a promising performance in comparison with state-of-the-arts.
+We introduce the first-of-its-kind **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) that performs implicit detection and association of the objects in an end-to-end manner. DMM-Net models comprehensive object features over multiple frames and simultaneously infers object motion parameters, categories and visibilities. These outputs are readily used to update the tracklets for efficient MOT. DMM-Net achieves PR-MOTA score of 12.80 @ **120+ fps** for jointly performing detection and tracking on the popular UA-DETRAC challenge - orders of magnitude faster than the existing methods with better performance.
+
+------
+
+- [Deep Motion Modeling Tracker](#deep-motion-modeling-tracker)
+  * [RoadMap](#roadmap)
+  * [Protocol](#protocol)
+  * [DMM-Net](#dmm-net)
+  * [DMM Tracker](#dmm-tracker)
+  * [Requirement](#requirement)
+  * [Preparation](#preparation)
+  * [OMOTD](#omotd)
+    + [Test](#test)
+    + [Train](#train)
+  * [UA-DETRAC](#ua-detrac)
+    + [Test](#test-1)
+    + [Train](#train-1)
+  * [Results](#results)
+  * [Citation](#citation)
+  * [Acknowledge](#acknowledge)
+  * [License](#license)
+  * [Issues](#issues)
+
+------
 
 ## RoadMap
 
@@ -34,17 +57,17 @@ We propose a **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for obje
 
 ## DMM-Net
 
-To absolve deep learning based tracking-by-detection from relying on off-the-shelf detectors, we propose **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) for on-line MOT, shown in Figure 1. Our network enables MOT by jointly performing object detection, tracking, and categorization across multiple video frames without requiring pre-detections and subsequent data association. For the given input video, it outputs objects' motion parameters, categories, and their visibilities across the input frames.
+Schematics of end-to-end trainable DMM-Net: <img src="https://latex.codecogs.com/gif.latex?$N_F$"/> frames and their time stamps <img src="https://latex.codecogs.com/gif.latex?$t_1:t_2$"/> are input to the network. The frame sequence is first processed with a *Feature Extractor* comprising 3D ResNet-like convolutional groups. Outputs of selected groups are processed by Motion Subnet, Classifier Subnet, and Visibility Subnet. Each sub-network uses 3D convolutions to learn features that are concatenated and used to predict motion parameters (<img src="https://latex.codecogs.com/gif.latex?$O_M\in\mathbb{R}^{N_T\times&space;N_P\times&space;4}$"/>), object categories (<img src="https://latex.codecogs.com/gif.latex?$O_C\in\mathbb{R}^{N_T\times&space;N_C}$"/>), and visibility (<img src="https://latex.codecogs.com/gif.latex?$O_V\in\mathbb{R}^{N_F\times&space;N_T\times&space;2}$"/>), where <img src="https://latex.codecogs.com/gif.latex?$N_T$"/> <img src="https://latex.codecogs.com/gif.latex?$N_P$"/> and <img src="https://latex.codecogs.com/gif.latex?$N_C$"/> denote the number of anchor tunnels, motion parameters and object categories.
 
-![1573106119176](./images/framework.png)
+![framework](./images/framework.png)
 
 ## DMM Tracker
 
 We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as shown in the following figure.  <img src="https://latex.codecogs.com/gif.latex?$2N_F$"/> frames are processed by the tracker, where the trained DMM-Net selects <img src="https://latex.codecogs.com/gif.latex?$N_F$"/> frames as its input, and outputs predicted tunnels containing all possible object's motion parameter matrice <img src="https://latex.codecogs.com/gif.latex?$(O_M)$"/>, category matrice <img src="https://latex.codecogs.com/gif.latex?$(O_C)$"/> and visibility matrice <img src="https://latex.codecogs.com/gif.latex?$(O_V)$"/>, which are then filtered by the Tunnel Filter. After that, the track set <img src="https://latex.codecogs.com/gif.latex?$\mathcal{T}_{t_i}$"/> is updated by associating the filtered tunnels by their IOU with previous track set <img src="https://latex.codecogs.com/gif.latex?$\mathcal{T}_{t_{i-1}}$"/>.
 
-![1573106119176](images/tracker.png)
+![demployment](images/tracker.png)
 
-> This tracker can achieve more than **120** fps for jointly detection and tracking.
+> This tracker can achieve **120+** fps for jointly performing detection and tracking.
 
 
 
@@ -53,8 +76,7 @@ We directly deploy the trained network into the **DMM Tracker** (**DMMT**), as s
 | Name   | Version |
 | ------ | ------- |
 | Python | 3.6     |
-| CUDA   | 80.0+   |
-|        |         |
+| CUDA   | >=8.0   |
 
 Besides, install all the python package by following command
 
@@ -73,10 +95,6 @@ pip install -r requiement.txt
 - Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ), and save it into *<project>/weights/resnext-101-64f-kinetics.pth*
 
 ## OMOTD
-
- [![](images/progress/lx6LXJ.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
-
-------
 
 - Download the training dataset and testing dataset from [[baidu]](https://pan.baidu.com/s/1yqeoBd5RidsIn8mn7_m7zA) or [dropbox no space availabe :-(]
 
@@ -108,7 +126,7 @@ pip install -r requiement.txt
   30.    			"base_net_weights": null,
   31.    			"log_save_folder": <your log save folder>,
   32.			    "image_save_folder": <your image save folder>,
-  33.			    "weights_save_folder": <your weights save folder>,    
+  33.			    "weights_save_folder": <your weights save folder>, 
   ```
 
 - Activate your python environment, and run
@@ -156,10 +174,6 @@ pip install -r requiement.txt
   ```
 
 ## UA-DETRAC
-
-​	[![](./images/progress/OM9kGB.gif)](https://www.youtube.com/playlist?list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju)
-
-------
 
 - Download the training and testing dataset from [[UA-DETRAC Official Site]](https://detrac-db.rit.albany.edu/) or [[baidu]](https://pan.baidu.com/s/1K1-o_gNKgBv4LKUWC3N_Mg)
 
@@ -232,21 +246,27 @@ pip install -r requiement.txt
   python train_ua.py
   ```
 
+## Results
+
+> DMM-Net on Omni-MOT dataset 
+
+[![](images/progress/lx6LXJ.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
+
+> DMM-Net on UA-DETRAC dataset
+
+[![](./images/progress/OM9kGB.gif)](https://www.youtube.com/watch?v=2RIpCtxMYEg&list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju&index=2&t=0s)
+
 ## Citation
 
-We're going to publish our paper.
+Paper will be released soon :-). 
 
 ## Acknowledge
 
-This work is inspired by the [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking)
+This work is based on the [Pytroch](https://github.com/pytorch/pytorch) and [3D ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch) and . It also inspired by [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking).
 
 ## License
 
 The methods provided on this page are published under the [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License](http://creativecommons.org/licenses/by-nc-sa/3.0/) . This means that you must attribute the work in the manner specified by the authors, you may not use this work for commercial purposes and if you alter, transform, or build upon this work, you may distribute the resulting work only under the same license. If you are interested in commercial usage you can contact us for further options.
-
-## Cool Demos
-
-
 
 ## Issues
 
