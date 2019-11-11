@@ -42,7 +42,7 @@ for frames_1, bboxes_1, motion_parameters_1, p_e_1, times_1, p_c_1, \
     frame_right = np.concatenate(frame_right, axis=0)
 
     result = np.concatenate([frame_left, frame_right], axis=1)
-    cv2.imwrite(os.path.join('/home/shiyuan/ssj/logs/ssdt/images-20180925-2', str(frame_index))+'.png',
+    cv2.imwrite(os.path.join('/home/shiyuan/ssj/logs/dmmn/images-20180925-2', str(frame_index))+'.png',
                 result)
 
     # cv2.namedWindow('item', cv2.WINDOW_NORMAL)

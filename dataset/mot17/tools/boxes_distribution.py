@@ -91,7 +91,7 @@ class BoxesDistribution:
 
     @staticmethod
     def get_achor_boxes():
-        from layers.ssdt.models.prior_box import PriorBox
+        from layers.dmmn.models.prior_box import PriorBox
         from config import config
         pb = PriorBox(config=config)
         boxes = pb.forward().numpy()
@@ -101,7 +101,7 @@ class BoxesDistribution:
     def get_ious(boxes, anchor_boxes, batch_size=2000, top_k=2, min_iou=0.3):
         from math import ceil
         from tqdm import trange
-        from layers.ssdt.utils.box_utils import jaccard, point_form
+        from layers.dmmn.utils.box_utils import jaccard, point_form
         import torch
         iteration = ceil(boxes.shape[0] / batch_size)
         all_valid = []

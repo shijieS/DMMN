@@ -9,9 +9,9 @@ dataset/ua/__pycache__/
 dataset/utils/__pycache__/
 draw_utils/__pycache__/DrawBoxes.cpython-36.pyc
 layers/__pycache__/
-layers/ssdt/__pycache__/
-layers/ssdt/models/__pycache__/
-layers/ssdt/utils/__pycache__/
+layers/dmmn/__pycache__/
+layers/dmmn/models/__pycache__/
+layers/dmmn/utils/__pycache__/
 tools/__pycache__/
 motion_model/__pycache__/motion_model.cpython-36.pyc
 motion_model/__pycache__/motion_model_quadratic.cpython-36.pyc
@@ -24,3 +24,4 @@ cvpr_data_bboxes.csv
 dataset/cvpr19/__pycache__/
 dataset/amot/__pycache__/
 .idea/workspace.xml
+.idea/

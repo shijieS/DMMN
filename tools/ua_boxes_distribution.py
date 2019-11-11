@@ -13,7 +13,7 @@ import argparse
 from dataset.ua.ua import UATrainDataset
 import numpy as np
 from itertools import product as product
-from layers.ssdt.utils.box_utils import jaccard, point_form
+from layers.dmmn.utils.box_utils import jaccard, point_form
 from math import ceil
 import torch
 from config import config

@@ -10,19 +10,19 @@
 import os
 import torch
 from torch.autograd import Variable
-from layers.ssdt import SSDT
+from layers.dmmn import DMMN
 import cv2
 import numpy as np
 from draw_utils.DrawBoxes import DrawBoxes
 from scipy.optimize import linear_sum_assignment
-from layers.ssdt.utils.box_utils import jaccard
+from layers.dmmn.utils.box_utils import jaccard
 import time
 # from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 from deco import concurrent, synchronized
 
 
 class Config:
-    tracker_name = "SSDT"
+    tracker_name = "DMMN"
     tracker_version = "V1"
     cuda = True
     weight_file = "./weights/ssdt_cvpr19.pth"
@@ -326,19 +326,19 @@ class Tracker:
         else:
             torch.set_default_tensor_type('torch.FloatTensor')
 
-        #1. create a SSDT
-        self.ssdt_net = SSDT.build("test")
-        self.net = self.ssdt_net
+        #1. create a DMMN
+        self.dmmn = DMMN.build("test")
+        self.net = self.dmmn
         if Config.cuda:
             self.net = self.net.cuda()
-            self.net = torch.nn.DataParallel(self.ssdt_net)
+            self.net = torch.nn.DataParallel(self.dmmn)
 
         #2. load weight
         if not os.path.exists(Config.weight_file):
             raise FileNotFoundError("cannot find {}".format(Config.weight_file))
         else:
             print("Loading the network")
-            self.ssdt_net.load_weights(Config.weight_file)
+            self.dmmn.load_weights(Config.weight_file)
 
         self.net.eval()
 
@@ -419,7 +419,7 @@ class Tracker:
                       for i in range(p_c.shape[0])]
 
             # if Config.show_result:
-            #     DrawBoxes.draw_ssdt_result(frames, boxes, p_c, p_e, category=Config.category_map[c])
+            #     DrawBoxes.draw_dmmn_result(frames, boxes, p_c, p_e, category=Config.category_map[c])
 
         self.tracks.update(nodes)
         self.tracks.draw(frames)

@@ -16,7 +16,7 @@ import cv2
 
 parser = argparse.ArgumentParser(description='The tools for convert images to video')
 parser.add_argument('--version', default='v1', help='version')
-parser.add_argument('--image_folder', default='/media/ssm/data/dataset/UA_DETRAC/test_logs/ssdt-log-0726-all-1081730/images0.4', help='the image folder')
+parser.add_argument('--image_folder', default='/media/ssm/data/dataset/UA_DETRAC/test_logs/dmmn-log-0726-all-1081730/images0.4', help='the image folder')
 parser.add_argument('--video_file', default='/media/ssm/data/dataset/amotd/test_logs/0808-67650/images/testTown02Clear50Easy_Camera_0.avi', help='the video file to be saved')
 parser.add_argument('--video_fps', default=25, help="Video fps")
 parser.add_argument('--video_height', default=1080, help="Video height")

@@ -22,10 +22,10 @@ from draw_utils import show_feature_map
 from .utils import param_init
 
 
-class SSDT(nn.Module):
+class DMMN(nn.Module):
 
     def __init__(self, phase, base, head, extra):
-        super(SSDT, self).__init__()
+        super(DMMN, self).__init__()
         self.phase = phase
         self.num_classes = config["num_classes"]
         self.num_params = config["num_motion_model_param"]
@@ -180,7 +180,7 @@ class SSDT(nn.Module):
         # build extra net
         extra_net_inplanes = base_net.layer4[2].conv3.out_channels
         extra_net = generate_extra_model(cuda=config["cuda"], inplanes = extra_net_inplanes)
-        # extra_net = SSDT.build_extra_net(base_net.layer4[2].conv3.out_channels)
+        # extra_net = DMMN.build_extra_net(base_net.layer4[2].conv3.out_channels)
 
         # build parameter layers, possibility motion layers, possibility classification layers.
         param_layers = []
@@ -224,7 +224,7 @@ class SSDT(nn.Module):
 
 
         head = (param_layers, p_c_layers, p_e_layers)
-        return SSDT(phase=phase,
+        return DMMN(phase=phase,
                     base=base_net,
                     extra=extra_net,
                     head=head)

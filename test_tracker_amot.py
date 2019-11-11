@@ -10,7 +10,7 @@
 from dataset.amot.amot_reader import AmotTestDataset
 import numpy as np
 from config import config
-from layers.ssdt.tracker import Tracker, Config
+from layers.dmmn.tracker import Tracker, Config
 import os
 
 

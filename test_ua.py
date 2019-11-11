@@ -14,7 +14,7 @@ from torch.autograd import Variable
 import torch.utils.data as data
 from dataset.ua.ua import UATrainDataset
 from config import config, cfg
-from layers.ssdt import SSDT
+from layers.dmmn import DMMN
 from dataset import collate_fn
 from dataset.utils import TransformsTest
 from draw_utils.Converter import TypeConverter
@@ -42,12 +42,12 @@ else:
 
 # build network
 # creat the network
-ssdt_net = SSDT.build("test")
-net = ssdt_net
+dmmn = DMMN.build("test")
+net = dmmn
 
 if args.cuda:
     net = net.cuda()
-    net = torch.nn.DataParallel(ssdt_net)
+    net = torch.nn.DataParallel(dmmn)
 
 # load the dataset
 dataset = UATrainDataset(transform=TransformsTest())
@@ -57,7 +57,7 @@ if not os.path.exists(args.resume):
     raise FileNotFoundError("cannot find {}".format(args.resume))
 else:
     print("Loading the network")
-    ssdt_net.load_weights(args.resume)
+    dmmn.load_weights(args.resume)
 
 # test function
 

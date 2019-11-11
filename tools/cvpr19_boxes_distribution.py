@@ -14,7 +14,7 @@ import argparse
 from dataset.cvpr19.cvpr19 import CVPR19TrainDataset
 import numpy as np
 from itertools import product as product
-from layers.ssdt.utils.box_utils import jaccard, point_form
+from layers.dmmn.utils.box_utils import jaccard, point_form
 from math import ceil
 import torch
 import pandas as pd

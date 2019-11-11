@@ -16,7 +16,7 @@ from torch.autograd import Variable
 import torch.utils.data as data
 from dataset import CVPR19TrainDataset
 from config import config
-from layers.ssdt import SSDT, SSDTLoss
+from layers.dmmn import DMMN, DMMNLoss
 import time
 from dataset import collate_fn
 from dataset.utils import Transforms
@@ -92,27 +92,27 @@ if not os.path.exists(args.weights_save_folder):
     os.mkdir(args.weights_save_folder)
 
 # creat the network
-ssdt_net = SSDT.build("train")
-net = ssdt_net
+dmmn = DMMN.build("train")
+net = dmmn
 
 if args.cuda:
-    net = torch.nn.DataParallel(ssdt_net)
+    net = torch.nn.DataParallel(dmmn)
     cudnn.benchmark = True
     net = net.cuda()
 
 if args.resume:
     print("Resuming training, loading {}...".format(args.resume))
-    ssdt_net.load_weights(args.resume)
+    dmmn.load_weights(args.resume)
 elif args.basenet is not None:
     print("Loading base network...")
-    ssdt_net.load_base_weights(args.basenet)
+    dmmn.load_base_weights(args.basenet)
 
 # create optimizer
 optimizer = optim.Adam(net.parameters(), args.lr, weight_decay=args.weight_decay)
 # optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=args.momentum, weight_decay=args.weight_decay)
 
 # create loss criterion
-criterion = SSDTLoss()
+criterion = DMMNLoss()
 
 
 # train function
@@ -191,7 +191,7 @@ def train():
         # loss
         optimizer.zero_grad()
         loss_l, loss_c, loss_e = criterion(
-            (param, p_c, p_e, ssdt_net.priors),
+            (param, p_c, p_e, dmmn.priors),
             target_1,
             times_1)
 
@@ -232,10 +232,10 @@ def train():
         # weights save
         if iteration % save_weights_iteration == 0:
             print('Saving weights, iter: {}'.format(iteration))
-            torch.save(ssdt_net.state_dict(),
+            torch.save(dmmn.state_dict(),
                        os.path.join(args.weights_save_folder,
-                                    'ssdt' + repr(iteration) + '.pth'))
-    torch.save(ssdt_net.state_dict(), args.weights_save_folder + '' + args.version + '.pth')
+                                    'dmmn' + repr(iteration) + '.pth'))
+    torch.save(dmmn.state_dict(), args.weights_save_folder + '' + args.version + '.pth')
 
 
 def adjust_learning_rate(optimizer, gamma, step):

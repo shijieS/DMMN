@@ -9,7 +9,7 @@
 #
 from dataset.cvpr19.cvpr19_reader import CVPR19TestDataset
 import numpy as np
-from layers.ssdt.tracker import Tracker, Config
+from layers.dmmn.tracker import Tracker, Config
 from config import config
 import os
 

@@ -9,7 +9,7 @@
 #
 from dataset.mot17.mot17_reader import MOT17TestDataset
 import numpy as np
-from layers.ssdt.tracker import Tracker, Config
+from layers.dmmn.tracker import Tracker, Config
 from config import config
 import os
 

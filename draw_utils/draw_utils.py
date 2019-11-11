@@ -66,7 +66,7 @@ def show_bboxes(frames, targets, is_save=True, iteration=None):
     return result
 
 
-def show_bboxes_ssdt(frames, result, is_save=True, iteration=None):
+def show_bboxes_dmmn(frames, result, is_save=True, iteration=None):
     if not is_save:
         return
     N_batch, _, N_time, W, H = frames.shape

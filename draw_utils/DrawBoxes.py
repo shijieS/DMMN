@@ -194,7 +194,7 @@ class DrawBoxes:
     @staticmethod
     def draw_node_result(frames, boxes, p_c, p_e, category, id):
         """
-        awesome tools for drawing ssdt node result :).
+        awesome tools for drawing dmmn node result :).
         :param frames: frames
         :param boxes: boxes with shape [num_frames, 4]. values are in [0, 1+]
         :param p_c: track confidence [num_boxes]. values are in [0, 1]
@@ -223,9 +223,9 @@ class DrawBoxes:
         return frames
 
     @staticmethod
-    def draw_ssdt_result(frames, boxes, p_c, p_e, category, exist_threh=0.5):
+    def draw_dmmn_result(frames, boxes, p_c, p_e, category, exist_threh=0.5):
         """
-        awesome tools for drawing ssdt result :).
+        awesome tools for drawing dmmn result :).
         :param boxes: boxes with shape [num_boxes, num_frames, 4]. values are in [0, 1+]
         :param p_c: track confidence [num_boxes]. values are in [0, 1]
         :param p_e: boxes confidences [num_boxes, num_frames]. values are in [0, 1]

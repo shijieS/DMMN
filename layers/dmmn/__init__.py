@@ -7,5 +7,5 @@
 #   Github: www.github.com/shijieS
 #
 
-from .ssdt import SSDT
-from .loss_param import Loss as SSDTLoss
+from .dmmn import DMMN
+from .loss_param import Loss as DMMNLoss
