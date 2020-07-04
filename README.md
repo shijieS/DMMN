@@ -5,23 +5,23 @@ We introduce the first-of-its-kind **D**eep **M**otion **M**odeling **N**etwork 
 ------
 
 - [Deep Motion Modeling Tracker](#deep-motion-modeling-tracker)
-  * [RoadMap](#roadmap)
-  * [Protocol](#protocol)
-  * [DMM-Net](#dmm-net)
-  * [DMM Tracker](#dmm-tracker)
-  * [Requirement](#requirement)
-  * [Preparation](#preparation)
-  * [OMOTD](#omotd)
-    + [Test](#test)
-    + [Train](#train)
-  * [UA-DETRAC](#ua-detrac)
-    + [Test](#test-1)
-    + [Train](#train-1)
-  * [Results](#results)
-  * [Citation](#citation)
-  * [Acknowledge](#acknowledge)
-  * [License](#license)
-  * [Issues](#issues)
+  - [RoadMap](#roadmap)
+  - [Protocol](#protocol)
+  - [DMM-Net](#dmm-net)
+  - [DMM Tracker](#dmm-tracker)
+  - [Requirement](#requirement)
+  - [Preparation](#preparation)
+  - [OMOTD](#omotd)
+    - [Test](#test)
+    - [Train](#train)
+  - [UA-DETRAC](#ua-detrac)
+    - [Test](#test-1)
+    - [Train](#train-1)
+  - [Results](#results)
+  - [Citation](#citation)
+  - [Acknowledge](#acknowledge)
+  - [License](#license)
+  - [Issues](#issues)
 
 ------
 
@@ -258,7 +258,13 @@ pip install -r requiement.txt
 
 ## Citation
 
-Paper will be released soon :-). 
+```
+@inproceedings{ShiJie20,
+  author = {Shijie Sun, Naveed Aktar, XiangYu Song, Huansheng Song, Ajmal Mian, Mubarak Shah},
+  title = {Simultaneous Detection and Tracking with Motion Modelling for Multiple Object Tracking},
+  booktitle = {Proceedings of the European conference on computer vision (ECCV)}},
+  year = {2020}
+  ```
 
 ## Acknowledge
 
