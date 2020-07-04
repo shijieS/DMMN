@@ -267,7 +267,7 @@ pip install -r requiement.txt
 
 ## Acknowledge
 
-This work is based on the [Pytroch](https://github.com/pytorch/pytorch) and [3D ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch) and . It also inspired by [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking).
+This work is based on the [Pytroch](https://github.com/pytorch/pytorch) and [3D ResNet](https://github.com/kenshohara/video-classification-3d-cnn-pytorch). It also inspired by [SSD](https://github.com/amdegroot/ssd.pytorch) and [DAN](https://www.researchgate.net/publication/334508412_Deep_Affinity_Network_for_Multiple_Object_Tracking).
 
 ## License
 
