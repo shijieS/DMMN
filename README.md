@@ -51,9 +51,9 @@ We introduce the **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) that
 
 - <img src="https://latex.codecogs.com/svg.latex?N_F,N_C,N_P,N_T"/> respectively denote the number of input frames, object categories (0 for `background'), time-related motion parameters, and anchor tunnels.
 - <img src="https://latex.codecogs.com/svg.latex?W,H"/> are the frame width, and frame height.
-- <img src="https://latex.codecogs.com/svg.latex?\bm{I}_t"/> denotes the video frame at time <img src="https://latex.codecogs.com/svg.latex?t"/>. Subsequently, a 4-D tensor <img src="https://latex.codecogs.com/svg.latex?\bm{I}_{t_1:t_2:N_F}\in\mathbb{R}^{3\times&space;N_F&space;\times&space;W&space;\times&space;H}"/> denotes <img src="https://latex.codecogs.com/svg.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/svg.latex?t_1"/> to <img src="https://latex.codecogs.com/svg.latex?t_2-1"/>. For simplicity, we often ignore the subscript ``<img src="https://latex.codecogs.com/svg.latex?:N_F"/>''.
-- <img src="https://latex.codecogs.com/svg.latex?\bm{B}_{t_1:t_2:N_F},\bm{C}_{t_1:t_2:N_F},\bm{V}_{t_1:t_2:N_F}"/> respectively denote the ground truth boxes, categories, and visibilities in the selected <img src="https://latex.codecogs.com/svg.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/svg.latex?t_1"/> to <img src="https://latex.codecogs.com/svg.latex?t_2-1"/>. The text also ignores ``<img src="https://latex.codecogs.com/svg.latex?:N_F"/>'' for these notations.
-- <img src="https://latex.codecogs.com/svg.latex?\bm{O}_{M,t_1:t_2:N_F},\smat&space;O_{C,t_1:t_2:N_F},O_{V,t_1:t_2:N_F}"/> denote the estimated motion parameters, categories, and visibilities. With time stamps and frames clear from the context, we simplify these notations as <img src="https://latex.codecogs.com/svg.latex?O_M,O_C,O_V"/>.
+- <img src="https://latex.codecogs.com/svg.latex?\bf{I}_t"/> denotes the video frame at time <img src="https://latex.codecogs.com/svg.latex?t"/>. Subsequently, a 4-D tensor <img src="https://latex.codecogs.com/svg.latex?\bf{I}_{t_1:t_2:N_F}\in\mathbb{R}^{3\times&space;N_F&space;\times&space;W&space;\times&space;H}"/> denotes <img src="https://latex.codecogs.com/svg.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/svg.latex?t_1"/> to <img src="https://latex.codecogs.com/svg.latex?t_2-1"/>. For simplicity, we often ignore the subscript ``<img src="https://latex.codecogs.com/svg.latex?:N_F"/>''.
+- <img src="https://latex.codecogs.com/svg.latex?\bf{B}_{t_1:t_2:N_F},\bf{C}_{t_1:t_2:N_F},\bf{V}_{t_1:t_2:N_F}"/> respectively denote the ground truth boxes, categories, and visibilities in the selected <img src="https://latex.codecogs.com/svg.latex?N_F"/> video frames from time <img src="https://latex.codecogs.com/svg.latex?t_1"/> to <img src="https://latex.codecogs.com/svg.latex?t_2-1"/>. The text also ignores ``<img src="https://latex.codecogs.com/svg.latex?:N_F"/>'' for these notations.
+- <img src="https://latex.codecogs.com/svg.latex?\bf{O}_{M,t_1:t_2:N_F},O_{C,t_1:t_2:N_F},O_{V,t_1:t_2:N_F}"/> denote the estimated motion parameters, categories, and visibilities. With time stamps and frames clear from the context, we simplify these notations as <img src="https://latex.codecogs.com/svg.latex?O_M,O_C,O_V"/>.
 
 ## DMM-Net
 
@@ -250,11 +250,11 @@ pip install -r requiement.txt
 
 > DMM-Net on Omni-MOT dataset 
 
-[![](images/progress/lx6LXJ.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
+[![](images/omni_result.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
 
 > DMM-Net on UA-DETRAC dataset
 
-[![](./images/progress/OM9kGB.gif)](https://www.youtube.com/watch?v=2RIpCtxMYEg&list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju&index=2&t=0s)
+[![](./images/mvi_39271.gif)](https://www.youtube.com/watch?v=2RIpCtxMYEg&list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju&index=2&t=0s)
 
 ## Citation
 
