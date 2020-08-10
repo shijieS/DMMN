@@ -137,7 +137,7 @@ pip install -r requiement.txt
 
 ### Train
 
-- Modify the *<project path>/config/\_\_init\_\_.py* to
+- Modify the *<project path>/config/__init__.py* to
 
   ```python
   15. # configure_name = 'config_gpu4_ua.json'
@@ -146,7 +146,7 @@ pip install -r requiement.txt
   18. configure_name = 'config_gpu4_amot.json'
   ```
 
-- Modify the *<project path>/config/config_gpu4_amot.json*
+- Modify the `<project path>/config/config_gpu4_amot.json`
 
   ```python
   1.	{
@@ -180,7 +180,7 @@ pip install -r requiement.txt
 
 - Download the network weights file([[dropbox]](https://www.dropbox.com/s/25ao070zfx8jq9o/ssdt193895.pth?dl=0), [[baidu]](https://pan.baidu.com/s/1Phq1FR2LpaE0UJ8FxqHmsQ))
 
-- Modify the *<project path>/config/\_\_init\_\_.py* to
+- Modify the `<project path>/config/__init__.py` to
 
   ```python
   15. configure_name = 'config_gpu4_ua.json'
@@ -189,7 +189,7 @@ pip install -r requiement.txt
   18. # configure_name = 'config_gpu4_amot.json'
   ```
 
-- Modify the *<project path>/config/config_gpu4_ua.json*
+- Modify the `<project path>/config/config_gpu4_ua.json`
 
   ```python
   1. {
@@ -216,7 +216,7 @@ pip install -r requiement.txt
 
 ### Train
 
-- Modify the *<project path>/config/\_\_init\_\_.py* to
+- Modify the `<project path>/config/__init__.py` to
 
   ```python
   15. configure_name = 'config_gpu4_ua.json'
@@ -225,7 +225,7 @@ pip install -r requiement.txt
   18. # configure_name = 'config_gpu4_amot.json'
   ```
 
-- Modify the *<project path>/config/config_gpu4_ua.json*
+- Modify the `<project path>/config/config_gpu4_ua.json`
 
   ```python
   1. {
