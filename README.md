@@ -91,7 +91,7 @@ pip install -r requiement.txt
   git clone <repository url>
   ```
 
-- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ), and save it into *<project>/weights/resnext-101-64f-kinetics.pth*
+- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ), and save it into `<project>/weights/resnext-101-64f-kinetics.pth`
 
 ## OMOTD
 
@@ -101,7 +101,7 @@ pip install -r requiement.txt
 
 - Download the network weights file ([[dropbox]](https://www.dropbox.com/s/y5a3vutowfgp68u/ssdt67650.pth?dl=0), [[baidu]](https://pan.baidu.com/s/1HEXPriqLvLBAFkgotmbxDA))
 
-- Modify the *<project path>/config/\_\_init\_\_.py* to
+- Modify the `<project path>/config/\_\_init\_\_.py` to
 
   ```python
   15. # configure_name = 'config_gpu4_ua.json'
