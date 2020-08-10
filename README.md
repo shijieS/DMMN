@@ -91,7 +91,7 @@ pip install -r requiement.txt
   git clone <repository url>
   ```
 
-- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ), and save it into `<project>/weights/resnext-101-64f-kinetics.pth`
+- Download the [pre-trained base net model](https://drive.google.com/open?id=1CYb-RBZpz3UTbQRM4oIRipZrWrq10iIQ), and save it into `<project path>/weights/resnext-101-64f-kinetics.pth`
 
 ## OMOTD
 
