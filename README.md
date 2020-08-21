@@ -81,7 +81,7 @@ Besides, install all the python package by following command
 
 ```shell
 cd <project path>
-pip install -r requiement.txt
+pip install -r requirement.txt
 ```
 
 ## Preparation
