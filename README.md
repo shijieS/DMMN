@@ -5,6 +5,7 @@ We introduce the **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) that
 ------
 
 - [Deep Motion Modeling Tracker](#deep-motion-modeling-tracker)
+  - [Results](#results)
   - [RoadMap](#roadmap)
   - [Protocol](#protocol)
   - [DMM-Net](#dmm-net)
@@ -17,12 +18,22 @@ We introduce the **D**eep **M**otion **M**odeling **N**etwork (**DMM-Net**) that
   - [UA-DETRAC](#ua-detrac)
     - [Test](#test-1)
     - [Train](#train-1)
-  - [Results](#results)
   - [Citation](#citation)
   - [Acknowledge](#acknowledge)
   - [License](#license)
 
 ------
+
+## Results
+
+> DMM-Net on Omni-MOT dataset 
+
+[![](images/omni_result.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
+
+> DMM-Net on UA-DETRAC dataset
+
+[![](./images/mvi_39271.gif)](https://www.youtube.com/watch?v=2RIpCtxMYEg&list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju&index=2&t=0s)
+
 
 ## RoadMap
 
@@ -244,16 +255,6 @@ pip install -r requirement.txt
   cd <project folder>
   python train_ua.py
   ```
-
-## Results
-
-> DMM-Net on Omni-MOT dataset 
-
-[![](images/omni_result.gif)](https://www.youtube.com/watch?v=eWgUHj8lNns&list=PLfYk__bSOigA_EAE4iX1p0Pi3W59jn_GD)
-
-> DMM-Net on UA-DETRAC dataset
-
-[![](./images/mvi_39271.gif)](https://www.youtube.com/watch?v=2RIpCtxMYEg&list=PLfYk__bSOigC-b67N_BBrCRtlJ9wW60ju&index=2&t=0s)
 
 ## Citation
 
